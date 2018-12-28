@@ -383,7 +383,7 @@ Steps:
 
 ![](images/300/Lab300_image480.PNG)
 
-Employee table should not be present in target database.
+The above error is because employee table is not present in the target database. Drop command is replicated in target database.
 
 This completes the DML and DDL replication sample operations lab.
 
