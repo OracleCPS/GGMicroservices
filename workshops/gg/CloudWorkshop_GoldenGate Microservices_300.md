@@ -39,9 +39,7 @@ Steps:
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 7a-1). Port number will vary depending on what you used during setup.
 
 For Ravello Environment <br />
-http://<dns url>:16000 <br />
 http://localhost:16000 <br />
-http://<Private IP>:1600
 
 
 Figure 7a-1:
