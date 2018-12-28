@@ -383,6 +383,8 @@ Steps:
 
 ![](images/300/Lab300_image480.PNG)
 
+Employee table should not be present in target database.
+
 This completes the DML and DDL replication sample operations lab.
 
 
