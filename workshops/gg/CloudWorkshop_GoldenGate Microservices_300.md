@@ -30,7 +30,7 @@ Lab 7a: Configure Uni-Directional Replication (Integrated Extract)
 
 Objective:
 
-This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182. 
+This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182 PDBs. 
 
 Time: 25 minutes
 
@@ -38,9 +38,9 @@ Steps:
 
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 7a-1). Port number will vary depending on what you used during setup.
 
-For Ravello Environment
-http://<dns url>:16000
-http://localhost:16000
+For Ravello Environment </br>
+http://<dns url>:16000 </br>
+http://localhost:16000 </br>
 http://<Private IP>:1600
 
 
@@ -320,3 +320,81 @@ Once the parameter file has been updated, click the Create and Run button at the
 
 
 At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
+
+
+Lab 7e: DML and DDL Replication Samples
+
+Objective: In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
+
+prerequisite: Source and target database should be in sync. Extract, pump and replicat should be up and running.
+
+Time: 15 mins
+
+Steps:
+
+1. Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
+
+![](images/300/Lab300_image400.PNG) 
+
+
+2. Verify whether tables are in sync between source and target databases.
+
+![](images/300/Lab300_image405.PNG) 
+
+![](images/300/Lab300_image410.PNG) 
+
+3. Create a employee table in OGGOOW181.
+
+![](images/300/Lab300_image415.PNG) 
+
+4. Go to target admin server page, click on actions on replicate and select details option.
+
+![](images/300/Lab300_image420.PNG) 
+
+5. Click on statistics tab and check the DDL Mapped count.
+
+![](images/300/Lab300_image425.PNG) 
+
+6. Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
+
+![](images/300/Lab300_image430.PNG) 
+
+![](images/300/Lab300_image435.PNG) 
+
+7. Perform few updates and deletes operations on source table and check if the operations are replicated to target database.
+
+![](images/300/Lab300_image440.PNG) 
+
+8. Execute the below alter commands and verify the statistics on extract and replicat.
+
+![](images/300/Lab300_image445.PNG) 
+
+9. Execute truncate operation on employee table, verify the statistics and count in the target pdb.
+
+![](images/300/Lab300_image455.PNG) 
+
+![](images/300/Lab300_image460.PNG) 
+
+![](images/300/Lab300_image465.PNG)
+
+10. Similarly, execute drop command on the employee table and check the results in the target database.
+
+![](images/300/Lab300_image470.PNG)
+
+![](images/300/Lab300_image475.PNG)
+
+![](images/300/Lab300_image480.PNG)
+
+This completes the DML and DDL replication sample operations lab.
+
+
+
+
+
+
+
+
+
+
+
+
