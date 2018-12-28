@@ -296,7 +296,7 @@ Figure 7d-6:
 
 7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7d-7).  You will have to remove the MAP statement and replace it with the information below:
 
-MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; </n>
+MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; </br>
 MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  
 MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;
 MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS;
