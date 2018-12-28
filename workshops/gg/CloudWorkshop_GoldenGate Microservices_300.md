@@ -141,27 +141,27 @@ Figure 7a-11:
  
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
-DDL INCLUDE ALL;
-SOURCECATALOG OGGOOW181
-TABLE SOE.*;
+DDL INCLUDE ALL; </br>
+SOURCECATALOG OGGOOW181 </br>
+TABLE SOE.*; </br>
 
 Notes: ~/Desktop/Software/extract.prm has these contents for copying.
 
 You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
 
-DDL INCLUDE ALL; 
-SOURCECATALOG OGGOOW181 
-TABLE SOE.ADDRESSES;
-TABLE SOE.CUSTOMERS;
-TABLE SOE.ORDERS;
-TABLE SOE.ORDER_ITEMS;
-TABLE SOE.CARD_DETAILS;
-TABLE SOE.LOGON;
-TABLE SOE.PRODUCT_INFORMATION;
-TABLE SOE.INVENTORIES;
-TABLE SOE.PRODUCT_DESCRIPTIONS;
-TABLE SOE.WAREHOUSES;
-TABLE SOE.ORDERENTRY_METADATA;
+DDL INCLUDE ALL; </br>
+SOURCECATALOG OGGOOW181 </br>
+TABLE SOE.ADDRESSES; </br>
+TABLE SOE.CUSTOMERS; </br>
+TABLE SOE.ORDERS; </br>
+TABLE SOE.ORDER_ITEMS; </br>
+TABLE SOE.CARD_DETAILS; </br>
+TABLE SOE.LOGON; </br>
+TABLE SOE.PRODUCT_INFORMATION; </br>
+TABLE SOE.INVENTORIES; </br>
+TABLE SOE.PRODUCT_DESCRIPTIONS; </br>
+TABLE SOE.WAREHOUSES; </br>
+TABLE SOE.ORDERENTRY_METADATA; </br>
 
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
 
@@ -296,22 +296,27 @@ Figure 7d-6:
 
 7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7d-7).  You will have to remove the MAP statement and replace it with the information below:
 
-MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; </br>
-MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  
-MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;
-MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS;
-MAP PDB1.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS;
-MAP PDB1.SOE.LOGON, TARGET SOE.LOGON;
-MAP PDB1.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION;
-MAP PDB1.SOE.INVENTORIES, TARGET SOE.INVENTORIES;
-MAP PDB1.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS;
-MAP PDB1.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES;
-MAP PDB1.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA;
-Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
-Once the parameter file has been updated, click the Create and Run button at the bottom.
+MAP OGGOOW181.SOE.*, TARGET SOE.*; </br>
 
 Figure 7d-7:
  
 ![](images/300/Lab300_image380.PNG) 
+
+You can also specify individual table name as given below. </br>
+
+MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; </br>
+MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  </br>
+MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;</br>
+MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS; </br>
+MAP PDB1.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS; </br>
+MAP PDB1.SOE.LOGON, TARGET SOE.LOGON; </br>
+MAP PDB1.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION; </br>
+MAP PDB1.SOE.INVENTORIES, TARGET SOE.INVENTORIES; </br>
+MAP PDB1.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS; </br>
+MAP PDB1.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES; </br>
+MAP PDB1.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA; </br>
+Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
+Once the parameter file has been updated, click the Create and Run button at the bottom.
+
 
 At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
