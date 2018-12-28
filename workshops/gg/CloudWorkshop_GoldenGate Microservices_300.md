@@ -1,13 +1,13 @@
-![](images/200/Lab200_image100.PNG)
+![](images/300/Lab300_image100.PNG)
 
-Update August 2, 2018
+Update December 28, 2018
 
 ## UniDirectional and DDL Replication
 ## Introduction
 
 This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 12.3 micro services web interface in a Ravello environment.
 
-![](images/200/Lab200_image104.png)
+![](images/300/Lab300_image104.png)
 
 This lab supports the following use cases:
 -	Migration of on-premise pluggable databases to a cloud based environment.
@@ -46,7 +46,7 @@ http://<Private IP>:1600
 
 Figure 7a-1:
 
-![](images/200/Lab200_image110.png) 
+![](images/300/Lab300_image110.png) 
  
 
 2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta_1 (Figure 7a-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
@@ -54,23 +54,23 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 Figure 7a-2:
 
-![](images/200/Lab200_image120.png) 
+![](images/300/Lab300_image120.png) 
  
 
 3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure 7a-3).
 
 Figure 7a-3:
 
-![](images/200/Lab200_image130.png) 
+![](images/300/Lab300_image130.png) 
 
-![](images/200/Lab200_image140.png) 
+![](images/300/Lab300_image140.png) 
  
 
 4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure 7a-4).  You will need to add the alias for a user that will connect to CDB and PDB1.  The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
 
 Figure 7a-4:
 
-![](images/200/Lab200_image150.png) 
+![](images/300/Lab300_image150.png) 
  
 
 You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
@@ -87,7 +87,7 @@ CDBGGATE	CDBGGATE	C##GGATE@CDB	ggate
 
 Figure 7a-5:
 
-![](images/200/Lab200_image160.png) 
+![](images/300/Lab300_image160.png) 
  
 
 6.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
@@ -95,14 +95,14 @@ After logging into the database as described in step 5 for PDB1, find the Tranda
 
 Figure 7a-6:
 
-![](images/200/Lab200_image170.png) 
+![](images/300/Lab300_image170.png) 
  
 
 You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema (Figure 7a-7).  To do this, click on the magnifying glass and provide the Schema name.
 
 Figure 7a-7:
 
-![](images/200/Lab200_image180.png) 
+![](images/300/Lab300_image180.png) 
  
 
 7.	Add the Protocol user.
@@ -111,7 +111,7 @@ As you did in Step 4, click the plus sign ( + ) next to the word Credentials.  T
 
 Figure 7a-8:
 
-![](images/200/Lab200_image190.png) 
+![](images/300/Lab300_image190.png) 
  
 
 For now, just leave this login alone.  It will be used in a later step. 
@@ -121,14 +121,14 @@ Navigate back to the Overview page of the Administration Server (Figure 7a-9).  
 
 Figure 7a-9:
 
-![](images/200/Lab200_image200.png) 
+![](images/300/Lab300_image300.png) 
 
 
 After clicking the plus sign ( + ), you are taken to the Add Extract page (Figure 7a-10).  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
 
 Figure 7a-10:
 
-![](images/200/Lab200_image210.png) 
+![](images/300/Lab300_image210.png) 
 
 
 The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure 7a-11).  Keep in mind that the credentials needed to register the Extract need to be against the CDB. Use the CDB domain and alias that you setup previously.
@@ -137,7 +137,7 @@ When using the CDB credential, at the bottom of the page, you will be presented 
 
 Figure 7a-11:
 
-![](images/200/Lab200_image220.png) 
+![](images/300/Lab300_image220.png) 
  
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
@@ -159,13 +159,13 @@ Once the TABLE statements are added, click Create and Run at the bottom of the p
 
 Figure 7a-12:
  
-![](images/200/Lab200_image230.png) 
+![](images/300/Lab300_image230.png) 
 
 The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running (Figure 7a-13).
 
 Figure 7a-13:
  
-![](images/200/Lab200_image240.png) 
+![](images/300/Lab300_image240.png) 
 
 Lab 7b: Configure Uni-Directional Replication (Distribution Server)
 
@@ -179,26 +179,26 @@ Steps:
 
 Figure 7b-1:
 
-![](images/200/Lab200_image250.png) 
+![](images/300/Lab300_image250.png) 
 
 
 2.	Open the Distribution Server page for your first deployment (Figure 7b-2).
 
 Figure 7b-2:
 
-![](images/200/Lab200_image260.png) 
+![](images/300/Lab300_image260.png) 
 
 3.	Click the plus sign ( + ) to add a new Distribution Path (Figure 7b-3).
 
 Figure 7b-3:
 
-![](images/200/Lab200_image270.png) 
+![](images/300/Lab300_image270.png) 
 
 4.	On the Add Path page, fill in the required information (Figure 7b-4).  Make note that the default protocol for distribution service is secure websockets (wss).  You will need to change this to websockets (ws).
 
 Figure 7b-4:
 
-![](images/200/Lab200_image280.png) 
+![](images/300/Lab300_image280.png) 
 
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information:
 Hostname: ogg123rs
@@ -212,7 +212,7 @@ After filling out the form, click Create and Run at the bottom of the page.
 
 Figure 7b-5:
  
-![](images/200/Lab200_image290.png) 
+![](images/300/Lab300_image290.png) 
 
 
 Lab 7c: Configure Uni-Directional Replication (Receiver Server)
@@ -227,13 +227,13 @@ Steps:
 
 Figure 7c-1:
  
-![](images/200/Lab200_image300.png) 
+![](images/300/Lab300_image300.png) 
 
 2.	Click on the Receiver Server link to open the Receiver Server page (Figure 7c-2).  Verify that everything is configured.
 
 Figure 7c-2:
 
-![](images/200/Lab200_image310.png) 
+![](images/300/Lab300_image310.png) 
 
 
 Lab 7d: Configure Uni-Directional Replication (Integrated Replicat)
@@ -248,41 +248,41 @@ Steps:
 
 Figure 7d-1:
  
-![](images/200/Lab200_image320.png) 
+![](images/300/Lab300_image320.png) 
  
 2.	Open the Administration Server for the second deployment by clicking on the link (Figure 7d-2).
 
 Figure 7d-2:
 
-![](images/200/Lab200_image330.png) 
+![](images/300/Lab300_image330.png) 
 
 3.	Open the Configuration option to add your credentials needed to connect to PDB2 (Figure 7d-3).  After creating the credential, login and verify that it works.
 You will need to create 1 credential for the user to connect to PDB2.  We will use the same common user as before, C##GGATE@PDB2, with password ggate.  Click Submit when finished.
 
 Figure 7d-3:
  
-![](images/200/Lab200_image340.png) 
+![](images/300/Lab300_image340.png) 
 
 
 4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7d-4).  Click the plus sign ( + ) to open the Add Replicat process.
 
 Figure 7d-4:
  
-![](images/200/Lab200_image350.png) 
+![](images/300/Lab300_image350.png) 
 
 
 5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7d-5).
 
 Figure 7d-5:
  
-![](images/200/Lab200_image360.png) 
+![](images/300/Lab300_image360.png) 
 
 
 6.	Fill in the Replicat options form with the required information (Figure 7d-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
 Figure 7d-6:
  
-![](images/200/Lab200_image370.png) 
+![](images/300/Lab300_image370.png) 
 
 7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7d-7).  You will have to remove the MAP statement and replace it with the information below:
 
@@ -303,6 +303,6 @@ Once the parameter file has been updated, click the Create and Run button at the
 
 Figure 7d-7:
  
-![](images/200/Lab200_image380.png) 
+![](images/300/Lab300_image380.png) 
 
 At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
