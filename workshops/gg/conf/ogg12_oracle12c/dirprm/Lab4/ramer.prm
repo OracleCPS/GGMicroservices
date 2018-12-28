@@ -1,0 +1,12 @@
+REPLICAT RAMER
+USERIDALIAS oggalias
+DBOPTIONS INTEGRATEDPARAMS (MAX_PARALLELISM 6)
+DBOPTIONS SETTAG 123
+
+MAP euro.title, TARGET amer.title,
+COMPARECOLS (ON UPDATE KEYINCLUDING (price, last_change_ts, source)),
+RESOLVECONFLICT(UPDATEROWEXISTS,(max_resolution_method, USEMAX(last_change_ts), COLS(price, last_change_ts, source)),(DEFAULT, OVERWRITE));
+
+MAP euro.title, TARGET amer.title_exceptions,INSERTALLRECORDS, EXCEPTIONSONLY, COLMAP (USEDEFAULTS, notes = 'Row in conflict.', conflict_reason = 'Target (Amer) Newer');
+ 
+MAP euro.*, TARGET amer.*;

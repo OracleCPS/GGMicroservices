@@ -1,0 +1,58 @@
+MACRO #dbconnect
+BEGIN
+userid ogguser, password AADAAAAAAAAAAAHANFIEOIRIQFIEEHDALEZEJFEGKHZGVHDCTGWIBFYHDBUIMBQJODFFJFPJOEJJDHTG, aes128, encryptkey MyKey1
+END;
+
+MACRO #bpsettings
+BEGIN
+-- The following are "best practice" runtime options which may be
+-- used for workload accounting and load balancing purposes.
+
+-- REPORTCOUNT denotes that every 60 seconds the Replicat report file
+-- in the dirrpt directory/folder will have a line added to it that reports the
+-- total number of records processed since startup, along with the rated
+-- number of records processed per second since startup, and the change
+-- in rate, or "delta" since the last report.
+-- In a production environment, this setting would typically be 1 hour.
+REPORTCOUNT EVERY 60 SECONDS, RATE
+
+-- Close the current report file and create a new one daily at 1 
+-- minute after midnight. Eleven report files are maintained on disk
+-- in the dirrpt directory/folder for each GoldenGate group. The 
+-- current report file names are <group name>.rpt. The older reports
+-- are <group name>0.rpt through <group name>9.rpt, with the
+-- older report files having larger numbers.
+REPORTROLLOVER AT 00:01
+
+-- STATOPTIONS RESETREPORTSTATS ensures that process
+-- statistics counters will be reset whenever a new report file is
+-- created.
+STATOPTIONS RESETREPORTSTATS
+
+-- Generate a report every day at 1 minute after midnight.
+-- This report will contain the number of operations, by operation
+-- type, performed on each table.
+REPORT AT 00:01
+
+-- End of "best practices" section
+END;
+
+MACRO #funcsmap
+PARAMS (#src_table, #target_table)
+BEGIN
+   -- Map the source table provided in the variable #src_table to the target
+   -- table listed in the variable #target_table. There are extract columns in the
+   -- target we need to populate, so get the data from either the environment
+   -- variable, or the user token data sent over from Extract
+   MAP #src_table, TARGET #target_table,
+    colmap (usedefaults,
+            orders_trans_ts = @GETENV ("GGHEADER", "COMMITTIMESTAMP"),
+            trans_rec_loc8tr = @STRCAT (@GETENV ("RECORD", "FILESEQNO"), 
+                                     @GETENV ("RECORD", "FILERBA")),
+            extract_lag_ms = @TOKEN ("TKN-EXTLAG-MSEC"),
+            replicat_lag_ms = @GETENV ("LAG", "MSEC"),
+            src_db_name = @TOKEN ("TKN-SRC-DBNAME"),
+            src_db_version = @TOKEN ("TKN-SRC-DBVERSION"),
+            src_txn_csn = @TOKEN ("TKN-TXN-CSN")
+     );
+END;

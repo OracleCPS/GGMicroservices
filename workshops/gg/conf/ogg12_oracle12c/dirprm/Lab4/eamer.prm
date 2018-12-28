@@ -1,0 +1,10 @@
+EXTRACT EAMER
+USERIDALIAS oggalias
+TRANLOGOPTIONS EXCLUDETAG 123
+EXTTRAIL ./dirdat/ea
+
+TABLE amer.address;
+TABLE amer.author;
+TABLE amer.publisher;
+TABLE amer.title, GETBEFORECOLS(ON UPDATE KEYINCLUDING (price, last_change_ts, source));
+TABLE amer.title_author;

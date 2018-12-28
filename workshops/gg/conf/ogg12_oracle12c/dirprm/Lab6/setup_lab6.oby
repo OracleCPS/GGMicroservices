@@ -1,0 +1,22 @@
+-- This is a script(oby) file that executes GGSCI commands to initialize the GoldenGate environment. These commands can be run individually directly via the GGSCI interface.
+
+-- Create the Credental store. This is used to securely maintain usernames and passwords for database connectivity. This would normally only be done once after install.
+
+ADD CREDENTIALSTORE
+
+-- Add the GoldenGate user, password, and alias to the credentialstore. This is used by all GoldenGate processes to log into the database. Note that the user is one from the pluggable database PDB! used to apply transactions. 
+
+ALTER CREDENTIALSTORE ADD USER ogguser@orcl12c PASSWORD welcome1 ALIAS ogguser
+
+-- LOGON TO DB USING PLUGGABLE CREDENTIALSTORE ALIAS
+
+DBLOGIN USERIDALIAS ogguser
+
+-- CREATE CHECKPOINT TABLE in the target database. The default table name is in the GLOBALS file located in the installation directory. This table allows replicat to store its trail read checkpoint in the database for recovery purposes. This makes the Goldegate checkpoint update part of the database transaction.
+
+ADD CHECKPOINTTABLE
+
+-- Create a standard GoldenGate replicat to apply the data. EXTTRAIL specifies what trail the replicat should read from.
+
+ADD REPLICAT RAMER, EXTTRAIL ./dirdat/pe 
+

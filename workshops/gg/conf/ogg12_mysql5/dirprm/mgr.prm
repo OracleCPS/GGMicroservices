@@ -1,0 +1,12 @@
+PORT 15100
+
+DYNAMICPORTLIST 15110-15120
+
+PURGEOLDEXTRACTS ./dirdat/eo, USECHECKPOINTS, MINKEEPFILES 10
+
+-- There are numerous runtime attributes that may be set in this file; including, but 
+-- not limited to options that control process failure restart, process startup, and lag 
+-- reporting.
+--
+-- For more information on other parameter settings related to GoldenGate Manager, 
+-- refer to the Oracle GoldenGate for Windows and Unix Reference Guide.

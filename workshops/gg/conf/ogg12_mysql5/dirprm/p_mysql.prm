@@ -1,0 +1,9 @@
+EXTRACT P_MYSQL
+
+RMTHOST dis.oraclesc.com, MGRPORT 15000
+
+RMTTRAIL ./dirdat/ra
+
+PASSTHRU
+
+TABLE amea.*;

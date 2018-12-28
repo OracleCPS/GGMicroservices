@@ -1,0 +1,24 @@
+-- This is the name of the pump process and must match both the name used when the pump process was added via the ADD EXTRACT command and the name of the parameter file itself.
+
+EXTRACT PEURO
+
+-- This is the hostname or i.p. address of the server running target database. The port is the port on which the remote Goldengate manager process is running.
+
+RMTHOST dis.oraclesc.com, MGRPORT 15000
+
+-- This is the name of the remote trail that the pump is writing data to on the target server. It must match the name specified in the ADD RMTTRAIL command issued in the obey file.
+
+RMTTRAIL ./dirdat/pe
+
+-- This parameter sets the pump to PASSTHRU mode. The pump does not require a connection to the database to look up table metadata. Filtering, transformation, tokens, etc cannot be used in PASSTHRU mode.
+
+PASSTHRU
+
+-- The GETUPDATEBEFORES parameter tells the GoldenGate pump to include the before images of updates into the trail. They are not included by default.
+
+GETUPDATEBEFORES
+
+-- Specifies the tables to be processed by the pump. This can be a subset of those specified by the extract in a capture once write many topology. In this case, a wildcard is used to process all tables in the euro schema.
+
+TABLE euro.*;
+

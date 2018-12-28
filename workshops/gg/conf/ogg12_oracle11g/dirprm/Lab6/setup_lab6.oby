@@ -1,0 +1,41 @@
+-- This is a script(oby) file that executes GGSCI commands to initialize the GoldenGate environment. These commands can be run individually directly via the GGSCI interface.
+
+-- Create the Credental store. This is used to securely maintain usernames and passwords for database connectivity. This would normally only be done once after installation.
+
+ADD CREDENTIALSTORE
+
+-- Add the GoldenGate user, password, and alias to the credentialstore. This is used by all GoldenGate processes to log into the database. Normally this would be done manually once and not in the obey file. The GoldenGate user should be a seperate user used only by the goldengate processes. Its privilages are set by running the database dbms_goldengate_auth.grant_admin_privilege() package.
+
+ALTER CREDENTIALSTORE ADD USER ogguser PASSWORD welcome1 ALIAS ogguser
+
+-- LOGON TO DB USING CREDENTIALSTORE ALIAS
+
+DBLOGIN USERIDALIAS ogguser
+
+-- Add table level supplemental logging to the spefified tables in the euro schema. For updates and deletes, this tells the Oracle database to write the primary key or unique index values to the redo log in addition to changed data. This allows GoldenGate to identify the proper row in the target database. If no primary key or unique index is defined the entire row will be written to the redo.
+
+
+ADD TRANDATA euro.customers
+ADD TRANDATA euro.orders
+
+-- Use the TRANDATA COLS clause For the order_details table to make sure the unitprice and quantity are writen to the redo regardless of whether they were updated. These columns are passed to a stored procedure via a SQLExec call in the replicat to calculate a total price.
+
+ADD TRANDATA euro.order_details COLS (unitprice, quantity)
+ADD TRANDATA euro.products
+
+-- Add the EURO EXTRACT in classic mode. This reads the redo logs directly. This command creates the extract checkpoint file. BEGIN NOW captures any transactions from the redo log that are opened after this command is issued
+
+ADD EXTRACT eeuro, TRANLOG, BEGIN now
+
+-- This command creates the local trail checkpoint file and associates it with the eeuro extract. Trail file prefix must be 2 character. Each trail file is 50 megabytes.
+
+ADD EXTTRAIL ./dirdat/ee, EXTRACT eeuro, MEGABYTES 50
+
+-- Add the EURO pump process checkpoint file and associate it with the above local trail file.
+
+ADD EXTRACT peuro, EXTTRAILSOURCE ./dirdat/ee
+
+-- This command creates the remote trail checkpoint file and assocates it with the peuro pump. Default trail file size is 50 megabytes.
+
+ADD RMTTRAIL ./dirdat/pe, EXTRACT peuro, MEGABYTES 50
+ 

@@ -1,0 +1,17 @@
+REPLICAT REURO
+USERIDALIAS oggalias
+
+MAP amer.address, TARGET euro.address, THREAD (2);
+MAP amer.author, TARGET euro.author, THREAD (3);
+
+MAP amer.title, TARGET euro.title, THREAD (4),
+COMPARECOLS (ON UPDATE KEYINCLUDING (price, last_change_ts, source)),
+RESOLVECONFLICT(UPDATEROWEXISTS,(max_resolution_method, USEMAX(last_change_ts), COLS(price, last_change_ts, source)),(DEFAULT, OVERWRITE));
+
+MAP amer.title, TARGET euro.title_exceptions,
+	THREAD (4), 
+	EXCEPTIONSONLY, 
+	INSERTALLRECORDS, 
+	COLMAP (USEDEFAULTS, notes = 'Row in conflict.', conflict_reason = 'Target (Euro) Newer');
+
+MAP amer.*, TARGET euro.*;

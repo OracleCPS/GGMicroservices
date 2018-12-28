@@ -1,0 +1,7 @@
+START mgr
+STOP extract *
+DELETE extract * !
+STOP mgr !
+SHELL rm dirdat/*
+EXIT
+

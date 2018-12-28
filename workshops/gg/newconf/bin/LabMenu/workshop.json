@@ -1,0 +1,38 @@
+{
+  "labs": [
+    {
+      "id": 1,
+      "title": "GoldenGate Microservices Automated Installation",
+      "scripts": [
+        "ls -l",
+        "sleep 3",
+        "ps -deaf",
+        "what?"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Zero Downtime Configuration"
+    },
+    {
+      "id": 3,
+      "title": "Uni-Directional DML and DDL Replication"
+    },
+    {
+      "id": 4,
+      "title": "Bi-Directional and CDR"
+    },
+    {
+      "id": 5,
+      "title": "Heterogeneous Replication - Oracle Prep"
+    },
+    {
+      "id": 6,
+      "title": "Heterogeneous Replication - MySQL Prep"
+    },
+    {
+      "id": 7,
+      "title": "Data Transformations"
+    }
+  ]
+}

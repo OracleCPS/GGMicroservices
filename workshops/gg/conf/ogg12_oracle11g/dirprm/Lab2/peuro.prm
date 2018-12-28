@@ -1,0 +1,6 @@
+EXTRACT PEURO
+RMTHOST dis.oraclesc.com, MGRPORT 15000, COMPRESS
+RMTTRAIL ./dirdat/pa
+PASSTHRU
+TABLE euro.*;
+

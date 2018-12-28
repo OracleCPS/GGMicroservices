@@ -1,0 +1,11 @@
+EXTRACT EEURO
+USERIDALIAS oggalias
+TRANLOGOPTIONS DBLOGREADER
+TRANLOGOPTIONS EXCLUDEUSER ogguser
+EXTTRAIL ./dirdat/ee
+LOGALLSUPCOLS
+TABLE euro.address;
+TABLE euro.author;
+TABLE euro.publisher;
+TABLE euro.title, GETBEFORECOLS(ON UPDATE KEYINCLUDING (price, last_change_ts, source));
+TABLE euro.title_author;

@@ -1,0 +1,51 @@
+-- This is the name of the extract process. It must be less than 9 characters and match the process named given in the ADD EXTRACT command. It must also match the name of this parameter file.
+
+EXTRACT EEURO
+
+-- This is the local trail file. It must be 2 characters. Note that the path is relative to the Goldengate installation directory.
+
+EXTTRAIL ./dirdat/ee
+
+-- Login information to the source database. This is using the alias defined in the credentialstore in order to secure usernames and passwords.
+
+USERIDALIAS ogguser
+
+-- This parameter tells GoldeGate to use the ASM logreader API rather than connecting through the ASM instance. This is a GoldenGate specific API that allows faster reading of redo files using buffers up to. This parameter only applies to classic extract.
+
+TRANLOGOPTIONS DBLOGREADER
+
+-- This generates interim statistics that are appended to the report file at noon daily.
+
+REPORT AT 12:00
+
+-- This ages the report file on a scheduled basis rather than only on process restart. The old file is retained with a number (0-9) appended to the end of the file name. This allows a predictable snapshot to be created for archiving.
+
+REPORTROLLOVER AT 12:00
+
+-- This command resets the in-memory statistics (operations, ops, etc.) when the report is rolled over. The intent is to allow a snapshot of the statistics over a 24-hour period.
+
+STATOPTIONS RESETREPORTSTATS
+
+-- This writes the capture rate to report file every 60 seconds. This includes both the number of operation processed in that timeframe and the rate at which they are processed on a per second basis.
+
+REPORTCOUNT EVERY 60 SECONDS, RATE
+
+-- The GETUPDATEBEFORES parameter tells the GoldenGate extract to include the before images of updates into the trail. They are not included by default. The BEFORE and AFTER images of updates are inserted into an auditing table on the target in order to track what columns were changed by an update.
+
+GETUPDATEBEFORES
+
+-- The NOCOMPRESSDELETES parameter tells the GoldenGate extract to include the entire before image of a delete in the trail. By default only the primary key or unique index would be written to the trail for a delete. This is needed since replicat will turn the delete into an insert into an auditing table in addition to deleting the row from the table. We want all of the data columns in the auditing table so that we know what the deleted record looked like.
+
+NOCOMPRESSDELETES
+
+-- These are the tables to be captured. This example lists the tables explicitly rather than using a wildcard.
+
+TABLE euro.customers;
+TABLE euro.orders;
+TABLE euro.order_details;
+
+-- This TABLE statemant is adding a user token to any operations captured on the products table. A user token is additional data that you want to send along with the record. In this case we are using the GETENV function to retrieve the host and user name from the environment and send it along with the record. This information will then be retrieved and mapped by replicat.
+
+TABLE euro.products, 
+  TOKENS (TK-HOST = @GETENV ('GGENVIRONMENT' , 'HOSTNAME'),
+          TK-USER = @GETENV ('GGENVIRONMENT' , 'OSUSERNAME'));

@@ -1,0 +1,997 @@
+{
+	"info": {
+		"_postman_id": "504ced55-a493-46b9-8593-5697b1dddbb7",
+		"name": "GoldenGate Microservices Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get REST Endpoints",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/metadata-catalog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"metadata-catalog"
+					]
+				},
+				"description": "Get the REST endpoints from the API catalog\t"
+			},
+			"response": []
+		},
+		{
+			"name": "GG Service List",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8890/services/v2/deployments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8890",
+					"path": [
+						"services",
+						"v2",
+						"deployments"
+					]
+				},
+				"description": "Get the list of configured services for GoldenGate."
+			},
+			"response": []
+		},
+		{
+			"name": "NY_1 Extracts",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/extracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"extracts"
+					]
+				},
+				"description": "List the extracts configured in the NY_1 deployment\t"
+			},
+			"response": []
+		},
+		{
+			"name": "NYDB Distribution Paths",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16001/services/v2/sources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16001",
+					"path": [
+						"services",
+						"v2",
+						"sources"
+					]
+				},
+				"description": "List the distribution paths configured in the NY_1 deployment"
+			},
+			"response": []
+		},
+		{
+			"name": "CA_1 Replicats",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/replicats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"replicats"
+					]
+				},
+				"description": "Get a list of the replcats for the CA_1 deployment.\t"
+			},
+			"response": []
+		},
+		{
+			"name": "EXNY Configuration",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/extracts/EXNY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXNY"
+					]
+				},
+				"description": "Get the configuration details for EXNY extract."
+			},
+			"response": []
+		},
+		{
+			"name": "RECA Configuration",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/replicats/RECA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"replicats",
+						"RECA"
+					]
+				},
+				"description": "Get the configuration details for the RECA replicat."
+			},
+			"response": []
+		},
+		{
+			"name": "Get status info for EXNY",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/extracts/EXNY/info/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXNY",
+						"info",
+						"status"
+					]
+				},
+				"description": "Get the information for extract EXNY."
+			},
+			"response": []
+		},
+		{
+			"name": "Get status info for RECA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/replicats/RECA/info/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"replicats",
+						"RECA",
+						"info",
+						"status"
+					]
+				},
+				"description": "Get the status information for replicat RECA."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Extract EXNY Statistics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16003/services/v2/mpoints/EXNY/statisticsExtract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16003",
+					"path": [
+						"services",
+						"v2",
+						"mpoints",
+						"EXNY",
+						"statisticsExtract"
+					]
+				},
+				"description": "Get the statistics for the Extract EXNY."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Replicat RECA Statistics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26003/services/v2/mpoints/RECA/statisticsReplicat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26003",
+					"path": [
+						"services",
+						"v2",
+						"mpoints",
+						"RECA",
+						"statisticsReplicat"
+					]
+				},
+				"description": "Get the statistics for the Extract RECA."
+			},
+			"response": []
+		},
+		{
+			"name": "List reports for EXNY",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/extracts/EXNY/info/reports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXNY",
+						"info",
+						"reports"
+					]
+				},
+				"description": "Get the reports for extract EXNY."
+			},
+			"response": []
+		},
+		{
+			"name": "Get the extract report for EXNY",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/extracts/EXNY/info/reports/EXNY.rpt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXNY",
+						"info",
+						"reports",
+						"EXNY.rpt"
+					]
+				},
+				"description": "View the report for the EXNY Extract."
+			},
+			"response": []
+		},
+		{
+			"name": "List reports for RECA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/replicats/RECA/info/reports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"replicats",
+						"RECA",
+						"info",
+						"reports"
+					]
+				},
+				"description": "Get the reports for replicat RECA."
+			},
+			"response": []
+		},
+		{
+			"name": "Get the replicat report for RECA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/replicats/RECA/info/reports/RECA.rpt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"replicats",
+						"RECA",
+						"info",
+						"reports",
+						"RECA.rpt"
+					]
+				},
+				"description": "View the report for the RECA Replicat."
+			},
+			"response": []
+		},
+		{
+			"name": "Stop EXNY",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"$schema\":\"ogg:command\",\n    \"name\":\"stop\",\n    \"processName\":\"EXNY\",\n    \"processType\":\"extract\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/commands/execute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"commands",
+						"execute"
+					]
+				},
+				"description": "Stop the EXNY Extract on the NY_1 deployment.\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Start EXNY",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"$schema\":\"ogg:command\",\n    \"name\":\"start\",\n    \"processName\":\"EXNY\",\n    \"processType\":\"extract\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:16000/services/v2/commands/execute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16000",
+					"path": [
+						"services",
+						"v2",
+						"commands",
+						"execute"
+					]
+				},
+				"description": "Start the EXNY Extract on the NY_1 deployment.\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Stop RECA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"$schema\":\"ogg:command\",\n    \"name\":\"stop\",\n    \"processName\":\"RECA\",\n    \"processType\":\"replicat\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/commands/execute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"commands",
+						"execute"
+					]
+				},
+				"description": "Stop the RECA Replicat on the CA_1 deployment.\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Start RECA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"$schema\":\"ogg:command\",\n    \"name\":\"start\",\n    \"processName\":\"RECA\",\n    \"processType\":\"replicat\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/commands/execute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"commands",
+						"execute"
+					]
+				},
+				"description": "Start the RECA Replicat on the CA_1 deployment.\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Start ny2ca distribution path",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ny2ca\",\n    \"status\": \"running\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:16001/services/v2/sources/ny2ca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16001",
+					"path": [
+						"services",
+						"v2",
+						"sources",
+						"ny2ca"
+					]
+				},
+				"description": "Start the ny2ca distribution path on the NY_1 deployment."
+			},
+			"response": []
+		},
+		{
+			"name": "Stop ny2ca distribution path",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ny2ca\",\n    \"status\": \"stopped\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:16001/services/v2/sources/ny2ca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "16001",
+					"path": [
+						"services",
+						"v2",
+						"sources",
+						"ny2ca"
+					]
+				},
+				"description": "Start the ny2ca distribution path on the NY_1 deployment."
+			},
+			"response": []
+		},
+		{
+			"name": "Create EXCA extract",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\":\"Extract for HR schema in CADB created using RESTful call\",\n    \"config\":[\n        \"Extract    \tEXCA\",\n        \"ExtTrail   \tec\",\n        \"useridalias\tcdbogg domain cdbogg\",\n        \"sourcecatalog\tcadb\",\n        \"Table      \thr.*;\"\n    ],\n    \"source\":{\n        \"tranlogs\":\"integrated\"\n    },\n    \"credentials\":{\n    \t\"domain\":\"cdbogg\",\n        \"alias\":\"cdbogg\"\n    },\n    \"registration\": {\n            \"containers\": [\n                \"CADB\"\n            ]\n    },\n    \"begin\":\"now\",\n    \"targets\":[\n        {\n            \"name\":\"ec\",\n            \"sizeMB\":100\n        }\n    ],\n    \"status\":\"stopped\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/extracts/EXCA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXCA"
+					]
+				},
+				"description": "Create a new extract for CADB environment on CA_1 GoldenGate deployment"
+			},
+			"response": []
+		},
+		{
+			"name": "EXCA Configuration",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/extracts/EXCA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXCA"
+					]
+				},
+				"description": "Get the configuration details for EXNY extract."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete EXCA Extract",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "welcome1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ggadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:26000/services/v2/extracts/EXCA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "26000",
+					"path": [
+						"services",
+						"v2",
+						"extracts",
+						"EXCA"
+					]
+				},
+				"description": "Delete the EXCA Extract from the CA_1 environment."
+			},
+			"response": []
+		}
+	]
+}

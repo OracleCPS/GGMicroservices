@@ -1,0 +1,15 @@
+EXTRACT E_MYSQL
+
+EXTTRAIL ./dirdat/eo
+
+SOURCEDB amea@localhost:3306, USERID amea, PASSWORD amea
+
+TRANLOGOPTIONS ALTLOGDEST /var/lib/mysql/pts-bin.index
+
+TABLE amea.account;
+TABLE amea.account_trans;
+TABLE amea.branch;
+TABLE amea.branch_atm;
+TABLE amea.teller;
+TABLE amea.teller_trans;
+TABLE amea.trans_type;

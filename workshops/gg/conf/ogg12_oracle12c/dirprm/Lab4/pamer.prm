@@ -1,0 +1,6 @@
+EXTRACT PAMER
+RMTHOST dis.oraclesc.com, MGRPORT 15500
+RMTTRAIL ./dirdat/pa
+PASSTHRU
+TABLE amer.*;
+

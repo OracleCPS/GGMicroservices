@@ -1,0 +1,62 @@
+-- This is the name of the replicat process. It must be less than 9 characters and match the process named given in the ADD REPLICAT command. It must also match the name of this parameter file.
+
+REPLICAT RAMER
+
+--Login information to the source database. This is using the alias defined in the credentialstore in order to secure usernames and passwords. Note that we are logging into the pluggable databse not the container database to apply data changes.
+
+USERIDALIAS ogguser
+
+
+-- REPERROR allows us to specify how to handle any erors applying the data. In this case we will ABEND (stop the replicat process) for any error. Other actions can include IGNORE, DISCARD, or RETRY. Specific database error codes can be specified to take specific actions depending on the database error code returned.
+
+REPERROR default, ABEND
+
+-- GETUPDATEBEFORES tells replicat to process the before images. This is needed so that the auditing table products_history can have both before and after images for updates. 
+
+GETUPDATEBEFORES
+
+-- This following mappings are using a WHERE clause to split the source customers table into seperate target tables for U.S. and Non-U.S. customers. They are also splitting a single contact name into seperate first and last namees using built in string manipulation functions.
+
+MAP euro.customers, target amer.non_us_customers,
+COLMAP (USEDEFAULTS, 
+contactfirst = @STREXT (contactname, 1, @STRFIND(contactname,' ') - 1),
+contactlast =  @STREXT (contactname, @STRFIND(contactname,' ') + 1, @STRLEN(contactname)))
+WHERE (country <> 'USA');
+
+MAP euro.customers, target amer.us_customers,
+COLMAP (USEDEFAULTS, 
+contactfirst = @STREXT (contactname, 1, @STRFIND (contactname,' ') - 1),
+contactlast =  @STREXT (contactname, @STRFIND (contactname,' ') + 1, @STRLEN (contactname)))
+WHERE (country = 'USA');
+
+--The following mapping uses SQLEXEC to execute SQL against the target database to use the shipper i.d. to look up the shipper name in the shippers table and map it to the shipper column in the target table.
+
+MAP euro.orders, target amer.orders,
+SQLEXEC (ID lookup, QUERY ' select shippername from amer.shippers where shipperid = :sid ', PARAMS (sid = shipvia)),
+COLMAP (USEDEFAULTS, SHIPPERNAME = lookup.shippername);
+
+--The following mapping uses SQLEXEC to pass values to and execute a database stored procedure to calculate a price that can be mapped to the target table..
+
+MAP euro.order_details, target amer.order_details,
+SQLEXEC (SPNAME amer.sp_total, ID tot, PARAMS (price = unitprice, quantity = quantity, discount = discount), TRACE),
+COLMAP (USEDEFAULTS, total = tot.total);
+
+--The following mapping shows how to use the CASE statement to efficiently translate a source value to a different value on the target.
+
+MAP euro.products, target amer.products,
+COLMAP (USEDEFAULTS, discontinued = @CASE (discontinued, '0', 'NO', '1', 'YES', 'UNKNOWN'));
+
+-- The follwoing is a sample of an auditing table. All changes to the products table will also be inserted into the products_history table with some additional information retrieved from the Goldengate trail header via the GETENV function.. 
+INSERTALLRECORDS
+
+MAP euro.products, target amer.products_history,
+COLMAP (USEDEFAULTS, 
+        discontinued = @CASE (discontinued, '0' , 'NO', '1','YES', 'UNKNOWN'),
+        TRAN_TIME = GGS_TRANS_TIMESTAMP,
+        POST_TIME = @DATENOW(),
+        SOURCE_NODE = @TOKEN('TK-HOST'),
+        OP_TYPE = @CASE (@GETENV ('GGHEADER', 'OPTYPE'), 'INSERT','I','DELETE','D','U'), 
+        BEFORE_AFTER_IND = GGS_BEFORE_AFTER_IND,
+        USER_NAME =  @TOKEN('TK-USER')
+);
+

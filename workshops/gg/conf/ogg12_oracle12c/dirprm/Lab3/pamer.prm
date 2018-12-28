@@ -1,0 +1,6 @@
+EXTRACT PAMER
+RMTHOST dis.oraclesc.com, MGRPORT 15000, COMPRESS
+RMTTRAIL ./dirdat/pa
+PASSTHRU
+TABLE amer.*;
+

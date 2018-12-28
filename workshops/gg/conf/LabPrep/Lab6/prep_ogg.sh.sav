@@ -1,0 +1,175 @@
+# prep_ogg.sh
+# Prepare OGG Workshop environments by Lab number
+
+# Check for proper input
+if [[ $# -eq 0 || $# -gt 1 ]];
+then
+        echo "prep_ogg.sh [1 - 12]"
+        exit
+fi
+
+if [[ $1 -lt 1 || $1 -gt 12 ]];
+then
+        echo "Valid lab input is 1 to 12"
+        exit
+fi
+
+SCRIPTS=$HOME/LabPrep
+# Source Oracle 12c
+. /home/oracle/12c.env
+
+# Cleanup current GG 12c environment
+echo "Cleanup current GG 12c environment"
+$GG/ggsci paramfile $SCRIPTS/Lab$1/clean_ogg_12.oby
+if [ -f $PRM"/jagent.prm" ];
+then 
+	mv $PRM/jagent.prm $PRM/jagent.tmp
+	rm -f $PRM/*prm
+	rm -f $PRM/*oby
+	mv $PRM/jagent.tmp $PRM/jagent.prm
+else
+	rm -f $PRM/*prm
+	rm -f $PRM/*oby
+fi
+
+# Create sql scripts dir in GG 12c environment
+if [ ! -d "$SQL" ];
+then
+	mkdir $GG/dirsql
+fi
+
+# Create defs dir in GG 12c environment
+echo "Create defs dir in GG 12c environment"
+if [ ! -d "$DEF" ];
+then
+        mkdir $GG/dirdef
+fi
+
+# Create macro dir in GG 12c environment
+echo "Create macro dir in GG 12c environment"
+if [ ! -d "$MAC" ];
+then
+        mkdir $GG/dirmac
+fi
+	
+rm -f $SQL/*
+rm -f $DAT/*
+rm -f $RPT/*
+rm -f $DEF/*
+rm -f $MAC/*
+rm -f $GG/dirout/*
+rm -f $GG/ENCKEYS
+
+# Copy lab files to GG 12c environment
+echo "Copy lab files to GG 12c environment"
+cp -rf $SRC/dirprm/Lab$1/* $PRM
+cp -rfp $SRC/dirsql/Lab$1/* $SQL
+cp -rfp $SRC/dirdef/*.def $DEF
+cp -rf $SRC/dirmac/* $MAC
+cp -rf $SRC/GLOBALS $GG
+cp -rf $SRC/ENCKEYS.done $GG
+cp -rf $SRC/Config.properties $GG/cfg
+
+# drop tables from ORCL12 in the AMER schema
+sqlplus amer/amer@pdb1 @$SCRIPTS/Lab$1/clean_db.sql
+
+# create tables for ORCL12 in the AMER schema
+if [ $1 -ne 2 ];
+then
+	sqlplus amer/amer@pdb1 @$GG/dirsql/database.sql
+fi
+
+# Setup Monitoring for OGG Standalone
+if [ $1 -eq 6 ];
+then
+        echo "Setup Monitoring for OGG Standalone"
+        # Set Config.properties file to OEM
+        cp -rf $SRC/Config_mon.properties $GG/cfg/Config.properties
+fi
+
+# Setup Monitoring for EMCC 12c
+if [ $1 -eq 12 ];
+then
+        echo "Setup Monitoring for EMCC 12c"
+	# Set Config.properties file to OEM
+        cp -rf $SRC/Config_emcc.properties $GG/cfg/Config.properties
+fi
+
+# Source Oracle 11g
+. /home/oracle/11g.env
+
+# Cleanup current GG 11G environment
+echo "Cleanup current GG 11G environment"
+$GG/ggsci paramfile $SCRIPTS/Lab$1/clean_ogg_11.oby
+if [ -f $PRM"/jagent.prm" ];
+then
+        mv $PRM/jagent.prm $PRM/jagent.tmp
+        rm -f $PRM/*prm
+	rm -f $PRM/*oby
+        mv $PRM/jagent.tmp $PRM/jagent.prm
+else
+        rm -f $PRM/*prm
+	rm -f $PRM/*oby
+fi
+
+# Create sql scripts dir in GG 11G environment
+if [ ! -d "$SQL" ];
+then
+        mkdir $GG/dirsql
+fi
+
+# Create defs dir in GG 11G environment
+echo "Create defs dir in GG 11G environment"
+if [ ! -d "$DEF" ];
+then
+	mkdir $GG/dirdef
+fi
+
+# Create macro dir in GG 11G environment
+echo "Create macro dir in GG 11G environment"
+if [ ! -d "$MAC" ];
+then
+        mkdir $GG/dirmac
+fi
+
+rm -f $SQL/*
+rm -f $DAT/*
+rm -f $RPT/*
+rm -f $DEF/*
+rm -f $MAC/*
+rm -f $GG/dirout/*
+rm -f $GG/ENCKEYS
+
+# Copy lab files to GG 11G environment
+echo "Copy lab files to GG 11G environment"
+cp -rf $SRC/dirprm/Lab$1/* $PRM
+cp -rfp $SRC/dirsql/Lab$1/* $SQL
+cp -rf $SRC/dirmac/* $MAC
+cp -rf $SRC/GLOBALS $GG
+cp -rf $SRC/Config.properties $GG/cfg
+#cp -f $SRC/ENCKEYS $GG
+
+# drop tables from ORCL11 in the EURO schema
+sqlplus euro/euro @$SCRIPTS/Lab$1/clean_db.sql
+
+# create tables for ORCL11 in the EURO schema
+sqlplus euro/euro @$GG/dirsql/database.sql
+
+# Setup Monitoring for OGG Standalone
+if [ $1 -eq 6 ];
+then
+        echo "Setup Monitoring for OGG Standalone"
+        # Set Config.properties file to OEM
+        cp -rf $SRC/Config_mon.properties $GG/cfg/Config.properties
+fi
+
+# Setup Monitoring for EMCC 12c
+if [ $1 -eq 12 ];
+then
+        echo "Setup Monitoring for EMCC 12c"
+        # Set Config.properties file to OEM
+        cp -rf $SRC/Config_emcc.properties $GG/cfg/Config.properties
+fi
+
+echo "Oracle GoldenGate Preparation Complete"
+

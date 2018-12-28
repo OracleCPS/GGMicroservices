@@ -1,0 +1,11 @@
+-- This is the port that the Goldengate manager will run on. This is the only required parameter in the manager report file.
+
+PORT 15000
+
+-- DYNAMICPORTLIST specifies a range of ports to be used for local processes (usually pumps) to bind communications for remote Goldengate processes. These need to be opened up bi-directionally through any Firewalls.
+
+DYNAMICPORTLIST 15010-15020
+
+-- PURGEOLDEXTRACTS instructs the manager to delete trail files that are no longer needed. This is determined by examining process checkpoints to insure that all associated processes have moved past a trail before deleting.
+
+PURGEOLDEXTRACTS ./dirdat/*, USECHECKPOINTS

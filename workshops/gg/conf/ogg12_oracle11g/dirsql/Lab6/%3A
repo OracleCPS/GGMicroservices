@@ -1,0 +1,14 @@
+set trim on
+set linesize 1500;
+set echo off
+
+select CUSTOMERID, COMPANYNAME,CONTACTNAME, COUNTRY from customers where region in ('OR','RJ') order by region;
+
+select * from order_details where orderid = 10612;
+
+select * from orders where orderid = 10612;
+
+select productid, productname, price, quantity, discount, discontinued
+
+
+
