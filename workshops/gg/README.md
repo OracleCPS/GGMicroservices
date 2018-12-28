@@ -1,50 +1,55 @@
-# GoldenGate 12.3 Micro Services
+# GoldenGate Micro Services
 
-Update July 25, 2018
-
-
--   Oracle Golden Gate 12.3 Micro Services Architecture
-
-	![](images/100/GG12.3MicroServicesArchitecture.png)
+Update December 28, 2018
 
 
-# INTRO	Introduction	1 hour 
+-   Oracle Golden Gate  Micro Services Architecture
+
+	![](images/100/GGMicroServicesArchitecture.png)
+
+
+# Introduction	1 hour 
 
 - Presentation (3 presentations combined)
 
 
-# Lab 1	Install GG (Classic Architecture & Micro services Architecture)	
+# Lab 1	Install GG Micro services Architecture	
 
-- 12.2 will be available in Ravello to share, and just 12.3 install
+- GG Micro services Architecture will be available in Ravello to share, and just  install
 
 
-# Lab 2	Uni Directional and DDL Replication
+# Lab 2	Creating Deployments
+
+- After Installation create the Goldengate Microservices Deployments
+
+
+# Lab 3	Uni Directional and DDL Replication
 
 - Using Web interface (HTML5 Pages)
 
 		
-# Lab 3	Zero Downtime Configuration
+# Lab 4	Zero Downtime Configuration
 
 - thru RESTful APIs
 		
 
-# Lab 4	Auto CDR
+# Lab 5	Auto CDR
 
-- Use DB 12.2
+- Use Auto CDR functions
 		
-# Lab 5	Heterogenous Replication
+# Lab 6	Heterogenous Replication
 
 - MySQL - Classic Architecture
 - Oracle - Microservices Architecture
 - Kafka - Possible option for replication
 		
-# Lab 6	Data Transformations	
+# Lab 7	Data Transformations	
 
 - Using the web interface (change the parameter files)
 - using Admin Client (old way)
 - using RESTful API & JSON file
 		
-# Lab 7	Performance Metrics	
+# Lab 8	Performance Metrics	
 		
 - DEMO	Mobile/Chatbot / APIPCS (Demo)	API Exposure (GET)
 - for first couple of iterations
