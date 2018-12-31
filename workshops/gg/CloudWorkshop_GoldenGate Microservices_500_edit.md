@@ -5,24 +5,21 @@ Update December 28, 2018
 ## Bi-Directional and Auto CDR
 ## Introduction
 
-This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 18.1 micro services web interface in a Ravello environment.
-
-![](images/500/Lab500_image104.PNG)
+This lab walk you through bidirectional and auto CDR between two database schemas using Goldengate 12.3 micro services web interface in a Ravello environment.
 
 This lab supports the following use cases:
--	Migration of on-premise pluggable databases to a cloud based environment.
--	Rapid creation of test or development pluggable database copies in the Cloud.
--	Rapid replication of on-premise data for reporting and analytics.
--	Rapid re-fresh of selected on-premise schemas for test and/or development activities and/or reporting and analytics.
+-	Seting up bidirection goldengate replication between two databases.
+-	Setting up auto conflict detection and resolution.
 
 - To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
 
 ## Objectives
 
--   Migrate a pluggable database from on-premise to the Cloud.
--   Migrate a schema using Oracle Data Pump.
--   Migrate data using a Transportable Tablespace.
--   Copy data using Database Links.
+-   Set up bidirection replication between two databases i.e. AMER DB and EURO DB
+-   Set up auto conflict detaction and resolution. And to set up we need to log in to both the databases and run the below PL/SQL
+for all the tables - 
+
+    EXEC DBMS_GOLDENGATE_ADM.ADD_AUTO_CDR(schema_name => 'xxxxxx',table_name  => 'xxxxxxx');
 
 ## Required Artifacts
 
