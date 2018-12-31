@@ -40,8 +40,11 @@ In this step you will install the GoldenGate Microservices edition package in ne
 `[oracle@OGG181DB183 ~] cd Downloads`
 
 `[oracle@OGG181DB183 Downloads]$ ls -lrth`
+
 `total 549M`
+
 `-rw-r--r--. 1 oracle oinstall 549M Dec  6 16:53 181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip`
+
 `[oracle@OGG181DB183 Downloads]$ unzip 181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip  -d .`
 
 
@@ -54,28 +57,28 @@ In this step you will install the GoldenGate Microservices edition package in ne
 
 - The following screen should appear:
 
-	![](s/100/1.jpg)
+	![](images/100/1.JPG)
 
 - Select the first option for "Oracle GoldenGate for Oracle Database 12c (769.0MB) and click the "Next >" button.
 
-	![](s/100/2.jpg)
+	![](images/100/2.jpg)
 
 - For the next screen click on the "Browse" button and navigate to the 
 "/u01/app/oggcore_1" directory and click on the "Open" button.
 
-![](s/100/7.jpg)
+![](images/100/7.jpg)
 
 - Make sure the correct path is entered into the "Software Location" field.  Then click on the "Next" button.
 
-![](s/100/3.jpg)
+![](images/100/3.jpg)
 
 - You will see the installation summary screen.   Review the summary and click on the "Install" button.
 
-![](s/100/4.jpg)
+![](images/100/4.jpg)
 
 - Follow the progress screen until the installation completes.
 
-![](s/100/5.jpg)
+![](images/100/5.jpg)
 
 - You should now be complete with the GoldenGate Microservices for Oracle software installation.
 ----------------------------------------------------------------------------------------------------
