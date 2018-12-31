@@ -1,4 +1,4 @@
-![](images/300/Lab300_image100.PNG)
+![](images/500/Lab500_image100.PNG)
 
 Update December 28, 2018
 
