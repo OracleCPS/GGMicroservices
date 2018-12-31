@@ -15,7 +15,7 @@ This lab supports the following use cases:
 
 ## Objectives
 
--   Set up bidirection replication between two databases i.e. AMER DB and EURO DB
+-   Set up bidirection replication between two databases i.e. OGGOOW181 PDB and OGGOOW181 PDB
 -   Set up auto conflict detaction and resolution. And to set up we need to log in to both the databases and run the below PL/SQL
 for all the tables - 
 
