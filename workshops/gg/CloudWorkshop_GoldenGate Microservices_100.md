@@ -64,9 +64,9 @@ In this step you will install the GoldenGate Microservices edition package in ne
 	![](images/100/2.JPG)
 
 - For the next screen click on the "Browse" button and navigate to the 
-"/u01/app/oggcore_1" directory and click on the "Open" button.
-
-![](images/100/7.JPG)
+"/u01/app/oggcore_1" directory and click on the "Open" button.  
+    
+	![](images/100/7.JPG)
 
 - Make sure the correct path is entered into the "Software Location" field.  Then click on the "Next" button.
 
