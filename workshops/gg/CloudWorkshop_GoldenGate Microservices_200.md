@@ -1,15 +1,14 @@
 Update July 25, 2018
 
-#### Introduction
+Update December 28, 2018
 
-This is the first of a series of labs to introduce you to the capabilities of GoldenGate Microservices for Oracle Database.   It is a significant release that changes the underlying architecture of GoldenGate to enable it to be administered, monitored, managed and configured through a series of common services.   Each service supports a standard web-based user interface and an REST (Representational State Transfer) APIs, that allow all configuration to be done remotely in an agile manner. 
+## Configuring ServiceManager,Source(Atlanta) and Target(Sanfran)
+## Introduction
 
-In this first lab you will walk through the process of installing this new version of GoldenGate and configuring a deployment for the target environment.
+This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments using Goldengate 18.1 micro services web interface in a Ravello environment.
 
 ## Objectives
 
--   Sign on to the Ravello cloud  to access the lab environment
--	Install the GoldenGate Microservces for Oracle edition for the target environment using the Oracle Universal Installer (OUI) tool
 -	Configure the initial ServiceManager Deployment and the EURO target deployment
 -	Connect to the target environment deployment through a web browser and confirm that the deployment succeeded and that the ServiceManager and core GoldenGate services are running.
 
@@ -22,80 +21,27 @@ In this first lab you will walk through the process of installing this new versi
 
 **Retrieve your Ravello details for each of the VMs that are used**
 
-### **STEP 1**: Login to the target Ravello VM
+### **STEP 1**: Open up a terminal window and create the ServiceManager
 
-In this step you will sign on to the target EURO database environment to get started with the installation and configuration of the target environment.
+In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
--   Open a browser and go to the following URL: https://emeatargetdb-goldengatemicroser-s7k6yjyo.srv.ravcloud.com [make sure to change this URL for the deployed service]
--   Sign on with the following username/password:
-	oracle/welcome1
-### **STEP 2**: Open up a terminal window and install the GoldenGate Microservices Edition
-
-In this step you will install the GoldenGate Microservices edition package in new "GoldenGate Home" directory.
-
--	Right click on the desktop environment and pick "Open Terminal" from the pop up menu.
--   From the terminal screen change to the Downloads directory and unzip the GoldenGate Microservices software package:
-
-
-`[oracle@eurosrvr ~] cd Downloads`
-
-`[oracle@eurosrvr Downloads] unzip 123014_fbo_ggs_Linux_X64_services_shiphome.zip`
-
-
--  Go into the software package and execute the runInstaller executable:
-
-`[oracle@eurosrvr Downloads] cd fbo_ggs_Linux_x64_services_shiphome/Disk1`
-
-`[oracle@eurosrvr Disk1] ./runInstaller`
-
-- The following screen should appear:
-
-	![](images/100/image1.png)
-
-- Select the first option for "Oracle GoldenGate for Oracle Database 12c (769.0MB) and click the "Next >" button.
-
-	![](images/100/image2.png)
-
-- For the next screen click on the "Browse" button and navigate to the 
-"/u01/app/oggcore_1" directory and click on the "Open" button.
-
-![](images/100/image3.png)
-
-- Make sure the correct path is entered into the "Software Location" field.  Then click on the "Next" button.
-
-![](images/100/image4.png)
-
-- You will see the installation summary screen.   Review the summary and click on the "Install" button.
-
-![](images/100/image5.png)
-
-- Follow the progress screen until the installation completes.
-
-![](images/100/image6.png)
-
-- You should now be complete with the GoldenGate Microservices for Oracle software installation.
-
-### **STEP 3**: Open up a terminal window and create the ServiceManager and target "euro" GoldenGate deployment
-
-In this step you will create the initial ServiceManager and the target GoldenGate deployment.   ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
-
--	Right click on the desktop environment and pick "Open Terminal" from the pop up menu unless you already have a terminal screen opened already.
+-	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
 
 -   From the terminal screen, set the Oracle environment for the target database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
 
-`[oracle@eurosrvr ~] . oraenv`
+		[oracle@eurosrvr ~] . oraenv
 
-`[oracle@eurosrvr ~] ORACLE_SID = [orcl] ? EURO`
+		[oracle@eurosrvr ~] ORACLE_SID = [orcl] ? ORCL
 
--   Then, change to the /u01/app/oggcore_1/bin directory.
+-   Then, change to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
 
-`cd /u01/app/oggcore_1/bin`
+		cd /opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin
 
--   Then, run the oggca.sh script:
+-   Then, run the **oggca.sh** script:
 
-`[oracle@eurosrvr bin] ./oggca.sh`
+		[oracle@eurosrvr bin] ./oggca.sh
 
-- The following screen will appear.   Select the option to "Create New Service Manager" and click on the "Browse" button to help assign the correct deployment home directory for the Service Manager.
+- The following screen will appear.   Select the option to **"Create New Service Manager"** and click on the **"Browse"** button to help assign the correct deployment home directory for the Service Manager.
 
 ![](images/100/image7.png)
 
