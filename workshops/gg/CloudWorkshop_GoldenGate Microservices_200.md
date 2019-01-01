@@ -56,7 +56,8 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 - You will need to provide a **deployment name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
 
-		This will be your first deployment under the Service Manager. You can name the deployment whatever you like. For this lab, it’s suggested to use a city name which will make the deployment name like **“Atlanta”**.
+		This will be your first deployment under the Service Manager. 
+		You can name the deployment whatever you like. For this lab, it’s suggested to use a city name which will make the deployment name like “Atlanta”.
 
 ![](images/200/5.JPG)
 
@@ -100,14 +101,14 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 ![](images/200/13.JPG)
 
 - Follow the progress carefully on the next screen.
-- 
+
 ![](images/200/14.JPG)
 
-- For the "Execute Configuration Scripts" screen, you will be prompted to manually execute the registerServiceManager.sh script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
+- For the **"Execute Configuration Scripts"** screen, you will be prompted to manually execute the ***registerServiceManager.sh*** script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
 
 ![](images/200/15.JPG)
 
-- At a terminal prompt login as root using the sudo su - command and execute the shell script as directed:
+- At a terminal prompt login as root using the ***sudo su*** - command and execute the shell script as directed:
 
 		[oracle@OGG181DB183 ~]$ sudo su -
 		[root@OGG181DB183 ~]# hostname
@@ -118,22 +119,22 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 ![](images/200/16.JPG)
 
-- When complete go back to the "Execute Configuration Scripts" screen and click on the "Ok" button
+- When complete go back to the **"Execute Configuration Scripts"** screen and click on the **"Ok"** button
 
 ![](images/200/15.JPG)
 
-- For the "Finish" screen confirm the sucessful deployment status and click on the "Close" button.   
+- For the **"Finish"** screen confirm the ***sucessful deployment status*** and click on the **"Close"** button.   
 
 ![](images/200/17.JPG)
 
 - **The GoldenGate ServiceManager** deployment and the **"Source(Atlanta)"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
 - Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
 - You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
-
+login pages needs to be taken
 ![](images/200/18.JPG)
 
-- You will then be taken to the following page.   Review that the Services for the "euro" deployment and the ServiceManager are all in a "Running" state. 
+- You will then be taken to the following page.   Review that the Services for the ***"Source(Atlanta)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/image25.JPG)
+![](images/200/image18.JPG)
 
 You have completed lab 200!   **Great Job!**
