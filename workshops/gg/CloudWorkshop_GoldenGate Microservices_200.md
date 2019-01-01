@@ -1,6 +1,4 @@
-Update July 25, 2018
-
-Update December 28, 2018
+Update January 02, 2019
 
 ## Configuring ServiceManager,Source(Atlanta) and Target(Sanfran)
 ## Introduction
@@ -9,7 +7,7 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 ## Objectives
 
--	Configure the initial ServiceManager Deployment and the EURO target deployment
+-	Configure the initial ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments 
 -	Connect to the target environment deployment through a web browser and confirm that the deployment succeeded and that the ServiceManager and core GoldenGate services are running.
 
 
@@ -30,7 +28,6 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 -   From the terminal screen, set the Oracle environment for the target database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
 
 		[oracle@eurosrvr ~] . oraenv
-
 		[oracle@eurosrvr ~] ORACLE_SID = [orcl] ? ORCL
 
 -   Then, change to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
