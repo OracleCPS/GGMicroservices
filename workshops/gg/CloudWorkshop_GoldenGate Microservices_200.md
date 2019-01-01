@@ -42,32 +42,31 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 ![](images/200/1.JPG)
 
-- For the directory selection dialog box navigate to the "/u01/app/gg_deployments/ServiceManager" directory and click on the "Select" button.
+- For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/ServiceManager/"** directory and click on the **"Select"** button.
 
 ![](images/200/2.JPG)
 
-- For the ServiceManager details screen enter the hostname of "@OGG181DB183" for the listening hostname/address and enter "8890" for the listening port value.  Click on the "Register Service as a system service/daemon" checkbox. Click on "Next" to continue the configuration.   
+- For the ServiceManager details screen enter the hostname of **"OGG181DB183"** for the listening hostname/address and enter **"16000"** for the listening port value.  Click on the **"Register Service as a system service/daemon"** checkbox. Click on **"Next"** to continue the configuration.   
 
 ![](images/200/image9.JPG)
 
-- For the "Specify Deployment Directories" screen review the default values to make sure that they will all be deployed within the /u01/app/gg_deployments/euro directory.  Click on "Next" to continue.
+- For the **"Specify Deployment Directories"** screen review the default values to make sure that they will all be deployed within the **/opt/app/oracle/gg_deployments/Atlanta/** directory.  Click on **"Next"** to continue.
 
 ![](images/200/image13.JPG)
 
-- For  the "Specify Enviroment Variables" screen, review the settings and click on "Next" to continue.  
+- For  the **"Specify Enviroment Variables"** screen, review the settings and click on **"Next"** to continue.  
 
 ![](images/200/image14.JPG)
 
-- For the "Specify Administrator Account" screen, enter "ggadmin" for the username field, and enter "welcome1" for the password field.  Enter the same value of "welcome1" for the confirm password field.   Click on "Next
- to continue.
+- For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"welcome1"** for the password field.  Enter the same value of **"welcome1"** for the confirm password field.   Click on **"Next"** to continue.
 
 ![](images/200/image15.JPG)
 
-- For the "Specify Security Options" screen, make sure all the "SSL/TLS security" and "This nonsecure deployment will be used to send trail data to a secure deployemnt" checkboxes are ***unchecked***.  Click on "Next" to continue.
+- For the "Specify Security Options" screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployemnt"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
 
 ![](images/200/image16.JPG)
 
-- For the "Specify Port Settings" screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   Then once confirmed click "Next" to continue.
+- For the **"Specify Port Settings"** screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   Then once confirmed click **"Next"** to continue.
 
 | Field/Checkbox				|		Setting		|
 |-------------------------------|-------------------|
