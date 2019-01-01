@@ -23,17 +23,17 @@ In this first lab you will walk through the process of installing this new versi
 
 ### **STEP 1**: Login to the target Ravello VM
 
-In this step you will sign on to the target EURO database environment to get started with the installation and configuration of the target environment.
+In this step you will sign on to the Oracle 18c database environment to get started with the installation and configuration of the target environment.
 
--   Open a browser and go to the following URL: https://emeatargetdb-goldengatemicroser-s7k6yjyo.srv.ravcloud.com [make sure to change this URL for the deployed service]
+-   Open a browser and go to the following URL:**URL needs to added** https://emeatargetdb-goldengatemicroser-s7k6yjyo.srv.ravcloud.com [make sure to change this URL for the deployed service]
 -   Sign on with the following username/password:
 	oracle/welcome1
 ### **STEP 2**: Open up a terminal window and install the GoldenGate Microservices Edition
 
-In this step you will install the GoldenGate Microservices edition package in new "GoldenGate Home" directory.
+In this step you will install the GoldenGate Microservices edition package in new **"GoldenGate Home"** directory.
 
--	Right click on the desktop environment and pick "Open Terminal" from the pop up menu.
--   From the terminal screen change to the Downloads directory and unzip the GoldenGate Microservices software package:
+-	**Right click** on the desktop environment and pick **"Open Terminal"** from the pop up menu.
+-   From the terminal screen change to the **Downloads** directory and unzip the **GoldenGate Microservices software package**:
  
 		[oracle@OGG181DB183 ~] cd Downloads
 		[oracle@OGG181DB183 Downloads]$ ls -lrth
@@ -41,7 +41,7 @@ In this step you will install the GoldenGate Microservices edition package in ne
 		[oracle@OGG181DB183 Downloads]$  unzip 181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip -d .
 
  
--  Go into the software package and execute the runInstaller executable:
+-  Go into the software package and execute the **runInstaller** executable:
 
 		oracle@OGG181DB183 Downloads]$ cd fbo_ggs_Linux_x64_services_shiphome/Disk1/
 		[oracle@OGG181DB183 Disk1]$ ./runInstaller 
@@ -50,28 +50,28 @@ In this step you will install the GoldenGate Microservices edition package in ne
 
 	![](images/100/1.JPG)
 
-- Select the first option for "Oracle GoldenGate for Oracle Database 18c (777.0MB) and click the "Next >" button.
+- Select the first option for **"Oracle GoldenGate for Oracle Database 18c (777.0MB)"** and click the **"Next >"** button.
 
 	![](images/100/2.JPG)
 
-- For the next screen click on the "Browse" button and navigate to the 
-"/opt/app/oracle/product/18.1.0_RC2/" directory and click on the "Open" button.  
+- For the next screen click on the **"Browse"** button and navigate to the 
+**"/opt/app/oracle/product/18.1.0_RC2/"** directory and click on the **"Open"** button.  
     
 	![](images/100/7.JPG)
 
-- Make sure the correct path is entered into the "Software Location" field.  Then click on the "Next" button.
+- Make sure the correct path is entered into the **"Software Location"** field.  Then click on the **"Next"** button.
 
     ![](images/100/3.JPG)
 
-- You will see the installation summary screen.   Review the summary and click on the "Install" button.
+- You will see the installation summary screen.   Review the summary and click on the **"Install"** button.
 
     ![](images/100/4.JPG)
 
-- Follow the progress screen until the installation completes.
+- Follow the progress screen until the **installation completes**.
 
    ![](images/100/5.JPG)
 
-- You should now be complete with the GoldenGate Microservices for Oracle software installation.
+- You should now be complete with **the GoldenGate Microservices for Oracle software installation**.
 
 	![](images/100/6.JPG)
 ----------------------------------------------------------------------------------------------------
