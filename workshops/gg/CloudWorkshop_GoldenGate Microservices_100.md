@@ -45,7 +45,6 @@ In this step you will install the GoldenGate Microservices edition package in ne
 -  Go into the software package and execute the runInstaller executable:
 
 		oracle@OGG181DB183 Downloads]$ cd fbo_ggs_Linux_x64_services_shiphome/Disk1/
-
 		[oracle@OGG181DB183 Disk1]$ ./runInstaller 
 
 - The following screen should appear:
