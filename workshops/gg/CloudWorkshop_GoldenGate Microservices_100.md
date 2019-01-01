@@ -77,4 +77,6 @@ can click the Close button to exit the installation wizard.
 	![](images/100/6.JPG)
 
 - You should now be complete with **the GoldenGate Microservices for Oracle software installation**.
+
+You have completed lab 100! Great Job!
 ----------------------------------------------------------------------------------------------------
