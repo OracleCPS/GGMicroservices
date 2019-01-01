@@ -153,13 +153,16 @@ In this step you will configure the Target (Sanfran) deployment.
 
 - Once the configuration wizard starts (Figure 3-1), you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
 	
- [ ]. ***Existing Service Manager***
+ A. ***Existing Service Manager***
+
 	For an existing Service Manager, make sure you select the correct radio button.
 
- [ ]. ***Provide the Listening Hostname/Address***
+ B ***Provide the Listening Hostname/Address***
+
 	By default this will populate with the hostname as being 127.0.0.1. This is expected and as designed.
-	
- [ ]. ***Provide a Listening Port***
+
+ C. ***Provide a Listening Port***
+
 	This should be the already configured Service Manager port number. Do not change this.
 	If you are unsure of what the port number is, then refer to the previous lab on how to configure the Service Manager.
 
