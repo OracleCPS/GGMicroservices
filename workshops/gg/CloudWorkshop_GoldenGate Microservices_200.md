@@ -153,6 +153,7 @@ In this step you will configure the Target (Sanfran) deployment.
 
 -Once the configuration wizard starts (Figure 3-1), you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
 	
+	
 a. ***Existing Service Manager***
 For an existing Service Manager, make sure you select the correct radio button.
 b. ***Provide the Listening Hostname/Address***
