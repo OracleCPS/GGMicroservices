@@ -19,13 +19,13 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 **Retrieve your Ravello details for each of the VMs that are used**
 
-### **STEP 1**: Open up a terminal window and create the ServiceManager
+### **STEP 1**: Open up a terminal window and create the ServiceManager and Source(Atlanta) Deployment
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
 -	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
 
--   From the terminal screen, set the Oracle environment for the target database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
+-   From the terminal screen, set the environment variable for the  Oracle 18c database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
 
 		[oracle@OGG181DB183 ~]$ . oraenv
 		[oracle@OGG181DB183 ~]$ ORACLE_SID = [orcl] ? ORCL
@@ -136,5 +136,30 @@ login pages needs to be taken
 - You will then be taken to the following page.   Review that the Services for the ***"Source(Atlanta)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
 ![](images/200/image18.JPG)
+
+### **STEP 2**: Open up a terminal window and create the Target (Sanfran) deployment
+
+In this step you will configure the Target (Sanfran) deployment. 
+
+-	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
+
+-   Then, change current directory to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
+
+		cd /opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin
+
+-   Then, run the **oggca.sh** script:
+
+		[oracle@@OGG181DB183 bin] ./oggca.sh
+
+-Once the configuration wizard starts (Figure 3-1), you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
+	
+	a. ***Existing Service Manager***
+	For an existing Service Manager, make sure you select the correct radio button.
+	b. ***Provide the Listening Hostname/Address***
+	By default this will populate with the hostname as being 127.0.0.1. This is expected and as designed.
+	c. ***Provide a Listening Port***
+	This should be the already configured Service Manager port number. Do not change this.
+	If you are unsure of what the port number is, then refer to the previous lab on how to configure the Service Manager.
+
 
 You have completed lab 200!   **Great Job!**
