@@ -36,13 +36,13 @@ In this step you will install the GoldenGate Microservices edition package in ne
 -	Right click on the desktop environment and pick "Open Terminal" from the pop up menu.
 -   From the terminal screen change to the Downloads directory and unzip the GoldenGate Microservices software package:
  
-	[oracle@OGG181DB183 ~] **cd Downloads**
+		[oracle@OGG181DB183 ~] **cd Downloads**
 
-	[oracle@OGG181DB183 Downloads]$ ls -lrth
+		[oracle@OGG181DB183 Downloads]$ ls -lrth
 
-	-rw-r--r--. 1 oracle oinstall 549M Dec  6 16:53 **181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip**
+		-rw-r--r--. 1 oracle oinstall 549M Dec  6 16:53 **181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip**
 
-	[oracle@OGG181DB183 Downloads]$  **unzip 181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip -d .** 
+		[oracle@OGG181DB183 Downloads]$  **unzip 181000_fbo_ggs_Linux_x64_micro_services_shiphome.zip -d .** 
 
    
 
