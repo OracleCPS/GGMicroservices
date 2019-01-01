@@ -30,7 +30,7 @@ In this step you will sign on to the Oracle 18c database environment to get star
 	oracle/welcome1
 ### **STEP 2**: Open up a terminal window and install the GoldenGate Microservices Edition
 
-In this step you will install the GoldenGate Microservices edition package in new **"GoldenGate Home"** directory.
+In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
 
 -	**Right click** on the desktop environment and pick **"Open Terminal"** from the pop up menu.
 -   From the terminal screen change to the **Downloads** directory and unzip the **GoldenGate Microservices software package**:
