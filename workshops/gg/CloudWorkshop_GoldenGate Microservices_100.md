@@ -1,4 +1,4 @@
-Update July 25, 2018
+Update Jan 02, 2019
 
 #### Introduction
 
@@ -10,8 +10,7 @@ In this first lab you will walk through the process of installing this new versi
 
 -   Sign on to the Ravello cloud  to access the lab environment
 -	Install the GoldenGate Microservces for Oracle edition for the target environment using the Oracle Universal Installer (OUI) tool
--	Configure the initial ServiceManager Deployment and the EURO target deployment
--	Connect to the target environment deployment through a web browser and confirm that the deployment succeeded and that the ServiceManager and core GoldenGate services are running.
+
 
 
 ## Required Artifacts
@@ -51,12 +50,12 @@ In this step you will install the GoldenGate Microservices edition package in ne
 
 	![](images/100/1.JPG)
 
-- Select the first option for "Oracle GoldenGate for Oracle Database 12c (769.0MB) and click the "Next >" button.
+- Select the first option for "Oracle GoldenGate for Oracle Database 18c (777.0MB) and click the "Next >" button.
 
 	![](images/100/2.JPG)
 
 - For the next screen click on the "Browse" button and navigate to the 
-"/u01/app/oggcore_1" directory and click on the "Open" button.  
+"/opt/app/oracle/product/18.1.0_RC2/" directory and click on the "Open" button.  
     
 	![](images/100/7.JPG)
 
@@ -73,4 +72,6 @@ In this step you will install the GoldenGate Microservices edition package in ne
    ![](images/100/5.JPG)
 
 - You should now be complete with the GoldenGate Microservices for Oracle software installation.
+
+	![](images/100/6.JPG)
 ----------------------------------------------------------------------------------------------------
