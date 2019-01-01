@@ -48,23 +48,33 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 - For the ServiceManager details screen enter the hostname of **"OGG181DB183"** for the listening hostname/address and enter **"16000"** for the listening port value.  Click on the **"Register Service as a system service/daemon"** checkbox. Click on **"Next"** to continue the configuration.   
 
-![](images/200/image9.JPG)
+![](images/200/3.JPG)
 
-- For the **"Specify Deployment Directories"** screen review the default values to make sure that they will all be deployed within the **/opt/app/oracle/gg_deployments/Atlanta/** directory.  Click on **"Next"** to continue.
+- Since this is the **first deployment** on the system, you will only have ***one*** option. Take the default and click **Next**.
 
-![](images/200/image13.JPG)
+![](images/200/4.JPG)
+
+- You will need to provide a **deployment name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
+
+		This will be your first deployment under the Service Manager. You can name the deployment whatever you like. For this lab, it’s suggested to use a city name which will make the deployment name like **“Atlanta”**.
+
+![](images/200/5.JPG)
+
+- You will be able to provide the **deployment home** for this deployment. There is also an option to customize the deployment directories. For the purpose of this lab, provide a default directory structure
+
+![](images/200/7.JPG)
 
 - For  the **"Specify Enviroment Variables"** screen, review the settings and click on **"Next"** to continue.  
 
-![](images/200/image14.JPG)
+![](images/200/8.JPG)
 
 - For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"welcome1"** for the password field.  Enter the same value of **"welcome1"** for the confirm password field.   Click on **"Next"** to continue.
 
-![](images/200/image15.JPG)
+![](images/200/9.JPG)
 
 - For the "Specify Security Options" screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployemnt"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
 
-![](images/200/image16.JPG)
+![](images/200/10.JPG)
 
 - For the **"Specify Port Settings"** screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   Then once confirmed click **"Next"** to continue.
 
@@ -77,49 +87,50 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 |Metrics Server Port			|	16003			|
 |Metrics Server UDP Port (data) |   16004			|
 |Metrics Server Datastore Type  |   BDB				|
+|Metrics Server Datastore home  |User defined location| 
 
+![](images/200/image11.JPG)
 
-![](images/200/image17.JPG)
-
-- For the "Specify OGG Replication Settings" screen, enter ggadmin for the "Default Schema" field.  Click on "Next" to continue.
+- For the "Specify OGG Replication Settings" screen, enter **ggadmin** for the "Default Schema" field.  Click on **"Next"** to continue.
  
-![](images/200/image18.JPG)
+![](images/200/12.JPG)
 
 - For the "Summary" screen review the options carefully and then select the "Finish" button.
 
-![](images/200/image19.JPG)
+![](images/200/13.JPG)
 
 - Follow the progress carefully on the next screen.
 - 
-![](images/200/image20.JPG)
+![](images/200/14.JPG)
 
 - For the "Execute Configuration Scripts" screen, you will be prompted to manually execute the registerServiceManager.sh script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
 
-![](images/200/image21.JPG)
+![](images/200/15.JPG)
 
 - At a terminal prompt login as root using the sudo su - command and execute the shell script as directed:
 
-`[oracle@OGG181DB183 ~]$ sudo su -`
-
-`[root@@OGG181DB183 ~] /u01/app/gg_deployments/ServiceManager/bin/registerServiceManager.sh`
+		[oracle@OGG181DB183 ~]$ sudo su -
+		[root@OGG181DB183 ~]# hostname
+		OGG181DB183
+		[root@OGG181DB183 ~]# /opt/app/oracle/gg_deployments/ServiceManager/bin/registerServiceManager.sh
 
 - The output should look like the following:
 
-![](images/200/image22.JPG)
+![](images/200/16.JPG)
 
 - When complete go back to the "Execute Configuration Scripts" screen and click on the "Ok" button
 
-![](images/200/image21.JPG)
+![](images/200/15.JPG)
 
 - For the "Finish" screen confirm the sucessful deployment status and click on the "Close" button.   
 
-![](images/200/image23.JPG)
+![](images/200/17.JPG)
 
-- The GoldenGate ServiceManager deployment and the "euro" deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
-- Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: https://emeatargetdb-goldengatemicroser-s7k6yjyo.srv.ravcloud.com:8890 [make sure to change this URL for the deployed service].  
-- You should get a sign on page.   Sign in using the username: "ggadmin" and password "welcome1".
+- **The GoldenGate ServiceManager** deployment and the **"Source(Atlanta)"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
+- Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
+- You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
 
-![](images/200/image24.JPG)
+![](images/200/18.JPG)
 
 - You will then be taken to the following page.   Review that the Services for the "euro" deployment and the ServiceManager are all in a "Running" state. 
 
