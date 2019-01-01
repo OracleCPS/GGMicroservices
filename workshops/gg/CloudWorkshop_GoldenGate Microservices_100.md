@@ -70,15 +70,15 @@ In this step you will install the GoldenGate Microservices edition package in ne
 
 - Make sure the correct path is entered into the "Software Location" field.  Then click on the "Next" button.
 
-![](images/100/3.JPG)
+    ![](images/100/3.JPG)
 
 - You will see the installation summary screen.   Review the summary and click on the "Install" button.
 
-![](images/100/4.JPG)
+    ![](images/100/4.JPG)
 
 - Follow the progress screen until the installation completes.
 
-![](images/100/5.JPG)
+   ![](images/100/5.JPG)
 
 - You should now be complete with the GoldenGate Microservices for Oracle software installation.
 ----------------------------------------------------------------------------------------------------
