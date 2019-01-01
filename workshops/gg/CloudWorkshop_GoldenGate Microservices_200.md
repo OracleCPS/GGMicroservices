@@ -44,7 +44,7 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 - For the directory selection dialog box navigate to the "/u01/app/gg_deployments/ServiceManager" directory and click on the "Select" button.
 
-![](images/100/image10.JPG)
+![](images/100/2.JPG)
 
 - For the ServiceManager details screen enter the hostname of "@OGG181DB183" for the listening hostname/address and enter "8890" for the listening port value.  Click on the "Register Service as a system service/daemon" checkbox. Click on "Next" to continue the configuration.   
 
