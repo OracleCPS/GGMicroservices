@@ -5,7 +5,7 @@ Update December 28, 2018
 ## Bi-Directional and Auto CDR
 ## Introduction
 
-This lab walk you through bidirectional and auto CDR between two database schemas using Goldengate 12.3 micro services web interface in a Ravello environment.
+This lab walk you through bidirectional and auto CDR between two database schemas using Goldengate 18.1 micro services web interface in a Ravello environment.
 
 This lab supports the following use cases:
 -	Seting up bidirection goldengate replication between two databases.
