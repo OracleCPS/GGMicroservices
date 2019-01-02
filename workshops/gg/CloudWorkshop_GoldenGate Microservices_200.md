@@ -227,12 +227,12 @@ Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to **
 
 - **The GoldenGate ServiceManager** deployment and the **"Target(SanFran)"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
 - Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
-- You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
+- You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"welcome1"**.
 login pages needs to be taken
 ![](images/200/33.JPG)
 
 - You will then be taken to the following page.   Review that the Services for the ***"Target(SanFran)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/image34.JPG)
+![](images/200/34.JPG)
 
 You have completed lab 200!   **Great Job!**
