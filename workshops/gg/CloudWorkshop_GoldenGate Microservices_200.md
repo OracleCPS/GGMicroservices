@@ -54,14 +54,15 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 ![](images/200/4.JPG)
 
-- You will need to provide a **deployment name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
+- You will need to provide a **Deployment Name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
 
 		This will be your first deployment under the Service Manager. 
-		You can name the deployment whatever you like. For this lab, it’s suggested to use a city name which will make the deployment name like “Atlanta”.
+		You can name the deployment whatever you like. For this lab, it’s suggested
+		 to use a city name which will make the deployment name like “Atlanta”.
 
 ![](images/200/5.JPG)
 
-- You will be able to provide the **deployment home** for this deployment. There is also an option to customize the deployment directories. For the purpose of this lab, provide a default directory structure
+- You will be able to provide the **Deployment home** for this deployment. There is also an option to customize the deployment directories. For the purpose of this lab, provide a default directory structure
 
 ![](images/200/7.JPG)
 
@@ -73,7 +74,7 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 ![](images/200/9.JPG)
 
-- For the "Specify Security Options" screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployemnt"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
+- For the **"Specify Security Options"** screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployement"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
 
 ![](images/200/10.JPG)
 
@@ -90,17 +91,17 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 |Metrics Server Datastore Type  |   BDB				|
 |Metrics Server Datastore home  |User defined location| 
 
-![](images/200/image11.JPG)
+![](images/200/11.JPG)
 
 - For the "Specify OGG Replication Settings" screen, enter **ggadmin** for the "Default Schema" field.  Click on **"Next"** to continue.
  
 ![](images/200/12.JPG)
 
-- For the "Summary" screen review the options carefully and then select the "Finish" button.
+- For the **"Summary"** screen review the options carefully and then select the **"Finish"** button.
 
 ![](images/200/13.JPG)
 
-- Follow the progress carefully on the next screen.
+- Follow the progress carefully on the **next** screen.
 
 ![](images/200/14.JPG)
 
