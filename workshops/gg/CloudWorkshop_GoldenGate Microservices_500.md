@@ -52,7 +52,7 @@ Figure A-2:
 ![](images/500/Lab500_image120.PNG) 
  
 
-3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (GGADMIN).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure A-3).
+3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure A-3).
 
 Figure A-3:
 
@@ -61,14 +61,18 @@ Figure A-3:
 ![](images/500/Lab500_image140.PNG) 
  
 
-4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure A-4).  You will need to add the alias for a user that will connect to DB.  The DB alias will be used to connect to the database to read the required files for extraction operations, and to add TRANDATA to the schemas used in replication.
+4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential. At this point, you will be able to add a Credential Alias (Figure 7a-4). You will need to add the alias for a user that will connect to CDB (ORCL) and PDB (OGGOOW181). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
 
 Figure A-4:
 
 ![](images/500/Lab500_image150.PNG) 
  
 
-You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
+You will notice that a Domain name and Credential Alias were added along with the User ID and Password. After adding the user to the credential store, you will reference it via its domain name and credential alias.
+
+You will need to create two (2) credential aliases for your Atlanta deployment. The first credential will be for the CDB(ORCL) database and the second will be for the PDB(OGGOOW181) database. The table below shows what needs to be added:
+
+Credential Domain	Credential Alias	UserID	Password SGGATE	SGGATE	C##GGATE@OGGOOW181	ggate CDBGGATE CDBGGATE	C##GGATE@ORCL	ggate 
 
 5.	Verify that the credentials you just created work.  There is a little man icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure A-5).
 
