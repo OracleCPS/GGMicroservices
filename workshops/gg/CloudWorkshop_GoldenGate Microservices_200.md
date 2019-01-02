@@ -13,7 +13,7 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 ## Required Artifacts
 
--   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you ahve them already installed on your labtop.
+-   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you have them already installed on your labtop.
 -   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
 
 
@@ -91,10 +91,11 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 |Metrics Server Datastore Type  |   BDB				|
 |Metrics Server Datastore home  |User defined location| 
 
-Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to ***"/opt/app/oracle/gg_deployment/Atlanta/meteric"**** but you can your own desired path
+Note : 
+For lab purpose,we have choosed **"Metrics Server Datastore home"** to **"/opt/app/oracle/gg_deployment/Atlanta/meteric"**  but you can your own desired path
 ![](images/200/11.JPG)
 
-- For the "Specify OGG Replication Settings" screen, enter **ggadmin** for the "Default Schema" field.  Click on **"Next"** to continue.
+- For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
  
 ![](images/200/12.JPG)
 
