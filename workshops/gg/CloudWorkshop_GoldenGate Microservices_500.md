@@ -81,8 +81,8 @@ Figure A-5:
 ![](images/500/Lab500_image160.PNG) 
  
 
-6.	Add SCHEMATRANDATA to the SOE schema using the GGADMIN Credential Alias.  
-After logging into the database as described in step 5 for the DB, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure A-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
+6.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
+After logging into the database as described in step 5 for the OGGOOW181 DB, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure A-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
 
 Figure A-6:
 
@@ -122,11 +122,14 @@ Figure A-10:
 ![](images/500/Lab500_image210.PNG) 
 
 
-The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure A-11).  
+The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them. Provide the required information and then click Next (Figure 7a-11). Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
+
+When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB. Once you see this box, make sure you select OGGOOW181.
 
 Figure A-11:
 
 ![](images/500/Lab500_image220.PNG) 
+![](images/500/Lab500_image225.PNG) 
  
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure A-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
