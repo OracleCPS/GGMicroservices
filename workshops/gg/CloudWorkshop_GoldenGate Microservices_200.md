@@ -168,14 +168,14 @@ In this step you will configure the Target (Sanfran) deployment.
 
 - You will need to provide a **Deployment Name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
 
-		This will be your first deployment under the Service Manager. You can name the deployment
+		This will be your Target deployment under the Service Manager. You can name the deployment
 		whatever you like. For this lab, it’s suggested to use a city name which will make 
 		the deployment name like “Sanfran”.
 
 ![](images/200/22.JPG)
 - You will be able to provide the **Deployment home** for this deployment. There is also an option to customize the deployment directories. For the purpose of this lab, provide a default directory structure
 
-		For this lab, ***Deployment home*** name like **“/opt/app/oracle/gg_deployments/Sanfran”**.
+		For this lab, "Deployment home" name like “/opt/app/oracle/gg_deployments/Sanfran”.
 
 ![](images/200/24.JPG)
 
@@ -229,11 +229,11 @@ Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to **
 - Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
 - You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
 login pages needs to be taken
-![](images/200/18.JPG)
+![](images/200/33.JPG)
 
-- You will then be taken to the following page.   Review that the Services for the ***"Source(Atlanta)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
+- You will then be taken to the following page.   Review that the Services for the ***"Target(SanFran)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/image18.JPG)
+![](images/200/image34.JPG)
 
 
 
