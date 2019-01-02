@@ -23,7 +23,7 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
--	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
+-	-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
 -   From the terminal screen, set the environment variable for the  Oracle 18c database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
 
@@ -144,7 +144,7 @@ login pages needs to be taken
 
 In this step you will configure the Target (Sanfran) deployment. 
 
--	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
+-	-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
 -   Then, change current directory to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
 
