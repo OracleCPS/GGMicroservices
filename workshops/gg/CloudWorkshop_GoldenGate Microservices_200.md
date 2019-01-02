@@ -151,20 +151,15 @@ In this step you will configure the Target (Sanfran) deployment.
 
 		[oracle@@OGG181DB183 bin] ./oggca.sh
 
-- Once the configuration wizard starts (Figure 3-1), you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
+- Once the configuration wizard starts, you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
 	
- A. ***Existing Service Manager***
+ A. ***Existing Service Manager***:For an existing Service Manager, make sure you select the correct radio button.
 
-	For an existing Service Manager, make sure you select the correct radio button.
+ B ***Provide the Listening Hostname/Address***:By default this will populate with the hostname as being 127.0.0.1. This is expected and as designed.
 
- B ***Provide the Listening Hostname/Address***
+ C. ***Provide a Listening Port***:This should be the already configured Service Manager port number. Do not change this.If you are unsure of what the port number is, then refer to the previous lab on how to configure the Service Manager.
 
-	By default this will populate with the hostname as being 127.0.0.1. This is expected and as designed.
-
- C. ***Provide a Listening Port***
-
-	This should be the already configured Service Manager port number. Do not change this.
-	If you are unsure of what the port number is, then refer to the previous lab on how to configure the Service Manager.
+	
 
 
 You have completed lab 200!   **Great Job!**
