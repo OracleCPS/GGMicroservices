@@ -278,6 +278,7 @@ Figure D-6:
 
 
 MAPINVISIBLECOLUMNS
+
 MAP OGGOOW181.SOE.*TITLE*, TARGET OGGOOW182.SOE.*TITLE*;                                                                                                              
 Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
 Once the parameter file has been updated, click the Create and Run button at the bottom.
