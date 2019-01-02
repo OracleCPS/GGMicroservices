@@ -134,19 +134,20 @@ Figure A-11:
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure A-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
 
-TRANLOGOPTIONS EXCLUDETAG 123
+SOURCECATALOG OGGOOW181 
+TRANLOGOPTIONS EXCLUDEUSER OGGOOW181.C##GGATE
 
-TABLE OGGOOW181.TITLE;                                                                                                              
-
-TABLE OGGOOW181.PUBLISHER; 
-
-TABLE OGGOOW181.AUTHOR;                                                                                                                
-
-TABLE OGGOOW181.ADDRESS;                                                                                                            
-
-TABLE OGGOOW181.TITLE_AUTHOR; 
-
-TABLE OGGOOW181.SRC_CUSTOMER;
+TABLE SOE.ADDRESSES; 
+TABLE SOE.CUSTOMERS; 
+TABLE SOE.ORDERS; 
+TABLE SOE.ORDER_ITEMS; 
+TABLE SOE.CARD_DETAILS; 
+TABLE SOE.LOGON; 
+TABLE SOE.PRODUCT_INFORMATION; 
+TABLE SOE.INVENTORIES; 
+TABLE SOE.PRODUCT_DESCRIPTIONS; 
+TABLE SOE.WAREHOUSES; 
+TABLE SOE.ORDERENTRY_METADATA; 
 
 Notes: ~/Desktop/Software/extract.prm has these contents for copying.
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
@@ -193,18 +194,9 @@ Figure B-3:
 Figure B-4:
 
 ![](images/500/Lab500_image280.PNG) 
+![](images/500/Lab500_image285.PNG) 
 
-Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information:
-
-Hostname: OGGOOW182srvr
-
-Port: 16002
-
-Trail File: bb
-
-Domain: WSTARGET
-
-Alias: WSTARGET
+Notice the drop down with the values WS, WSS, UDT and OGG. These are the protocols you can select to use for transport. Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information: Hostname: localhost Port: <2nd deployment’s receiver server port> Trail File: Domain: Alias: After filling out the form, click Create and Run at the bottom of the page
 
 After filling out the form, click Create and Run at the bottom of the page.
 
@@ -227,7 +219,7 @@ Steps:
 
 Figure C-1:
  
-![](images/500/Lab500_image300.PNG) 
+![](images/500/Lab500_image305.PNG) 
 
 2.	Click on the Receiver Server link to open the Receiver Server page (Figure C-2).  Verify that everything is configured.
 
@@ -256,57 +248,42 @@ Figure D-2:
 
 ![](images/500/Lab500_image330.PNG) 
 
-3.	Open the Configuration option to add your credentials needed to connect to OGGOOW182 (Figure D-3).  After creating the credential, login and verify that it works.
+3.	Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182) (Figure 7d-3). After creating the credential, login and verify that it works. You will need to create 1 credential for the user to connect to PDB2. We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate. Click Submit when finished.
 
 Figure D-3:
  
 ![](images/500/Lab500_image340.PNG) 
 
-4. After Adding the credential you would need to create the checkpoint table 
+4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure D-4).  Click the plus sign ( + ) to open the Add Replicat process.
 
 Figure D-4:
- 
-![](images/500/Lab500_image390.PNG) 
-
-5.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure D-5).  Click the plus sign ( + ) to open the Add Replicat process.
-
-Figure D-5:
  
 ![](images/500/Lab500_image350.PNG) 
 
 
-6.	With the Add Replicat page open, you want to create a Nonintegrated Parallel Replicat.  Make sure the radio button is selected and click Next (Figure D-6).
+5.	With the Add Replicat page open, you want to create a Nonintegrated Parallel Replicat.  Make sure the radio button is selected and click Next (Figure D-5).
 
-Figure D-6:
+Figure D-5:
  
 ![](images/500/Lab500_image360.PNG) 
 
 
-7.	Fill in the Replicat options form with the required information (Figure D-7).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
+6.	Fill in the Replicat options form with the required information (Figure D-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
-Figure D-7:
+Figure D-6:
  
 ![](images/500/Lab500_image370.PNG) 
 
-8.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure D-8).  You will have to remove the MAP statement and replace it with the information below:
+7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure D-7).  You will have to remove the MAP statement and replace it with the information below:
 
-DBOPTIONS SETTAG 123
 
 MAPINVISIBLECOLUMNS
 
-MAP OGGOOW181.TITLE, TARGET OGGOOW182.TITLE;                                                                                                              
-MAP OGGOOW181.PUBLISHER, TARGET OGGOOW182.PUBLISHER; 
-
-MAP OGGOOW181.AUTHOR, TARGET OGGOOW182.AUTHOR;                                                                                                             
-MAP OGGOOW181.ADDRESS, TARGET OGGOOW182.ADDRESS;                                                                                                            
-MAP OGGOOW181.TITLE_AUTHOR, TARGET OGGOOW182.TITLE_AUTHOR;  
-
-MAP OGGOOW181.SRC_CUSTOMER, TARGET OGGOOW182.SRC_CUSTOMER;
-
+MAP OGGOOW181.SOE.*TITLE*, TARGET OGGOOW182.SOE.*TITLE*;                                                                                                              
 Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
 Once the parameter file has been updated, click the Create and Run button at the bottom.
 
-Figure D-8:
+Figure D-7:
  
 ![](images/500/Lab500_image380.PNG) 
 
