@@ -564,13 +564,13 @@ At this point, you should have a fully functional bi-directional replication env
 Lab I: Testing the Auto CDR with data
 
 Object:
-In this lab we will load few records in SRC_CUSTOMER table and test AUTO CDR.
+In this lab we will load few records in WAREHOUSES table and test AUTO CDR.
 
 Time: 15 minutes
 
 Steps:
 
-1.	In this lab we inserted 1 record each on SRC_CUSTOMER table from OGGOOW181 DB and OGGOOW182 DB. We can see the stats in (Figure I-1) & (Figure I-2)
+1.	In this lab we updated 1 record each on WAREHOUSES table from OGGOOW181 DB and OGGOOW182 DB. We can see the the extracts are stopped in both the environments in (Figure I-1) & (Figure I-2)
 
 Figure I-1:
  
@@ -581,9 +581,20 @@ Figure I-2:
 ![](images/500/Lab500_image710.PNG) 
 
 
-2.	After this we will try to insert the same record on both OGGOOW181 DB and OGGOOW182 DB to test the AUTO CDR. Here we are using a DB-Link and a procedure to load same records on both the DB's. 
+2.	After this we will try to update the same record on both OGGOOW181 DB and OGGOOW182 DB to test the AUTO CDR. After updating the same record on both side we will start the extracts in both the environments
 
 Figure I-3:
 
 ![](images/500/Lab500_image720.PNG) 
+![](images/500/Lab500_image730.PNG) 
 
+Figure I-4:
+
+![](images/500/Lab500_image740.PNG) 
+![](images/500/Lab500_image750.PNG) 
+
+3.	Now when we check the latest record will be present on the both the DB's
+
+Figure I-5:
+
+![](images/500/Lab500_image760.PNG)
