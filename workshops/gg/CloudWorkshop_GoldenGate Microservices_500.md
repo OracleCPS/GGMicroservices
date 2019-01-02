@@ -287,14 +287,14 @@ Figure D-7:
  
 ![](images/500/Lab500_image380.PNG) 
 
-At this point, you should have a fully functional uni-directional replication environment. You can start testing.
+At this point, you should have a fully functional uni-directional replication environment.
 
 
 Lab E: Configure Uni-Directional Replication from OGGOOW182 DB to OGGOOW181 DB (Integrated Extract)
 
 Objective:
 
-This is the second part and will setup the Integrated Extract for Oracle GoldenGate 12c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW182 and OGGOOW181. 
+This is the second part and will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW182 and OGGOOW181. 
 
 Time: 25 minutes
 
@@ -303,9 +303,9 @@ Steps:
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure E-1). Port number will vary depending on what you used during setup.
 
 For Ravello Environment - 
-http://dns url:8890 or
-http://localhost:8890 or
-http://Private IP:8890
+http://dns url:17000 or
+http://localhost:17000 or
+http://Private IP:17000
 
 
 Figure E-1:
@@ -321,20 +321,24 @@ Figure E-2:
 ![](images/500/Lab500_image420.PNG) 
  
 
-3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (GGADMIN).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure E-3).
+3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure E-3).
 
 Figure E-3:
 
 ![](images/500/Lab500_image430.PNG) 
 
-![](images/500/Lab500_image440.PNG) 
- 
 
-4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to see a Credential Alias (Figure E-4).  The DB alias will be used to connect to the database to read the required files for extraction operations, and to add TRANDATA to the schemas used in replication.
+4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential. At this point, you will be able to add a Credential Alias (Figure 7a-4). You will need to add the alias for a user that will connect to CDB (ORCL) and PDB (OGGOOW181). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
 
 Figure E-4:
 
 ![](images/500/Lab500_image450.PNG) 
+
+You will notice that a Domain name and Credential Alias were added along with the User ID and Password. After adding the user to the credential store, you will reference it via its domain name and credential alias.
+
+You will need to create two (2) credential aliases for your Atlanta deployment. The first credential will be for the CDB(ORCL) database and the second will be for the PDB(OGGOOW182) database. The table below shows what needs to be added:
+
+Credential Domain	Credential Alias	UserID	Password TGGATE2 TGGATE2 C##GGATE@OGGOOW182	ggate CDBGGATE CDBGGATE	C##GGATE@ORCL	ggate 
  
 
 5.	Verify that the credentials you just created work.  There is a little man icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure E-5).
@@ -344,7 +348,7 @@ Figure E-5:
 ![](images/500/Lab500_image460.PNG) 
  
 
-6.	Add SCHEMATRANDATA to the SOE schema using the GGADMIN Credential Alias. After logging into the database as described in step 5 for the DB, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure E-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
+6.	Add SCHEMATRANDATA to the SOE schema using the TGGATE2 Credential Alias. After logging into the database as described in step 5 for the DB, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure E-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
 
 Figure E-6:
 
@@ -358,8 +362,7 @@ Figure E-7:
 ![](images/500/Lab500_image480.PNG) 
  
 
-7.	Add the Protocol user.
-Since we are on the Credential screen, let’s go ahead and add a Protocol user.  A Protocol user is the user that the Distribution Server will use to communicate with the Receiver Server over an unsecure connection.
+7.	Add the Protocol user.Since we are on the Credential screen, let’s go ahead and add a Protocol user.  A Protocol user is the user that the Distribution Server will use to communicate with the Receiver Server over an unsecure connection.
 As you did in Step 4, click the plus sign ( + ) next to the word Credentials.  Then provide the connection information needed (Figure E-8), notice that you will be using the Service Manager login in this credential.
 
 Figure E-8:
@@ -369,8 +372,7 @@ Figure E-8:
 
 For now, just leave this login alone.  It will be used in a later step. 
 
-8.	Add the Integrated Extract.
-Navigate back to the Overview page of the Administration Server (Figure E-9).  Then click on the plus sign ( + ) in the box for Extracts.
+8.	Add the Integrated Extract.Navigate back to the Overview page of the Administration Server (Figure E-9).  Then click on the plus sign ( + ) in the box for Extracts.
 
 Figure E-9:
 
@@ -384,28 +386,31 @@ Figure E-10:
 ![](images/500/Lab500_image510.PNG) 
 
 
-The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure E-11).  
+The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure E-11).Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
+
+When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB. Once you see this box, make sure you select OGGOOW182. 
 
 Figure E-11:
 
 ![](images/500/Lab500_image520.PNG) 
- 
+![](images/500/Lab500_image525.PNG) 
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure E-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
 
-TRANLOGOPTIONS EXCLUDETAG 123
+SOURCECATALOG OGGOOW182 
+TRANLOGOPTIONS EXCLUDEUSER OGGOOW182.C##GGATE
 
-TABLE OGGOOW182.TITLE;                                                                                                              
-
-TABLE OGGOOW182.PUBLISHER; 
-                                                                                                             
-TABLE OGGOOW182.AUTHOR;                                                                                                                
-
-TABLE OGGOOW182.ADDRESS;                                                                                                            
-
-TABLE OGGOOW182.TITLE_AUTHOR; 
-
-TABLE OGGOOW182.SRC_CUSTOMER; 
+TABLE SOE.ADDRESSES; 
+TABLE SOE.CUSTOMERS; 
+TABLE SOE.ORDERS; 
+TABLE SOE.ORDER_ITEMS; 
+TABLE SOE.CARD_DETAILS; 
+TABLE SOE.LOGON; 
+TABLE SOE.PRODUCT_INFORMATION; 
+TABLE SOE.INVENTORIES; 
+TABLE SOE.PRODUCT_DESCRIPTIONS; 
+TABLE SOE.WAREHOUSES; 
+TABLE SOE.ORDERENTRY_METADATA;                                                                                                         
 
 Notes: ~/Desktop/Software/extract.prm has these contents for copying.
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
