@@ -235,12 +235,4 @@ login pages needs to be taken
 
 ![](images/200/image34.JPG)
 
-
-
-
-
-
-
-
-
 You have completed lab 200!   **Great Job!**
