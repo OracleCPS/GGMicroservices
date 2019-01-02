@@ -74,7 +74,7 @@ You will need to create two (2) credential aliases for your Atlanta deployment. 
 
 Credential Domain	Credential Alias	UserID	Password SGGATE	SGGATE	C##GGATE@OGGOOW181	ggate CDBGGATE CDBGGATE	C##GGATE@ORCL	ggate 
 
-5.	Verify that the credentials you just created work.  There is a little man icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure A-5).
+5.  Verify that the credentials you just created work.  There is a little man icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure A-5).
 
 Figure A-5:
 
@@ -135,19 +135,31 @@ Figure A-11:
 On the last page of the Add Extract process, you are presented with a parameter file (Figure A-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
 
 SOURCECATALOG OGGOOW181 
+
 TRANLOGOPTIONS EXCLUDEUSER OGGOOW181.C##GGATE
 
 TABLE SOE.ADDRESSES; 
+
 TABLE SOE.CUSTOMERS; 
+
 TABLE SOE.ORDERS; 
+
 TABLE SOE.ORDER_ITEMS; 
+
 TABLE SOE.CARD_DETAILS; 
+
 TABLE SOE.LOGON; 
+
 TABLE SOE.PRODUCT_INFORMATION; 
+
 TABLE SOE.INVENTORIES; 
+
 TABLE SOE.PRODUCT_DESCRIPTIONS; 
+
 TABLE SOE.WAREHOUSES; 
+
 TABLE SOE.ORDERENTRY_METADATA; 
+
 
 Notes: ~/Desktop/Software/extract.prm has these contents for copying.
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
