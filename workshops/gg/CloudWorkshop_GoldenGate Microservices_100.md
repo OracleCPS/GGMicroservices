@@ -15,7 +15,7 @@ In this first lab you will walk through the process of installing this new versi
 
 ## Required Artifacts
 
--   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you ahve them already installed on your labtop.
+-   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you have them already installed on your labtop.
 -   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
 
 
@@ -32,7 +32,7 @@ In this step you will sign on to the Oracle 18c database environment to get star
 
 In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
 
--	**Right click** on the desktop environment and pick **"Open Terminal"** from the pop up menu.
+-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**
 -   From the terminal screen change to the **Downloads** directory and unzip the **GoldenGate Microservices software package**:
  
 		[oracle@OGG181DB183 ~] cd Downloads

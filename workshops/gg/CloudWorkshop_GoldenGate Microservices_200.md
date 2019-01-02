@@ -13,7 +13,7 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 ## Required Artifacts
 
--   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you ahve them already installed on your labtop.
+-   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you have them already installed on your labtop.
 -   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
 
 
@@ -23,7 +23,7 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
--	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
+-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
 -   From the terminal screen, set the environment variable for the  Oracle 18c database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
 
@@ -91,10 +91,11 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 |Metrics Server Datastore Type  |   BDB				|
 |Metrics Server Datastore home  |User defined location| 
 
-Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to ***"/opt/app/oracle/gg_deployment/Atlanta/meteric"**** but you can your own desired path
+Note : 
+For lab purpose,we have choosed **"Metrics Server Datastore home"** to **"/opt/app/oracle/gg_deployment/Atlanta/meteric"**  but you can your own desired path
 ![](images/200/11.JPG)
 
-- For the "Specify OGG Replication Settings" screen, enter **ggadmin** for the "Default Schema" field.  Click on **"Next"** to continue.
+- For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
  
 ![](images/200/12.JPG)
 
@@ -133,7 +134,7 @@ Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to **
 - Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
 - You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
 login pages needs to be taken
-![](images/200/18.JPG)
+![](images/200/33.JPG)
 
 - You will then be taken to the following page.   Review that the Services for the ***"Source(Atlanta)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
@@ -143,7 +144,7 @@ login pages needs to be taken
 
 In this step you will configure the Target (Sanfran) deployment. 
 
--	Right click on the desktop environment and pick **"Open Terminal"** from the pop up menu unless you already have a terminal screen opened already.
+-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
 -   Then, change current directory to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
 
