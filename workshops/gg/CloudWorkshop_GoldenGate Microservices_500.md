@@ -604,3 +604,5 @@ Figure I-6:
 Figure I-7:
 
 ![](images/500/Lab500_image760.PNG)
+
+You have completed lab 500! Great Job!
