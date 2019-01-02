@@ -291,7 +291,9 @@ Figure D-6:
 
 MAPINVISIBLECOLUMNS
 
-MAP OGGOOW181.SOE.*TITLE*, TARGET OGGOOW182.SOE.*TITLE*;                                                                                                              
+MAP OGGOOW181.SOE.*, TARGET OGGOOW182.SOE.*;
+
+
 Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
 Once the parameter file has been updated, click the Create and Run button at the bottom.
 
@@ -315,9 +317,9 @@ Steps:
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure E-1). Port number will vary depending on what you used during setup.
 
 For Ravello Environment - 
-http://dns url:17000 or
-http://localhost:17000 or
-http://Private IP:17000
+http://dns url:16000 or
+http://localhost:16000 or
+http://Private IP:16000
 
 
 Figure E-1:
@@ -469,20 +471,9 @@ Figure F-3:
 Figure F-4:
 
 ![](images/500/Lab500_image580.PNG) 
+![](images/500/Lab500_image585.PNG)
 
-Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information:
-
-Hostname: OGGOOW181srvr
-
-Port: 16002
-
-Trail File: dd
-
-Domain: WSTARGET
-
-Alias: WSTARGET
-
-After filling out the form, click Create and Run at the bottom of the page.
+Notice the drop down with the values WS, WSS, UDT and OGG. These are the protocols you can select to use for transport. Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information: Hostname: localhost Port: <1st deployment’s receiver server port> Trail File: Domain: Alias: After filling out the form, click Create and Run at the bottom of the page.
 
 5.	If everything works as expected, your Distribution Path should be up and running.  You should be able to see clearly the source and target on this page (Figure F-5).
 
@@ -513,10 +504,10 @@ Figure G-2:
 ![](images/500/Lab500_image610.PNG) 
 
 
-Lab H: Configure Uni-Directional Replication (Parallel Replicat)
+Lab H: Configure Uni-Directional Replication (Integrated Replicat)
 
 Object:
-In this lab you will configure the Parallel Replicat for the OGGOOW181 deployment.
+In this lab you will configure the Integrated Replicat for the OGGOOW181 deployment.
 
 Time: 25 minutes
 
@@ -528,63 +519,42 @@ Figure H-1:
  
 ![](images/500/Lab500_image620.PNG) 
  
-2.	Open the Administration Server for the second deployment by clicking on the link (Figure H-2).
+2.	Open the Administration Server for the first deployment by clicking on the link (Figure H-2).
 
 Figure H-2:
 
 ![](images/500/Lab500_image630.PNG) 
 
-3.	Open the Configuration option (Figure H-3).  
+3.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your integrated Replicat (Figure H-3).  Click the plus sign ( + ) to open the Add Replicat process.
 
 Figure H-3:
- 
-![](images/500/Lab500_image640.PNG) 
-
-4. After Adding the credential you would need to create the checkpoint table 
-
-Figure H-4:
- 
-![](images/500/Lab500_image690.PNG) 
-
-5.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Nonintegrated Parallel Replicat (Figure H-5).  Click the plus sign ( + ) to open the Add Replicat process.
-
-Figure H-5:
  
 ![](images/500/Lab500_image650.PNG) 
 
 
-6.	With the Add Replicat page open, you want to create a Nonintegrated Parallel Replicat.  Make sure the radio button is selected and click Next (Figure H-6).
+4.	With the Add Replicat page open, you want to create a integrated Replicat.  Make sure the radio button is selected and click Next (Figure H-4).
 
 Figure H-6:
  
-![](images/500/Lab500_image360.PNG) 
+![](images/500/Lab500_image660.PNG) 
 
 
-7.	Fill in the Replicat options form with the required information (Figure H-7).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
+5.	Fill in the Replicat options form with the required information (Figure H-5).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
-Figure H-7:
+Figure H-5:
  
 ![](images/500/Lab500_image670.PNG) 
 
-8.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure H-8).  You will have to remove the MAP statement and replace it with the information below:
+6.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure H-6).  You will have to remove the MAP statement and replace it with the information below:
 
-DBOPTIONS SETTAG 123
 
 MAPINVISIBLECOLUMNS
 
-MAP OGGOOW182.TITLE, TARGET OGGOOW181.TITLE;                                                                                                           
-MAP OGGOOW182.PUBLISHER, TARGET OGGOOW181.PUBLISHER; 
-
-MAP OGGOOW182.AUTHOR, TARGET OGGOOW181.AUTHOR;                                                                                                                
-MAP OGGOOW182.ADDRESS, TARGET OGGOOW181.ADDRESS;                                                                                                            
-MAP OGGOOW182.TITLE_AUTHOR, TARGET OGGOOW181.TITLE_AUTHOR;  
-
-MAP OGGOOW182.SRC_CUSTOMER, TARGET OGGOOW181.SRC_CUSTOMER; 
-
+MAP OGGOOW182.SOE.*, TARGET OGGOOW181.SOE.*;                                                                                                           
 Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
 Once the parameter file has been updated, click the Create and Run button at the bottom.
 
-Figure H-8:
+Figure H-6:
  
 ![](images/500/Lab500_image680.PNG) 
 
