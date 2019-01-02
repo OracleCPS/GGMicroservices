@@ -586,15 +586,21 @@ Figure I-2:
 Figure I-3:
 
 ![](images/500/Lab500_image720.PNG) 
-![](images/500/Lab500_image730.PNG) 
 
 Figure I-4:
 
+![](images/500/Lab500_image730.PNG) 
+
+Figure I-5:
+
 ![](images/500/Lab500_image740.PNG) 
+
+Figure I-6:
+
 ![](images/500/Lab500_image750.PNG) 
 
 3.	Now when we check the latest record will be present on the both the DB's
 
-Figure I-5:
+Figure I-7:
 
 ![](images/500/Lab500_image760.PNG)
