@@ -233,6 +233,6 @@ login pages needs to be taken
 
 - You will then be taken to the following page.   Review that the Services for the ***"Target(SanFran)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/34.JPG)
+![](images/200/34_1.JPG)
 
 You have completed lab 200!   **Great Job!**
