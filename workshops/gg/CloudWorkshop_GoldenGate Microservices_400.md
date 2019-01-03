@@ -1,376 +1,400 @@
 ![](images/300/Lab300_image100.PNG)
 
-Update: May 17, 2018
+Update December 28, 2018
 
-## Zero-Downtime Configuration
+## UniDirectional and DDL Replication
 ## Introduction
 
-This lab will take you step by step through zero downtime migration between two (2) oracle database schemas allowing data in the legacy database to remain available.
+This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 18.1 micro services web interface in a Ravello environment.
+
+![](images/300/Lab300_image104.PNG)
 
 This lab supports the following use cases:
--	Rapid creation and scaling of cloud databases.
--	Maintenance of security access.
+-	Migration of on-premise pluggable databases to a cloud based environment.
+-	Rapid creation of test or development pluggable database copies in the Cloud.
+-	Rapid replication of on-premise data for reporting and analytics.
+-	Rapid re-fresh of selected on-premise schemas for test and/or development activities and/or reporting and analytics.
 
-
-Update August 23, 2018
-
-## Introduction
-
-This is the second of five GoldenGate Cloud Service labs, and covers the first use case - zero downtime migration and replication of data from a 11g Database on-premise to DBCS 12c Pluggable Database.  
-
-![](images/100/i2.png)
-
-This workshop will walk you through a zero downtime use case that shows how you can use Oracle Datapump and Oracle GoldenGate to maintain an on-premise database that remains available while data is migrated and replicated to a remote instance with transactional consistency.
-
-To log issues and view the lab guide source, go to the [github oracle](https://github.com/pcdavies/GoldenGateCloudService/issues) repository.
+- To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
 
 ## Objectives
 
-- Introduce you to an on-premise 11g Database environment that will be replicated to a DBCS 12c environment.  Note: this is set up as an image running in Oracle IAAS/compute, but process and configuration steps are the same as though the image was running outside the cloud.
-- Configure SQLDeveloper to access the source and target databases.
-- Use Oracle Datapump to migrate data from 11g on-premise to DBCS 12c.
-- Configure an on-premise GoldenGate to extract data from a 11g Database.
-- Configure GoldenGate Cloud Service to replicate data to a DBCS 12c Pluggable Database.
-- Generate transactions to showcase real time data replication, while tracking data consistency between environments.
+-   Migrate a pluggable database from on-premise to the Cloud.
+-   Migrate a schema using Oracle Data Pump.
+-   Migrate data using a Transportable Tablespace.
+-   Copy data using Database Links.
 
 ## Required Artifacts
 
-- The following lab requires a [VNC Viewer](https://www.realvnc.com/download/viewer/) to connect to an Image running on Oracle's IaaS Compute Service.  If you do not have a VNC Viewer you can download and install from the [VNC Viewer Website](https://www.realvnc.com/download/viewer/).
-- Access to your Oracle Cloud account (used in Lab 100) and services DBCS, GGCS, and Compute.
+Lab 7a: Configure Uni-Directional Replication (Integrated Extract)
 
-### **STEP 1**: Review Compute Image (On-premise OGG)
+Objective:
 
-For the GoldenGate Cloud Service Workshop we will be using a compute Image that will represent your on-premises environment. In this image we have installed a 11g database that we will be migrating to our Oracle Public Cloud Database instance. The image also contains SQL Developer 4.1 that will be used to connect to both your local and cloud database.  
+This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182 PDBs. 
 
-- Start your vnc viewer and enter the IP address of the Compute image noted above.  ***You will be specifying port 10 (eg: 129.156.124.185:**10**)***.
-	- **VNC IP:** ***OG1*** in your handout
-	- **VNC Password:** ***OG2*** in your handout
+Time: 25 minutes
 
-	![](images/100/i24.png)
+Steps:
 
-- This is the 'On-premise' environment desktop.  All the lab material is in the `GGCS_Workshop_Material` folder on the desktop.  We have created a `cheat_sheet` folder and some shortcuts to simplify your navigation through the labs.
+1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 7a-1). Port number will vary depending on what you used during setup.
 
-	![](images/100/i24.1.png)
+For Ravello Environment <br />
+http://localhost:16000 <br />
 
- - Double click on the `GGCS_Workshop_Material` folder and review the contents.  Note:
-	- This folder has scripts to start the SSH proxy and to start and stop the GoldenGate Cloud Control Agent.
-	- The keys folder contains the private key (already downloaded for you) to access the GGCS and DBCS instances.
-	- The SQL Files folder:  These scripts are used in SQLDeveloper to generate transactional data, do row counts, and re-set your data if necessary for the DW.
 
-	![](images/100/i25.png)
+Figure 7a-1:
 
-- Select the File Browser off the desktop and navigate to /u01/app/oracle/product.  This location is where GoldenGate On-premise product is installed and configured.  We will review this in the next lab.  Note that Oracle Database 11g which is used in the following labs is installed in /opt/oracle.
+![](images/300/Lab300_image110.PNG) 
+ 
 
-	![](images/100/i27.png)
+2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta (Figure 7a-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
+Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-- There are many directories under the GoldenGate product homes.  One particularly important directory is dirprm.  The dirprm directory will contain all of the parameter (OGG process configuration) and obey (ggsci scripts) that will be used for the workshop. There is also a cleanup directory that contain obey files to clean up the processes if a lab needs to be restarted.
+Figure 7a-2:
 
-	![](images/100/i27.1.png)
+![](images/300/Lab300_image120.PNG) 
+ 
 
-### **STEP 2**: Configure Database Connections in SQL Developer
+3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure 7a-3).
 
-- Go to the On-Premise Compute image desktop (VNC) and double click on SQLDeveloper on the desktop.
+Figure 7a-3:
 
-	![](images/200/i2.png)
+![](images/300/Lab300_image130.PNG) 
+ 
 
-- Go to the top view menu and select SSH.  We need to update the IP address of the SSH tunnel that we use to connect to DBCS.  This tunnel encrypts database traffic and passes it through port 22.  Here we map local port 1521 through 22 to remote port 1521.
+4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure 7a-4).  You will need to add the alias for a user that will connect to CDB (ORCL) and PDB (OGGOOW181).  The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
 
-	![](images/200/i3.png)
+Figure 7a-4:
 
-- The next step requires you to right click on your mouse or touch pad.  On a MAC computer this is done as follows:
+![](images/300/Lab300_image150.PNG) 
+ 
 
-	![](images/200/i3.1.png)
+You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
 
-- In the lower left region right click on the DBCSWS tunnel and update the IP address (field ***DB1***).  Note that in a new environment you would need to create a new tunnel yourself.
+You will need to create two (2) credential aliases for your Atlanta deployment. The first credential will be for the CDB(ORCL) database and the second will be for the PDB(OGGOOW181) database. The table below shows what needs to be added:
 
-	![](images/200/i4.png)
 
-- Update the IP address.
+Credential Domain	Credential Alias	UserID	Password
+SGGATE	SGGATE	C##GGATE@OGGOOW181	ggate
+CDBGGATE	CDBGGATE	C##GGATE@ORCL	ggate
+ 
 
-	![](images/200/i5.png)
+5.	Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure 7a-5).
 
-- Then right click on the tunnel and select test.
+Figure 7a-5:
 
-	![](images/200/i5.1.png)
+![](images/300/Lab300_image160.PNG) 
+ 
 
-	![](images/200/i5.2.png)
+6.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
+After logging into the database as described in step 5 for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure 7a-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
 
-- Next right click on the top connection `DBCS-Amer` and select Properties.  We need to set that to your assigned DBCS instance.  Set the Service Name.
+Figure 7a-6:
 
-	![](images/200/i6.png)
+![](images/300/Lab300_image170.PNG) 
+ 
 
-- Update the Service Name and enter the connection string you wrote down at the end of lab 100, and then select `Test` to test the connection.
+You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema (Figure 7a-7).  To do this, click on the magnifying glass and provide the Schema name.
 
-	![](images/200/i6.1.png)
+Figure 7a-7:
 
-- Then save your connection update.
+![](images/300/Lab300_image180.PNG) 
+ 
 
-	![](images/200/i6.2.png)
+7.	Add the Protocol user.
+Since we are on the Credential screen, let’s go ahead and add a Protocol user.  A Protocol user is the user that the Distribution Server will use to communicate with the Receiver Server over an unsecure connection.
+As you did in Step 4, click the plus sign ( + ) next to the word Credentials.  Then provide the connection information needed (Figure 7a-8), notice that you will be using the Service Manager login in this credential.
 
-- Do the same thing for the next `DBCS-DW` connection.  Right click on the `DBCS-DW` connection, select properties, and edit the Service Name, and then select `Test` to test the connection.
+Figure 7a-8:
 
-	![](images/200/i7.png)
+![](images/300/Lab300_image190.PNG) 
+ 
 
-- Then save your connection update.
+For now, just leave this login alone.  It will be used in a later step. 
 
-	![](images/200/i7.1.png)
+8.	Add the Integrated Extract.
+Navigate back to the Overview page of the Administration Server (Figure 7a-9).  Then click on the plus sign ( + ) in the box for Extracts.
 
-### **STEP 3**: Review Source Data in 11g Source Database (On-Premise/Compute image) and the DBCS 12c Target Database.
+Figure 7a-9:
 
-- In SQLDevelper select (expand) the On-Premise-EURO connection, and then expand the tables.  Select the ORDERS table, and then the data tab.  At this point we are just reviewing data in EURO on 11g Database that will be replicated to DBCS 12c.
+![](images/300/Lab300_image300.PNG) 
 
-	![](images/200/i8.png)
 
-- To avoid confusion close the Orders tab that is showing EURO data.
+After clicking the plus sign ( + ), you are taken to the Add Extract page (Figure 7a-10).  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
 
-	![](images/200/i8.2.png)
+Figure 7a-10:
 
-- Next close the SSH region (lower left) since we don't need that anymore.  
+![](images/300/Lab300_image210.PNG) 
 
-	![](images/200/i8.1.png)
 
-- Then select (expand) the `DBCS-Amer` connection and then expand the tables. There are no tables in the target Schema at this point.
+The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure 7a-11).  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
 
-	![](images/200/i9.png)
+When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181. 
 
-- Lastly select (expand) the `DBCS-DW` connection and then expand the tables.  These are transformed (and empty) tables ready for populating in Lab 400.
+Figure 7a-11:
 
-	![](images/200/i9.1.png)
+![](images/300/Lab300_image220.PNG) 
 
-### **STEP 4**: Review GGCS
+![](images/300/Lab300_image225.PNG) 
+ 
 
-- We will use ssh on the OGG Compute image and log into GGCS from there. Double click on the `GGCS_SSH` shortcut on the desktop.  This is just a simple SSH command to connect to your GGCS instance.
+On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
+DDL INCLUDE ALL; <br />
+SOURCECATALOG OGGOOW181 <br />
+TABLE SOE.*; <br />
 
-	![](images/200/i9.2.png)
+Notes: ~/Desktop/Software/extract.prm has these contents for copying.
 
-- The first time you connect to GGCS via SSH (and later to DBCS with SSH) you will be prompted for authenticity of the host - respond yes to connect.
+You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
 
-	![](images/200/i9.3.png)
+DDL INCLUDE ALL; <br />
+SOURCECATALOG OGGOOW181 <br />
+TABLE SOE.ADDRESSES; <br />
+TABLE SOE.CUSTOMERS; <br />
+TABLE SOE.ORDERS; <br />
+TABLE SOE.ORDER_ITEMS; <br />
+TABLE SOE.CARD_DETAILS; <br />
+TABLE SOE.LOGON; <br />
+TABLE SOE.PRODUCT_INFORMATION; <br />
+TABLE SOE.INVENTORIES; <br />
+TABLE SOE.PRODUCT_DESCRIPTIONS; <br />
+TABLE SOE.WAREHOUSES; <br />
+TABLE SOE.ORDERENTRY_METADATA; <br />
 
-- Enter the following commands and then review the output:
-	- **Switch to user oracle:** `sudo su - oracle`
-	- **Display the oracle home directory:** `pwd`
-	- **Switch to the GG Home directory:** `cd $GGHOME`
-	- **Display the GG home directory:** `pwd` (/u01/app/oracle/gghome)
-	- **Display the GG configuration directories:** `ls dir*`
-	- **Log into ggsci (GoldenGate command shell):** `ggsci`
-	- **Display status of services:** `info all`
-	- **Delete the datastore:** `delete datastore` (the data store may or may not exist.  confirm y to delete if it does exist, otherwise ignore errors)
-	- **Start the GGCS manager:** ***Start Mgr***
-	- **Confirm manager is started:** `info all`
-	- **Exit the command shell:** `exit`
-	- **Switch to the network admin directory where connectivity to dbcs12c is configured:** `cd /u02/data/oci/network/admin`
-	- **Review the tnsnames.ora file which has the connection to dbcs:** `cat tnsnames.ora`
+Once the TABLE statements are added, click Create and Run at the bottom of the page.
 
-	![](images/200/i9.4.png)
+Figure 7a-12:
+ 
+![](images/300/Lab300_image230.PNG) 
 
--	Update the tnsnames file.  Enter the following:
-	- `sed -i 's/<your assigned domain name>/<the database connection string>/g' tnsnames.ora`
+The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running (Figure 7a-13).
 
--	Display the tnsnames.ora file.  Enter the following:
-	- `cat tnsnames.ora` (***Note*** this is where you configure GGCS sources and targets.  This has been done for you)
+Figure 7a-13:
+ 
+![](images/300/Lab300_image240.PNG) 
 
-	![](images/200/i9.5.png)
+Lab 7b: Configure Uni-Directional Replication (Distribution Server)
 
-- Close the connection. Enter `exit` and then `exit` again
+Objective:
+This lab will walk you through how to setup a Path within the Distribution Server.
 
-### **STEP 5**: Configure OGG (On-premise/Source)
+Time: 10 minutes
 
-- Note this is:
-	- Using our On-premise/Compute image through VNC
-	- Our source data configuration for 11g Database (schema euro)
-	- Uses OGG (not GGCS) with Classic Extract
+Steps:
+1.	Start from the Service Manager page (Figure 7b-1).
 
-- We are going to open a SOCKS5 Proxy Tunnel, which will encrypt data and send it through an SSH Tunnel.  First open the `GGCS_Workshop_Material` folder on the desktop.  Note that you get an authentication error if you did NOT first do step 4 above.  The first time you SSH into GGCS (or any Linux server) a file called `known_hosts` is created in the /home/oracle/.ssh directory and the GGCS key is put in that file.  For this proxy step the file and entry must first exist (created from step 4 above).  Right click on the `start_proxy.sh` and select `open`, and then `display`.
+Figure 7b-1:
 
-	![](images/200/i10.png)
+![](images/300/Lab300_image250.PNG) 
 
-	![](images/200/i10.1.png)
 
-- Review the configuration.  A SOCKS 5 tunnel is a type of SSH tunnel in which specific applications (GoldenGate) forward their local traffic (on port 1080 in this case) down the tunnel to the server, and then on the server end, the proxy forwards the traffic out to the general Internet.  The traffic is encrypted, and uses open port 22 (SSH port) on GGCS to transport the data.  We will reference this port in OGG configuration in the following steps.
+2.	Open the Distribution Server page for your first deployment (Figure 7b-2).
 
-	![](images/200/i12.png)
+Figure 7b-2:
 
-- Close the edit window, and right click inside the folder to open a terminal window.
+![](images/300/Lab300_image260.PNG) 
 
-	![](images/200/i12.1.png)
+3.	Click the plus sign ( + ) to add a new Distribution Path (Figure 7b-3).
 
-- Execute the `start_proxy.sh` script.
-	- **Enter the following:** `./start_proxy.sh`   **LEAVE THIS WINDOW OPEN - DO NOT CLOSE IT.  YOU CAN MINIMIZE IT**.
+Figure 7b-3:
 
-	![](images/200/i13.png)
+![](images/300/Lab300_image270.PNG) 
 
-- Review OGG parameters.  Start a GoldenGate command session, open a new terminal window (double click on the Local Terminal icon on the desktop),
-	- **Switch to the GG home directory:** `cd $GGHOME`
-	- **Start a gg command session:** `./ggsci`
-	- **Start the manager:** `start mgr` (not shown in screenshot)
+4.	On the Add Path page, fill in the required information (Figure 7b-4).  Make note that the default protocol for distribution service is secure websockets (wss).  You will need to change this to websockets (ws).
 
-	![](images/200/i15.png)
+Figure 7b-4:
 
-- View the parameter CREDENTIALSTORE.oby.  The command view param is a shortcut way to view gg parameter files without having to navigate to the directory.  You could also go to the directory and open the file with a text editor such as gedit.
-	- **Enter the following:** `view param dirprm/CREDENTIALSTORE.oby`
+![](images/300/Lab300_image280.PNG) 
 
-	![](images/200/i17.png)
+![](images/300/Lab300_image285.PNG) 
 
- - In the screen above note that the this credential allow us to connect to the local 11g database with an alias without having to specify an OCI connection.  You will see reference to alias ogguser in other gg configuration files.
+Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information:
+Hostname: localhost
+Port: <2nd deployment’s receiver server port>
+Trail File: <any two letter value>
+Domain: <credential you created in the Admin Server for WS>
+Alias: <credential you created in the Admin Server for WS>
+After filling out the form, click Create and Run at the bottom of the page.
 
- - Run this set of gg commands using oby files.  
- 	- **Enter the following:** `obey dirprm/CREDENTIALSTORE.oby`
+5.	If everything works as expected, your Distribution Path should be up and running.  You should be able to see clearly the source and target on this page (Figure 7b-5).
 
-	![](images/200/i18.png)
+Figure 7b-5:
+ 
+![](images/300/Lab300_image290.PNG) 
 
-- View Extract EEURO.prm using ggsci:
-	- **Enter the following:** `view param dirprm/EEURO.prm` (Note you do NOT need to enter the commands highlighted in the screenshots - it is just showing you what you will see)
 
-	![](images/200/i17.3.png)
+Lab 7c: Configure Uni-Directional Replication (Receiver Server)
 
-- Review extract configuration.  Note: if you go back and review the overview architecture diagram at the beginning if this lab you can identify these components (Extract, pump, trail file, etc.).  
-	- **Enter the following:** `view param ./dirprm/ADD_EURO_EXTRACT.oby`
+Objective:
+In this lab, you will configure the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
 
-	![](images/200/i19.png)
+Time: 5 minutes
 
-- Execute commands to create a datastore and add the EURO extract:
-	- **Enter the following:** `create datastore` (not included in the screenshot below)
-	- **Enter the following:** `obey dirprm/ADD_EURO_EXTRACT.oby`
+Steps:
+1.	Start from the Service Manager page for your second deployment (Figure 7c-1).
 
-	![](images/200/i20.png)
+Figure 7c-1:
+ 
+![](images/300/Lab300_image305.PNG) 
 
-- Scroll through the terminal window to view the results.
+2.	Click on the Receiver Server link to open the Receiver Server page (Figure 7c-2).  Verify that everything is configured.
 
-- Edit parameter PEURO and set the IP Address.  This uses the 'VI' editor.  Note you can also edit this with gedit (see following step).
-	- **Enter the following:** `edit param PEURO`
-	- **Use the arrows on your keyboard to navigate to the IP address**
-	- **Use the `i` character to enter insert mode and the `[ESC]` key to exit insert mode**
-	- **Enter your GGCS IP address (field ***GG1***):** see highlighted text below
-	- **Use the `x` key to delete characters**
-	- **To save enter `:` character and then `x` character**
-	- **Optional - review the file to ensure you entered the changes correctly:** `view param PEURO` (not in screenshot)
+Figure 7c-2:
 
-	![](images/200/i21.png)
+![](images/300/Lab300_image310.PNG) 
 
-- Review processes that you have added:
-	- **Enter the following:** `info all`
 
-	![](images/200/i23.png)
+Lab 7d: Configure Uni-Directional Replication (Integrated Replicat)
 
--  Start new processes:
-	- **Enter the following:** `start *`
-	- **Wait a few seconds for the processes to start, and then enter:** `info all`.  
+Object:
+In this lab you will configure the Integrated Replicat for the second deployment.
 
-	![](images/200/i24.png)
+Time: 25 minutes
 
-- Note : If you find that PEURO fails (see image below) then follow the steps below :
+Steps:
+1.	Starting from the Service Manager page (Figure 7d-1).
 
-	![](images/200/i44.png)
+Figure 7d-1:
+ 
+![](images/300/Lab300_image320.PNG) 
+ 
+2.	Open the Administration Server for the second deployment by clicking on the link (Figure 7d-2).
 
-	- **Ensure that Manager is "Running" on GGCS :** `See commands above near the end of step 4`
-	- **Restart PEURO by typing :** `start PEURO`
-***Note : Does not auto start, need to manually restart PEURO***
-	![](images/200/i46.png)
+Figure 7d-2:
 
+![](images/300/Lab300_image330.PNG) 
 
-### **STEP 6**: Migrate Baseline Data with Datapump
+3.	Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182) (Figure 7d-3).  After creating the credential, login and verify that it works.
+You will need to create 1 credential for the user to connect to PDB2.  We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate.  Click Submit when finished.
 
-- Export the 11g EURO schema data.  You can copy the command from the `cheat_sheet` folder on your on-premise desktop or enter it as follows below.  See field ***OG3*** from your handout for the password:
-	- **Enter the following in a terminal window (or copy from the `cheat_sheet` folder):** `expdp euro/<password> schemas=euro dumpfile=export.dmp reuse_dumpfiles=yes directory=oracle`
+Figure 7d-3:
+ 
+![](images/300/Lab300_image340.PNG) 
 
-	![](images/200/i25.png)
 
-- Copy the export.dmp file to DBCS 12c.  You can copy the command from the `cheat_sheet` folder on your on-premise desktop or enter it as follows below.  Use field ***DB1*** for your DBCS IP address.
-	- **Enter the following in a terminal window (or copy from the `cheat_sheet` folder):** `scp -i /home/oracle/Desktop/GGCS_Workshop_Material/keys/ggcs_key /home/oracle/export.dmp oracle@<your DBCS IP address>:.`
+4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7d-4).  Click the plus sign ( + ) to open the Add Replicat process.
 
- 	![](images/200/i26.png)
+Figure 7d-4:
+ 
+![](images/300/Lab300_image350.PNG) 
 
-- Double click on the `DBCS_SSH` shortcut on the desktop and open a DBCS SSH terminal window:
 
- 	![](images/200/i26.1.png)
+5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7d-5).
 
-- Import the data.  You can copy the command from the `cheat_sheet` folder on your on-premise desktop or enter it as follows below.
-	- **Import the data:** `impdp amer/<password>@pdb1 SCHEMAS=euro REMAP_SCHEMA=euro:amer DIRECTORY=dmpdir DUMPFILE=export.dmp` field ***DB2*** for password
+Figure 7d-5:
+ 
+![](images/300/Lab300_image360.PNG) 
 
-	![](images/200/i27.png)
 
-- Compare row counts.  Open SQL Developer and then open file `get_count.sql` (upper left).
+6.	Fill in the Replicat options form with the required information (Figure 7d-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
-	![](images/200/i28.png)
+Figure 7d-6:
+ 
+![](images/300/Lab300_image370.PNG) 
 
-- Disconnect from the EURO connection to avoid a potential read consistency error.
+7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7d-7).  You will have to remove the MAP statement and replace it with the information below:
 
-	![](images/200/i30.png)
+MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
 
-- Select the EURO Connection:
+Figure 7d-7:
+ 
+![](images/300/Lab300_image380.PNG) 
 
-	![](images/200/i29.png)
+You can also specify individual table name as given below. <br />
 
-- Run the script.  Note the data is identical.  Your totals may differ from the screenshot, but the source and target should be the same.
+MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; <br />
+MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  <br />
+MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;<br />
+MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS; <br />
+MAP PDB1.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS; <br />
+MAP PDB1.SOE.LOGON, TARGET SOE.LOGON; <br />
+MAP PDB1.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION; <br />
+MAP PDB1.SOE.INVENTORIES, TARGET SOE.INVENTORIES; <br />
+MAP PDB1.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS; <br />
+MAP PDB1.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES; <br />
+MAP PDB1.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA; <br />
+Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
+Once the parameter file has been updated, click the Create and Run button at the bottom.
 
-	![](images/200/i31.png)
 
-- Run simulated transactions.
-	- **Open the gentrans.sql file**:
+At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
 
-	![](images/200/i32.png)
 
-- Be sure to select the ***EURO*** connection and then execute it.  
+Lab 7e: DML and DDL Replication Samples
 
-	![](images/200/i33.png)
+Objective: In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
 
-- Enter 500 as the number of transactions to generate.
+prerequisite: Source and target database should be in sync. Extract, pump and replicat should be up and running.
 
-	![](images/200/i34.png)
+Time: 15 mins
 
-	![](images/200/i35.png)
+Steps:
 
-### **STEP 7**: Configure GGCS (Cloud/Target)
+1. Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
 
-Note this is:
-- Using our GGCS Service (which also runs on Compute) paired with a DBCS for both GGCS metadata and target data
-- Our target data configuration for 12c Pluggable Database (schema amer)
-- Uses GGCS (not on-premise OGG) with Integrated Replicat
+![](images/300/Lab300_image400.PNG) 
 
-- Double click on the `GGCS_SSH` shortcut on your dekstop and open a terminal window on the OGG Compute image and ssh to GGCS.
-	- **Switch to user oracle:** `sudo su - oracle`
-	- **Change to GGHOME:** `cd $GGHOME` (not shown below)
-	- **Start a gg command shell:** `ggsci`
 
-	![](images/200/i36.png)
+2. Verify whether tables are in sync between source and target databases.
 
-- View parameter CREDENTIALSTORE.oby
-	- **Enter the following:** `view param dirprm/CREDENTIALSTORE.oby` (note the addition of user and passwords for the admin schema and the amer and dw data schemas)
+![](images/300/Lab300_image405.PNG) 
 
-	![](images/200/i37.png)
+![](images/300/Lab300_image410.PNG) 
 
-- Add CREDENTIALSTORE
-	- **Enter the following:** `obey dirprm/CREDENTIALSTORE.oby`
+3. Create a employee table in OGGOOW181.
 
-	![](images/200/i38.png)
+![](images/300/Lab300_image415.PNG) 
 
-- View Replicat	RAMER
-	- **Enter the following:** `view param dirprm/RAMER.prm`
+4. Go to target admin server page, click on actions on replicate and select details option.
 
-	![](images/200/i38.1.png)
+![](images/300/Lab300_image420.PNG) 
 
-- View add Replicat	configuration.
-	- **Enter the following:** `view param dirprm/ADD_AMER_REPLICAT.oby`
+5. Click on statistics tab and check the DDL Mapped count.
 
-	![](images/200/i39.png)
+![](images/300/Lab300_image425.PNG) 
 
-- Add Replicat:
-	- **Enter the following:** `obey dirprm/ADD_AMER_REPLICAT.oby`
+6. Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
 
-	![](images/200/i40.png)
+![](images/300/Lab300_image430.PNG) 
 
-- start Replicat:
-	- **Enter the following:** `info all`
-	- **Start replicat:** `start RAMER`
-	- **Review processes:** `info all`
+![](images/300/Lab300_image435.PNG) 
 
-	![](images/200/i41.png)
+7. Perform few updates and deletes operations on source table and check if the operations are replicated to target database.
 
-- Compare data (remember that after we used datapump to migrate the base tables we generated an additional 500 transactions).  Go back to SQLDeveloper and open the `get_count.sql` script, select the EURO Connection, and then run the script:
+![](images/300/Lab300_image440.PNG) 
 
-	![](images/200/i42.png)
+8. Execute the below alter commands and verify the statistics on extract and replicat.
 
-	![](images/200/i43.png)
+![](images/300/Lab300_image445.PNG) 
+
+9. Execute truncate operation on employee table, verify the statistics and count in the target pdb.
+
+![](images/300/Lab300_image455.PNG) 
+
+![](images/300/Lab300_image460.PNG) 
+
+![](images/300/Lab300_image465.PNG)
+
+10. Similarly, execute drop command on the employee table and check the results in the target database.
+
+![](images/300/Lab300_image470.PNG)
+
+![](images/300/Lab300_image475.PNG)
+
+![](images/300/Lab300_image480.PNG)
+
+The above error is because employee table is not present in the target database. Drop command is executed successfully in target database.
+
+This completes the DML and DDL replication sample operations lab.
+
+
+
+
+
+
+
+
+
+
 
 
