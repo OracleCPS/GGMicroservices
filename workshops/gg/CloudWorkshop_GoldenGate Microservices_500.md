@@ -46,7 +46,7 @@ For the GoldenGate Cloud Service Workshop we will be using a compute Image that 
 
 ![](images/500/1.PNG)
 
-- This is output the json file for the adding the integrated extract where we need to define the extract name and table details.
+- This is output of json file for adding the integrated extract where we need to define the extract name and table details.
 
 	![](images/100/i24.1.png)
 
