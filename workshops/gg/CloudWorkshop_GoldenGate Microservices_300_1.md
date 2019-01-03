@@ -2,69 +2,60 @@
 
 Update December 28, 2018
 
-## UniDirectional and DDL Replication
+## Creating Credentials in GoldenGate Micro Services Architecture
 ## Introduction
 
-This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 18.1 micro services web interface in a Ravello environment.
+In this Lab, you will configure the database user credentials entries needed for replication. This requires running the following scripts:
 
-![](images/300/Lab300_image104.PNG)
+Create_credential_Protocol.sh
 
-This lab supports the following use cases:
--	Migration of on-premise pluggable databases to a cloud based environment.
--	Rapid creation of test or development pluggable database copies in the Cloud.
--	Rapid replication of on-premise data for reporting and analytics.
--	Rapid re-fresh of selected on-premise schemas for test and/or development activities and/or reporting and analytics.
+Create_credential_GGAlias.sh
 
-- To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
+After running these scripts, you will be able to establish connections for non-SSL replication between the source and target pluggable database.
 
 ## Objectives
 
--   Migrate a pluggable database from on-premise to the Cloud.
--   Migrate a schema using Oracle Data Pump.
--   Migrate data using a Transportable Tablespace.
--   Copy data using Database Links.
+-   Create Database User Credentials for setting up the Goldengate Processes.
+
 
 ## Required Artifacts
 
-Lab 7a: Configure Uni-Directional Replication (Integrated Extract)
-
-Objective:
-
-This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182 PDBs. 
+Lab 3: To begin this Lab, follow the below steps
 
 Time: 25 minutes
 
 Steps:
 
-1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 7a-1). Port number will vary depending on what you used during setup.
+1.	From the Terminal window in the VNC Console, navigate to the Lab3 directory under ~/OGG181_WHKSHP.
 
-For Ravello Environment <br />
-http://localhost:16000 <br />
+        $ cd ~/OGG181_WHKSHP/Lab3
 
 
-Figure 7a-1:
+2.	From here you will run the script to create the initial credentials for access to the database.  In order to create the required credentials, run the following:
 
-![](images/300/Lab300_image110.PNG) 
+        $ ./create_credential_GGAlias.sh Welcome1 16001 c##ggate@orcl ggate
+
+Upon a successful run, you should see a message that states, “Credential store created”.
+
+ Figure 3-1:
+
+![](images/300/Lab300_image2.PNG) 
+
+3.	. Now check in the web UI that the Credentials were created successfully in the Administration Service of the Atlanta Deployment (http://<hostname>:16001) from within the browser.
+
+Figure 3-2:
+
+![](images/300/Lab300_image3.PNG) 
  
 
-2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta (Figure 7a-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
-Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
+4.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
+In order to create this user, you will need to run the create_credential_Protcol.sh script back in the Terminal window of the VNC Console.
 
-Figure 7a-2:
+            $ ./create_credential_Protcol.sh Welcome1 16001 oggadmin Welcome1
 
-![](images/300/Lab300_image120.PNG) 
- 
+After running the script, you will see “Credential Store altered” in the resulting JSON output.
 
-3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure 7a-3).
-
-Figure 7a-3:
-
-![](images/300/Lab300_image130.PNG) 
- 
-
-4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure 7a-4).  You will need to add the alias for a user that will connect to CDB (ORCL) and PDB (OGGOOW181).  The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
-
-Figure 7a-4:
+Figure 3-3:
 
 ![](images/300/Lab300_image150.PNG) 
  
