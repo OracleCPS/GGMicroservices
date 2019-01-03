@@ -44,7 +44,7 @@ For the GoldenGate Cloud Service Workshop we will be using a compute Image that 
 	- Go to the GG HOME location then
 	- vi ext2.json add the config file
 
-![](images/500/1.png)
+![](images/500/1.PNG)
 
 - This is output the json file for the adding the integrated extract where we need to define the extract name and table details.
 
