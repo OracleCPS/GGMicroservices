@@ -106,3 +106,5 @@ c.  On the Overview page click the plus sign (+) opposite the Replicat status.
 5. Count of the tables of Oracle DB
 
 ![](images/700/Lab700_image114.png)
+
+You have completed lab 700!   **Great Job!**

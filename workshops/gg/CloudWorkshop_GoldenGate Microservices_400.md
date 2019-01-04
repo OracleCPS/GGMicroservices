@@ -385,7 +385,7 @@ Steps:
 
 The above error is because employee table is not present in the target database. Drop command is executed successfully in target database.
 
-This completes the DML and DDL replication sample operations lab.
+You have completed lab 400!   **Great Job!**
 
 
 
