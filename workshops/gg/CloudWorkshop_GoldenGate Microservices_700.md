@@ -1,51 +1,108 @@
-![](images/800/Lab800_image100.PNG)
+![](images/700/Lab700_image100.PNG)
 
-Update August 13, 2018
+Update January 04, 2019
 
-## CONNECT AND INTERACT WITH ADMINCLIENT
+## GoldenGate Micro services Heterogeneous Replication
 ## Introduction
 
-In this lab, you will take a look at how to connect and interact with the AdminClient. using Goldengate 12.3 micro services web interface in a Ravello environment.
+In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Database using Classic Goldengate for MySQL and Goldengate Micro services architecture.
 
+This lab supports the following use cases:
+-	Seting up goldengate for MySQL .
+-	Setting up Replication in Goldengate Micro services architecture for Oracle PDB ( OGGOOW182 ).
 
-Steps:
-1. Open a command terminal (Figure 8-1).
+## Objectives
+
+In this lab, you will create a classic GoldenGate architecture capture process (Extract) for MySQL and a Microservices delivery process (Replicat) to receive the data.  While MySQL isn’t supported as a deployment option for Microservices yet, you can still connect to existing Classic GoldenGate instances to replicate data.
+
+## Required Artifacts
+
+#Steps A: MySQL Setup
+
+GoldenGate for MySQL is already installed on the Ravello image.  You will be using another terminal session to run the MySQL transactions and GoldenGate processes
+
+1. Open a Terminal window from the VNC Console (Figure 8-1).
+
 Right mouse click -> Open Terminal
 
-![](images/800/Lab800_image101.png)
+2. Change the environment variable for the GoldenGate home.
 
-2. Navigate to the Oracle GoldenGate 12.3 Home /bin directory (Figure 8-2).
-$ cd /opt/app/oracle/product/12.3.0.1/oggcore_1/bin
-
-![](images/800/Lab800_image102.png)
-
-3. Start the AdminClient (Figure 8-3).
-$ ./adminclient
-
-![](images/800/Lab800_image103.png)
-
-4. Connect to Oracle GoldenGate without a deployment (Figure 8-4).
-OGG 1> connect http://ogg123rs:16000 as oggadmin password
-welcome1
-
-![](images/800/Lab800_image104.png)
-
-Notice that you are not connected and that AdminClient provides you a list of deployment you can attempt to connect to.
-
-5. Connect to an Oracle GoldenGate deployment (Figure 8-5).
-OGG 2> connect http://ogg123rs:16000 deployment Atlanta_1
-as oggadmin password welcome1
-
-![](images/800/Lab800_image105.png)
-
-6. Perform an “info all” command and other GoldenGate commands to see what
-AdminClient can do
-
-OGG Atlanta_1 3> info all
-
-![](images/800/Lab800_image106.png)
-
-Note: checkout the RLWRAP function as well (arrow up and down while in AdminClient)
+        $ export OGG_HOME=/opt/app/oracle/product/18.1.0_GGMySQL
 
 
-At this point, you should have a fully functional Admin Client environment. 
+3. Change to the MySQL GG home.
+
+        $ cd $OGG_HOME
+
+
+4. Run the GoldenGate command interpreter (GGSCI).
+
+        $./ggsci
+
+5. Start the manager and check with info all command
+
+        $GGSCI> start MGR
+
+        $GGSCI> info all
+
+![](images/700/Lab700_image101.png)
+
+6. Run the OGG obey script to create the replication processes and check with info all command
+
+        $OGG Atlanta_1 3>obey ./dirprm/setup_mysql.oby
+
+![](images/700/Lab700_image102.png)
+
+#Steps B: Microservices Setup
+
+1. Use the web UI for the Administration Service of the SanFran Deployment (http://<hostname>:17001).
+
+a.  Open a new browser tab and connect to http://<hostname>:17001 
+b.  Login with the following oggadmin/Welcome1
+c.  On the Overview page click the plus sign (+) opposite the Replicat status.
+
+![](images/700/Lab700_image103.png)
+
+2. On the next page click “Next” to create an Integrated Replicat.
+
+![](images/700/Lab700_image104.png)
+
+3. Fill in the required parameters (See Screenshot).  Then click “Next”.
+
+![](images/700/Lab700_image105.png)
+
+4. The next page will show the parameter file.  Keep the default for now and click “Create”.
+
+![](images/700/Lab700_image106.png)
+
+5. The replicat will be running , It might fail if you have not started the Pump process on the Mysql side
+
+![](images/700/Lab700_image107.png)
+
+#Steps C: Loading Data and validating the setup
+
+1. Start MySql Goldengate Process
+
+![](images/700/Lab700_image108.png)
+
+2. Load the data in Mysql DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+
+[](images/700/Lab700_image109.png)
+
+[](images/700/Lab700_image110.png)
+
+3. It will take couple minutes to load the data. After that We can see the statstics in the extract report file
+
+[](images/700/Lab700_image111.png)
+
+4. Below is the statstics in the Replicat side
+
+[](images/700/Lab700_image112.png)
+
+5. Count of the tables of Mysql DB
+
+[](images/700/Lab700_image113.png)
+
+5. Count of the tables of Oracle DB
+
+[](images/700/Lab700_image114.png)
