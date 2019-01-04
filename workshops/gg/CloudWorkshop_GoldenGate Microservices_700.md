@@ -17,7 +17,7 @@ In this lab, you will create a classic GoldenGate architecture capture process (
 
 ## Required Artifacts
 
-#Steps A: MySQL Setup
+$Steps A: MySQL Setup
 
 GoldenGate for MySQL is already installed on the Ravello image.  You will be using another terminal session to run the MySQL transactions and GoldenGate processes
 
@@ -53,7 +53,7 @@ Right mouse click -> Open Terminal
 
 ![](images/700/Lab700_image102.png)
 
-#Steps B: Microservices Setup
+$Steps B: Microservices Setup
 
 1. Use the web UI for the Administration Service of the SanFran Deployment (http://<hostname>:17001).
 
@@ -79,7 +79,7 @@ c.  On the Overview page click the plus sign (+) opposite the Replicat status.
 
 ![](images/700/Lab700_image107.png)
 
-#Steps C: Loading Data and validating the setup
+$Steps C: Loading Data and validating the setup
 
 1. Start MySql Goldengate Process
 
@@ -99,11 +99,11 @@ c.  On the Overview page click the plus sign (+) opposite the Replicat status.
 
 ![](images/700/Lab700_image112.png)
 
-5. Count of the tables of Mysql DB
+5. record count of the tables of Mysql DB
 
 ![](images/700/Lab700_image113.png)
 
-5. Count of the tables of Oracle DB
+6. record count of the tables of Oracle DB
 
 ![](images/700/Lab700_image114.png)
 
