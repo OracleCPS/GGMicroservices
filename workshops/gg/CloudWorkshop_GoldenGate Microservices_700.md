@@ -87,22 +87,22 @@ c.  On the Overview page click the plus sign (+) opposite the Replicat status.
 
 2. Load the data in Mysql DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
 
-[](images/700/Lab700_image109.png)
+![](images/700/Lab700_image109.png)
 
-[](images/700/Lab700_image110.png)
+![](images/700/Lab700_image110.png)
 
 3. It will take couple minutes to load the data. After that We can see the statstics in the extract report file
 
-[](images/700/Lab700_image111.png)
+![](images/700/Lab700_image111.png)
 
 4. Below is the statstics in the Replicat side
 
-[](images/700/Lab700_image112.png)
+![](images/700/Lab700_image112.png)
 
 5. Count of the tables of Mysql DB
 
-[](images/700/Lab700_image113.png)
+![](images/700/Lab700_image113.png)
 
 5. Count of the tables of Oracle DB
 
-[](images/700/Lab700_image114.png)
+![](images/700/Lab700_image114.png)
