@@ -25,7 +25,7 @@ Lab A: Configure Uni-Directional Replication from OGGOOW181 DB to OGGOOW182 DB (
 
 Objective:
 
-This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 12c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182. 
+This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182. 
 
 Time: 25 minutes
 
@@ -33,18 +33,14 @@ Steps:
 
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure A-1). Port number will vary depending on what you used during setup.
 
-For Ravello Environment - 
-http://dns url:16000 or
-http://localhost:16000 or
-http://Private IP:16000
-
+For Ravello Environment - http://localhost:16000 
 
 Figure A-1:
 
 ![](images/600/Lab500_image110.PNG) 
  
 
-2.	After logging in, find and open the Administration Server for your deployment.  In this example, the deployment is OGGOOW181 (Figure A-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
+2.	After logging in, find and open the Administration Server for your deployment.  In this example, the deployment is Atlanta (OGGOOW181) (Figure A-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 Figure A-2:
@@ -316,18 +312,14 @@ Steps:
 
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure E-1). Port number will vary depending on what you used during setup.
 
-For Ravello Environment - 
-http://dns url:16000 or
-http://localhost:16000 or
-http://Private IP:16000
-
+For Ravello Environment - http://localhost:16000
 
 Figure E-1:
 
 ![](images/600/Lab500_image410.PNG) 
  
 
-2.	After logging in, find and open the Administration Server for your deployment.  In this example, the deployment is OGGOOW182 (Figure E-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
+2.	After logging in, find and open the Administration Server for your deployment.  In this example, the deployment is SanFran (OGGOOW182) (Figure E-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 Figure E-2:
