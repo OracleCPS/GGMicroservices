@@ -1,54 +1,52 @@
 ![](images/500/Lab500_1.PNG)
 
-Update: May 17, 2018
+Update: Jan 3, 2019
 
 ## Zero-Downtime Configuration
 ## Introduction
 
-This lab will take you step by step through zero downtime migration between two (2) oracle database schemas allowing data in the legacy database to remain available.
+This lab will take you step by step through zero downtime migration between two (2) oracle database schemas.
 
 This lab supports the following use cases:
 -	Rapid creation and scaling of cloud databases.
 -	Maintenance of security access.
 
 
-Update August 23, 2018
+Update Jan 3, 2019
 
 ## Introduction
 
-This is the second of five GoldenGate Cloud Service labs, and covers the first use case - zero downtime migration and replication of data from a 11g Database on-premise to DBCS 12c Pluggable Database.  
+This is the second of five GoldenGate Cloud Service labs, and covers the first use case - zero downtime migration and replication of data two 18c database.
 
-![](images/100/i2.png)
-
-This workshop will walk you through a zero downtime use case that shows how you can use Oracle Datapump and Oracle GoldenGate to maintain an on-premise database that remains available while data is migrated and replicated to a remote instance with transactional consistency.
+This workshop will walk you through a zero downtime use case that shows how you can use Oracle Datapump and Oracle GoldenGate to maintain an 18c database that remains available while data is migrated and replicated to a remote instance with transactional consistency.
 
 To log issues and view the lab guide source, go to the [github oracle](https://github.com/pcdavies/GoldenGateCloudService/issues) repository.
 
 ## Objectives
 
-- Introduce you to an on-premise 11g Database environment that will be replicated to a DBCS 12c environment.  Note: this is set up as an image running in Oracle IAAS/compute, but process and configuration steps are the same as though the image was running outside the cloud.
-- Configure SQLDeveloper to access the source and target databases.
-- Use Oracle Datapump to migrate data from 11g on-premise to DBCS 12c.
-- Configure an on-premise GoldenGate to extract data from a 11g Database.
-- Configure GoldenGate Cloud Service to replicate data to a DBCS 12c Pluggable Database.
-- Generate transactions to showcase real time data replication, while tracking data consistency between environments.
+- Introduce you to an 18c Database environment that will be replicated to a 18c environment.  Note: this is set up as an image running in Oracle IAAS/compute, but process and configuration steps are the same as though the image was running outside the cloud.
+- Configure integrated extract using json file
+- Configure Pump process.
+- Configure GoldenGate Cloud Service to replicate data to 18c database.
+- Data initial load using json file
 
 ## Required Artifacts
 
 - The following lab requires a [VNC Viewer](https://www.realvnc.com/download/viewer/) to connect to an Image running on Oracle's IaaS Compute Service.  If you do not have a VNC Viewer you can download and install from the [VNC Viewer Website](https://www.realvnc.com/download/viewer/).
 - Access to your Oracle Cloud account (used in Lab 100) and services DBCS, GGCS, and Compute.
 
-### **STEP 1**: Review Compute Image (On-premise OGG)
+### **STEP 1**: Create the json file for integrated extract
 
-For the GoldenGate Cloud Service Workshop we will be using a compute Image that will represent your on-premises environment. In this image we have installed a 11g database that we will be migrating to our Oracle Public Cloud Database instance. The image also contains SQL Developer 4.1 that will be used to connect to both your local and cloud database.  
+For the GoldenGate Cloud Service Workshop we will be using a compute Image that will represent your database environment. In this image we have created the json file for integrated extract.
+
 
 - Start your vnc viewer and enter the IP address of the Compute image noted above.  ***You will be specifying port 10 (eg: 129.156.124.185:**10**)***.
-	- **VNC IP:** ***OG1*** in your handout
-	- **VNC Password:** ***OG2*** in your handout
+	- Go to the GG HOME location then
+	- vi ext2.json add the config file
 
-	![](images/100/i24.png)
+![](images/500/1.PNG)
 
-- This is the 'On-premise' environment desktop.  All the lab material is in the `GGCS_Workshop_Material` folder on the desktop.  We have created a `cheat_sheet` folder and some shortcuts to simplify your navigation through the labs.
+- This is output of json file for adding the integrated extract where we need to define the extract name and table details.
 
 	![](images/100/i24.1.png)
 
