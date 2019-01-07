@@ -90,3 +90,19 @@ Figure 8a-3:
 3. after the transcation on the TARGET table  **CUST_TARGET**
 
 ![](images/800/17.JPG) 
+
+### Scenario : Use of Tokens.
+
+![](images/800/Slide4.JPG) 
+ 
+1. Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
+
+![](images/800/rep_2.JPG) 
+
+2. Do the transcation on the table **LOGON**
+
+![](images/800/19.JPG) 
+
+3. after the transcation on the TARGET table  **LOGON_AUDIT**
+
+![](images/800/20.JPG) 
