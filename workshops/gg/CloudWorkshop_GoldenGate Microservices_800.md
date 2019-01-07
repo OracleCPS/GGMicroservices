@@ -60,7 +60,7 @@ Figure 8a-3:
 ![](images/800/rep.JPG) 
  
 
-You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
+##Scenario : Concatenating the source '***m***'column into target single '***n***' column.
 
 You will need to create two (2) credential aliases for your Atlanta_1 deployment. The first credential will be for the CDB database and the second will be for the PDB1 database. The table below shows what needs to be added:
 
