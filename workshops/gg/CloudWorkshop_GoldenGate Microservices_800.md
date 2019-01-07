@@ -60,7 +60,7 @@ Figure 8a-3:
 ![](images/800/rep.JPG) 
  
 
-##Scenario : Concatenating the source '***m***'column into target single '***n***' column.
+### Scenario : Concatenating the source '***m***'column into target single '***n***' column.
 
 You will need to create two (2) credential aliases for your Atlanta_1 deployment. The first credential will be for the CDB database and the second will be for the PDB1 database. The table below shows what needs to be added:
 
