@@ -79,7 +79,7 @@ Figure 8a-3:
         INSERT INTO SOE.CUSTOMERS VALUES (12345678,'LARRY','ELLISON','NY','NEW YORK','5000','LARRY@ORACLE.COM','365','15-OCT-11','BUSINESS','MUSIC','4-JAN-61','Y','N','2767122','126219999');
 
 
-3. after the transcation on the TARGET table  **CUSTOMER**
+3. After the transcation on the TARGET table  **CUSTOMER**
 
 ![](images/800/16.JPG) 
 
@@ -127,7 +127,7 @@ Figure 8a-3:
 
 ![](images/800/18.JPG) 
 
-3. after the transcation on the TARGET table  **CUST_TARGET**
+3. After the transcation on the TARGET table  **CUST_TARGET**
 
 ![](images/800/17.JPG) 
 
@@ -176,9 +176,11 @@ Figure 8a-3:
          insert into soe.logon values ('48092713',130159,sysdate);
          commit;
 
-3. after the transcation on the TARGET table  **LOGON_AUDIT**
+3. After the transcation on the TARGET table  **LOGON_AUDIT**
 
 ![](images/800/20.JPG) 
 
         Query ;
          select * from SOE.LOGON_AUDIT
+
+You have completed lab 800! Great Job!
