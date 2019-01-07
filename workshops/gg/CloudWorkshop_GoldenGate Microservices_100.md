@@ -25,7 +25,7 @@ In this first lab you will walk through the process of installing this new versi
 
 In this step you will sign on to the Oracle 18c database environment to get started with the installation and configuration of the target environment.
 
--   Open a browser and go to the following URL:**URL needs to added** https://emeatargetdb-goldengatemicroser-s7k6yjyo.srv.ravcloud.com [make sure to change this URL for the deployed service]
+-   Open a browser and go to the following URL:https://cloud.ravellosystems.com [make sure to change this URL for the deployed service]
 -   Sign on with the following username/password:
 	oracle/welcome1
 ### **STEP 2**: Open up a terminal window and install the GoldenGate Microservices Edition
