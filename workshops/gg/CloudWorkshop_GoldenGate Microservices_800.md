@@ -24,7 +24,7 @@ This lab supports the following use cases:
 
 ## Required Artifacts
 
-Lab 8a: Concatenating the source ***'m'***column into target single ***n*** column.
+Lab 8a: Concatenating the source 'm'column into target single 'n' column.
 
 Objective:
 
