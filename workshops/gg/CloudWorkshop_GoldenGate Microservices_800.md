@@ -57,21 +57,20 @@ Figure 8a-2:
 ![](images/800/2.JPG)
  
 
-3.	Navigate to Action tab and choose "STOP" option.
-
-
-
-![](images/800/4.JPG) 
-
- 
-
-4.	Add the table details to Parameter file.
+-	parameter details of the extract ***EXT1***.
 
 ![](images/800/5.JPG) 
+ 
+
+3.	Again logging in the ***Service Manager*** , find and open the Administration Server of the Target deployment is Sanfran (Figure 8a-3).  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
+Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 
+![](images/800/12.JPG) 
 
-![](images/800/Lab800_image150.JPG) 
+-	parameter details of the extract ***REP1***.
+
+![](images/800/rep.JPG) 
  
 
 You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
