@@ -21,19 +21,6 @@ This lab supports the following use cases:
 -   Configuring Table-level Column Mapping.
 -   Using Tokens.
 
-
-## Required Artifacts
-
-Lab 8a: Concatenating the source '***m***'column into target single '***n***' column.
-
-Objective:
-
-This lab will give a guide on Concatenate strings using the @STRCAT . 
-
-Time: 25 minutes
-
-![](images/800/Slide2.JPG) 
-
 Steps:
 
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 8a-1). Port number will vary depending on what you used during setup.
@@ -65,7 +52,7 @@ Figure 8a-2:
 3.	Again logging in the ***Service Manager*** , find and open the Administration Server of the Target deployment is Sanfran (Figure 8a-3).  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-
+Figure 8a-3:
 ![](images/800/12.JPG) 
 
 -	parameter details of the extract ***REP1***.
