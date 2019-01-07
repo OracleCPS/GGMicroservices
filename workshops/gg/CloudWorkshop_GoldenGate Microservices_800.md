@@ -65,7 +65,7 @@ Figure 8a-3:
  
 1. Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
-![](images/800/5.JPG) 
+![](images/800/rep.JPG) 
 
 2. Do the transcation on the table **CUSTOMER**
 
