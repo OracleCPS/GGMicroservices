@@ -77,6 +77,7 @@ In this step you will install **the GoldenGate Microservices edition package** i
 can click the Close button to exit the installation wizard.
 
 	![](images/100/6.JPG)
+	
 
 - You should now be complete with **the GoldenGate Microservices for Oracle software installation**.
 
