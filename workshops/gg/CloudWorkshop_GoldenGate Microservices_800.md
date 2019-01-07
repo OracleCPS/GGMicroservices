@@ -1,11 +1,11 @@
-![](images/800/Lab800_image100.JPG)
+![](images/800/01.JPG)
 
-Update August 21, 2018
+Update January 08, 2019
 
 ## Data Transformation
 ## Introduction
 
-This lab walk you through ***Data Transformation*** of the **Oracle Goldengate 12.3 Micro Services Web Interface** in a Ravello environment.
+This lab walk you through ***Data Transformation*** of the **Oracle Goldengate Micro Services Web Interface** in a Ravello environment.
 
 ![](images/800/Lab800_image105.JPG)
 
@@ -67,13 +67,24 @@ Figure 8a-3:
 
 ![](images/800/rep.JPG) 
 
+        REPLICAT REP1 param file :
+        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, &
+        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+
 2. Do the transcation on the table **CUSTOMER**
 
 ![](images/800/13.JPG) 
 
+        Query :
+        INSERT INTO SOE.CUSTOMERS VALUES (12345678,'LARRY','ELLISON','NY','NEW YORK','5000','LARRY@ORACLE.COM','365','15-OCT-11','BUSINESS','MUSIC','4-JAN-61','Y','N','2767122','126219999');
+
+
 3. after the transcation on the TARGET table  **CUSTOMER**
 
 ![](images/800/16.JPG) 
+
+        Query :
+        select CUST_FIRST_NAME,CUST_LAST_NAME,CUSTOMER_NAME from SOE.CUSTOMERS;
 
 ### Scenario : Masking the Source Crucial email-id's into a dummy email in the target.
 
@@ -82,6 +93,35 @@ Figure 8a-3:
 1. Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
 ![](images/800/rep_1.JPG) 
+
+        Note :
+        Kindly create a required Stored procedure under C##GGATE users.
+
+        CREATE  OR REPLACE FUNCTION F_MAIL(CODE_PARAM IN VARCHAR2) 
+        RETURN VARCHAR2 
+        IS DESC_PARAM VARCHAR2(100);
+        BEGIN 
+        RETURN 'XXXXXXXXX@dummy.com'; 
+        END;
+        /
+
+        select F_MAIL('MADHU') from dual;
+
+        CREATE OR REPLACE PROCEDURE  P_MAIL (CODE_PARAM IN VARCHAR2,DESC_PARAM  OUT VARCHAR2)
+        IS 
+        begin
+        select F_MAIL('CODE_PARAM')
+            into DESC_PARAM
+            from dual;
+        end;
+        /
+        
+        REPLICAT REP1 param file :
+        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS_1, &
+        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,CUST_LAST_NAME));
+        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, &
+        SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
+        COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param);
 
 2. Do the transcation on the table **CUSTOMER**
 
@@ -98,6 +138,35 @@ Figure 8a-3:
 1. Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
 ![](images/800/rep_2.JPG) 
+
+        EXtract EXT1 param file :
+        extract EXT1
+        useridalias CDBGGATE domain OracleGoldenGate
+        exttrail aa
+        TABLE OGGOOW181.SOE.LOGON,TOKENS ( TK_HOST = @GETENV('GGENVIRONMENT','HOSTNAME'),&
+        TK_OSUSER = @GETENV ('GGENVIRONMENT','OSUSERNAME'),&
+        TK_DBNAME = @GETENV('DBENVIRONMENT','DBNAME' ),&
+        TK_GROUP =@GETENV ('GGENVIRONMENT','GROUPNAME'),&
+        TK_COMMIT_TS =@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
+        TK_POS =@GETENV ('GGHEADER','LOGPOSITION'),&
+        TK_RBA =@GETENV ('GGHEADER','LOGRBA'),&
+        TK_TABLE =@GETENV ('GGHEADER','TABLENAME'),&
+        TK_OPTYPE =@GETENV ('GGHEADER','OPTYPE'),&
+        TK_BA_IND =@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'));
+- - - - - - - - - - - - - - 
+        REPLICAT REP1 param file :
+        MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, &
+        COLMAP (USEDEFAULTS,&
+        host=@TOKEN ('TK_HOST'),&
+        gg_group=@TOKEN ('TK_GROUP'),&
+        osuser=@TOKEN ('TK_OSUSER'),&
+        domain=@TOKEN ('TK_DOMAIN'),&
+        ba_ind=@TOKEN ('TK_BA_IND'),&
+        commit_ts=@TOKEN ('TK_COMMIT_TS'),&
+        pos=@TOKEN ('TK_POS'),&
+        rba=@TOKEN ('TK_RBA'),&
+        tablename=@TOKEN ('TK_TABLE'),&
+        optype=@TOKEN ('TK_OPTYPE'));
 
 2. Do the transcation on the table **LOGON**
 
