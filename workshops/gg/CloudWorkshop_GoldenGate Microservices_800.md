@@ -42,7 +42,7 @@ http://localhost:16000
 
 
 
-Figure 7a-1:
+Figure 8a-1:
 
 ![](images/800/1.JPG) 
  
@@ -50,7 +50,7 @@ Figure 7a-1:
 2.	After logging in, find and open the Administration Server of the Source deployment is Atlanta (Figure 7a-2).  When the page is completely open, you should be at a page where you can see Extracts ***EXT1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-Figure 7a-2:
+Figure 8a-2:
 
 ![](images/800/2.JPG)
  
