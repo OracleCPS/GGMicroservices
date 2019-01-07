@@ -74,3 +74,19 @@ Figure 8a-3:
 3. after the transcation on the TARGET table  **CUSTOMER**
 
 ![](images/800/16.JPG) 
+
+### Scenario : Masking the Source Crucial email-id's into a dummy email in the target.
+
+![](images/800/Slide5.JPG) 
+ 
+1. Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
+
+![](images/800/rep_1.JPG) 
+
+2. Do the transcation on the table **CUSTOMER**
+
+![](images/800/18.JPG) 
+
+3. after the transcation on the TARGET table  **CUST_TARGET**
+
+![](images/800/17.JPG) 
