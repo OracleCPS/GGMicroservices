@@ -32,6 +32,8 @@ This lab will give a guide on Concatenate strings using the @STRCAT .
 
 Time: 25 minutes
 
+![](images/800/Slide2.JPG) 
+
 Steps:
 
 1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 8a-1). Port number will vary depending on what you used during setup.
@@ -57,16 +59,17 @@ Figure 8a-2:
 
 3.	Navigate to Action tab and choose "STOP" option.
 
-Figure 7a-3:
 
-![](images/800/Slide2.JPG) 
 
+![](images/800/4.JPG) 
 
  
 
-4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure 7a-4).  You will need to add the alias for a user that will connect to CDB and PDB1.  The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
+4.	Add the table details to Parameter file.
 
-Figure 7a-4:
+![](images/800/5.JPG) 
+
+
 
 ![](images/800/Lab800_image150.JPG) 
  
