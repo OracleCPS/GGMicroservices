@@ -5,7 +5,7 @@ Update August 21, 2018
 ## Data Transformation
 ## Introduction
 
-This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 12.3 micro services web interface in a Ravello environment.
+This lab walk you through ***Data Transformation*** of the **Goldengate 12.3 micro services web interface** in a Ravello environment.
 
 ![](images/600/Lab600_image105.png)
 
