@@ -67,4 +67,10 @@ Figure 8a-3:
 
 ![](images/800/5.JPG) 
 
-2. Do the transcation on the table CUSTOMER
+2. Do the transcation on the table **CUSTOMER**
+
+![](images/800/13.JPG) 
+
+3. after the transcation on the TARGET table  **CUSTOMER**
+
+![](images/800/16.JPG) 
