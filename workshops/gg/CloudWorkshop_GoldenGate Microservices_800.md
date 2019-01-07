@@ -179,5 +179,6 @@ Figure 8a-3:
 3. after the transcation on the TARGET table  **LOGON_AUDIT**
 
 ![](images/800/20.JPG) 
+
         Query ;
          select * from SOE.LOGON_AUDIT
