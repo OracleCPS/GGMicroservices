@@ -10,7 +10,7 @@ This lab walk you through ***Data Transformation*** of the **Oracle Goldengate 1
 ![](images/800/Lab800_image105.JPG)
 
 This lab supports the following use cases:
--	Concatenating the source ***'m'***column into target single ***n*** column.
+-	Concatenating the source '***m***'column into target single '***n***' column.
 -	Masking the Source Crucial email-id's into a dummy email in the target.
 -	Use of Tokens.
 - To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
@@ -24,7 +24,7 @@ This lab supports the following use cases:
 
 ## Required Artifacts
 
-Lab 8a: Concatenating the source 'm'column into target single 'n' column.
+Lab 8a: Concatenating the source '***m***'column into target single '***n***' column.
 
 Objective:
 
