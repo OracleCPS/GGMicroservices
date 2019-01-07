@@ -172,6 +172,12 @@ Figure 8a-3:
 
 ![](images/800/19.JPG) 
 
+         Query ;
+         insert into soe.logon values ('48092713',130159,sysdate);
+         commit;
+
 3. after the transcation on the TARGET table  **LOGON_AUDIT**
 
 ![](images/800/20.JPG) 
+        Query ;
+         select * from SOE.LOGON_AUDIT
