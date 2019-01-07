@@ -22,34 +22,38 @@ Update December 28, 2018
 
 - After Installation create the Goldengate Microservices Deployments
 
+# Lab 3	Creating Credentials
 
-# Lab 3	Uni Directional and DDL Replication
+- Creating Database Credentials for Golden Gate setup
+
+
+# Lab 4	Uni Directional and DDL Replication
 
 - Using Web interface (HTML5 Pages)
 
 		
-# Lab 4	Zero Downtime Configuration
+# Lab 5	Zero Downtime Configuration
 
 - thru RESTful APIs
-		
 
-# Lab 5	Auto CDR
+
+# Lab 6	Bi-Directional and Auto CDR
 
 - Use Auto CDR functions
 		
-# Lab 6	Heterogenous Replication
+# Lab 7	Heterogenous Replication
 
 - MySQL - Classic Architecture
 - Oracle - Microservices Architecture
 - Kafka - Possible option for replication
 		
-# Lab 7	Data Transformations	
+# Lab 8	Data Transformations	
 
 - Using the web interface (change the parameter files)
 - using Admin Client (old way)
 - using RESTful API & JSON file
 		
-# Lab 8	Performance Metrics	
+# Lab 9	Performance Metrics	
 		
 - DEMO	Mobile/Chatbot / APIPCS (Demo)	API Exposure (GET)
 - for first couple of iterations
