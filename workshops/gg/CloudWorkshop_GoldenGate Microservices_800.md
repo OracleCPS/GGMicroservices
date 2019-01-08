@@ -10,8 +10,8 @@ This lab walk you through ***Data Transformation*** of the **Oracle Goldengate M
 ![](images/800/Lab800_image105.JPG)
 
 This lab supports the following use cases:
--	Concatenating the source '***m***'column into target single '***n***' column.
--	Masking the Source Crucial email-id's into a dummy email in the target.
+-	Concatenating the source '***m***'columns into target single '***n***' columns.
+-	Masking the Source Crucial email-id's into a dummy email-id in the target.
 -	Use of Tokens.
 - To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
 
@@ -68,6 +68,7 @@ Figure 8a-3:
 ![](images/800/rep.JPG) 
 
         REPLICAT REP1 param file :
+        - - - - - - - - - - - - -
         MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, &
         COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
 
