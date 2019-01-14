@@ -65,6 +65,7 @@ SQL> select current_scn from v$database;
 ![](images/500/12.PNG)
 
 
+You have completed lab 500!   **Great Job!**
 
 
  
@@ -75,17 +76,4 @@ SQL> select current_scn from v$database;
 
 
 
-
-
-Try running the following CURL command.
-curl -u oggadmin:welcome1 -H "Content-Type: application/json" -H "Accept:
-application/json" -X GET
-http://localhost:<port>/services/v2/deployments/SanFran_1/services/distsrvr/logs |
-python -mjson.tool
-
-3. Retrieve Log locations using the following CURL command
-curl -u oggadmin:welcome1 -H "Content-Type:application/json" -H
-"Accept:application/json" -X GET http://localhost:<port>/services/v2/logs | python - mjson.tool
-
-![](images/800/Lab800_image101.png)
 
