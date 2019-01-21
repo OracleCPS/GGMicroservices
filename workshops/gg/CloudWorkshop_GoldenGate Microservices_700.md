@@ -27,9 +27,9 @@ Right mouse click -> Open Terminal
 
 2. Sudo into the root user and when Prompted use the password 'Welcome1'
 
-        $ sudo su -
+        $ sudo su - root
 
-         ![](images/700/Lab700_image115.png) 
+![](images/700/Lab700_image115.png) 
 
 3. Change the environment variable for the GoldenGate home.
 
