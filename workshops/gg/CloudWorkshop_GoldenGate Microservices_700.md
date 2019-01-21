@@ -29,7 +29,7 @@ Right mouse click -> Open Terminal
 
         $ sudo su -
 
-        ![](images/700/Lab700_image115.png) 
+         ![](images/700/Lab700_image115.png) 
 
 3. Change the environment variable for the GoldenGate home.
 
