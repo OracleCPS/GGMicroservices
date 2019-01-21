@@ -25,14 +25,15 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 Right mouse click -> Open Terminal
 
-2. Change the environment variable for the GoldenGate home.
+2. Sudo into the root user and when Prompted use the password 'Welcome1'
 
-        $ export OGG_HOME=/opt/app/oracle/product/18.1.0_GGMySQL
+        $ sudo su - root
 
+![](images/700/Lab700_image115.png) 
 
 3. Change to the MySQL GG home.
 
-        $ cd $OGG_HOME
+        $ cd /opt/app/oracle/product/18.1.0_GGMySQL
 
 
 4. Run the GoldenGate command interpreter (GGSCI).
@@ -49,7 +50,7 @@ Right mouse click -> Open Terminal
 
 6. Run the OGG obey script to create the replication processes and check with info all command
 
-        $OGG Atlanta_1 3>obey ./dirprm/setup_mysql.oby
+        $GGSCI> obey ./dirprm/setup_mysql.oby
 
 ![](images/700/Lab700_image102.png)
 
