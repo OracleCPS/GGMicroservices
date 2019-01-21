@@ -31,21 +31,16 @@ Right mouse click -> Open Terminal
 
 ![](images/700/Lab700_image115.png) 
 
-3. Change the environment variable for the GoldenGate home.
+3. Change to the MySQL GG home.
 
-        $ export OGG_HOME=/opt/app/oracle/product/18.1.0_GGMySQL
-
-
-4. Change to the MySQL GG home.
-
-        $ cd $OGG_HOME
+        $ cd /opt/app/oracle/product/18.1.0_GGMySQL
 
 
-5. Run the GoldenGate command interpreter (GGSCI).
+4. Run the GoldenGate command interpreter (GGSCI).
 
         $./ggsci
 
-6. Start the manager and check with info all command
+5. Start the manager and check with info all command
 
         $GGSCI> start MGR
 
@@ -53,7 +48,7 @@ Right mouse click -> Open Terminal
 
 ![](images/700/Lab700_image101.png)
 
-7. Run the OGG obey script to create the replication processes and check with info all command
+6. Run the OGG obey script to create the replication processes and check with info all command
 
         $GGSCI> obey ./dirprm/setup_mysql.oby
 
