@@ -21,8 +21,6 @@ This lab supports the following use cases:
 
 -   Migrate a pluggable database from on-premise to the Cloud.
 -   Migrate a schema using Oracle Data Pump.
--   Migrate data using a Transportable Tablespace.
--   Copy data using Database Links.
 
 ## Required Artifacts
 
