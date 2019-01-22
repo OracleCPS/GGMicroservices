@@ -26,14 +26,14 @@ Time: 25 minutes
 
 Steps:
 
-1.	From the Terminal window in the VNC Console, navigate to the Lab3 directory under ~/OGG181_WHKSHP.
+1.	From the Terminal window in the VNC Console, navigate to the Lab3 directory under /home/oracle/Scripts/Lab3.
 
-        $ cd ~/OGG181_WHKSHP/Lab3
+        $ cd /home/oracle/Scripts/Lab3
 
 
 2.	From here you will run the script to create the initial credentials for access to the database.  In order to create the required credentials, run the following:
 
-        $ ./create_credential_GGAlias.sh Welcome1 16001 c##ggate@orcl ggate
+        $ ./create_credential_GGAlias.sh Welcome1 16001 c##ggate@OGGOOW181 sggate
 
 Upon a successful run, you should see a message that states, “Credential store created”.
 
@@ -41,12 +41,17 @@ Upon a successful run, you should see a message that states, “Credential store
 
 ![](images/300/Lab300_image2.PNG) 
 
+
 3.	. Now check in the web UI that the Credentials were created successfully in the Administration Service of the Atlanta Deployment (http://<hostname>:16001) from within the browser.
 
 Figure 3-2:
 
 ![](images/300/Lab300_image3.PNG) 
  
+4.  On the Configuration page, select the plus ( + ) sign to begin adding a credential. At this point, you will be able to add a Credential Alias.  You will need to add the alias for a user that will connect to CDB (ORCL). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
+
+![](images/300/Lab300_image3.1.PNG) 
+
 
 4.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 In order to create this user, you will need to run the create_credential_Protcol.sh script back in the Terminal window of the VNC Console.

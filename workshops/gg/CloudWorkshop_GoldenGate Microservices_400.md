@@ -266,6 +266,8 @@ Figure 7c-3:
  
 ![](images/400/Lab300_image520.PNG)
 
+This completes cloning a PDB database.
+
 
 Lab 7d: Configure Uni-Directional Replication (Receiver Server)
 
