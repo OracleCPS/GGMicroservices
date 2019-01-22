@@ -21,8 +21,6 @@ This lab supports the following use cases:
 
 -   Migrate a pluggable database from on-premise to the Cloud.
 -   Migrate a schema using Oracle Data Pump.
--   Migrate data using a Transportable Tablespace.
--   Copy data using Database Links.
 
 ## Required Artifacts
 
@@ -223,7 +221,55 @@ Figure 7b-5:
 ![](images/400/Lab300_image290.PNG) 
 
 
-Lab 7c: Configure Uni-Directional Replication (Receiver Server)
+Lab 7c: Cloning a PDB database using an existing PDB database
+
+Objective:
+In this lab, you will create a new PDB database OGGOOW182 by cloning an existing PDB database OGGOOW181.
+
+Time: 5 minutes
+
+Steps:
+1.	Login to database using sys user.
+
+            $ sqlplus / as sysdba
+
+2. Execute below command to check the PDBs present in the database.
+
+            sql> show pdbs
+
+3. Alter the PDB database, which you are using for clone, to read only state.
+
+            sql> alter pluggable database OGGOOW181 open read only;
+
+Figure 7c-1:
+ 
+![](images/400/Lab300_image500.PNG)
+
+4. Create the pluggable database using the below command.
+
+            sql> CREATE PLUGGABLE DATABASE OGGOOW182 FROM OGGOOW181
+            2  FILE_NAME_CONVERT=('/opt/app/oracle/oradata/ORCL/oggoow181/','/opt/app/oracle/oradata/ORCL/OGGOOW182/');
+
+Figure 7c-2:
+ 
+![](images/400/Lab300_image510.PNG)
+
+5. Close the pluggable database, which is in read only state and reopen the databases using below commands.
+
+            sql> alter pluggable database OGGOOW181 close;
+            sql> alter pluggable database OGGOOW181 open;
+            sql> alter pluggable database OGGOOW182 open;
+
+Execute "show pdbs" to check the available pdbs and their statuses.
+
+Figure 7c-3:
+ 
+![](images/400/Lab300_image520.PNG)
+
+This completes cloning a PDB database.
+
+
+Lab 7d: Configure Uni-Directional Replication (Receiver Server)
 
 Objective:
 In this lab, you will configure the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
@@ -233,18 +279,18 @@ Time: 5 minutes
 Steps:
 1.	Start from the Service Manager page for your second deployment (Figure 7c-1).
 
-Figure 7c-1:
+Figure 7d-1:
  
 ![](images/400/Lab300_image305.PNG) 
 
 2.	Click on the Receiver Server link to open the Receiver Server page (Figure 7c-2).  Verify that everything is configured.
 
-Figure 7c-2:
+Figure 7d-2:
 
 ![](images/400/Lab300_image310.PNG) 
 
 
-Lab 7d: Configure Uni-Directional Replication (Integrated Replicat)
+Lab 7e: Configure Uni-Directional Replication (Integrated Replicat)
 
 Object:
 In this lab you will configure the Integrated Replicat for the second deployment.
@@ -252,47 +298,47 @@ In this lab you will configure the Integrated Replicat for the second deployment
 Time: 25 minutes
 
 Steps:
-1.	Starting from the Service Manager page (Figure 7d-1).
+1.	Starting from the Service Manager page (Figure 7e-1).
 
-Figure 7d-1:
+Figure 7e-1:
  
 ![](images/400/Lab300_image320.PNG) 
  
-2.	Open the Administration Server for the second deployment by clicking on the link (Figure 7d-2).
+2.	Open the Administration Server for the second deployment by clicking on the link (Figure 7e-2).
 
-Figure 7d-2:
+Figure 7e-2:
 
 ![](images/400/Lab300_image330.PNG) 
 
-3.	Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182) (Figure 7d-3).  After creating the credential, login and verify that it works.
+3.	Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182) (Figure 7e-3).  After creating the credential, login and verify that it works.
 You will need to create 1 credential for the user to connect to PDB2.  We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate.  Click Submit when finished.
 
-Figure 7d-3:
+Figure 7e-3:
  
 ![](images/400/Lab300_image340.PNG) 
 
 
-4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7d-4).  Click the plus sign ( + ) to open the Add Replicat process.
+4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7e-4).  Click the plus sign ( + ) to open the Add Replicat process.
 
 Figure 7d-4:
  
 ![](images/400/Lab300_image350.PNG) 
 
 
-5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7d-5).
+5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7e-5).
 
-Figure 7d-5:
+Figure 7e-5:
  
 ![](images/400/Lab300_image360.PNG) 
 
 
-6.	Fill in the Replicat options form with the required information (Figure 7d-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
+6.	Fill in the Replicat options form with the required information (Figure 7e-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
-Figure 7d-6:
+Figure 7e-6:
  
 ![](images/400/Lab300_image370.PNG) 
 
-7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7d-7).  You will have to remove the MAP statement and replace it with the information below:
+7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7e-7).  You will have to remove the MAP statement and replace it with the information below:
 
 MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
 
@@ -320,7 +366,7 @@ Once the parameter file has been updated, click the Create and Run button at the
 At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
 
 
-Lab 7e: DML and DDL Replication Samples
+Lab 7f: DML and DDL Replication Samples
 
 Objective: In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
 
