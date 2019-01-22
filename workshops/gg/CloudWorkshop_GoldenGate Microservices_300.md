@@ -109,7 +109,7 @@ Figure 3-10:
 
 Figure 3-11:
 
-![](images/300/Lab300_image9.PNG) 
+![](images/300/Lab300_image9.0.PNG) 
 
 You have completed lab 300!   **Great Job!**
 
