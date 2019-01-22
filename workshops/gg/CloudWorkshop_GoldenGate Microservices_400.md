@@ -53,90 +53,58 @@ Figure 7a-2:
 ![](images/400/Lab300_image120.PNG) 
  
 
-3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done from the Configuration menu option in the grey bar on the left of the screen (Figure 7a-3).
+3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done in lab 300.
+
+
+4.	Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure 7a-3).
 
 Figure 7a-3:
-
-![](images/400/Lab300_image130.PNG) 
- 
-
-4.	On the Configuration page, select the plus ( + ) sign to begin adding a credential.  At this point, you will be able to add a Credential Alias (Figure 7a-4).  You will need to add the alias for a user that will connect to CDB (ORCL) and PDB (OGGOOW181).  The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user will be used to add TRANDATA to the schemas used in replication.
-
-Figure 7a-4:
-
-![](images/400/Lab300_image150.PNG) 
- 
-
-You will notice that a Domain name and Credential Alias were added along with the User ID and Password.  After adding the user to the credential store, you will reference it via its domain name and credential alias.
-
-You will need to create two (2) credential aliases for your Atlanta deployment. The first credential will be for the CDB(ORCL) database and the second will be for the PDB(OGGOOW181) database. The table below shows what needs to be added:
-
-
-Credential Domain	Credential Alias	UserID	Password
-SGGATE	SGGATE	C##GGATE@OGGOOW181	ggate
-CDBGGATE	CDBGGATE	C##GGATE@ORCL	ggate
- 
-
-5.	Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure 7a-5).
-
-Figure 7a-5:
 
 ![](images/400/Lab300_image160.PNG) 
  
 
-6.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
-After logging into the database as described in step 5 for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure 7a-6).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
+5.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
+After logging into the database as described in step 5 for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected (Figure 7a-4).  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
 
-Figure 7a-6:
+Figure 7a-4:
 
 ![](images/400/Lab300_image170.PNG) 
  
 
-You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema (Figure 7a-7).  To do this, click on the magnifying glass and provide the Schema name.
+You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema (Figure 7a-5).  To do this, click on the magnifying glass and provide the Schema name.
 
-Figure 7a-7:
+Figure 7a-5:
 
 ![](images/400/Lab300_image180.PNG) 
  
 
-7.	Add the Protocol user.
-Since we are on the Credential screen, let’s go ahead and add a Protocol user.  A Protocol user is the user that the Distribution Server will use to communicate with the Receiver Server over an unsecure connection.
-As you did in Step 4, click the plus sign ( + ) next to the word Credentials.  Then provide the connection information needed (Figure 7a-8), notice that you will be using the Service Manager login in this credential.
+6.	Add the Integrated Extract.
+Navigate back to the Overview page of the Administration Server (Figure 7a-6).  Then click on the plus sign ( + ) in the box for Extracts.
 
-Figure 7a-8:
-
-![](images/400/Lab300_image190.PNG) 
- 
-
-For now, just leave this login alone.  It will be used in a later step. 
-
-8.	Add the Integrated Extract.
-Navigate back to the Overview page of the Administration Server (Figure 7a-9).  Then click on the plus sign ( + ) in the box for Extracts.
-
-Figure 7a-9:
+Figure 7a-6:
 
 ![](images/400/Lab300_image300.PNG) 
 
 
-After clicking the plus sign ( + ), you are taken to the Add Extract page (Figure 7a-10).  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
+After clicking the plus sign ( + ), you are taken to the Add Extract page (Figure 7a-7).  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
 
-Figure 7a-10:
+Figure 7a-7:
 
 ![](images/400/Lab300_image210.PNG) 
 
 
-The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure 7a-11).  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
+The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure 7a-8).  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
 
 When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181. 
 
-Figure 7a-11:
+Figure 7a-8:
 
 ![](images/400/Lab300_image220.PNG) 
 
 ![](images/400/Lab300_image225.PNG) 
  
 
-On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-12).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
+On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-9).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
 DDL INCLUDE ALL; <br />
 SOURCECATALOG OGGOOW181 <br />
 TABLE SOE.*; <br />
@@ -161,15 +129,16 @@ TABLE SOE.ORDERENTRY_METADATA; <br />
 
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
 
-Figure 7a-12:
+Figure 7a-9:
  
 ![](images/400/Lab300_image230.PNG) 
 
-The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running (Figure 7a-13).
+The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running (Figure 7a-10).
 
-Figure 7a-13:
+Figure 7a-10:
  
 ![](images/400/Lab300_image240.PNG) 
+
 
 Lab 7b: Configure Uni-Directional Replication (Distribution Server)
 
@@ -219,6 +188,7 @@ After filling out the form, click Create and Run at the bottom of the page.
 Figure 7b-5:
  
 ![](images/400/Lab300_image290.PNG) 
+
 
 
 Lab 7c: Cloning a PDB database using an existing PDB database
@@ -290,6 +260,7 @@ Figure 7d-2:
 ![](images/400/Lab300_image310.PNG) 
 
 
+
 Lab 7e: Configure Uni-Directional Replication (Integrated Replicat)
 
 Object:
@@ -310,39 +281,34 @@ Figure 7e-2:
 
 ![](images/400/Lab300_image330.PNG) 
 
-3.	Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182) (Figure 7e-3).  After creating the credential, login and verify that it works.
-You will need to create 1 credential for the user to connect to PDB2.  We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate.  Click Submit when finished.
+3.	You require a credential store for replicat to connect to target database. Use the TGGATE2 created in Lab300. 
+
+
+4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7e-3).  Click the plus sign ( + ) to open the Add Replicat process.
 
 Figure 7e-3:
- 
-![](images/400/Lab300_image340.PNG) 
-
-
-4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7e-4).  Click the plus sign ( + ) to open the Add Replicat process.
-
-Figure 7d-4:
  
 ![](images/400/Lab300_image350.PNG) 
 
 
-5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7e-5).
+5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7e-4).
 
-Figure 7e-5:
+Figure 7e-4:
  
 ![](images/400/Lab300_image360.PNG) 
 
 
-6.	Fill in the Replicat options form with the required information (Figure 7e-6).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
+6.	Fill in the Replicat options form with the required information (Figure 7e-5).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 
-Figure 7e-6:
+Figure 7e-5:
  
 ![](images/400/Lab300_image370.PNG) 
 
-7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7e-7).  You will have to remove the MAP statement and replace it with the information below:
+7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7e-6).  You will have to remove the MAP statement and replace it with the information below:
 
 MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
 
-Figure 7d-7:
+Figure 7e-6:
  
 ![](images/400/Lab300_image380.PNG) 
 
