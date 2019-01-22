@@ -142,17 +142,17 @@ login pages needs to be taken
 
 ![](images/200/image18.JPG)
 
-### **STEP 2**: Open up a terminal window and create the Target (Sanfran) deployment
+### **STEP 2**: Configuring Target (Sanfran) deployment using Automate script
 
 In this step you will configure the Target (Sanfran) deployment. 
 
 -	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
--   Then, change current directory to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
+-   Then, change current directory to the **Lab2** directory.
 
-		cd /opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin
+		cd ~/OGG181_WHKSHP/Lab2
 
--   Then, run the **oggca.sh** script:
+-   Then, run the **create_deployment.sh** script:
 
 		[oracle@@OGG181DB183 bin] ./oggca.sh
 
