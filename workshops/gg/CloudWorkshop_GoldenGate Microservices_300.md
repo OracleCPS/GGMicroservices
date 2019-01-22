@@ -46,7 +46,7 @@ Upon a successful run, you should see a message that states, “Credential store
 
 Figure 3-2:
 
-![](images/300/Lab300_image3.PNG) 
+![](images/300/Lab300_image3.PNG)  <br /> <br />
 
  
 4.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
