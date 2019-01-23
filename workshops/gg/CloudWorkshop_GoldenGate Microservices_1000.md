@@ -49,7 +49,7 @@ Below example will guide to how to delete the deployment **"Source"** - (***Atla
 Command :
          ***$ sh delete_deployment.sh Atlanta Welcome1 16000 16001 16002 16003 16004 16005***
 
-![](images/1000/S2.JPG)
+![](images/1000/S3.JPG)
 
 |    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 |-----------------|-----------------------------|---------------------|
