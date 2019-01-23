@@ -154,87 +154,24 @@ In this step you will configure the Target (Sanfran) deployment.
 
 -   Then, run the **create_deployment.sh** script:
 
-		[oracle@@OGG181DB183 bin] ./oggca.sh
+		$  ./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
 
-- Once the configuration wizard starts, you will be presented with the first step of the configuration process. On this screen, you will use an **existing Service Manager**. Items you need to provide are:
+	|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
+	|-----------------|-----------------------------|---------------------|
+	|      A1         |Deployment Name	            | 	SanFran	          |
+	|      A2         |Admin User Password	        |	Welcome1          |
+	|      A3         |Service Manager Port     	| 	16000	          |
+	|      A4         |Administration Server Port	| 	17001	          |
+	|      A5         |Distribution Server Port 	|	17002	          |
+	|      A6         |Receiver Server Port         |       17003	      |
+	|      A7         |Metrics Server Port          |       17004         |
+	|      A8         |Metrics Server UDP Port      |       17005         |
+
+
+Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been the created.
 	
- A. ***Existing Service Manager***:For an existing Service Manager, make sure you select the correct radio button.
- B ***Provide the Listening Hostname/Address***:By default this will populate with the hostname as being 127.0.0.1. This is expected and as designed.
- C. ***Provide a Listening Port***:This should be the already configured Service Manager port number. Do not change this.If you are unsure of what the port number is, then refer to the previous lab on how to configure the Service Manager.
-
-![](images/200/20.JPG)	
-
-- For the **"Select Configuration Options"** screen, you will have ***TWO*** option. As we are configuring the new Target Deployment.Hence kindly select ***"Add new GoldenGate deployment"*** and click **Next**.
-
-![](images/200/21.JPG)
-
-- You will need to provide a **Deployment Name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
-
-		This will be your Target deployment under the Service Manager. You can name the deployment
-		whatever you like. For this lab, it’s suggested to use a city name which will make 
-		the deployment name like “Sanfran”.
-
-![](images/200/22.JPG)
-- You will be able to provide the **Deployment home** for this deployment. There is also an option to customize the deployment directories. For the purpose of this lab, provide a default directory structure
-
-		For this lab, "Deployment home" name like “/opt/app/oracle/gg_deployments/Sanfran”.
-
-![](images/200/24.JPG)
-
-- For  the **"Specify Enviroment Variables"** screen, review the settings and click on **"Next"** to continue.  
-
-![](images/200/25.JPG)
+![](images/200/34.JPG)
 
 
-- For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"welcome1"** for the password field.  Enter the same value of **"welcome1"** for the confirm password field.   Click on **"Next"** to continue.
-
-![](images/200/26.JPG)
-
-- For the **"Specify Security Options"** screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployement"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
-
-![](images/200/27.JPG)
-
-- For the **"Specify Port Settings"** screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   Then once confirmed click **"Next"** to continue.
-
-| Field/Checkbox				|		Setting		|
-|-------------------------------|-------------------|
-|Administration Server Port"	| 	17001			|
-|Distribution Server Port"		|	17002			|
-|Receiver Server Port"			| 	17003			|
-|Enable Monitoring"				| 	Checked			|
-|Metrics Server Port			|	17004			|
-|Metrics Server UDP Port (data) |   17005			|
-|Metrics Server Datastore Type  |   BDB				|
-|Metrics Server Datastore home  |User defined location| 
-
-Note : For lab purpose,we have choosed **"Metrics Server Datastore home"** to ***"/opt/app/oracle/gg_deployment/SanFran/meteric"**** but you can your own desired path
-![](images/200/28.JPG)
-
-- For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
- 
-![](images/200/29.JPG)
-
-- For the **"Summary"** screen review the options carefully and then select the **"Finish"** button.
-
-![](images/200/30.JPG)
-
-- Follow the progress carefully on the **next** screen.
-
-![](images/200/31.JPG)
-
-
-- For the **"Finish"** screen confirm the ***sucessful deployment status*** and click on the **"Close"** button.   
-
-![](images/200/32.JPG)
-
-- **The GoldenGate ServiceManager** deployment and the **"Target(SanFran)"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
-- Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
-- You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"welcome1"**.
-login pages needs to be taken
-![](images/200/33.JPG)
-
-- You will then be taken to the following page.   Review that the Services for the ***"Target(SanFran)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
-
-![](images/200/34_1.JPG)
 
 You have completed lab 200!   **Great Job!**
