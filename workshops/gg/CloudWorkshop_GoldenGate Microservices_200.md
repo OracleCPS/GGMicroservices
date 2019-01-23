@@ -174,4 +174,4 @@ Once the script is executed, you will see a statement saying that the ***“Succ
 
 
 
-You have completed lab 200!   **Great Job!**
+You have completed lab 1000!   **Great Job!**
