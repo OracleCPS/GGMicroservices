@@ -23,7 +23,7 @@ Lab 9a:
 
         $ sh delete_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
 Example :
-        $ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
+        ***$ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
 
 |    Arguement    | DESCRIPTION	       	        |       Example	      |
 |-----------------|-----------------------------|---------------------|
