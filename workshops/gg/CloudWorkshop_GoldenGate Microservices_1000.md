@@ -22,10 +22,10 @@ Lab 9a:
 2. From here you will run the script to delete deployment.  In order to do this, you will need to run the ***delete_deployment.sh*** script.  To run this script, you need to execute the following at the command line:
 
         $ sh delete_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
-Example 
+Example :
         $ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
 
-|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
+|    Arguement    | DESCRIPTION	       	        |       Example	      |
 |-----------------|-----------------------------|---------------------|
 |      A1         |Deployment Name	            | 	SanFran	          |
 |      A2         |Admin User Password	        |	Welcome1          |
