@@ -155,19 +155,19 @@ In this step you will configure the Target (Sanfran) deployment.
 -   Then, run the **create_deployment.sh** script:
 
 		$  ./create_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
-Example 
+Example :
         $  ***./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
 
-	|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
-	|-----------------|-----------------------------|---------------------|
-	|      A1         |Deployment Name	            | 	    SanFran	      |
-	|      A2         |Admin User Password	        |	    Welcome1      |
-	|      A3         |Service Manager Port     	| 	    16000	      |
-	|      A4         |Administration Server Port	| 	    17001	      |
-	|      A5         |Distribution Server Port 	|	    17002	      |
-	|      A6         |Receiver Server Port         |       17003	      |
-	|      A7         |Metrics Server Port          |       17004         |
-	|      A8         |Metrics Server UDP Port      |       17005         |
+|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
+|-----------------|-----------------------------|---------------------|
+|      A1         |Deployment Name	            | 	    SanFran	      |
+|      A2         |Admin User Password	        |	    Welcome1      |
+|      A3         |Service Manager Port     	| 	    16000	      |
+|      A4         |Administration Server Port	| 	    17001	      |
+|      A5         |Distribution Server Port 	|	    17002	      |
+|      A6         |Receiver Server Port         |       17003	      |
+|      A7         |Metrics Server Port          |       17004         |
+|      A8         |Metrics Server UDP Port      |       17005         |
 
 
 Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been the created.
