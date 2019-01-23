@@ -42,7 +42,7 @@ Once the script is executed, you will see a statement saying that the ***“Succ
 Below example will guide to how to delete the deployment **"Target"** - (***SANFRAN***)
 
 Command :
-        $ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
+          ***$ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
 
 ![](images/1000/S1.PNG)
 
@@ -50,7 +50,7 @@ Command :
 Below example will guide to how to delete the deployment **"Source"** - (***Atlanta***)
 
 Command :
-        $ sh delete_deployment.sh Atlanta Welcome1 16000 16001 16002 16003 16004 16005
+         ***$ sh delete_deployment.sh Atlanta Welcome1 16000 16001 16002 16003 16004 16005***
 
 ![](images/1000/S1.PNG)
 

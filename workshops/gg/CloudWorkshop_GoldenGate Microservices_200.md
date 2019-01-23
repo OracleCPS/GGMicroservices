@@ -154,7 +154,9 @@ In this step you will configure the Target (Sanfran) deployment.
 
 -   Then, run the **create_deployment.sh** script:
 
-		$  ./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
+		$  ./create_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
+Example 
+        $  ***./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
 
 	|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 	|-----------------|-----------------------------|---------------------|
@@ -174,4 +176,4 @@ Once the script is executed, you will see a statement saying that the ***“Succ
 
 
 
-You have completed lab 1000!   **Great Job!**
+You have completed lab 200!   **Great Job!**
