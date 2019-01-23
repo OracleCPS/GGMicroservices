@@ -63,6 +63,4 @@ Command :
 |      A8         |Metrics Server UDP Port      |       16005         |
 
 
-
-
 You have completed lab 1000!   **Great Job!**
