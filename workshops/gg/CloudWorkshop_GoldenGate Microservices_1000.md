@@ -1,4 +1,4 @@
-![](images/900/Lab900_image100.PNG)
+![](images/1000/Lab1000_image100.PNG)
 
 Update January 22, 2019
 
@@ -43,8 +43,7 @@ Below example will guide to how to delete the deployment "Target" -(***SANFRAN**
 Command :
         $ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004
 
-![](images/1000/S1.PNG)
-
+![](images/1000/Lab1000_image101.PNG)
 
 
 You have completed lab 1000!   **Great Job!**
