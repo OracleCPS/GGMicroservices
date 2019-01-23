@@ -10,10 +10,6 @@ Update January 22, 2019
 
 In this lab we will demostrate how to ***RESET*** deployment ,Extract and Replicat
 
-## Required Artifacts
-
-Lab 9a:  
-
 1. From the Terminal window in the VNC Console, navigate to the Reset directory under ~/OGG181_WHKSHP.
 
         $ cd ~/OGG181_WHKSHP/Reset
@@ -39,7 +35,7 @@ Example :
 Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment has been the deleted.
 
 
-Below example will guide to how to delete the deployment **"Target"** - (***SANFRAN***)
+Below example will guide to how to delete the deployment **"Target"** - (***SanFran***)
 
 Command :
           ***$ sh delete_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
@@ -47,12 +43,13 @@ Command :
 ![](images/1000/S1.PNG)
 
 
+
 Below example will guide to how to delete the deployment **"Source"** - (***Atlanta***)
 
 Command :
          ***$ sh delete_deployment.sh Atlanta Welcome1 16000 16001 16002 16003 16004 16005***
 
-![](images/1000/Lab1000_image101.PNG)
+![](images/1000/S2.JPG)
 
 |    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 |-----------------|-----------------------------|---------------------|
