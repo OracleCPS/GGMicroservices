@@ -170,6 +170,8 @@ Example :
 |      A8         |Metrics Server UDP Port      |       17005         |
 
 
+![](images/200/new_01.JPG)
+
 Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been the created.
 	
 ![](images/200/34.JPG)
