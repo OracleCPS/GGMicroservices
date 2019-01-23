@@ -160,7 +160,7 @@ Example
 
 	|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 	|-----------------|-----------------------------|---------------------|
-	|      A1         |Deployment Name	            | 	SanFran	          |
+	|      A1         |Deployment Name	           | 	SanFran	          |
 	|      A2         |Admin User Password	        |	Welcome1          |
 	|      A3         |Service Manager Port     	| 	16000	          |
 	|      A4         |Administration Server Port	| 	17001	          |
