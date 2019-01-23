@@ -160,11 +160,11 @@ Example
 
 	|    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 	|-----------------|-----------------------------|---------------------|
-	|      A1         |Deployment Name	           | 	SanFran	          |
-	|      A2         |Admin User Password	        |	Welcome1          |
-	|      A3         |Service Manager Port     	| 	16000	          |
-	|      A4         |Administration Server Port	| 	17001	          |
-	|      A5         |Distribution Server Port 	|	17002	          |
+	|      A1         |Deployment Name	            | 	    SanFran	      |
+	|      A2         |Admin User Password	        |	    Welcome1      |
+	|      A3         |Service Manager Port     	| 	    16000	      |
+	|      A4         |Administration Server Port	| 	    17001	      |
+	|      A5         |Distribution Server Port 	|	    17002	      |
 	|      A6         |Receiver Server Port         |       17003	      |
 	|      A7         |Metrics Server Port          |       17004         |
 	|      A8         |Metrics Server UDP Port      |       17005         |
