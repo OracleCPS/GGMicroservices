@@ -5,13 +5,7 @@ Update December 28, 2018
 ## Creating Credentials in GoldenGate Micro Services Architecture
 ## Introduction
 
-In this Lab, you will configure the database user credentials entries needed for replication. This requires running the following scripts:
-
-Create_credential_Protocol.sh
-
-Create_credential_GGAlias.sh
-
-After running these scripts, you will be able to establish connections for non-SSL replication between the source and target pluggable database.
+In this Lab, you will configure the database user credentials entries needed for replication. 
 
 ## Objectives
 
