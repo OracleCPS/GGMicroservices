@@ -1,4 +1,4 @@
-![](images/900/Lab900_image100.PNG)
+![](images/1000/Lab1000_image100.PNG)
 
 Update January 22, 2019
 
@@ -52,8 +52,7 @@ Below example will guide to how to delete the deployment **"Source"** - (***Atla
 Command :
          ***$ sh delete_deployment.sh Atlanta Welcome1 16000 16001 16002 16003 16004 16005***
 
-![](images/1000/S1.PNG)
-
+![](images/1000/Lab1000_image101.PNG)
 
 |    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 |-----------------|-----------------------------|---------------------|
