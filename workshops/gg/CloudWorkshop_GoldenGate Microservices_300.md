@@ -39,7 +39,7 @@ Steps:
 ![](images/400/Lab300_image130.PNG)
 
 
-4. Enter the credentail details as given below and click on submit. Password is Welcome1
+4. Enter the credentail details as given below and click on submit. Password is "ggate"
 
  Figure 3-4:
 
