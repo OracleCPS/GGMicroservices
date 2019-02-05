@@ -5,13 +5,11 @@ Update January 14, 2019
 ## Working with REST API
 ## Introduction
 
-In this lab, you will contines two parts and covers how to pull a list of services from Oracle GoldenGate using the REST APIs (Curl Commands). 
-# part 1: Initail load by Automated Script
-# Part 2: Initail Load by Manual Script
+In this lab, will contains two parts and covers how to pull a list of services from Oracle GoldenGate using the REST APIs. 
+# Part 1: Initail Load by Automated Script
+![](images/500/Lab800_Part1.png)
 
-# part 1: Initail load by Automated Script
 
-![](images/500/LAB800_1.png)
 
 
 # Part 2: Initail Load by Manual Script
