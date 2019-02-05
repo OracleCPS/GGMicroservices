@@ -29,7 +29,7 @@ In this step you will sign on to the Oracle 18c database environment to get star
 
 -   Open a browser and go to the following URL:https://cloud.ravellosystems.com [make sure to change this URL for the deployed service]
 -   Sign on with the following username/password:
-	oracle/welcome1
+	oracle/Welcome1
 ### **STEP 2**: Open up a terminal window and install the GoldenGate Microservices Edition
 
 In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
@@ -80,6 +80,8 @@ can click the Close button to exit the installation wizard.
 	
 
 - You should now be complete with **the GoldenGate Microservices for Oracle software installation**.
+
+Testing done.
 
 You have completed lab 100! Great Job!
 
