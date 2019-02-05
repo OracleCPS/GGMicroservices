@@ -12,25 +12,18 @@ This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(
 -	Configure the initial ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments 
 -	Connect to the target environment deployment through a web browser and confirm that the deployment succeeded and that the ServiceManager and core GoldenGate services are running.
 
-
 ## Required Artifacts
 
--   The following lab can be done simply through a browser-based environment however VNC and the remote desktop client are also supported if you have them already installed on your labtop.
--   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
-
-
-**Retrieve your Ravello details for each of the VMs that are used**
+-   VNC Client for the initial install and deployment.
+-	Browser to check the deployment.
 
 ### **STEP 1**: Open up a terminal window and create the ServiceManager and Source(Atlanta) Deployment
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
--	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
+-	On the desktop, right-click and select “Open Terminal”.
 
--   From the terminal screen, set the environment variable for the  Oracle 18c database.  ***Make sure to follow this step carefully to set up the proper environmental variables for the deployment***
-
-		[oracle@OGG181DB183 ~]$ . oraenv
-		[oracle@OGG181DB183 ~]$ ORACLE_SID = [orcl] ? ORCL
+![](images/200/open_terminal.PNG)
 
 -   Then, change to the **/opt/app/oracle/product/18.1.0_RC2/oggcore_1/bin** directory.
 
@@ -50,11 +43,11 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 - For the ServiceManager details screen enter the hostname of **"OGG181DB183"** for the listening hostname/address and enter **"16000"** for the listening port value.  Click on the **"Register Service as a system service/daemon"** checkbox. Click on **"Next"** to continue the configuration.   
 
-![](images/200/3.JPG)
+![](images/200/3.PNG)
 
 - Since this is the **First deployment** on the system, you will only have ***one*** option. Take the default and click **Next**.
 
-![](images/200/4.JPG)
+![](images/200/4.PNG)
 
 - You will need to provide a **Deployment Name** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
 
@@ -72,7 +65,7 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 
 ![](images/200/8.JPG)
 
-- For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"welcome1"** for the password field.  Enter the same value of **"welcome1"** for the confirm password field.   Click on **"Next"** to continue.
+- For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"Welcome1"** for the password field.  Enter the same value of **"Welcome1"** for the confirm password field.   Click on **"Next"** to continue.
 
 ![](images/200/9.JPG)
 
@@ -94,7 +87,7 @@ In this step you will create the initial ServiceManager. ServiceManager is the b
 |Metrics Server Datastore home  |User defined location| 
 
 Note : 
-For lab purpose,we have choosed **"Metrics Server Datastore home"** to **"/opt/app/oracle/gg_deployment/Atlanta/meteric"**  but you can your own desired path
+For lab purpose,we have choosed **"Metrics Server Datastore home"** to **"/opt/app/oracle/gg_deployment/Atlanta/metric"**  but you can your own desired path
 ![](images/200/11.JPG)
 
 - For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
