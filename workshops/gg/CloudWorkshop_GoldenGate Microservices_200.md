@@ -2,10 +2,10 @@
 
 Update January 02, 2019
 
-## Configuring ServiceManager,Source(Atlanta) and Target(Sanfran)
+## Configuring ServiceManager, Atlanta and SanFran Deployments
 ## Introduction
 
-This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments using Goldengate 18.1 micro services web interface and the **Oracle GoldenGate Configuration Assistant (OGGCA)** silent install scripts in a Ravello environment.
+This lab walks you through configuring ServiceManager, Atlanta and SanFran deployments using **Goldengate 18.1 MicroServices** web interface and the **Oracle GoldenGate Configuration Assistant (OGGCA)** silent install scripts in a Ravello environment.
 
 ## Objectives
 
