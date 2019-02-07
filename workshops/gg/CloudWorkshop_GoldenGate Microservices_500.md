@@ -9,8 +9,19 @@ In this lab, will contains two parts and covers how to pull a list of services f
 # Part 1: Initail Load by Automated Script
 ![](images/500/Lab800_Part1.png)
 
+Steps:
+-	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
+-   Then, change current directory to the **Lab5** directory.
 
+		cd ~/OGG181_WHKSHP/Lab5
+
+-   Then, run the **Lab5_Intail_load_Automatated_Script.sh** script:
+
+![](images/500/m2.PNG)
+
+-   Once the scripted is completes the execuation. Source and Target will be in synch.
+![](images/500/m9.PNG)
 
 # Part 2: Initail Load by Manual Script
 Steps:
