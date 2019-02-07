@@ -209,11 +209,12 @@ Steps:
 
 3. Alter the PDB database, which you are using for clone, to read only state.
 
+            sql> alter pluggable database OGGOOW181 close;
             sql> alter pluggable database OGGOOW181 open read only;
 
 Figure 7c-1:
  
-![](images/400/Lab300_image500.PNG)
+![](images/400/Lab300_image505.PNG)
 
 4. Create the pluggable database using the below command.
 
