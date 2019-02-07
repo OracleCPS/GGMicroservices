@@ -5,7 +5,7 @@ Update January 02, 2019
 ## Configuring ServiceManager,Source(Atlanta) and Target(Sanfran)
 ## Introduction
 
-This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments using Goldengate 18.1 micro services web interface and REST API scripts in a Ravello environment.
+This lab walk you through configuring ServiceManager,Source(Atlanta) and Target(Sanfran) Deployments using Goldengate 18.1 micro services web interface and the **Oracle GoldenGate Configuration Assistant (OGGCA)** silent install scripts in a Ravello environment.
 
 ## Objectives
 
@@ -96,69 +96,81 @@ It also is responsible for starting and stopping the other GoldenGate services a
 
 -	For the **Metrics Server Datastore home** you should now have the following:
 
-		|Metrics Server Datastore home  |   /opt/app/oracle/gg_deployment/Atlanta/Metrics	| 
-
+|Metrics Server Datastore home  |   /opt/app/oracle/gg_deployment/Atlanta/Metrics	| 
 
 -	Click **"Next"** to continue.
 
-- For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
+- 	For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
  
 ![](images/200/12.JPG)
 
-- For the **"Summary"** screen review the options carefully and then select the **"Finish"** button.
+- 	For the **"Summary"** screen review the options carefully and then select the **"Finish"** button.
 
 ![](images/200/11.PNG)
 
-- Follow the progress carefully on the **next** screen.
+- 	Follow the progress carefully on the **next** screen.
 
 ![](images/200/14.JPG)
 
-- For the **"Execute Configuration Scripts"** screen, you will be prompted to manually execute the ***registerServiceManager.sh*** script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
+- 	For the **"Execute Configuration Scripts"** screen, you will be prompted to manually execute the ***registerServiceManager.sh*** script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
 
 ![](images/200/15.JPG)
 
-- At a terminal prompt login as root using the ***sudo su*** - command and execute the shell script as directed:
+- 	At a terminal prompt login as root using the ***sudo su*** - command and execute the shell script as directed:
 
 		[oracle@OGG181DB183 ~]$ sudo su -
 		[root@OGG181DB183 ~]# /opt/app/oracle/gg_deployments/ServiceManager/bin/registerServiceManager.sh
 
-- The output should look like the following:
+- 	The output should look like the following:
 
 ![](images/200/12.PNG)
 
-- When complete go back to the **"Execute Configuration Scripts"** screen and click on the **"Ok"** button
+- 	When complete go back to the **"Execute Configuration Scripts"** screen and click on the **"Ok"** button
 
-![](images/200/15.JPG)
+![](images/200/15a.JPG)
 
-- For the **"Finish"** screen confirm the ***successful deployment status*** and click on the **"Close"** button.   
+- 	For the **"Finish"** screen confirm the ***successful deployment status*** and click on the **"Close"** button.   
 
 ![](images/200/17.JPG)
 
-- **The GoldenGate ServiceManager** deployment and the **"Source(Atlanta)"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
-- Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** [make sure to change this URL for the deployed service].  
-- You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"welcome1"**.
-login pages needs to be taken
+**The GoldenGate ServiceManager** deployment and the **"Atlanta"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
+
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+- 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
 ![](images/200/33.JPG)
 
-- You will then be taken to the following page.   Review that the Services for the ***"Source(Atlanta)"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
+- You will then be taken to the following page.   Review that the Services for the ***"Atlanta"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/image18.JPG)
+![](images/200/13.PNG)
 
-### **STEP 2**: Configuring Target (Sanfran) deployment using Automate script
+### **STEP 2**: Configuring Target (SanFran) deployment using OGGCA silent install script
 
-In this step you will configure the Target (Sanfran) deployment. 
+In this step you will configure the Target (SanFran) deployment. 
+
+-	If you don't have a terminal windows open already, on the desktop, right-click and select “Open Terminal”.
+
+![](images/200/open_terminal.PNG)
+
+-   Then, change to the **OGG181_WHKSHP/Lab2** directory.
+
+		cd /opt/app/oracle/product/18.1.0_RC2/bin
 
 -	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
 
 -   Then, change current directory to the **Lab2** directory.
 
-		cd ~/OGG181_WHKSHP/Lab2
+		[oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab2
 
--   Then, run the **create_deployment.sh** script:
+-   You will run the **create_deployment.sh** script to create the SanFran deployment using a response file for OGGCA.
 
-		$  ./create_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
-Example :
-        $  ***./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005***
+-	Review the **create_deployment.sh** script
+		
+		[oracle@OGG181DB183 Lab2]$ less create_deployment.sh 
+
+-	The arguments for the script are:
+
+	create_deployment.sh A1  A2 A3 A4 A5 A6 A6 A7 A8
 
 |    Arguement    | DESCRIPTION	       	        |       VALUES	      |
 |-----------------|-----------------------------|---------------------|
@@ -171,13 +183,15 @@ Example :
 |      A7         |Metrics Server Port          |       17004         |
 |      A8         |Metrics Server UDP Port      |       17005         |
 
+-	Run the script
 
-![](images/200/new_01.JPG)
+		[oracle@OGG181DB183 Lab2]$ ./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
+		Successfully Setup Software.
 
-Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been the created.
+-	Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been created.
+
+-	Return to the browser and refresh (if it hasn't refreshed automatically already) and check to see that the ***SanFran*** deployment is displayed.
 	
-![](images/200/34.JPG)
-
-
+![](images/200/14.PNG)
 
 You have completed lab 200!   **Great Job!**
