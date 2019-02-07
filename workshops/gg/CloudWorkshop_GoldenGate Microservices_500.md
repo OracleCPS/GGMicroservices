@@ -16,18 +16,18 @@ Steps:
 
 		cd ~/OGG181_WHKSHP/Lab5
 
--   Then, run the **Lab5_Intail_load_Automatated_Script.sh** script:
+-   Then, run the **Lab5_Initial_load_Automatated_Script.sh** script:
 
 ![](images/500/m2.PNG)
 
--   Once the scripted is completes the execuation. Source and Target will be in synch.
+-   Once the script completes the execution. Source and Target will be in sync.
 ![](images/500/m9.PNG)
 
 # Part 2: Initail Load by Manual Script
 Steps:
 1. Open a command window (Right mouse click – Open Terminal)
 
-2. Create a json file for building an integrated   extract .
+2. Create a json file for building an integrated extract.
 
 ![](images/500/extract_add.PNG)
 
