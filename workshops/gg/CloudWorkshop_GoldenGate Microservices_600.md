@@ -5,18 +5,20 @@ Update December 28, 2018
 ## Bi-Directional Replication, AutoCDR, Rapid Deployment and Intro to the Admin Client
 ## Introduction
 
-Since we’ve already done multiple labs, this one will take what we used so far to script this using DB container reset scripts, SQL scripts to setup AutoCDR in the database and GG REST API scripts to do a rapid deployment.
+Since we’ve already done multiple labs, this one will take what we used so far to script this using DB container reset scripts, SQL scripts to setup AutoCDR in the database, OGGCA silent deployment scripts and GG REST API scripts to do a rapid deployment.
 
 ## Objectives
 
--	Rapid Deployment using REST API
--   Setting up bi-directional GoldenGate replication between two databases.
--	Setting up auto conflict detection and resolution.
+-	Rapid Deployment using:
+    -   OGGCA silent deployment scripts (drop and recreate deployments).
+    -   REST API to setup bi-directional GoldenGate replication between two databases.
+    -	SQL Scripts to setup up auto conflict detection and resolution in the database.
 
 ## Required Artifacts
 
 -   VNC Client for the deployment.
 -	Browser to check the deployment.
+-   Swingbench to apply transactions.
 
 ### **STEP 1**: Run a script to perform a rapid deployment.
 
@@ -25,7 +27,7 @@ Since we’ve already done multiple labs, this one will take what we used so far
 -   This script performs the following:
         1.	Drops the existing container databases.
         2.	Clones two container databases from a base container.
-        3.	Deletes the two deployments (Atlanta and San_Fran).  This will remove any current lab setups.
+        3.	Deletes the two deployments (Atlanta and SanFran).  This will remove any current lab setups.
         4.	Creates the two deployments again.
         5.	Creates new credentials for both deployments.
         6.	Adds Schema supplemental logging to both container databases for the SOE schema.
@@ -33,6 +35,7 @@ Since we’ve already done multiple labs, this one will take what we used so far
         8.	Adds the Extract, Distribution Path and Replicat for both deployments.  This includes the correct parameters for the Extract and Replicats
 
 -   Run the build_all_bi_di.sh script.
+
 
 ### **STEP 2**: Add AutoCDR to tables in the database.
 
