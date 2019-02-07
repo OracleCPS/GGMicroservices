@@ -76,15 +76,15 @@ It also is responsible for starting and stopping the other GoldenGate services a
 
 - 	For the **"Specify Port Settings"** screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   
 
-		| Field/Checkbox				|	Setting	|
-		|-------------------------------|-----------|
-		|Administration Server Port"	| 	16000	|
-		|Distribution Server Port"		|	16001	|
-		|Receiver Server Port"			| 	16002	|
-		|Enable Monitoring"				| 	Checked	|
-		|Metrics Server Port			|	16003	|
-		|Metrics Server UDP Port (data) |   16004	|
-		|Metrics Server Datastore Type  |   BDB		|
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Administration Server Port"	| 	16000	|
+|Distribution Server Port"		|	16001	|
+|Receiver Server Port"			| 	16002	|
+|Enable Monitoring"				| 	Checked	|
+|Metrics Server Port			|	16003	|
+|Metrics Server UDP Port (data) |   16004	|
+|Metrics Server Datastore Type  |   BDB		|
 
 -	For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.
 
