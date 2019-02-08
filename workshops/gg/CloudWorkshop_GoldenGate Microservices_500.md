@@ -2,28 +2,65 @@
 
 Update January 14, 2019
 
-## Working with REST API
+## Zero Downtime Lab using REST API
 ## Introduction
 
-In this lab, will contains two parts and covers how to pull a list of services from Oracle GoldenGate using the REST APIs. 
-# Part 1: Initail Load by Automated Script
+This lab, will contains three parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
+# Part 1: Initial Load by Automated Script
 ![](images/500/Lab800_Part1.png)
 
-Steps:
--	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
+### **STEP 1**: Run a script to delete the current data in the target database.
 
--   Then, change current directory to the **Lab5** directory.
+Before we begin we want to make sure the target database is empty.
 
-		cd ~/OGG181_WHKSHP/Lab5
+-	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
 
--   Then, run the **Lab5_Initial_load_Automatated_Script.sh** script:
+![](images/common/open_terminal.png)
 
-![](images/500/m2.PNG)
+-   Change directory to Lab5 and run script **del_target_182.sh**.  This will take a few minutes.
+
+		[oracle@OGG181DB183 Lab5]$ ./del_target_182.sh 
+		/opt/app/oracle/product/18.3.0/dbhome_1
+		Delete Data From Target Database OGGOOW182
+
+		SQL*Plus: Release 18.0.0.0.0 - Production on Fri Feb 8 19:03:08 2019
+		Version 18.3.0.0.0
+
+		Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+
+		Connected to:
+		Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+		Version 18.3.0.0.0
+		.
+		.
+		.
+		SQL> SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+		Version 18.3.0.0.0
+
+		Done Deleting Data From Target Database OGGOOW182
+
+
+		[oracle@OGG181DB183 Lab5]$ 
+
+
+### **STEP 2**: Run a script to perform an initial load to the target database.
+
+-   Change directory to Lab5 and review script **Initial_load_Automated.sh**.
+
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
+		[oracle@OGG181DB183 Lab5]$ ls
+		Initial_load_Automated.sh
+		[oracle@OGG181DB183 Lab5]$ less Initial_load_Automated.sh
+
+-   Then, run the **Initial_load_Automated.sh** script:
+
+		[oracle@OGG181DB183 Lab5]$ ./Initial_load_Automated.sh 
 
 -   Once the script completes the execution. Source and Target will be in sync.
 ![](images/500/m9.PNG)
 
-# Part 2: Initail Load by Manual Script
+# Part 2: Initial Load by Manual Script
 Steps:
 1. Open a command window (Right mouse click – Open Terminal)
 
