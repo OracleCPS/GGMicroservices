@@ -24,7 +24,7 @@ Steps:
 ![](images/500/m9.PNG)
 
 
-    Part 1: Initail Load by Automated Script completed successfully 
+Initail Load by Automated Script has been completed successfully 
 =============================================================================================
 
 # Part 2: Initail Load by Manual Script
