@@ -371,18 +371,45 @@ In this step we’ll use a script to invoke Swingbench to apply data to both dat
 
 This script runs the swingbench jobs you ran in the other labs, but this time it will run two jobs in the background and each job applies data to one or the other databases.
 
--   Run start_swingbench.sh.
+-   Run start_swingbench.sh.  It will take a few seconds to start up and run for 10 mins.
 
+        [oracle@OGG181DB183 Lab6]$ ./start_swingbench.sh 
+        [oracle@OGG181DB183 Lab6]$ Author  :	 Dominic Giles
+        Author  :	 Dominic Giles
+        Version :	 2.6.0.1046
 
+        Version :	 2.6.0.1046
+        Results will be written to results.xml.
 
--   From the browser, log in to the Admin Service.  And click on the link to the Performance Metrics Server for Atlanta.
-![](images/600/Lab600_image100.PNG)
+        Results will be written to results.xml.
+        Hit Return to Terminate Run...
+        Hit Return to Terminate Run...
 
--   Then click on the Replicat icon.
+        Time		Users
 
-We’ll take a longer look at the Metric Service in another lab, so for now just click on the “Database Statistics” tab.
+        Time		Users
+        00:10:47	[0/2]
+        00:10:47	[0/2]
+
+-   From the browser, log in to the Service Manager using the Administrator account **"oggadmin"** the password should be **"Welcome1"**.
+
+![](images/600/Lab600_image110.PNG) 
+
+-   Next click on the link to the Performance Metrics Server for Atlanta.
+
+![](images/600/select_pms.PNG) 
+
+-   Click on the Replicat icon.
+
+![](images/600/repl_atl.PNG) 
+
+-   We’ll take a longer look at the Metric Service in another lab, so for now just click on the “Database Statistics” tab.
+
+![](images/600/sel_db_stats_atl.PNG) 
 
 On this screen you’ll see the number of operations performed and their types and also the number of conflicts detected, and the number of conflicts resolved.  This is done automatically by the AutoCDR configuration.
+
+![](images/600/disp_db_stats_atl.PNG) 
 
 If you want, you can check the Replicat of the other deployment and you’ll see a similar display.
 
