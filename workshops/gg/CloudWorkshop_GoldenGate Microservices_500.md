@@ -60,7 +60,15 @@ Before we begin we want to make sure the target database is empty.
 -   Once the script completes the execution. Source and Target will be in sync.
 ![](images/500/m9.PNG)
 
+<<<<<<< HEAD
 # Part 2: Initial Load by Manual Script
+=======
+
+Initail Load by Automated Script has been completed successfully 
+=============================================================================================
+
+# Part 2: Initail Load by Manual Script
+>>>>>>> 0dfe2009cea95638f719dd6d2134739490dad359
 Steps:
 1. Open a command window (Right mouse click – Open Terminal)
 
@@ -118,23 +126,5 @@ SQL> select current_scn from v$database;
 
 ![](images/500/12.PNG)
 
-Now, you want to just setup a few new tables, but do not want to take the day or two it would take to configure, export, import, apply and then catch up.
-
-Using Oracle GoldenGate Microservices architecture, this initial load process can be simplied and done very quickly. Below is a link to a script to perform an File-Based Initial Load within Oracle GoldenGate Microservices.
-
-https://dbasolved.com/2018/05/14/loading-tables-with-oracle-goldengate-and-rest-apis/
-
-The link has a script that would simplify the initial-load process, the script contains certain functions those get called when needed.After the tables have been loaded, then they can be merged into the existing replication stream.
 
 You have completed lab 500!   **Great Job!**
-
-
- 
-
-
-
-
-
-
-
-
