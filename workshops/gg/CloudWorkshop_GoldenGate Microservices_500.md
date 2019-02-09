@@ -17,30 +17,11 @@ Before we begin we want to make sure the target database is empty.
 
 ![](images/common/open_terminal.png)
 
--   Change directory to Lab5 and run script **del_target_182.sh**.  This will take a few minutes.
+-   Change directory to Lab5 and run script **truncate_trg.sh**.  
 
-		[oracle@OGG181DB183 Lab5]$ ./del_target_182.sh 
-		/opt/app/oracle/product/18.3.0/dbhome_1
-		Delete Data From Target Database OGGOOW182
-
-		SQL*Plus: Release 18.0.0.0.0 - Production on Fri Feb 8 19:03:08 2019
-		Version 18.3.0.0.0
-
-		Copyright (c) 1982, 2018, Oracle.  All rights reserved.
-
-
-		Connected to:
-		Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-		Version 18.3.0.0.0
-		.
-		.
-		.
-		SQL> SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-		Version 18.3.0.0.0
-
-		Done Deleting Data From Target Database OGGOOW182
-
-
+		[oracle@OGG181DB183 Lab5]$ ./truncate_trg.sh 
+		Truncate Target
+		Truncate Successful
 		[oracle@OGG181DB183 Lab5]$ 
 
 
@@ -60,55 +41,211 @@ Before we begin we want to make sure the target database is empty.
 -   Once the script completes the execution. Source and Target will be in sync.
 ![](images/500/m9.PNG)
 
-<<<<<<< HEAD
 # Part 2: Initial Load by Manual Script
-=======
 
-Initail Load by Automated Script has been completed successfully 
-=============================================================================================
+### **STEP 1**: Review the json file for building an integrated extract.
 
-# Part 2: Initail Load by Manual Script
->>>>>>> 0dfe2009cea95638f719dd6d2134739490dad359
-Steps:
-1. Open a command window (Right mouse click – Open Terminal)
+		[oracle@OGG181DB183 Lab5]$ cat ext2.json 
+		{
+			"config":[
+				"Extract     EXT2",
+				"ExtTrail    X1 Format Release 12.3",
+				"UseridAlias CDBGGATE",
+				"Table       oggoow181.soe.*;"
+			],
+			"source":{
+				"tranlogs":"integrated"
+			},
+			"credentials":{
+				"domain":"CDBGGATE",
+				"alias":"CDBGGATE"
+				
+			},
+			"registration":{
+					"containers": ["oggoow181"],
+					"optimized":false
+		},
+			"begin":"now",
+			"targets":[
+				{
+					"name":"X1"
+				}
+			]
+		}
+		[oracle@OGG181DB183 Lab5]$ 
 
-2. Create a json file for building an integrated extract.
+### **STEP 2**: Create and start the change-capture extract using the curl Command, which will start the extract with begin-now option.
 
-![](images/500/extract_add.PNG)
+-	Execute the following curl command to add the CDC Extract.
 
-3. Start the change-capture extract using the Curl Command, which would start the extract with begin-now option.
+		[oracle@OGG181DB183 Lab5]$ curl -u oggadmin:Welcome1 -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:16001/services/v2/extracts/EXT2 -d @ext2.json | python -mjson.tool
+		
+-	After the command is executed successfully, the command output looks like this:
 
-![](images/500/2.PNG)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1374  100   949  100   425     42     18  0:00:23  0:00:22  0:00:01   120
+{
+    "$schema": "api:standardResponse",
+    "links": [
+        {
+            "href": "http://localhost:16001/services/v2/extracts/EXT2",
+            "mediaType": "application/json",
+            "rel": "canonical"
+        },
+        {
+            "href": "http://localhost:16001/services/v2/extracts/EXT2",
+            "mediaType": "application/json",
+            "rel": "self"
+        }
+    ],
+    "messages": [
+        {
+            "$schema": "ogg:message",
+            "code": "OGG-08100",
+            "issued": "2019-02-09T20:51:15Z",
+            "severity": "INFO",
+            "title": "EXTRACT (Integrated) added.",
+            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+        },
+        {
+            "$schema": "ogg:message",
+            "code": "OGG-02003",
+            "issued": "2019-02-09T20:51:38Z",
+            "severity": "INFO",
+            "title": "Extract EXT2 successfully registered with database at SCN 9096500.",
+            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-02003"
+        },
+        {
+            "$schema": "ogg:message",
+            "code": "OGG-08100",
+            "issued": "2019-02-09T20:51:38Z",
+            "severity": "INFO",
+            "title": "EXTTRAIL added.",
+            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+        }
+    ]
+}
 
-4. After the command is executed successfully, the command output looks like this:
+-	On the Goldengate Microservices Console, under the Admin Server you can see the Extract has been started and running .
 
-![](images/500/3.PNG)
+![](images/500/ext2_running.png)
 
-![](images/500/4.PNG)
+### **STEP 3**: Review the json file for building the Distribution Path.
 
-5. On the Goldengate Microservices Console, under the Admin Server you can see the Extract has been started and running .
+		[oracle@OGG181DB183 Lab5]$ cat tpath.json 
+		{
+		"name": "TSTPATH",
+		"status": "stopped",
+		"source": {
+		"uri": "trail://localhost:16002/services/v2/sources?trail=x2"
+		},
+		"target": {
+		"uri": "ws://OracleGoldenGate+WSTARGET@localhost:17003/services/v2/targets?trail=bc"
+		}
+		}
 
-![](images/500/4.PNG)
 
-6. A path needs to be  created to send the transaction of data from the Extract to the Replicat. You can create a new path by adding configuration  in JSON file.
+### **STEP 4**: Create and start the distribution path which sends the transactions from the Extract to the Receiver Service.
 
-![](images/500/5.PNG)
+-	Execute the following curl command to add the PATH to send data from Extract to replicat.
 
-7. You can execute the following curl command to add the PATH to send data from Extract to replicat.
+		[oracle@OGG181DB183 Lab5]$ curl -u oggadmin:Welcome1 -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:16002/services/v2/sources/TSTPATH -d @tpath.json | python -mjson.tool
 
-![](images/500/6.PNG)
+-	After the command is executed successfully, the command output looks like this:
 
-8. Once the command is executed successfully, you can check on Goldengate Microservices Web Console under Distribution Server for the PATH created  and its Running Status.
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   709  100   499  100   210    430    181  0:00:01  0:00:01 --:--:--   430
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16002/services/v2/sources/TSTPATH",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16002/services/v2/sources/TSTPATH",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08511",
+					"issued": "2019-02-09T21:06:57Z",
+					"severity": "INFO",
+					"title": "The path 'TSTPATH' has been added.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08511"
+				}
+			]
+		}
 
-![](images/500/7.PNG)
+-	On the Goldengate Microservices Console, under the Distribution Server you will see that the PATH is created its Running Status.
 
-9. Next Step is to configure replicat on target which can be done by specifying the various configuration parameters for the Replicat in a JSON file as shown below:
+![](images/500/tpath_running.png)
 
-![](images/500/8.PNG)
+### **STEP 5**: Review the json file for building the Replicat.
 
-10. In this Step, You just need to configure and create the Replicat and do not start it (we will Start it at specific CSN after the export/import Job is done). Using the curl command we can add the replicat.
+		[oracle@OGG181DB183 Lab5]$ cat rep2.json 
+		{
+			"config":[
+				"Replicat    REP2",
+				"UseridAlias TGGATE",
+				"Map oggoow181.*, Target oggoow182.*;"
+			],
+			"source":{
+				"name":"X2"
+			},
+			"credentials":{
+				"alias":"TGGATE"
+			},
+			"checkpoint":{
+				"table":"ggate.checkpoints"
+			},
+			"status":"stopped"
+		}
 
-![](images/500/9.PNG)
+### **STEP 6**: Create the CDC Replicat which sends the transactions to the target database.
+
+-	Execute the following curl command to add the Replicat.
+
+		[oracle@OGG181DB183 Lab5]$ curl -u oggadmin:Welcome1 -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:17001/services/v2/replicats/REP2 -d @rep2.json | python -mjson.tool
+
+-	After the command is executed successfully, the command output looks like this:
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   768  100   478  100   290    885    536 --:--:-- --:--:-- --:--:--   885
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:17001/services/v2/replicats/REP2",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:17001/services/v2/replicats/REP2",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-09T21:22:18Z",
+					"severity": "INFO",
+					"title": "REPLICAT added.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				}
+			]
+		}
+
+
+*********** Need to change this part and add transactions to the lab  *****************************
 
 11. Now it is time to get the current scn of the source database .So that all the  transactions after this particular CSN are only captured & Replicated (i.e we have to capture only those transactions that occur after the export Job)
 
