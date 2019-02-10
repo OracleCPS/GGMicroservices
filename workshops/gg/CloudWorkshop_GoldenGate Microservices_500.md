@@ -246,6 +246,7 @@ Before we begin we want to make sure the target database is empty.
 
 
 *********** Need to change this part and add transactions to the lab  *****************************
+************* SBench Transactions  *******************************
 
 11. Now it is time to get the current scn of the source database .So that all the  transactions after this particular CSN are only captured & Replicated (i.e we have to capture only those transactions that occur after the export Job)
 
