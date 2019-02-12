@@ -38,6 +38,8 @@ Steps:
 
 For Ravello Environment <br />
 http://localhost:16000 <br />
+OR<br />
+http://DNS:16000<br />
 
 
 Figure 7a-1:
