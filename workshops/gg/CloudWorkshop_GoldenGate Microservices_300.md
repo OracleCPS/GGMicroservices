@@ -109,6 +109,14 @@ Figure 3-8:
 
 b. Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182). After creating the credential, login and verify that it works. You will need to create 1 credential for the user to connect to PDB2. We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate. Click Submit when finished.
 
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	TGGATE2|
+|Credential Alias|	TGGATE2|
+|User ID|	C##GGATE@OGGOOW182|
+|Password|	ggate|
+|Verify Password| 	 ggate|
+
 Figure 3-9:
 
 ![](images/400/Lab300_image340.PNG) 
