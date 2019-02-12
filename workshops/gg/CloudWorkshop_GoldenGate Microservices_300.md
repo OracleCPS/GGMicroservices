@@ -41,6 +41,9 @@ Steps:
 
 4. Enter the credentail details as given below and click on submit. Password is "ggate"
 
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
 |Credential Domain|	SGGATE|
 |Credential Alias|	SGGATE|
 |User ID|	C##GGATE@OGGOOW18|
