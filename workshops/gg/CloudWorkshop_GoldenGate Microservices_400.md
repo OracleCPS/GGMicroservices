@@ -1,6 +1,6 @@
 ![](images/400/Lab300_image100.PNG)
 
-Update December 28, 2018
+Update Feburary 12, 2019
 
 ## UniDirectional and DDL Replication
 ## Introduction
@@ -24,7 +24,7 @@ This lab supports the following use cases:
 
 ## Required Artifacts
 
-Lab 7a: Configure Uni-Directional Replication (Integrated Extract)
+Lab 4a: Configure Uni-Directional Replication (Integrated Extract)
 
 Objective:
 
@@ -34,7 +34,7 @@ Time: 25 minutes
 
 Steps:
 
-1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 7a-1). Port number will vary depending on what you used during setup.
+1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment. Port number will vary depending on what you used during setup.
 
 For Ravello Environment <br />
 http://localhost:16000 <br />
@@ -42,20 +42,18 @@ OR<br />
 http://DNS:16000<br />
 
 
-Figure 7a-1:
-
 ![](images/400/Lab300_image110.PNG) 
  
 
-2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta (Figure 7a-2).  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
+2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta.  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
-
-Figure 7a-2:
 
 ![](images/400/Lab300_image120.PNG) 
  
 
 3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done in lab 300.
+
+![](images/400/Lab300_image121.PNG) 
 
 
 4.	Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database (Figure 7a-3).
