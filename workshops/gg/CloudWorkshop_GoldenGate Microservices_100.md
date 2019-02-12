@@ -18,7 +18,7 @@ In this first lab you will walk through the process of installing this new versi
 
 ## Required Artifacts
 
--   The following lab will use a VNC Viewer which was a prerequisite for this workshop.
+-   The following lab will use a VNC Viewer which was a prerequisite for this workshop. If you have not already downloaded TightVNC it can be downloaded from the following link : https://www.tightvnc.com/download.php
 -   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
 
 
