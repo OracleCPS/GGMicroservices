@@ -41,6 +41,13 @@ Steps:
 
 4. Enter the credentail details as given below and click on submit. Password is "ggate"
 
+Credential Domain	SGGATE
+Credential Alias	SGGATE
+User ID	C##GGATE@OGGOOW18
+Password	ggate
+Verify Password 	 ggate
+
+
  Figure 3-4:
 
 ![](images/400/Lab300_image150.PNG)
