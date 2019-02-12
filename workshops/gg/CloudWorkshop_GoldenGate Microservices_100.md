@@ -18,7 +18,7 @@ In this first lab you will walk through the process of installing this new versi
 
 ## Required Artifacts
 
--   The following lab will use a VNC Viewer which was a prerequisite for this workshop.
+-   The following lab will use a VNC Viewer which was a prerequisite for this workshop. If you have not already downloaded TightVNC it can be downloaded from the following link : https://www.tightvnc.com/download.php
 -   A client environment virtual machine that is running within the Ravello Cloud service is also provided with all of the necessary dependencies.
 
 
@@ -28,10 +28,10 @@ For this lab, Oracle GoldenGate and the Oracle Database sources and targets are 
 
 **Your instructor will provide the Ravello DNS and IP address for your image**
 
-In this step you will sign on to the Oracle 18c database environment to get started with the installation and configuration of the target environment.
+In this step you will use VNC client to connect with Oracle 18c database environment(Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
 
 -	Log in to the Ravello image of your assigned host, using TigerVNC.
--	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901: <hostname or IP>:5901 , then press Connect.
+-	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
 
 ![](images/100/vnc_login.PNG)
 

@@ -14,13 +14,13 @@ This lab walks you through configuring ServiceManager, Atlanta and SanFran deplo
 
 ## Required Artifacts
 
--   VNC Client for the initial install and deployment.
+-   VNC Client for the initial install and deployment. (Refer to Lab 100, for more information on using TightVNC connection)
 -	Browser to check the deployment.
 
 ### **STEP 1**: Open up a terminal window and create the ServiceManager and Source(Atlanta) Deployment
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   
-It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
+It is also responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
 -	On the desktop, right-click and select “Open Terminal”.
 
@@ -78,12 +78,12 @@ It also is responsible for starting and stopping the other GoldenGate services a
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
-|Administration Server Port"	| 	16000	|
-|Distribution Server Port"		|	16001	|
-|Receiver Server Port"			| 	16002	|
+|Administration Server Port"	| 	16001	|
+|Distribution Server Port"		|	16002	|
+|Receiver Server Port"			| 	16003	|
 |Enable Monitoring"				| 	Checked	|
-|Metrics Server Port			|	16003	|
-|Metrics Server UDP Port (data) |   16004	|
+|Metrics Server Port			|	16004	|
+|Metrics Server UDP Port (data) |   16005	|
 |Metrics Server Datastore Type  |   BDB		|
 
 -	For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.
