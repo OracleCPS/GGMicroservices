@@ -46,7 +46,7 @@ Steps:
 |-------------------------------|-----------|
 |Credential Domain|	SGGATE|
 |Credential Alias|	SGGATE|
-|User ID|	C##GGATE@OGGOOW18|
+|User ID|	C##GGATE@OGGOOW181|
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
