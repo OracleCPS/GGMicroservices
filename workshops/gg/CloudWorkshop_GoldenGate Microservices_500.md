@@ -5,60 +5,41 @@ Update January 14, 2019
 ## Zero Downtime Lab using REST API
 ## Introduction
 
+GoldenGate allows you to perform what we call **Zero Downtime Migrations (ZDT)**.  By using GoldenGate you can keep your source database up and operational while you perform a bulk instantiation of data to the new platform.
+
+There are multiple ways to perform the bulk data movement, if you are going to the same database (i.e. Oracle to Oracle), then it's advised to use native tools to move the data.  In the case of Oracle, we have integration with the data pump export/import utility, which makes it easy to sync the data with the delta information when the bulk data movement is complete.
+
+For this lab, even though we are going Oracle to Oracle, we will show you a method to do what we call file based data migration using the MicroServices architecture and the REST API for automation.
+
 This lab, will contains three parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
-# Part 1: Initial Load by Automated Script
-![](images/500/Lab800_Part1.png)
 
-### **STEP 1**: Run a script to delete the current data in the target database.
+# Part 1: Create the normal CDC processes.
 
-Before we begin we want to make sure the target database is empty.
+### **STEP 1**: Create and start the Change Data Capture (CDC) Extract process using curl commands.
+
+For ZDT we always install the normal CDC processes first and start the capture process and leave the delivery process stopped.  This way we will have stored any transactions that have been added during the time we do the bulk data movement.
 
 -	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
 
 ![](images/common/open_terminal.png)
 
--   Change directory to Lab5 and run script **truncate_trg.sh**.  
+-   In the terminal window and change directory to Lab5 and Review JSON file to add the CDC Extract.
 
-		[oracle@OGG181DB183 Lab5]$ ./truncate_trg.sh 
-		Truncate Target
-		Truncate Successful
-		[oracle@OGG181DB183 Lab5]$ 
-
-
-### **STEP 2**: Run a script to perform an initial load to the target database.
-
--   Change directory to Lab5 and review script **Initial_load_Automated.sh**.
-
-        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
-		[oracle@OGG181DB183 Lab5]$ ls
-		Initial_load_Automated.sh
-		[oracle@OGG181DB183 Lab5]$ less Initial_load_Automated.sh
-
--   Then, run the **Initial_load_Automated.sh** script:
-
-		[oracle@OGG181DB183 Lab5]$ ./Initial_load_Automated.sh 
-
--   Once the script completes the execution. Source and Target will be in sync.
-![](images/500/m9.PNG)
-
-# Part 2: Initial Load by Manual Script
-
-### **STEP 1**: Review the json file for building an integrated extract.
-
-		[oracle@OGG181DB183 Lab5]$ cat ext2.json 
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab6
+		[oracle@OGG181DB183 ~]$ cat ext2.json
 		{
 			"config":[
 				"Extract     EXT2",
-				"ExtTrail    X1 Format Release 12.3",
-				"UseridAlias CDBGGATE",
+				"ExtTrail    X1",
+				"UseridAlias SGGATE",
 				"Table       oggoow181.soe.*;"
 			],
 			"source":{
 				"tranlogs":"integrated"
 			},
 			"credentials":{
-				"domain":"CDBGGATE",
-				"alias":"CDBGGATE"
+				"domain":"OracleGoldenGate",
+				"alias":"SGGATE"
 				
 			},
 			"registration":{
@@ -70,11 +51,9 @@ Before we begin we want to make sure the target database is empty.
 				{
 					"name":"X1"
 				}
-			]
+			],
+			"status":"running"
 		}
-		[oracle@OGG181DB183 Lab5]$ 
-
-### **STEP 2**: Create and start the change-capture extract using the curl Command, which will start the extract with begin-now option.
 
 -	Execute the following curl command to add the CDC Extract.
 
@@ -127,26 +106,20 @@ Before we begin we want to make sure the target database is empty.
     ]
 }
 
--	On the Goldengate Microservices Console, under the Admin Server you can see the Extract has been started and running .
+### **STEP 2**: Create and start the CDC Distribution Path using curl commands.
 
-![](images/500/ext2_running.png)
-
-### **STEP 3**: Review the json file for building the Distribution Path.
-
+-   From the same terminal window review the JSON file to add the CDC Distribution Path.
 		[oracle@OGG181DB183 Lab5]$ cat tpath.json 
-		{
-		"name": "TSTPATH",
-		"status": "stopped",
-		"source": {
-		"uri": "trail://localhost:16002/services/v2/sources?trail=x2"
-		},
-		"target": {
-		"uri": "ws://OracleGoldenGate+WSTARGET@localhost:17003/services/v2/targets?trail=bc"
-		}
-		}
-
-
-### **STEP 4**: Create and start the distribution path which sends the transactions from the Extract to the Receiver Service.
+				{
+				"name": "TSTPATH",
+				"status": "stopped",
+				"source": {
+				"uri": "trail://localhost:16002/services/v2/sources?trail=x2"
+				},
+				"target": {
+				"uri": "ws://OracleGoldenGate+WSTARGET@localhost:17003/services/v2/targets?trail=bc"
+				}
+				}
 
 -	Execute the following curl command to add the PATH to send data from Extract to replicat.
 
@@ -183,11 +156,9 @@ Before we begin we want to make sure the target database is empty.
 			]
 		}
 
--	On the Goldengate Microservices Console, under the Distribution Server you will see that the PATH is created its Running Status.
+### **STEP 3**: Create the CDC Replicat using curl commands.  This will add it in a Stopped state.
 
-![](images/500/tpath_running.png)
-
-### **STEP 5**: Review the json file for building the Replicat.
+-   From the same terminal window review the JSON file to add the CDC Replicat.
 
 		[oracle@OGG181DB183 Lab5]$ cat rep2.json 
 		{
@@ -207,8 +178,6 @@ Before we begin we want to make sure the target database is empty.
 			},
 			"status":"stopped"
 		}
-
-### **STEP 6**: Create the CDC Replicat which sends the transactions to the target database.
 
 -	Execute the following curl command to add the Replicat.
 
@@ -244,25 +213,77 @@ Before we begin we want to make sure the target database is empty.
 			]
 		}
 
+-	On the Goldengate Microservices Console, under the Admin Server for Atlanta you can see the Extract has been added and and the status is **Running**.
 
-*********** Need to change this part and add transactions to the lab  *****************************
-************* SBench Transactions  *******************************
+![](images/500/ext2_running.png)
 
-11. Now it is time to get the current scn of the source database .So that all the  transactions after this particular CSN are only captured & Replicated (i.e we have to capture only those transactions that occur after the export Job)
+-	On the Goldengate Microservices Console, under the Distribution Server for Atlanta you will see that the PATH is created and the status is **Running**.
 
-SQL> select current_scn from v$database;
+![](images/500/tpath_running.png)
 
-12. We need to create a JSON file to alter the Change-Capture Replicat at a particular CSN.
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran you can see the Replicat has been added and the status is **Stopped**.
 
-![](images/500/10.PNG)
+**ADD IMAGE FOR STOPPED REPLICAT**
 
-13. We finally need to start the replicat after the Export/import Job has finished successfully on target.We use the following Curl command to start the replicat, which refers to the JSON file created in last step.
+# Part 2: Initial Load by Automated Script
+![](images/500/Lab800_Part1.png)
 
-![](images/500/11.PNG)
+### **STEP 1**: Run a script to delete the current data in the target database.
 
-14. Once the command is executed successfully you can crosscheck the status of the Replicat on Goldengate Microservices Web Console under the Admin Server of the Target.
+Before we begin we want to make sure the target database is empty.
 
-![](images/500/12.PNG)
+-	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
+
+![](images/common/open_terminal.png)
+
+-   Change directory to Lab5 and run script **truncate_trg.sh**.  
+
+		[oracle@OGG181DB183 Lab5]$ ./truncate_trg.sh 
+		Truncate Target
+		Truncate Successful
+		[oracle@OGG181DB183 Lab5]$ 
 
 
-You have completed lab 500!   **Great Job!**
+### **STEP 2**: Run a script to perform an initial load to the target database.
+
+-   Change directory to Lab5 and review script **Initial_load_Automated.sh**.
+
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
+		[oracle@OGG181DB183 Lab5]$ ls
+		Initial_load_Automated.sh
+		[oracle@OGG181DB183 Lab5]$ less Initial_load_Automated.sh
+
+-   Then, run the **Initial_load_Automated.sh** script:
+
+		[oracle@OGG181DB183 Lab5]$ ./Initial_load_Automated.sh 
+
+### **STEP 3**: Run Swingbench script to apply data to the source database.
+-   While the script is running, we'll run Swingbench transactions to create activity on the the database during the initial load.
+
+-	Open another terminal by right clicking on the Desktop of the VNC session and select **Open Terminal**
+
+![](images/common/open_terminal.png)
+
+
+-   Change directory to Lab5 run script **start_swingbench_181.sh**.
+
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
+		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
+
+### **STEP 4**: Check Initial Load Extract to see if it's completed.
+
+**SCREENSHOTS NEEDED**
+
+-	On the Goldengate Microservices Console, under the Admin Server for Atlanta if the Initial Load Extract (LOAD) is finished status should be **Stopped**.
+
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran and check the detail page for the Initial Load Replicat (RLOAD) to see if it's completed the load.
+
+### **STEP 5**: Start the CDC Replicat to sync the data.
+
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran start the CDC Replicat (REP2).
+
+-	Check to see if the Swingbench script is completed.
+
+-	Run the script **count_src_trg.sh** to see if the counts on both are the same.  You may have to run this a couple of times if the source transactions haven't replicated yet.
+
+Once the data is in sync you have completed lab 500!   **Great Job!**
