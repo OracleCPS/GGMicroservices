@@ -81,6 +81,14 @@ Figure 3-6:
 7.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 In order to create this user, click the plus sign ( + ) next to the word Credentials. Then provide the connection information needed , notice that you will be using the Service Manager login in this credential.
 
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	WSTARGET|
+|Credential Alias|	WSTARGET|
+|User ID|	oggadmin|
+|Password|	Welcome1|
+|Verify Password| 	 Welcome1|
+
 Figure 3-7:
 
 ![](images/400/Lab300_image190.PNG) 
