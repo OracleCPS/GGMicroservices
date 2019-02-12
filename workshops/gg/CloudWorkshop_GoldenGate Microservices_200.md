@@ -20,7 +20,7 @@ This lab walks you through configuring ServiceManager, Atlanta and SanFran deplo
 ### **STEP 1**: Open up a terminal window and create the ServiceManager and Source(Atlanta) Deployment
 
 In this step you will create the initial ServiceManager. ServiceManager is the bootstrap process that can be configured as a daemon process in Unix and windows so that it can start and stop on system startup and shutdown.   
-It also is responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
+It is also responsible for starting and stopping the other GoldenGate services and presents the initial web user interface and access point for the AdminClient command line interface.
 
 -	On the desktop, right-click and select “Open Terminal”.
 
