@@ -28,7 +28,7 @@ For this lab, Oracle GoldenGate and the Oracle Database sources and targets are 
 
 **Your instructor will provide the Ravello DNS and IP address for your image**
 
-In this step you will sign on to the Oracle 18c database environment to get started with the installation and configuration of the target environment.
+In this step you will use VNC client to connect with Oracle 18c database environment(in Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
 
 -	Log in to the Ravello image of your assigned host, using TigerVNC.
 -	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901: <hostname or IP>:5901 , then press Connect.
