@@ -1,4 +1,4 @@
-![](images/1000/Lab1000_image100.PNG)
+![](images/Reset/Reset_image1.png)
 
 Update January 22, 2019
 
