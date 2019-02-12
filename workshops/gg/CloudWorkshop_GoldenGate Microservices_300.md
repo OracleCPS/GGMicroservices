@@ -81,6 +81,14 @@ Figure 3-6:
 7.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 In order to create this user, click the plus sign ( + ) next to the word Credentials. Then provide the connection information needed , notice that you will be using the Service Manager login in this credential.
 
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	WSTARGET|
+|Credential Alias|	WSTARGET|
+|User ID|	oggadmin|
+|Password|	Welcome1|
+|Verify Password| 	 Welcome1|
+
 Figure 3-7:
 
 ![](images/400/Lab300_image190.PNG) 
@@ -100,6 +108,14 @@ Figure 3-8:
 ![](images/400/Lab300_image330.PNG)
 
 b. Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182). After creating the credential, login and verify that it works. You will need to create 1 credential for the user to connect to PDB2. We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate. Click Submit when finished.
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	TGGATE2|
+|Credential Alias|	TGGATE2|
+|User ID|	C##GGATE@OGGOOW182|
+|Password|	ggate|
+|Verify Password| 	 ggate|
 
 Figure 3-9:
 
