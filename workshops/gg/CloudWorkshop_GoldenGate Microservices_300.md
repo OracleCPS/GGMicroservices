@@ -41,6 +41,16 @@ Steps:
 
 4. Enter the credentail details as given below and click on submit. Password is "ggate"
 
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	SGGATE|
+|Credential Alias|	SGGATE|
+|User ID|	C##GGATE@OGGOOW181|
+|Password|	ggate|
+|Verify Password| 	 ggate|
+
+
  Figure 3-4:
 
 ![](images/400/Lab300_image150.PNG)
@@ -53,7 +63,15 @@ Figure 3-5:
 ![](images/300/Lab300_image3.3.PNG) 
 
 
-6. Enter the CDB connection details as given below and click on submit. Password is Welcome1
+6. Enter the CDB connection details as given below and click on submit. Password is "ggate"
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	CDBGGATE|
+|Credential Alias|	CDBGGATE|
+|User ID|	C##GGATE|
+|Password|	ggate|
+|Verify Password| 	 ggate|
 
 Figure 3-6:
 
