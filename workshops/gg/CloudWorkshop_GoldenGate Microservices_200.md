@@ -58,7 +58,7 @@ It is also responsible for starting and stopping the other GoldenGate services a
 
 ![](images/200/6.PNG)
 
--	For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/ServiceManager/Atlanta"** directory and click on the **"Select"** button.
+-	For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/Atlanta"** directory and click on the **"Select"** button.
 
 ![](images/200/7.PNG)
 
