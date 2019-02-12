@@ -5,41 +5,28 @@ Update December 28, 2018
 ## Creating Credentials in GoldenGate Micro Services Architecture
 ## Introduction
 
-In this Lab, you will configure the database user credentials entries needed for replication. 
+In this Lab, you will configure the database and protocol user credentials entries needed for replication. 
 
 ## Objectives
 
--   Create Database User Credentials for setting up the Goldengate Processes.
+-   Create Database and Protocol User Credentials for setting up the Goldengate Processes.
 
+### **STEP 1**: Create the root CDB user credential and the GoldenGate Protocol credentials.
 
-## Required Artifacts
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+- 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
+![](images/200/33.JPG)
 
-Lab 3: To begin this Lab, follow the below steps
-
-Time: 25 minutes
-
-Steps:
-
-1.	Open the admin console page http://localhost:16000, provide the credentials and click on "Sign in".
-
- Figure 3-1:
-
-![](images/400/Lab300_image110.PNG)
-
-2. After logging in, find and open the Administration Server for your first deployment. In this example, the first deployment is Atlanta. Go to Atlanta administration server page by click on 16001.
-
- Figure 3-2:
+-   After logging in, find and open the Administration Server for your first deployment. In this example, the first deployment is Atlanta. Go to Atlanta administration server page by clicking on 16001.
 
 ![](images/400/Lab300_image120.PNG)
 
-3. Click on hamburger symbol on top left corner of the page, select Configuration and select "+" sign beside credentials.
-
- Figure 3-3:
+-   Click on hamburger symbol on top left corner of the page, select Configuration and select "+" sign beside credentials.
 
 ![](images/400/Lab300_image130.PNG)
 
-
-4. Enter the credentail details as given below and click on submit. Password is "ggate"
+-   Here will create the root container database credentials.  Enter the credential details as given below and click on submit. Password is "ggate".  You will need to add the alias for a user that will connect to CDB (ORCL). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
 
 
 | Field/Checkbox				|	Setting	|
@@ -50,36 +37,13 @@ Steps:
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
-
- Figure 3-4:
-
 ![](images/400/Lab300_image150.PNG)
 
+Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 
-5.  On the Configuration page, select the plus ( + ) sign to begin adding a credential. You will need to add the alias for a user that will connect to CDB (ORCL). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
-
-Figure 3-5:
+-   Click the plus sign ( + ) next to the word Credentials. Then provide the connection information needed, notice that you will be using the Service Manager login in this credential.
 
 ![](images/300/Lab300_image3.3.PNG) 
-
-
-6. Enter the CDB connection details as given below and click on submit. Password is "ggate"
-
-| Field/Checkbox				|	Setting	|
-|-------------------------------|-----------|
-|Credential Domain|	CDBGGATE|
-|Credential Alias|	CDBGGATE|
-|User ID|	C##GGATE|
-|Password|	ggate|
-|Verify Password| 	 ggate|
-
-Figure 3-6:
-
-![](images/300/Lab300_image3.2.PNG) 
-
-
-7.	Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
-In order to create this user, click the plus sign ( + ) next to the word Credentials. Then provide the connection information needed , notice that you will be using the Service Manager login in this credential.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
@@ -89,55 +53,168 @@ In order to create this user, click the plus sign ( + ) next to the word Credent
 |Password|	Welcome1|
 |Verify Password| 	 Welcome1|
 
-Figure 3-7:
-
 ![](images/400/Lab300_image190.PNG) 
  
+ -  Refresh the Administration Service Configuration page to see if Credential was created.
 
-8.	Refresh the Administration Service Configuration page to see if Credential was created.
+### **STEP 2**: Create the target database user credentials using the REST API.
+Next, you will create a target database User Alias which is very similar to the one that you created earlier, the difference being that this alias will be called TGGATE and will reside in the second Deployment (SanFran).  This will be the GoldenGate admin user for the target database.
 
-
-9.  Next, you will create a target database User Alias which is very similar to the one that you created earlier, the difference being that this alias will be called TGGATE2 and will reside in the second Deployment (SanFran).  This will be the GoldenGate admin user for the database for all labs.
-
-To create the TGGATE2 connection follow the below steps:
-
-a. Open the Administration Server for the second deployment by clicking on the 17001 link in the admin page. Login with the following credentials oggadmin/Welcome1
-
-Figure 3-8:
-
-![](images/400/Lab300_image330.PNG)
-
-b. Open the Configuration option to add your credentials needed to connect to PDB2 (OGGOOW182). After creating the credential, login and verify that it works. You will need to create 1 credential for the user to connect to PDB2. We will use the same common user as before, C##GGATE@OGGOOW182, with password ggate. Click Submit when finished.
+Below are the parameters that will be used in exectuting the scripts.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
-|Credential Domain|	TGGATE2|
-|Credential Alias|	TGGATE2|
-|User ID|	C##GGATE@OGGOOW182|
+|Credential Domain|	TGGATE|
+|Credential Alias|	TGGATE|
+|User ID|	GGATE@OGGOOW182|
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
-Figure 3-9:
+To create the TGGATE connection follow the below steps:
 
-![](images/400/Lab300_image340.PNG) 
- 
+-	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
 
-10.	Next, you will create a Checkpoint Table to be used by all the Replicats for the workshop. This will be done by using the add_CheckpointTable.sh script. Run the following command from the Lab6 directory:
+![](images/common/open_terminal.png)
 
-            $ ./add_CheckpointTable.sh Welcome1 17001
+-   In the terminal window and change directory to Lab3 and review the script that has the JSON information used to add the database credentials.
 
-Upon a successful run, the corresponding information will be displayed in the Terminal window.
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab3
+        [oracle@OGG181DB183 Lab3]$ cat create_credential_GGAlias_target.sh 
+        #!/bin/bash
 
-Figure 3-10:
+        #variables
+        vPass=$1
+        vASHost=localhost
+        vASPort=$2
+        vGGUser=$3
+        vGGPass=$4
+        vGGAlias=TGGATE
 
-![](images/300/Lab300_image8.PNG) 
+        function _createAlias {
+            curl -X POST \
+            http://$vASHost:$vASPort/services/v2/credentials/OracleGoldenGate/$vGGAlias \
+            --user "oggadmin:"$vPass   \
+            -H 'Cache-Control: no-cache' \
+            -d '{
+                "userid":"'$vGGUser'",
+                "password":"'$vGGPass'"
+            }' | python -mjson.tool
+        }
 
+        function _main {
+            _createAlias
+        }
 
-11. The Checkpoint Table can also be viewed under the TTGATE alias from the Boston Deployment’s Administration Service > Configuration page. This is done by clicking the “log in” button and then looking under Checkpoint.
+        _main
 
-Figure 3-11:
+-   Run the **create_credential_GGAlias_target.sh** script.
+
+        [oracle@OGG181DB183 Lab3]$ ./create_credential_GGAlias_target.sh Welcome1 17001 ggate@oggoow182 ggate TGGATE
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                        Dload  Upload   Total   Spent    Left  Speed
+        100   834  100   761  100    73  34234   3283 --:--:-- --:--:-- --:--:-- 36238
+        {
+            "$schema": "api:standardResponse",
+            "links": [
+                {
+                    "href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+                    "mediaType": "application/json",
+                    "rel": "canonical"
+                },
+                {
+                    "href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+                    "mediaType": "application/json",
+                    "rel": "self"
+                }
+            ],
+            "messages": [
+                {
+                    "$schema": "ogg:message",
+                    "code": "OGG-15114",
+                    "issued": "2019-02-12T23:16:17Z",
+                    "severity": "INFO",
+                    "title": "Credential store altered.",
+                    "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15114"
+                },
+                {
+                    "$schema": "ogg:message",
+                    "code": "OGG-15116",
+                    "issued": "2019-02-12T23:16:17Z",
+                    "severity": "INFO",
+                    "title": "No information found in credential store.",
+                    "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15116"
+                }
+            ]
+        }
+
+### **STEP 3**: Create the target GoldenGate checkpoint table using the REST API.
+
+-   In the same terminal window, review the script that has the JSON information to to add the checkpoint table.
+
+        [oracle@OGG181DB183 ~]$ cat add_CheckpointTable.sh
+        [oracle@OGG181DB183 Lab3]$ cat add_CheckpointTable.sh 
+        #!/bin/bash
+
+        #variables
+        vPass=$1
+        vASHost=localhost
+        vASPort=$2
+        vGGAlias=OracleGoldenGate.TGGATE
+
+        function _createCkptTbl {
+            curl -X POST \
+            http://$vASHost:$vASPort/services/v2/connections/$vGGAlias/tables/checkpoint \
+            --user "oggadmin:"$vPass   \
+            -H 'Cache-Control: no-cache' \
+            -d '{
+                    "operation":"add",
+                    "name":"ggate.checkpoints"
+            }' | python -mjson.tool
+        }
+
+        function _main {
+            _createCkptTbl
+        }
+
+        _main
+
+-   Run the **add_CheckpointTable.sh** script.
+
+        [oracle@OGG181DB183 Lab3]$ ./add_CheckpointTable.sh Welcome1 17001
+        % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                        Dload  Upload   Total   Spent    Left  Speed
+        100   719  100   635  100    84   1789    236 --:--:-- --:--:-- --:--:--  1793
+        {
+            "$schema": "api:standardResponse",
+            "links": [
+                {
+                    "href": "http://localhost:17001/services/v2/connections/OracleGoldenGate.TGGATE/tables/checkpoint",
+                    "mediaType": "application/json",
+                    "rel": "canonical"
+                },
+                {
+                    "href": "http://localhost:17001/services/v2/connections/OracleGoldenGate.TGGATE/tables/checkpoint",
+                    "mediaType": "application/json",
+                    "rel": "self"
+                }
+            ],
+            "messages": [
+                {
+                    "$schema": "ogg:message",
+                    "code": "OGG-08100",
+                    "issued": "2019-02-12T23:16:45Z",
+                    "severity": "INFO",
+                    "title": "Logon catalog name OGGOOW182 will be used for table specification OGGOOW182.ggate.checkpoints.",
+                    "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+                }
+            ]
+        }
+
+The Checkpoint Table can also be viewed under the TTGATE alias from the Deployment’s Administration Service > Configuration page. This is done by clicking the “log in” button and then looking under Checkpoint.
 
 ![](images/300/Lab300_image9.0.PNG) 
+
+![](images/300/Lab300_image10.PNG) 
 
 You have completed lab 300!   **Great Job!**
 
