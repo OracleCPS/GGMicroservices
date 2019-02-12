@@ -14,7 +14,7 @@ This lab walks you through configuring ServiceManager, Atlanta and SanFran deplo
 
 ## Required Artifacts
 
--   VNC Client for the initial install and deployment.
+-   VNC Client for the initial install and deployment. (Refer to Lab 100, for more information on using TightVNC connection)
 -	Browser to check the deployment.
 
 ### **STEP 1**: Open up a terminal window and create the ServiceManager and Source(Atlanta) Deployment
