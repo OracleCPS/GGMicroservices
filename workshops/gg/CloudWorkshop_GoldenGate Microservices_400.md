@@ -140,7 +140,7 @@ Alias: WSTARGET
 
 ### **STEP 5**: Check Receiver Service.
 
-Objective:
+## Objectives
 Check the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
 
 -   Start from the Service Manager page for your second deployment.
@@ -153,7 +153,7 @@ Check the Receiver Server for the target database, which will receive the trail 
 
 ### **STEP 6**: Configure Uni-Directional Replication (Parallel Replicat).
 
-Objective:
+## Objectives
 In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   Starting from the Service Manager page.
@@ -232,11 +232,10 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 ### **STEP 8**: DDL Replication.
 
-Objective: 
+## Objectives
+In this lab we will perform a few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
 
-In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
-
-Prerequisite: Source and target database should be in sync. Extract, pump and replicat should be up and running.
+Prerequisite: Source and target database should be in sync. Extract, Pump and Replicat should be up and running.
 
 -   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
 
