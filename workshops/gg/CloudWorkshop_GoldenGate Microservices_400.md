@@ -5,58 +5,37 @@ Update Feburary 12, 2019
 ## UniDirectional and DDL Replication
 ## Introduction
 
-This lab walk you through unidirectional and DDL replication between to database schemas using Goldengate 18.1 micro services web interface in a Ravello environment.
+This lab walks you through uni-directional and DDL replication between to database schemas using Goldengate 18.1 Micro services web interface in a Ravello environment.
 
 ![](images/400/Lab300_image104.PNG)
 
 This lab supports the following use cases:
--	Migration of on-premise pluggable databases to a cloud based environment.
--	Rapid creation of test or development pluggable database copies in the Cloud.
--	Rapid replication of on-premise data for reporting and analytics.
--	Rapid re-fresh of selected on-premise schemas for test and/or development activities and/or reporting and analytics.
-
-- To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
+-	One way replication to target database where both databases are already in sync.
+-   Simple DDL replication example.
 
 ## Objectives
 
--   Migrate a pluggable database from on-premise to the Cloud.
--   Migrate a schema using Oracle Data Pump.
+This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Microservices Architecture for a uni-directional configuration using the SOE schema in the OGGOOW181 and OGGOOW182 PDBs. 
 
-## Required Artifacts
 
-Lab 4a: Configure Uni-Directional Replication (Integrated Extract)
-
-Objective:
-
-This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Service Architecture for a uni-directional configuration using the SOE schema in OGGOOW181 and OGGOOW182 PDBs. 
-
-Time: 25 minutes
-
-Steps:
-
-1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment. Port number will vary depending on what you used during setup.
-
-For Ravello Environment <br />
-http://localhost:16000 <br />
-OR<br />
-http://DNS:16000<br />
-
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+- 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
+![](images/200/33.JPG)
 
 ![](images/400/Lab300_image110.PNG) 
  
+-   After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta.  Click on the link with the port number for the Admin Service for Atlanta.
 
-2.	After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta.  When the page is completely open, you should be at a page where you can see Extracts/Replicats clearly.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 ![](images/400/Lab300_image120.PNG) 
  
-
-3.	Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done in lab 300.
+-   Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done in lab 300.
 
 ![](images/400/Lab300_image121.PNG) 
 
-
-4.	Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for each Credential Alias and you should be able to login to the database.
+-   Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for the database Credential Alias and you should be able to login to the database.
 
 
 ![](images/400/Lab300_image160.PNG) 

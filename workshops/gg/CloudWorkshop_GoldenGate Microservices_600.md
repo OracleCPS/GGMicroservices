@@ -17,7 +17,7 @@ Since we’ve already done multiple labs, this one will take what we used so far
 ## Required Artifacts
 
 -   VNC Client for the deployment.
--       Browser to check the deployment.
+-   Browser to check the deployment.
 -   Swingbench to apply transactions.
 
 ### **STEP 1**: Run a script to perform a rapid deployment.

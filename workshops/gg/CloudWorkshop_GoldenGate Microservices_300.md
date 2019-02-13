@@ -11,7 +11,7 @@ In this Lab, you will configure the database and protocol user credentials entri
 
 -   Create Database and Protocol User Credentials for setting up the Goldengate Processes.
 
-### **STEP 1**: Create the root CDB user credential and the GoldenGate Protocol credentials.
+### **STEP 1**: Create the root CDB user credential and the GoldenGate Protocol credential.
 
 - 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
@@ -33,11 +33,11 @@ In this Lab, you will configure the database and protocol user credentials entri
 |-------------------------------|-----------|
 |Credential Domain|	SGGATE|
 |Credential Alias|	SGGATE|
-|User ID|	C##GGATE@OGGOOW181|
+|User ID|	C##GGATE@orcl|
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
-![](images/400/Lab300_image150.PNG)
+![](images/300/Lab300_image3.PNG)
 
 Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 
