@@ -25,7 +25,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 -   In the terminal window and change directory to Lab5 and Review JSON file to add the CDC Extract.
 
-        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab6
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
 		[oracle@OGG181DB183 ~]$ cat ext2.json
 		{
 			"config":[
