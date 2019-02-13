@@ -182,14 +182,12 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
-    SOURCECATALOG OGGOOW182 <br />
     MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
  
 ![](images/400/Lab300_image380.PNG) 
 
 [Optional - For your information] You can also specify individual table name as given below. <br />
 
-    SOURCECATALOG OGGOOW182 <br />
     MAP OGGOOW181.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; <br />
     MAP OGGOOW181.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  <br />
     MAP OGGOOW181.SOE.ORDERS, TARGET SOE.ORDERS;<br />
