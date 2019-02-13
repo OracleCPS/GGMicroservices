@@ -210,9 +210,11 @@ To create the TGGATE connection follow the below steps:
             ]
         }
 
-The Checkpoint Table can also be viewed under the TTGATE alias from the Deployment’s Administration Service > Configuration page. This is done by clicking the “log in” button and then looking under Checkpoint.
+The Checkpoint Table can also be viewed under the TTGATE alias from the SanFran Deployment’s Administration Service > Configuration page. This is done by clicking the “log in” button and then looking under Checkpoint.
 
-![](images/300/Lab300_image9.0.PNG) 
+![](images/300/Lab300_image991.PNG) 
+
+![](images/300/Lab300_image992.PNG) 
 
 ![](images/300/Lab300_image10.PNG) 
 
