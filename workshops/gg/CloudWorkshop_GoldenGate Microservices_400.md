@@ -138,7 +138,7 @@ Alias: WSTARGET
  
 ![](images/400/Lab300_image290.PNG) 
 
-### **STEP 5*: Check Receiver Service.
+### **STEP 5**: Check Receiver Service.
 
 Objective:
 Check the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
@@ -151,7 +151,7 @@ Check the Receiver Server for the target database, which will receive the trail 
 
 ![](images/400/Lab300_image310.PNG) 
 
-### **STEP 6*: Configure Uni-Directional Replication (Parallel Replicat).
+### **STEP 6**: Configure Uni-Directional Replication (Parallel Replicat).
 
 Objective:
 In this lab you will configure the Parallel Replicat for the second deployment.
