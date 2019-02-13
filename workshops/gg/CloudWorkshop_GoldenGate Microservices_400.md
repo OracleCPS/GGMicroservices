@@ -35,7 +35,7 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 -   Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This is done in lab 300.
 
-![](images/400/Lab300_image121.PNG) 
+![](images/300/Lab300_image5.PNG) 
 
 -   Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for the database Credential Alias and you should be able to login to the database.
 
