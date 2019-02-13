@@ -75,7 +75,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 On the last page of the Add Extract process, you are presented with a parameter file.  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
    
     DDL INCLUDE ALL;
-    SOURCECATALOG OGOOW181
+    SOURCECATALOG OGGOW181
     TABLE SOE.*;
 
 [Optional - For your information] You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
@@ -115,7 +115,7 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 ![](images/400/Lab300_image260.PNG) 
 
--   Click the plus sign ( + ) to add a new Distribution Path (Figure 7b-3).
+-   Click the plus sign ( + ) to add a new Distribution Path.
 
 ![](images/400/Lab300_image270.PNG) 
 
@@ -127,19 +127,17 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
 Hostname: localhost
-Port: <2nd deployment’s receiver server port>
+Port: 17003
 Trail File: <any two letter value>
 Domain: <credential you created in the Admin Server for WS>
 Alias: <credential you created in the Admin Server for WS>
 After filling out the form, click Create and Run at the bottom of the page.
 
-5.	If everything works as expected, your Distribution Path should be up and running.  You should be able to see clearly the source and target on this page (Figure 7b-5).
-
-Figure 7b-5:
+-   Review the Distribution Service to see that the distribution path is created and running.
  
 ![](images/400/Lab300_image290.PNG) 
 
-
+### **STEP 5**: Cloning a PDB database using an existing PDB database.
 
 Lab 7c: Cloning a PDB database using an existing PDB database
 
