@@ -154,12 +154,7 @@ In this step you will configure the Target (SanFran) deployment.
 
 -   Then, change to the **OGG181_WHKSHP/Lab2** directory.
 
-		cd /opt/app/oracle/product/18.1.0_RC2/bin
-
--	Once you login into the ***Remote desktop***,traverse to **applications** and open up the **Terminal**.
-
--   Then, change current directory to the **Lab2** directory.
-
+		
 		[oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab2
 
 -   You will run the **create_deployment.sh** script to create the SanFran deployment using a response file for OGGCA.
