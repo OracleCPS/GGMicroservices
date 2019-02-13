@@ -182,7 +182,7 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
-    MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
+    MAP OGGOOW181.SOE.*, TARGET SOE.*;
  
 ![](images/400/Lab300_image380.PNG) 
 
