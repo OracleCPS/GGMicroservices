@@ -72,12 +72,13 @@ Note: You will be required to login again.  Use the same Administrator account t
 ![](images/400/Lab300_image225.PNG) 
  
 
-On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-9).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
+On the last page of the Add Extract process, you are presented with a parameter file.  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
+   
     DDL INCLUDE ALL;
     SOURCECATALOG OGOOW181
     TABLE SOE.*;
 
-You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
+[Optional - For your information] You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
 
     DDL INCLUDE ALL;
     SOURCECATALOG OGGOOW181
