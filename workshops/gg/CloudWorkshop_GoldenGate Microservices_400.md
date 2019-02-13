@@ -24,7 +24,6 @@ This lab is in several parts.  The first part will setup the Integrated Extract 
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
 
 - 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
-![](images/200/33.JPG)
 
 ![](images/400/Lab300_image110.PNG) 
  
