@@ -53,7 +53,7 @@ Since you are configuring an non-SSL replication environment, you will need to c
 |Password|	Welcome1|
 |Verify Password| 	 Welcome1|
 
-![](images/400/Lab300_image190.PNG) 
+![](images/300/Lab300_image11.PNG) 
  
  -  Refresh the Administration Service Configuration page to see if Credential was created.
 
