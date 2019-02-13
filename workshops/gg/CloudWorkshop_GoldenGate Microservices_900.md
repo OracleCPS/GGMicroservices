@@ -90,16 +90,16 @@ You will use the following two scripts to configure these processes:
 
 Now you will create the Distribution Path that will be used to ship trail files from the Atlanta Deployment to the Boston Deployment. In order to do this, you will need to run the add_DistroPath.sh script.
 
+        $ ./add_DistroPath.sh Welcome1 16002 SOE2SOE aa 17003 ab
+
 The values used in the script correspond to the following:
 
-“Welcome1” = OGGADMIN user password
-“16002” = Atlanta Deployment’s Distribution Service port
-“SOE2SOE” = Distribution Path name
-“aa” = Atlanta Deployment’s source trail file name prefix
-“17003” = Boston Deployment’s Receiver Service port
-“ab” = Boston Deployment’s remote trail file prefix
-
-        $ ./add_DistroPath.sh Welcome1 16002 SOE2SOE aa 17003 ab
+        “Welcome1” = OGGADMIN user password
+        “16002” = Atlanta Deployment’s Distribution Service port
+        “SOE2SOE” = Distribution Path name
+        “aa” = Atlanta Deployment’s source trail file name prefix
+        “17003” = Boston Deployment’s Receiver Service port
+        “ab” = Boston Deployment’s remote trail file prefix
 
 When the Distribution Path has been added, you will see a message on the command line stating that it was added.
 
@@ -111,8 +111,36 @@ You will also see the path that is created in the Distribution Service.
 
 ![](images/900/Lab900_image190.PNG) 
 
+### **STEP 4**:  Add the checkpoint table.
 
-### **STEP 4**:  Check the cloned databases SCN
+Since the database was refreshed, there is no checkpoint table.  We will run a script to create it.
+
+-       From the same terminal window run the script **add_CheckpointTable.sh**.
+
+        [oracle@OGG181DB183 Lab9]$ ./add_CheckpointTable.sh Welcome1 17001 OracleGoldenGate.TGGATE
+
+### **STEP 5**: Create the Replicat
+
+In this Task, you will install the Replicat within the **SanFran** Deployment.  Credentials should be there from previous labs.
+
+To begin this Task, follow the below steps:
+
+From the same terminal window, While in the Lab9 directory, you will create the Replicat again with a script using the RESTful API.  The following is the script that you will run.
+        $ add_Replicat.sh
+
+-       Enter the following command to run the script:
+
+    $  ./add_Replicat.sh Welcome1 17001 IREP
+
+-       Once the script has completed, you should see output saying that the Replicat was added.
+
+![](images/900/Lab900_image230.PNG)
+
+-       After adding the Replicat, you can view it from the Boston Deployment’s Administration Service > Overview page.
+
+![](images/900/Lab900_image240.PNG)
+
+### **STEP 6**:  Check the cloned databases SCN
 
 -   In the same terminal window run the check_clone.sh script.  This script will show the starting SCN values for the replication process startup.  Note the CREATE_SCN for the OGGOOW181 container database.
 **NOTE: The CREATE_SCN could be different than the screenshot, so use the values you have from running the script.**
@@ -143,35 +171,6 @@ You will also see the path that is created in the Distribution Service.
 -       Notice the CREATE_SCN values in the generated output, you need to ensure that the CREATE_SCN for oggoow181 is copied. This will be the SCN that you will start the Replicat with in a next step. Proceed to the next Task after the script completes.
 
 ![](images/900/Lab900_image210.PNG)
-
-### **STEP 5**:  Add the checkpoint table.
-
-Since the database was refreshed, there is no checkpoint table.  We will run a script to create it.
-
--       From the same terminal window run the script **add_CheckpointTable.sh**.
-
-        [oracle@OGG181DB183 Lab9]$ ./add_CheckpointTable.sh Welcome1 17001 OracleGoldenGate.TGGATE
-
-### **STEP 6**: Create the Replicat
-
-In this Task, you will install the Replicat within the **SanFran** Deployment.  Credentials should be there from previous labs.
-
-To begin this Task, follow the below steps:
-
-From the same terminal window, While in the Lab9 directory, you will create the Replicat again with a script using the RESTful API.  The following is the script that you will run.
-        $ add_Replicat.sh
-
--       Enter the following command to run the script:
-
-    $  ./add_Replicat.sh Welcome1 17001 IREP
-
--       Once the script has completed, you should see output saying that the Replicat was added.
-
-![](images/900/Lab900_image230.PNG)
-
--       After adding the Replicat, you can view it from the Boston Deployment’s Administration Service > Overview page.
-
-![](images/900/Lab900_image240.PNG)
 
 ### **STEP 7**: Start replication and run the Swingbench transactions.
 
