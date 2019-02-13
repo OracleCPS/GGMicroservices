@@ -9,9 +9,27 @@ In this Lab, you will configure the database and protocol user credentials entri
 
 ## Objectives
 
--   Create Database and Protocol User Credentials for setting up the Goldengate Processes.
+-   Clone databases used for the credentials.
+-   Create Source Database and Protocol User Credentials for setting up the Goldengate Processes.
+-   Create Target Database User Credentials
 
-### **STEP 1**: Create the root CDB user credential and the GoldenGate Protocol credential.
+### **STEP 1**: Clone Databases
+
+In this step you will run several scripts.
+
+-   Run the **clone_pdb_reset.sh** script.  This script drops the source and target PDBs.
+
+        [oracle@OGG181DB183 db]$ ./clone_pdb_reset.sh
+
+-   Run the **clone_pdb_181.sh** script.  This script recreates the source by cloning a base PDB.
+
+        [oracle@OGG181DB183 db]$ ./clone_pdb_181.sh
+
+-   Run the **clone_pdb_182.sh** script.  This script recreates the target by cloning the source PDB.
+
+        [oracle@OGG181DB183 db]$ ./clone_pdb_182.sh
+
+### **STEP 2**: Create the root CDB user credential and the GoldenGate Protocol credential.
 
 - 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
@@ -57,7 +75,7 @@ Since you are configuring an non-SSL replication environment, you will need to c
  
  -  Refresh the Administration Service Configuration page to see if Credential was created.
 
-### **STEP 2**: Create the target database user credentials using the REST API.
+### **STEP 3**: Create the target database user credentials using the REST API.
 Next, you will create a target database User Alias which is very similar to the one that you created earlier, the difference being that this alias will be called TGGATE and will reside in the second Deployment (SanFran).  This will be the GoldenGate admin user for the target database.
 
 Below are the parameters that will be used in exectuting the scripts.
@@ -147,7 +165,7 @@ To create the TGGATE connection follow the below steps:
             ]
         }
 
-### **STEP 3**: Create the target GoldenGate checkpoint table using the REST API.
+### **STEP 4**: Create the target GoldenGate checkpoint table using the REST API.
 
 -   In the same terminal window, review the script that has the JSON information to to add the checkpoint table.
 

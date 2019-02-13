@@ -128,39 +128,17 @@ This step will walk you through how to setup a Path within the Distribution Serv
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
 Hostname: localhost
 Port: 17003
-Trail File: <any two letter value>
-Domain: <credential you created in the Admin Server for WS>
-Alias: <credential you created in the Admin Server for WS>
-After filling out the form, click Create and Run at the bottom of the page.
+Trail File: bb
+Domain: WSTARGET
+Alias: WSTARGET
+
+-   After filling out the form, click Create and Run at the bottom of the page.
 
 -   Review the Distribution Service to see that the distribution path is created and running.
  
 ![](images/400/Lab300_image290.PNG) 
 
-### **STEP 5**: Cloning a PDB database using an existing PDB database.
 
-Lab 7c: Cloning a PDB database using an existing PDB database
-
-Objective:
-In this lab, you will create a new PDB database OGGOOW182 by cloning an existing PDB database OGGOOW181.
-
-Time: 5 minutes
-
-Steps:
-1.	Login to database using sys user.
-
-            $ sqlplus / as sysdba
-
-2. Execute below command to check the PDBs present in the database.
-
-            sql> show pdbs
-
-3. Alter the PDB database, which you are using for clone, to read only state.
-
-            sql> alter pluggable database OGGOOW181 close;
-            sql> alter pluggable database OGGOOW181 open read only;
-
-Figure 7c-1:
  
 ![](images/400/Lab300_image505.PNG)
 
