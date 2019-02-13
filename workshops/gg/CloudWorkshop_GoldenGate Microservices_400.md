@@ -208,9 +208,9 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   Change directory to Lab3 run script **start_swingbench_181.sh**.
 
-        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
-		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
-        [oracle@OGG181DB183 Lab5]$ Author  :	 Dominic Giles
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab3
+		[oracle@OGG181DB183 Lab3]$ ./start_swingbench_181.sh
+        [oracle@OGG181DB183 Lab3]$ Author  :	 Dominic Giles
         Author  :	 Dominic Giles
         Version :	 2.6.0.1046
 
