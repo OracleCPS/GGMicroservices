@@ -123,8 +123,6 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 ![](images/400/Lab300_image280.PNG) 
 
-![](images/400/Lab300_image285.PNG) 
-
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
 Hostname: localhost
 Port: 17003
@@ -133,6 +131,8 @@ Domain: WSTARGET
 Alias: WSTARGET
 
 -   After filling out the form, click Create and Run at the bottom of the page.
+
+![](images/400/Lab300_image285.PNG) 
 
 -   Review the Distribution Service to see that the distribution path is created and running.
  
