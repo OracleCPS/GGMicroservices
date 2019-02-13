@@ -10,7 +10,7 @@ Update January 10, 2019
 
 In this lab we will setup replication to be used to load data using Swingbench and also to view the replication in real time with the Metric Service.
 
-We already have credentials setup for the two databases, but we don’t have transactional data setup for the Swingbench schema (SOE).  We will do that now:
+We already have credentials setup for the two databases, but we don’t have replication setup for the Swingbench schema (SOE)We will do that now:
 
 ### **STEP 1**: Refresh the databases.
 
@@ -20,31 +20,25 @@ In this step you will run several scripts.
 
 ![](images/common/open_terminal.png)
 
--   From the Terminal window in the VNC Console, navigate to the Reset directory under ~/OGG181_WHKSHP.
+-       From the Terminal window in the VNC Console, navigate to the Lab9 directory under ~/OGG181_WHKSHP.
 
-        $ cd ~/OGG181_WHKSHP/Reset
+                $ cd ~/OGG181_WHKSHP/Lab9
 
--   Run the **clone_pdb_reset.sh** script.  This script drops the source and target PDBs.
+-       Run the **clone_pdb_reset.sh** script.  This script drops the source and target PDBs.
 
-        [oracle@OGG181DB183 Reset]$ ./clone_pdb_reset.sh
+                [oracle@OGG181DB183 Lab9]$ ./clone_pdb_reset.sh
 
--   Run the **clone_pdb_181.sh** script.  This script recreates the source by cloning a base PDB.
+-       Run the **clone_pdb.sh** script.  This script recreates the target by cloning the source PDB.
 
-       [oracle@OGG181DB183 Reset]$ ./clone_pdb_181.sh
-
--   Run the **clone_pdb_182.sh** script.  This script recreates the target by cloning the source PDB.
-
-        [oracle@OGG181DB183 Reset]$ ./clone_pdb_182.sh
+                [oracle@OGG181DB183 Lab9]$ ./clone_pdb.sh
 
 ### **STEP 2**: Add Supplimental Logging to the source database.
 
--       From the Terminal window in the VNC Console, navigate to the Lab9 directory under ~/OGG181_WHKSHP.
+From here you will run the script to add transactional data (trandata) to the schema which we want to replicate.  In order to do this, you will need to run the add_SchemaTrandata.sh script.  To run this script, you need to execute the following at the command line:  $ ./add_SchemaTrandata.sh Welcome1 16001
 
-        $ cd ~/OGG181_WHKSHP/Lab9
+-       From the same Terminal window in the VNC Console run script **add_SchemaTrandata.sh** as follows:
 
--       From here you will run the script to add transactional data (trandata) to the schema which we want to replicate.  In order to do this, you will need to run the add_SchemaTrandata.sh script.  To run this script, you need to execute the following at the command line:
-
-        $ ./add_SchemaTrandata.sh Welcome1 16001
+                [oracle@OGG181DB183 Lab9]$./add_SchemaTrandata.sh Welcome1 16001
 
 Once the script is executed, you will see a statement saying that the “schematrandata” has been added to the setup.
 
@@ -64,7 +58,6 @@ Once the script is executed, you will see a statement saying that the “schemat
 
 You have now completed configuring the schema that will be used in the replication process.
 
-
 ### **STEP 3**: Create an Extract and Distribution Path to be used for replication.  We will create these using scripts to use the RESTful API.
 
 You will use the following two scripts to configure these processes:
@@ -78,9 +71,15 @@ You will use the following two scripts to configure these processes:
 
 ![](images/900/Lab900_image150.PNG) 
 
--       Next, to create the Extract you will run the add_Extract.sh script as follows:
+-       Next, to create the Extract you will run the **add_Extract.sh** script as follows:
 
-    $ ./add_Extract.sh Welcome1 16001 EXTSOE
+                [oracle@OGG181DB183 Lab9]$ ./add_Extract.sh Welcome1 16001 EXTSOE
+
+        The values used in the script correspond to the following:
+
+                “Welcome1” = OGGADMIN user password
+                “16001” = Atlanta Deployment’s Admin Service port
+                “EXTSOE” = Extract name
 
 -       After the script has ran, you will see that the output for the script reports that the Extract was successfully created and can now view the new Extract from the Administration Service > Overview page.
 
@@ -88,9 +87,9 @@ You will use the following two scripts to configure these processes:
 
 ![](images/900/Lab900_image170.PNG) 
 
-Now you will create the Distribution Path that will be used to ship trail files from the Atlanta Deployment to the Boston Deployment. In order to do this, you will need to run the add_DistroPath.sh script.
+-       Now you will create the Distribution Path that will be used to ship trail files from the Atlanta Deployment to the SanFran Deployment. In order to do this, you will need to run the **add_DistroPath.sh** script as follows:
 
-        $ ./add_DistroPath.sh Welcome1 16002 SOE2SOE aa 17003 ab
+                [oracle@OGG181DB183 Lab9]$ ./add_DistroPath.sh Welcome1 16002 SOE2SOE aa 17003 ab
 
 The values used in the script correspond to the following:
 
@@ -142,12 +141,13 @@ From the same terminal window, While in the Lab9 directory, you will create the 
 
 ### **STEP 6**:  Check the cloned databases SCN
 
--   In the same terminal window run the check_clone.sh script.  This script will show the starting SCN values for the replication process startup.  Note the CREATE_SCN for the OGGOOW181 container database.
+-   In the same terminal window run the check_clone_181.sh script.  This script will show the starting SCN values for the replication process startup.  Note the CREATE_SCN for the OGGOOW181 container database.
 **NOTE: The CREATE_SCN could be different than the screenshot, so use the values you have from running the script.**
 
-        [oracle@OGG181DB183 Lab9]$ ./check_clone.sh 
+        [oracle@OGG181DB183 Lab9]$ ./check_clone_181.sh 
+        Check OGGOOW181 Database
 
-        SQL*Plus: Release 18.0.0.0.0 - Production on Thu Feb 7 22:45:58 2019
+        SQL*Plus: Release 18.0.0.0.0 - Production on Wed Feb 13 16:37:46 2019
         Version 18.3.0.0.0
 
         Copyright (c) 1982, 2018, Oracle.  All rights reserved.
@@ -160,13 +160,12 @@ From the same terminal window, While in the Lab9 directory, you will create the 
         SQL> SQL> SQL> SQL> SQL> 
         CON_ID NAME       OPEN_MODE	CREATE_SCN
         ----------- ---------- ---------- ----------------
-                2 PDB$SEED   READ ONLY	   1507780
-                3 OGGOOWBASE READ WRITE	   5459418
-                5 OGGOOW181  READ WRITE	   8370692 <----- Use this value from running the script
-                6 OGGOOW182  READ WRITE	   8372379 
+                4 OGGOOW181  READ WRITE	   2175217 **<------ Use this SCN to start the Replicat**
 
-        SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        SQL> SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
         Version 18.3.0.0.0
+
+        Done checking OGGOOW181 Database
 
 -       Notice the CREATE_SCN values in the generated output, you need to ensure that the CREATE_SCN for oggoow181 is copied. This will be the SCN that you will start the Replicat with in a next step. Proceed to the next Task after the script completes.
 
@@ -180,23 +179,23 @@ The start_replication.sh script takes the following command line parameters. Eig
 
         Password = Password to login as OGGADMIN
 
-        AdminService Port = Port number of the Administration Service for Deployment 1
+        AdminService Port = Port number of the Administration Service for Atlanta deployment
 
-        Extract Name = Name of the Extract in Deployment 1
+        Extract Name = Name of the Extract in Atlanta deployment
 
-        DistroService Port = Port number of the Distribution Service in Deployment 1
+        DistroService Port = Port number of the Distribution Service in Atlanta deployment
 
-        Path Name = Name of the path that was created in the Distribution Service in Deployment 1
+        Path Name = Name of the path that was created in the Distribution Service in Atlanta deployment
 
-        AdminService Port = Port number of the Administration Service for Deployment 2
+        AdminService Port = Port number of the Administration Service for SanFran deployment
 
-        Replicat Name = Name of the Replicat in Deployment 2
+        Replicat Name = Name of the Replicat in SanFran deployment
 
-        System Change Number = Creating SCN number from when the Pluggable database was cloned
+        System Change Number = SCN number from when the Pluggable database was cloned
 
 -       From the Terminal window in the VNC Console run the script **start_replication.sh**.
 
-        $ ./start_replication.sh Welcome1 16001 EXTSOE 16002 SOE2SOE 17001 IREP 2175217
+        $ ./start_replication.sh Welcome1 16001 EXTSOE 16002 SOE2SOE 17001 IREP **<SCN from check_clone_181.sh script>**
 
 The script will start the replication processes in reverse order as follows:
 
