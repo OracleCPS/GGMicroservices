@@ -43,7 +43,7 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 ### **STEP 2**: Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.
 
--   After logging into the database as described for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected .  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
+-   After logging into the database as described for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected .  At this point, you provide the Schema Name(OGGOOW181.SOE), enable All Columns and Scheduling Columns, and click Submit.
 
 ![](images/400/Lab300_image170.PNG) 
  
