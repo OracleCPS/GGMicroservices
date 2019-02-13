@@ -182,7 +182,6 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
-
     **MAP OGGOOW181.SOE.\*, TARGET SOE.\*;**
  
 ![](images/400/Lab300_image380.PNG) 
@@ -211,6 +210,22 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
 		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
+        [oracle@OGG181DB183 Lab5]$ Author  :	 Dominic Giles
+        Author  :	 Dominic Giles
+        Version :	 2.6.0.1046
+
+        Version :	 2.6.0.1046
+        Results will be written to results.xml.
+
+        Results will be written to results.xml.
+        Hit Return to Terminate Run...
+        Hit Return to Terminate Run...
+
+        Time		Users
+
+        Time		Users
+        00:10:47	[0/2]
+        00:10:47	[0/2]
 
 
 ###########  ADD Check replication status steps #################
