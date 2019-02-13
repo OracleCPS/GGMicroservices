@@ -66,7 +66,7 @@ It is also responsible for starting and stopping the other GoldenGate services a
 
 ![](images/200/8.PNG)
 
-- 	For the **"Specify Administrator Account"** screen, enter **"ggadmin"** for the username field, and enter **"Welcome1"** for the password field.  Enter the same value of **"Welcome1"** for the confirm password field.   Click on **"Next"** to continue.
+- 	For the **"Specify Administrator Account"** screen, enter **"oggadmin"** for the username field, and enter **"Welcome1"** for the password field.  Enter the same value of **"Welcome1"** for the confirm password field.   Click on **"Next"** to continue.
 
 ![](images/200/9.JPG)
 
