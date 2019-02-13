@@ -138,8 +138,6 @@ Alias: WSTARGET
  
 ![](images/400/Lab300_image290.PNG) 
 
-![](images/400/Lab300_image505.PNG)
-
 Objective:
 In this lab, you will configure the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
 
