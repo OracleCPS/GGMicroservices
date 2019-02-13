@@ -5,7 +5,7 @@ Update January 08, 2019
 ## Data Transformation
 ## Introduction
 
-This lab walk you through ***Data Transformation*** of the **Oracle Goldengate Micro Services Web Interface** in a Ravello environment.
+This lab walk you through some simple examples of doing ***Data Transformations*** in the **Oracle GoldenGate Microservices Web Interface**.
 
 ![](images/800/Lab800_image105.JPG)
 
@@ -13,16 +13,20 @@ This lab supports the following use cases:
 -	Concatenating the source '***m***'columns into target single '***n***' columns.
 -	Masking the Source Crucial email-id's into a dummy email-id in the target.
 -	Use of Tokens.
-- To log issues and view the Lab Guide source, go to the [github oracle](https://github.com/oracle/learning-library/tree/master/workshops/dbcs) repository.
 
 ## Objectives
 
--   Manipulating Numbers and Character Strings.
--   Configuring Table-level Column Mapping.
--   Using Tokens.
+-       Manipulating Numbers and Character Strings.
+-       Configuring Table-level Column Mapping.
+-       Using Tokens.
 
 
-1.	Open Firefox and login to the Service Manager using the Administrator account you setup during deployment (Figure 8a-1). Port number will vary depending on what you used during setup.
+-       Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**.
+
+![](images/200/33.JPG)
+
 
 For Ravello Environment
 
