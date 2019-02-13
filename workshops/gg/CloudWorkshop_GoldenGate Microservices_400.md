@@ -138,7 +138,7 @@ Alias: WSTARGET
  
 ![](images/400/Lab300_image290.PNG) 
 
-### **STEP 6*: Check Receiver Service.
+### **STEP 5*: Check Receiver Service.
 
 Objective:
 Check the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
@@ -151,7 +151,7 @@ Check the Receiver Server for the target database, which will receive the trail 
 
 ![](images/400/Lab300_image310.PNG) 
 
-### **STEP 7*: Configure Uni-Directional Replication (Parallel Replicat).
+### **STEP 6*: Configure Uni-Directional Replication (Parallel Replicat).
 
 Objective:
 In this lab you will configure the Parallel Replicat for the second deployment.
@@ -204,7 +204,7 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   At this point, you should have a fully functional uni-directional replication environment.
 
-### **STEP 8**: Run Swingbench script to apply data to the source database.
+### **STEP 7**: Run Swingbench script to apply data to the source database.
 
 -   Change directory to Lab3 run script **start_swingbench_181.sh**.
 
@@ -214,7 +214,7 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 ###########  ADD Check replication status steps #################
 
-### **STEP 9**: DDL Replication.
+### **STEP 8**: DDL Replication.
 
 Objective: 
 
