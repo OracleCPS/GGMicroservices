@@ -15,11 +15,14 @@ This lab supports the following use cases:
 
 ## Objectives
 
-This lab is in two parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Microservices Architecture for a uni-directional configuration using the SOE schema in the OGGOOW181 and OGGOOW182 PDBs. 
+This lab is in several parts.  The first part will setup the Integrated Extract for Oracle GoldenGate 18c Microservices Architecture for a uni-directional configuration using the SOE schema in the OGGOOW181 and OGGOOW182 PDBs. 
 
+### **STEP 1**: Log into the Service Manager and check credentials.
 
 - 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+
 - 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
 ![](images/200/33.JPG)
 
@@ -37,45 +40,33 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 -   Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for the database Credential Alias and you should be able to login to the database.
 
-
 ![](images/400/Lab300_image160.PNG) 
  
+### **STEP 2**: Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.
 
-5.	Add SCHEMATRANDATA to the SOE schema using the SGGATE Credential Alias.  
-After logging into the database as described in step 4 for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected .  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
-
-
+-   After logging into the database as described for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected .  At this point, you provide the Schema Name, enable All Columns and Scheduling Columns, and click Submit.
 
 ![](images/400/Lab300_image170.PNG) 
  
-
-You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema (Figure 7a-5).  To do this, click on the magnifying glass and provide the Schema name.
-
-Figure 7a-5:
+-   You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema.  To do this, click on the magnifying glass and provide the Schema name.
 
 ![](images/400/Lab300_image180.PNG) 
  
+### **STEP 3**: Add the Integrated Extract.
 
-6.	Add the Integrated Extract.
-Navigate back to the Overview page of the Administration Server (Figure 7a-6).  Then click on the plus sign ( + ) in the box for Extracts.
-
-Figure 7a-6:
+-   Navigate back to the Overview page of the Administration Server.  Then click on the plus sign ( + ) in the box for Extracts.
 
 ![](images/400/Lab300_image300.PNG) 
 
 
-After clicking the plus sign ( + ), you are taken to the Add Extract page (Figure 7a-7).  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
-
-Figure 7a-7:
+-   After clicking the plus sign ( + ), you are taken to the Add Extract page.  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
 
 ![](images/400/Lab300_image210.PNG) 
 
 
-The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next (Figure 7a-8).  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
+-   The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next.  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
 
-When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181. 
-
-Figure 7a-8:
+-   When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181. 
 
 ![](images/400/Lab300_image220.PNG) 
 
@@ -83,77 +74,58 @@ Figure 7a-8:
  
 
 On the last page of the Add Extract process, you are presented with a parameter file (Figure 7a-9).  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
-DDL INCLUDE ALL; <br />
-SOURCECATALOG OGGOOW181 <br />
-TABLE SOE.*; <br />
-
-Notes: ~/Desktop/Software/extract.prm has these contents for copying.
+    DDL INCLUDE ALL;
+    SOURCECATALOG OGOOW181
+    TABLE SOE.*;
 
 You can also include specific table names for capturing the data changes, but extract will skip the create table DDLs. Sample TABLE parameter vales are given below.
 
-DDL INCLUDE ALL; <br />
-SOURCECATALOG OGGOOW181 <br />
-TABLE SOE.ADDRESSES; <br />
-TABLE SOE.CUSTOMERS; <br />
-TABLE SOE.ORDERS; <br />
-TABLE SOE.ORDER_ITEMS; <br />
-TABLE SOE.CARD_DETAILS; <br />
-TABLE SOE.LOGON; <br />
-TABLE SOE.PRODUCT_INFORMATION; <br />
-TABLE SOE.INVENTORIES; <br />
-TABLE SOE.PRODUCT_DESCRIPTIONS; <br />
-TABLE SOE.WAREHOUSES; <br />
-TABLE SOE.ORDERENTRY_METADATA; <br />
+    DDL INCLUDE ALL;
+    SOURCECATALOG OGGOOW181
+    TABLE SOE.ADDRESSES;
+    TABLE SOE.CUSTOMERS;
+    TABLE SOE.ORDERS;
+    TABLE SOE.ORDER_ITEMS;
+    TABLE SOE.CARD_DETAILS;
+    TABLE SOE.LOGON;
+    TABLE SOE.PRODUCT_INFORMATION;
+    TABLE SOE.INVENTORIES;
+    TABLE SOE.PRODUCT_DESCRIPTIONS;
+    TABLE SOE.WAREHOUSES;
+    TABLE SOE.ORDERENTRY_METADATA;
 
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
-
-Figure 7a-9:
  
 ![](images/400/Lab300_image230.PNG) 
 
-The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running (Figure 7a-10).
+The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running
 
-Figure 7a-10:
- 
 ![](images/400/Lab300_image240.PNG) 
 
+### **STEP 4**: Configure Uni-Directional Replication (Distribution Server).
 
-Lab 7b: Configure Uni-Directional Replication (Distribution Server)
+This step will walk you through how to setup a Path within the Distribution Server.
 
-Objective:
-This lab will walk you through how to setup a Path within the Distribution Server.
-
-Time: 10 minutes
-
-Steps:
-1.	Start from the Service Manager page (Figure 7b-1).
-
-Figure 7b-1:
+-   Start from the Service Manager page.
 
 ![](images/400/Lab300_image250.PNG) 
 
 
-2.	Open the Distribution Server page for your first deployment (Figure 7b-2).
-
-Figure 7b-2:
+-   Open the Distribution Server page for your first deployment (Atlanta).
 
 ![](images/400/Lab300_image260.PNG) 
 
-3.	Click the plus sign ( + ) to add a new Distribution Path (Figure 7b-3).
-
-Figure 7b-3:
+-   Click the plus sign ( + ) to add a new Distribution Path (Figure 7b-3).
 
 ![](images/400/Lab300_image270.PNG) 
 
-4.	On the Add Path page, fill in the required information (Figure 7b-4).  Make note that the default protocol for distribution service is secure websockets (wss).  You will need to change this to websockets (ws).
-
-Figure 7b-4:
+-   On the Add Path page, fill in the required information.  Make note that the default protocol for distribution service is secure websockets **wss**.  You will need to change this to websockets **ws**.
 
 ![](images/400/Lab300_image280.PNG) 
 
 ![](images/400/Lab300_image285.PNG) 
 
-Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select WS, then provide the following target information:
+Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
 Hostname: localhost
 Port: <2nd deployment’s receiver server port>
 Trail File: <any two letter value>
