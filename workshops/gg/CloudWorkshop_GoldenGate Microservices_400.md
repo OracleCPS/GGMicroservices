@@ -138,175 +138,127 @@ Alias: WSTARGET
  
 ![](images/400/Lab300_image290.PNG) 
 
-
- 
 ![](images/400/Lab300_image505.PNG)
-
-4. Create the pluggable database using the below command.
-
-            sql> CREATE PLUGGABLE DATABASE OGGOOW182 FROM OGGOOW181
-            2  FILE_NAME_CONVERT=('/opt/app/oracle/oradata/ORCL/oggoow181/','/opt/app/oracle/oradata/ORCL/OGGOOW182/');
-
-Figure 7c-2:
- 
-![](images/400/Lab300_image510.PNG)
-
-5. Close the pluggable database, which is in read only state and reopen the databases using below commands.
-
-            sql> alter pluggable database OGGOOW181 close;
-            sql> alter pluggable database OGGOOW181 open;
-            sql> alter pluggable database OGGOOW182 open;
-
-Execute "show pdbs" to check the available pdbs and their statuses.
-
-Figure 7c-3:
- 
-![](images/400/Lab300_image520.PNG)
-
-This completes cloning a PDB database.
-
-
-Lab 7d: Configure Uni-Directional Replication (Receiver Server)
 
 Objective:
 In this lab, you will configure the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
 
-Time: 5 minutes
-
-Steps:
-1.	Start from the Service Manager page for your second deployment (Figure 7c-1).
-
-Figure 7d-1:
+-   Start from the Service Manager page for your second deployment.
  
 ![](images/400/Lab300_image305.PNG) 
 
-2.	Click on the Receiver Server link to open the Receiver Server page (Figure 7c-2).  Verify that everything is configured.
-
-Figure 7d-2:
+-   Click on the Receiver Server link to open the Receiver Server page.  Verify that everything is configured.
 
 ![](images/400/Lab300_image310.PNG) 
 
+### **STEP 6*: Configure Uni-Directional Replication (Parallel Replicat).
 
+Objective:
+In this lab you will configure the Parallel Replicat for the second deployment.
 
-Lab 7e: Configure Uni-Directional Replication (Integrated Replicat)
-
-Object:
-In this lab you will configure the Integrated Replicat for the second deployment.
-
-Time: 25 minutes
-
-Steps:
-1.	Starting from the Service Manager page (Figure 7e-1).
-
-Figure 7e-1:
+-   Starting from the Service Manager page.
  
 ![](images/400/Lab300_image320.PNG) 
  
-2.	Open the Administration Server for the second deployment by clicking on the link (Figure 7e-2).
-
-Figure 7e-2:
+-   Open the Administration Server for the second deployment by clicking on the link.
 
 ![](images/400/Lab300_image330.PNG) 
 
-3.	You require a credential store for replicat to connect to target database. Use the TGGATE2 created in Lab300. 
+-   This step requires a credential store for replicat to connect to target database. Use the TGGATE created in Lab300. 
 
 
-4.	Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat (Figure 7e-3).  Click the plus sign ( + ) to open the Add Replicat process.
-
-Figure 7e-3:
+-   Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Parallel Replicat -   Click the plus sign ( + ) to open the Add Replicat process.
  
 ![](images/400/Lab300_image350.PNG) 
 
+-   With the Add Replicat page open, you want to create a Parallel Replicat.  Make sure the radio button is selected and click Next.
 
-5.	With the Add Replicat page open, you want to create an Integrated Replicat.  Make sure the radio button is selected and click Next (Figure 7e-4).
-
-Figure 7e-4:
- 
 ![](images/400/Lab300_image360.PNG) 
 
 
-6.	Fill in the Replicat options form with the required information (Figure 7e-5).  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
-
-Figure 7e-5:
+-   Fill in the Replicat options form with the required information.  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
  
 ![](images/400/Lab300_image370.PNG) 
 
-7.	You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided (Figure 7e-6).  You will have to remove the MAP statement and replace it with the information below:
+-   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
-MAP OGGOOW181.SOE.*, TARGET SOE.*; <br />
-
-Figure 7e-6:
+    MAP OGGOOW181.SOE.*, TARGET SOE.*;
  
 ![](images/400/Lab300_image380.PNG) 
 
-You can also specify individual table name as given below. <br />
+[Optional - For your information] You can also specify individual table name as given below. <br />
 
-MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; <br />
-MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  <br />
-MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;<br />
-MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS; <br />
-MAP PDB1.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS; <br />
-MAP PDB1.SOE.LOGON, TARGET SOE.LOGON; <br />
-MAP PDB1.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION; <br />
-MAP PDB1.SOE.INVENTORIES, TARGET SOE.INVENTORIES; <br />
-MAP PDB1.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS; <br />
-MAP PDB1.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES; <br />
-MAP PDB1.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA; <br />
-Notes: ~/Desktop/Software/replicat.prm has these contents for copying.
-Once the parameter file has been updated, click the Create and Run button at the bottom.
+    MAP PDB1.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS; <br />
+    MAP PDB1.SOE.ADDRESSES, TARGET SOE.ADDRESSES;  <br />
+    MAP PDB1.SOE.ORDERS, TARGET SOE.ORDERS;<br />
+    MAP PDB1.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS; <br />
+    MAP PDB1.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS; <br />
+    MAP PDB1.SOE.LOGON, TARGET SOE.LOGON; <br />
+    MAP PDB1.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION; <br />
+    MAP PDB1.SOE.INVENTORIES, TARGET SOE.INVENTORIES; <br />
+    MAP PDB1.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS; <br />
+    MAP PDB1.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES; <br />
+    MAP PDB1.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA; <br />
+
+-   Once the parameter file has been updated, click the Create and Run button at the bottom.
+
+-   At this point, you should have a fully functional uni-directional replication environment.
+
+### **STEP 7**: Run Swingbench script to apply data to the source database.
+
+-   Change directory to Lab3 run script **start_swingbench_181.sh**.
+
+        [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
+		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
 
 
-At this point, you should have a fully functional uni-directional replication environment. You can start Swingbench and begin testing.  See Appendix A for further instructions.
+###########  ADD Check replication status steps #################
 
+### **STEP 8**: DDL Replication.
 
-Lab 7f: DML and DDL Replication Samples
+Objective: 
 
-Objective: In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
+In this lab we will perform few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
 
-prerequisite: Source and target database should be in sync. Extract, pump and replicat should be up and running.
+Prerequisite: Source and target database should be in sync. Extract, pump and replicat should be up and running.
 
-Time: 15 mins
-
-Steps:
-
-1. Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
+-   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
 
 ![](images/400/Lab300_image400.PNG) 
 
-
-2. Verify whether tables are in sync between source and target databases.
+-   Verify whether tables are in sync between source and target databases.
 
 ![](images/400/Lab300_image405.PNG) 
 
 ![](images/400/Lab300_image410.PNG) 
 
-3. Create a employee table in OGGOOW181.
+-   Create a employee table in OGGOOW181.
 
 ![](images/400/Lab300_image415.PNG) 
 
-4. Go to target admin server page, click on actions on replicate and select details option.
+-   Go to target admin server page, click on actions on replicate and select details option.
 
 ![](images/400/Lab300_image420.PNG) 
 
-5. Click on statistics tab and check the DDL Mapped count.
+-   Click on statistics tab and check the DDL Mapped count.
 
 ![](images/400/Lab300_image425.PNG) 
 
-6. Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
+-   Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
 
 ![](images/400/Lab300_image430.PNG) 
 
 ![](images/400/Lab300_image435.PNG) 
 
-7. Perform few updates and deletes operations on source table and check if the operations are replicated to target database.
+-   Perform few updates and deletes operations on source table and check if the operations are replicated to target database.
 
 ![](images/400/Lab300_image440.PNG) 
 
-8. Execute the below alter commands and verify the statistics on extract and replicat.
+-   Execute the below alter commands and verify the statistics on extract and replicat.
 
 ![](images/400/Lab300_image445.PNG) 
 
-9. Execute truncate operation on employee table, verify the statistics and count in the target pdb.
+-   Execute truncate operation on employee table, verify the statistics and count in the target pdb.
 
 ![](images/400/Lab300_image455.PNG) 
 
@@ -314,7 +266,7 @@ Steps:
 
 ![](images/400/Lab300_image465.PNG)
 
-10. Similarly, execute drop command on the employee table and check the results in the target database.
+-   Similarly, execute drop command on the employee table and check the results in the target database.
 
 ![](images/400/Lab300_image470.PNG)
 
