@@ -1,0 +1,19 @@
+{
+    "config":[
+        "Replicat    REP2",
+        "UseridAlias TGGATE",
+	"HANDLECOLLISIONS",
+	"END RUNTIME",
+        "Map oggoow181.SOE.*, Target oggoow182.SOE.*;"
+    ],
+    "source":{
+        "name":"X2"
+    },
+    "credentials":{
+        "alias":"TGGATE"
+    },
+    "checkpoint":{
+        "table":"ggate.checkpoints"
+    },
+	"status":"stopped"
+}
