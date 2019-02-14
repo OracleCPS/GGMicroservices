@@ -30,15 +30,21 @@ Since we’ve already done multiple labs, this one will take what we used so far
 
 -   This script performs the following:
         1.	Drops the existing container databases.
-        2.	Clones two container databases from a base container.
-        3.	Deletes the two deployments (Atlanta and SanFran).  This will remove any current lab setups.
-        4.	Creates the two deployments again.
-        5.	Creates new credentials for both deployments.
-        6.	Adds Schema supplemental logging to both container databases for the SOE schema.
-        7.	Adds checkpoint tables on both container databases.
-        8.	Adds the Extract, Distribution Path and Replicat for both deployments.  This includes the correct parameters for the Extract and Replicats
 
--   Run the build_all_bi_di.sh script.  This will take about 5 minutes.
+        2.	Clones two container databases from a base container.
+
+        3.	Deletes the two deployments (Atlanta and SanFran).  This will remove any current lab setups.
+
+        4.	Creates the two deployments again.
+
+        5.	Creates new credentials for both deployments.
+
+        6.	Adds Schema supplemental logging to both container databases for the SOE schema.
+
+        7.	Adds checkpoint tables on both container databases.
+
+        8.	Adds the Extract, Distribution Path and Replicat for both deployments.  This includes the correct 
+        parameters for the Extract and Replicats.
 
         [oracle@OGG181DB183 Lab6]$ ./build_all_bi_di.sh 
 
