@@ -43,28 +43,99 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 -       Sudo into the root user and when Prompted use the password 'Welcome1'
 
                 $ sudo su - root
-
-![](images/700/Lab700_image115.png) 
-
+      
+      
+      [oracle@OGG181DB183 ~]$ sudo su - root
+      [sudo] password for oracle: 
+      Last login: Thu Feb 14 18:10:24 UTC 2019 on pts/1
+      Last failed login: Thu Feb 14 18:12:02 UTC 2019 from 73.163.148.213 on ssh:notty
+      There were 6 failed login attempts since the last successful login.
+      
 -       Change to the MySQL GG home.
-
-                $ cd /opt/app/oracle/product/18.1.0_GGMySQL
-
+      
+      [root@OGG181DB183 ~]# cd /opt/app/oracle/product/18.1.0_GGMySQL
+    
 -       Run the GoldenGate command interpreter (GGSCI).
 
-                $./ggsci
+      [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
+
+      Oracle GoldenGate Command Interpreter for MySQL
+      Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
+      Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
+      Operating system character set identified as UTF-8.
+
+      Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
 
 -       Start the manager and check with info all command
 
-                $GGSCI> start MGR
+      GGSCI (OGG181DB183) 1> start mgr
+      Manager started.
 
-                $GGSCI> info all
+
+      GGSCI (OGG181DB183) 2> info all
+
+      Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+
+      MANAGER     RUNNING                                           
+
+
+      GGSCI (OGG181DB183) 2> info all
+      
+      Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+
+      MANAGER     RUNNING                                           
 
 ![](images/700/Lab700_image101.png)
 
 -       Run the OGG obey script to create the replication processes and check with info all command
 
-                $GGSCI> obey ./dirprm/setup_MySQL.oby
+                
+      GGSCI (OGG181DB183) 3> obey ./dirprm/setup_mysql.oby
+
+      GGSCI (OGG181DB183) 4> -- This is a script(oby) file that executes GGSCI commands to initialize the GoldenGate environment. These commands can be run individually directly via the GGSCI interface.
+
+      GGSCI (OGG181DB183) 5> 
+
+      GGSCI (OGG181DB183) 5> -- CREATE THE CHANGE DATA CAPTURE EXTRACT,  AND LOCAL EXTRACT TRAIL OF 50MB
+
+      GGSCI (OGG181DB183) 6> 
+
+      GGSCI (OGG181DB183) 6> -- -- Add the E_MYSQL extract. This reads the mysql binary transaction logs directly. This command creates the extract checkpoint file. VAM indicates use of a Vendor Access Module to interface with the logs. BEGIN NOW captures any transactions from the redo log that are opened after this command is issued
+
+      GGSCI (OGG181DB183) 7> 
+
+      GGSCI (OGG181DB183) 7> ADD EXTRACT E_MYSQL, VAM, BEGIN NOW
+
+      EXTRACT added.
+
+
+      GGSCI (OGG181DB183) 8> 
+
+      GGSCI (OGG181DB183) 8> ADD EXTTRAIL ./dirdat/eo, EXTRACT E_MYSQL, MEGABYTES 50
+
+      EXTTRAIL added.
+
+      GGSCI (OGG181DB183) 9> 
+
+      GGSCI (OGG181DB183) 9> ADD EXTRACT P_ORA18C, EXTTRAILSOURCE ./dirdat/eo
+
+      EXTRACT added.
+
+
+      GGSCI (OGG181DB183) 10> 
+
+      GGSCI (OGG181DB183) 10> ADD RMTTRAIL rt, EXTRACT P_ORA18C, MEGABYTES 50
+
+      RMTTRAIL added.
+
+      GGSCI (OGG181DB183) 11> info all
+
+      Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+
+      MANAGER     RUNNING                                           
+      EXTRACT     STOPPED     E_MYSQL     00:00:00      00:02:57    
+      EXTRACT     STOPPED     P_ORA18C    00:00:00      00:02:55    
+
 
 ![](images/700/Lab700_image102.png)
 
