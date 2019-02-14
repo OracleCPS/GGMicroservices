@@ -23,6 +23,5 @@ sed -i -e "s|###PMSPORTUDP###|$vPMSUDP|g" ./oggca_$vDName.rsp
 cd $OGG_HOME/bin
 ./oggca.sh -silent -responseFile /home/oracle/OGG181_WHKSHP/Lab6/Build/oggca_$vDName.rsp
 
-cd ~/testing
 rm -f /home/oracle/OGG181_WHKSHP/Lab6/Build/oggca_$vDName.rsp
 
