@@ -42,7 +42,9 @@ Since we’ve already done multiple labs, this one will take what we used so far
 
         [oracle@OGG181DB183 Lab6]$ ./build_all_bi_di.sh 
 
-While it's running note the messages displayed that informs what has been added to the services.
+While it's running note the messages displayed that informs what has been added to the services.You should see the below message to be sure that all the steps are completed.
+
+![](images/600/Lab600_image6001.PNG) 
 
 ### **STEP 2**: Check the deployment using the AdminClient
 This step will be a short introduction to the AdminClient.  If you’re familiar with Classic GoldenGate, this would be like using GGSCI.  However, the advantage with the AdminClient is that you can connect to separate GG deployments from this one interface.  With GGSCI you would need to execute it in each server environment where GG is installed.  
