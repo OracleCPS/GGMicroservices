@@ -44,8 +44,4 @@ sleep 5
 ./add_DistroPath2.sh Welcome1 17002 SOE2SOE2 bb 16003 ba
 sleep 5
 ./add_Replicat2.sh Welcome1 17001 IREP2
-sleep 5
-./start_replication.sh Welcome1 16001 EXTSOE1 16002 SOE2SOE1 17001 IREP2
-sleep 5
-./start_replication.sh Welcome1 17001 EXTSOE2 17002 SOE2SOE2 16001 IREP1
 
