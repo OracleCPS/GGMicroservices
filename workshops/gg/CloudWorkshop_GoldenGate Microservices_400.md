@@ -308,8 +308,12 @@ The above error is because employee table is not present in the target database.
 
 ### **STEP 8**: Stop delivery process.
 
-- Please log on to Admin process screen of Sanfran (http://localhost:17001 and stop the parallel nonintegrared replicat process.
+- Please log on to Admin process screen of Sanfran (http://localhost:17001) and stop the parallel nonintegrared replicat process.
 ![](images/400/Lab400_image999.PNG)
 
+- Similart please log on to Admin process screen of Atlanta (http://localhost:16001) and stop the integrared Extract (EXT1) and Distribution path(SOE2SOE) replicat process.
+
+![](images/400/Lab400_image998.PNG)
+![](images/400/Lab400_image997.PNG)
 
 You have completed lab 400!   **Great Job!**
