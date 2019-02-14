@@ -8,8 +8,9 @@ Update January 04, 2019
 In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Database using Classic Goldengate for MySQL and Goldengate Microservices architecture.
 
 This lab supports the following use cases:
--       Setting up GoldenGate for MySQL .
--	Setting up Replication in GoldenGate Microservices architecture for Oracle PDB ( OGGOOW182 ).
+
+-       Setting up GoldenGate for MySQL.
+-       Setting up Replication in GoldenGate Microservices architecture for Oracle PDB ( OGGOOW182 ).
 
 ## Objectives
 
