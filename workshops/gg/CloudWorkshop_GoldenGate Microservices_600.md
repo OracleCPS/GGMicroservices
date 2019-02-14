@@ -301,7 +301,53 @@ This script performs the following:
 
                 [oracle@OGG181DB183 Lab6]$ 
 
-### **STEP 4**: Run transactions and check conflicts with Performance Metric Service
+### **STEP 4**: Start Replication
+
+-       Run the start_replication.sh script to start the replication processes for the Atlanta capture and the SanFran delivery.
+
+                [oracle@OGG181DB183 Lab6]$ ./start_replication.sh Welcome1 16001 EXTSOE1 16002 SOE2SOE1 17001 IREP2
+                % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                                Dload  Upload   Total   Spent    Left  Speed
+                100   853  100   702  100   151   8865   1907 --:--:-- --:--:-- --:--:--  9000
+                {
+                .
+                .
+                .
+                        {
+                        "$schema": "ogg:message",
+                        "code": "OGG-15426",
+                        "issued": "2019-02-07T22:51:05Z",
+                        "severity": "INFO",
+                        "title": "EXTRACT EXTSOE1 started",
+                        "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15426"
+                        }
+                ]
+                }
+                [oracle@OGG181DB183 Lab6]$ 
+
+-       Next, run the start_replication.sh script again to start the replication processes for the SanFran capture and the Atlanta delivery.  Use the CREATE SCN value from OGGOOW182 as the last value of the script (See example above).  This is for the startup of the Replicat on the Atlanta deployment.
+
+                [oracle@OGG181DB183 Lab6]$ ./start_replication.sh Welcome1 17001 EXTSOE2 17002 SOE2SOE2 16001 IREP1
+                % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                                Dload  Upload   Total   Spent    Left  Speed
+                100   853  100   702  100   151   8354   1797 --:--:-- --:--:-- --:--:--  8357
+                {
+                .
+                .
+                .
+                        {
+                        "$schema": "ogg:message",
+                        "code": "OGG-15426",
+                        "issued": "2019-02-07T22:53:42Z",
+                        "severity": "INFO",
+                        "title": "EXTRACT EXTSOE2 started",
+                        "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15426"
+                        }
+                ]
+                }
+                [oracle@OGG181DB183 Lab6]$ 
+
+### **STEP 5**: Run transactions and check conflicts with Performance Metric Service
 
 In this step we’ll use a script to invoke Swingbench to apply data to both databases at the same time and then check them using the Performance Metric Service.
 
