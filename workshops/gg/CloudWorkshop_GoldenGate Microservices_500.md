@@ -13,6 +13,40 @@ For this lab, even though we are going Oracle to Oracle, we will show you a meth
 
 This lab, will contains three parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
 
+# Pre-requisite : Create required credentails for replication.
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+- 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
+![](images/200/33.JPG)
+
+-   After logging in, find and open the Administration Server for your first deployment. In this example, the first deployment is Atlanta. Go to Atlanta administration server page by clicking on 16001.
+
+![](images/400/Lab300_image120.PNG)
+
+-   Click on hamburger symbol on top left corner of the page, select Configuration and select "+" sign beside credentials.
+
+-   Here will create the root container database credentials.  Enter the credential details as given below and click on submit. Password is "ggate".  You will need to add the alias for a user that will connect to CDB (ORCL). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	OracleGoldenGate|
+|Credential Alias|	SGGATE|
+|User ID|	C##GGATE@orcl|
+|Password|	ggate|
+|Verify Password| 	 ggate|
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	OracleGoldenGate|
+|Credential Alias|	WSTARGET|
+|User ID|	oggadmin|
+|Password|	Welcome1|
+|Verify Password| 	 Welcome1|
+
+
+![](images/400/Lab300_image5008.PNG)
+
+
 # Part 1: Create the normal CDC processes.
 
 ### **STEP 1**: Create and start the Change Data Capture (CDC) Extract process using curl commands.
