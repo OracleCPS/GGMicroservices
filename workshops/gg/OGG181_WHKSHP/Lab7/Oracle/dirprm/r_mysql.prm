@@ -1,0 +1,43 @@
+-- This is the name of the replicat process. It must be less than 9 characters and match the process named given in the ADD REPLICAT command. It must also match the name of this parameter file.
+
+REPLICAT R_MYSQL
+
+
+--Login information to the source database. This is using the alias defined in the credentialstore in order to secure usernames and passwords. Note that we are logging into the pluggable databse not the container database to apply data changes.
+
+USERIDALIAS ogguser
+
+
+-- SOURCEDEFS specifies what file to use to interpret the trail files. Since source and target databases are not identical we cannot use ASSUMETARGETDEFS and need to generate a SOURCEDEFS file using the defgen utility. This file is then copied to the target to be used by replicat.
+
+
+SOURCEDEFS ./dirdef/ameadefs.sql
+
+
+-- This generates interim statistics that are appended to the report file at noon daily.
+
+REPORT AT 12:00
+
+-- This ages the report file on a scheduled basis rather than only on process restart. The old file is retained with a number (0-9) appended to the end of the file name. This allows a predictable snapshot to be created for archiving.
+
+REPORTROLLOVER AT 12:00
+
+-- This command resets the in-memory statistics (operations, ops, etc.) when the report is rolled over. The intent is to allow a snapshot of the statistics over a 24-hour period.
+
+STATOPTIONS RESETREPORTSTATS
+
+-- This writes the capture rate to report file every 60 seconds. This includes both the number of operation processed in that timeframe and the rate at which they are processed on a per second basis.
+
+REPORTCOUNT EVERY 60 SECONDS, RATE
+
+-- The BATCHSQL parameter tells the GoldenGate replicat to organize similar SQL statements into arrays and apply them at an accelerated rate. This can significalty increase performance for tables with rows < 25k in length and that do not include LOBs, Longs, or multiple unique constraints.
+
+BATCHSQL
+
+-- The GROUPTRANSOPS parameter to control the number of SQL operation in a single replicat transaction. This can improve performance by redusing the number of operations performed by replicat. Note that replicat will still respect the transactional boundries of the original source databasde transaction. This parameter in not vaalid with Integrated Replicat.
+
+GROUPTRANSOPS 500
+
+-- Map the MYSQL source tables to the Oracle target tables. Target tables are in a pluggable database and use a 3 part naming convention (catalog.schema.table). The source database is MySQL and uses a 2 part naming convention. 
+
+MAP amea.*, TARGET pdb1.amer.*;
