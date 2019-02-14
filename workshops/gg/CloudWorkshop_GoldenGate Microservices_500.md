@@ -257,6 +257,7 @@ Before we begin we want to make sure the target database is empty.
 
 		[oracle@OGG181DB183 Lab5]$ ./Initial_load_Automated.sh 
 
+
 ### **STEP 3**: Run Swingbench script to apply data to the source database.
 -   While the script is running, we'll run Swingbench transactions to create activity on the the database during the initial load.
 
@@ -269,18 +270,41 @@ Before we begin we want to make sure the target database is empty.
 
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
 		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
+		
+![](images/500/Lab500_image5005.PNG.png)
 
 ### **STEP 4**: Check Initial Load Extract to see if it's completed.
 
-**SCREENSHOTS NEEDED**
-
 -	On the Goldengate Microservices Console, under the Admin Server for Atlanta if the Initial Load Extract (LOAD) is finished status should be **Stopped**.
+
+![](images/500/Lab500_image5002.PNG.png)
 
 -	On the Goldengate Microservices Console, under the Admin Server for SanFran and check the detail page for the Initial Load Replicat (RLOAD) to see if it's completed the load.
 
+-    Above script will create the initial load processes which are Extract (LOAD), Distribution Server (INITLOAD) and Replicat (RLOAD).You will need to logon on the Goldengate Microservices Console, under the Admin Server for SanFran. Right click on drop down of Replicat (RLOAD) and click on "Details"
+
+![](images/500/Lab500_image5001.PNG.png)
+
+-    Click on tab "Checkpoint" and simultaneously click on "Refresh". Once you offset is has stopped moving, it means the initial load had been completed.
+
+![](images/500/Lab500_image5002.PNG.png)
+
+-   Now you can go back to your Goldengate Microservices Console, under the Admin Server for SanFran. Right click on drop down of Replicat (RLOAD) and click on "Stop". Right click on Replicat (REP2) and click "Start".
+
+![](images/500/Lab500_image5004.PNG.png)
+
+
+-   
+
+
 ### **STEP 5**: Start the CDC Replicat to sync the data.
 
--	On the Goldengate Microservices Console, under the Admin Server for SanFran start the CDC Replicat (REP2).
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran start the CDC Replicat (REP2) again. But before starting Repliat (REP2), make sure that you have commented out **END RUNTIME** and **HANDLECOLLISIONS** in the parameters. **END RUNTIME** process stops the process once it has reached end of file. So that we can remove **HANDLECOLLISIONS** from the Replicat (REP2) and restart the process.
+
+
+![](images/500/Lab500_image5006.PNG.png)
+
+![](images/500/Lab500_image5007.PNG.png)
 
 -	Check to see if the Swingbench script is completed.
 
