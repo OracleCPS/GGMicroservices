@@ -64,7 +64,7 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 -       Run the OGG obey script to create the replication processes and check with info all command
 
-                $GGSCI> obey ./dirprm/setup_mysql.oby
+                $GGSCI> obey ./dirprm/setup_MySQL.oby
 
 ![](images/700/Lab700_image102.png)
 
@@ -88,21 +88,24 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 ![](images/700/Lab700_image105.png)
 
--       The next page will show the parameter file.  Keep the default for now and click “Create”.
+-       The next page will show the parameter file.  Add the following information:
+                MAP amea.*, TARGET oggoow182.mysqltarget.*;
+
+-       Click **“Create and Run”**.
 
 ![](images/700/Lab700_image106.png)
 
--       The replicat will be running , It might fail if you have not started the Pump process on the Mysql side
+-       The replicat will be running , It might fail if you have not started the Pump process on the MySQL side
 
 ![](images/700/Lab700_image107.png)
 
 ### **STEP 4**: Loading Data and validating the setup
 
--       Start MySql Goldengate Process
+-       Start MySQL Goldengate Process
 
 ![](images/700/Lab700_image108.png)
 
--       Load the data in Mysql DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+-       Load the data in MySQL DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
 
 ![](images/700/Lab700_image109.png)
 
@@ -116,7 +119,7 @@ Below is the statstics in the Replicat side
 
 ![](images/700/Lab700_image112.png)
 
-Record count of the tables of Mysql DB
+Record count of the tables of MySQL DB
 
 ![](images/700/Lab700_image113.png)
 
