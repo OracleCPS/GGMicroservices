@@ -44,7 +44,7 @@ This lab, will contains three parts and covers how access the services from Orac
 |Verify Password| 	 Welcome1|
 
 
-![](images/500/Lab300_image5008.PNG)
+![](images/500/Lab500_image5008.PNG)
 
 
 # Part 1: Create the normal CDC processes.
