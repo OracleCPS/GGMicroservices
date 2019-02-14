@@ -103,6 +103,30 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 -       Start MySQL Goldengate Process
 
+          [root@OGG181DB183 18.1.0_GGMySQL]# pwd
+          /opt/app/oracle/product/18.1.0_GGMySQL
+          [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
+
+          Oracle GoldenGate Command Interpreter for MySQL
+          Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
+          Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
+          Operating system character set identified as UTF-8.
+
+          Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
+
+
+
+          GGSCI (OGG181DB183) 1> info all
+
+          Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+
+          MANAGER     RUNNING                                           
+          EXTRACT     RUNNING     E_MYSQL     00:00:01      00:00:06    
+          EXTRACT     RUNNING     P_ORA18C    00:00:00      00:00:06    
+
+
+          GGSCI (OGG181DB183) 2> 
+
 ![](images/700/Lab700_image108.png)
 
 -       Log in into mysql database 
