@@ -306,4 +306,10 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 The above error is because employee table is not present in the target database. Drop command is executed successfully in target database.
 
+### **STEP 8**: Stop delivery process.
+
+- Please log on to Admin process screen of Sanfran (http://localhost:17001 and stop the parallel nonintegrared replicat process.
+![](images/400/Lab400_image999.PNG)
+
+
 You have completed lab 400!   **Great Job!**
