@@ -62,7 +62,7 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 ![](images/700/Lab700_image101.png)
 
-        Run the OGG obey script to create the replication processes and check with info all command
+-       Run the OGG obey script to create the replication processes and check with info all command
 
                 $GGSCI> obey ./dirprm/setup_mysql.oby
 
