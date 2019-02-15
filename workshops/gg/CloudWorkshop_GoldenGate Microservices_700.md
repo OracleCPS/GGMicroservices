@@ -260,7 +260,7 @@ Below is the statstics in the Replicat side
 
 Record count of the tables of MySQL DB
 
-![](images/700/Lab700_image113.png)
+![](images/700/Lab700_image113.png) 
 
 Record count of the tables of Oracle DB
 
