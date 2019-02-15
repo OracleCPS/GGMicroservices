@@ -203,28 +203,28 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 ![](images/700/Lab700_image108.png)
 
 -       Log in into mysql database 
-                
-     [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
-     [oracle@OGG181DB183 dirsql]$ ls
-     counts.sql  drop_database.sql  seed_database.sql  source_database.sql
-     [oracle@OGG181DB183 dirsql]$ mysql -u root -p
-     Enter password: 
-     Welcome to the MySQL monitor.  Commands end with ; or \g.
-     Your MySQL connection id is 10
-     Server version: 8.0.13 MySQL Community Server - GPL
-     
-     Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-     
-     Oracle is a registered trademark of Oracle Corporation and/or its
-     affiliates. Other names may be trademarks of their respective
-     owners.
-     
-     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-     
-     mysql> use amea
-     Reading table information for completion of table and column names
-     You can turn off this feature to get a quicker startup with -A
-     Database changed
+
+       [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+       [oracle@OGG181DB183 dirsql]$ ls
+       counts.sql  drop_database.sql  seed_database.sql  source_database.sql
+       [oracle@OGG181DB183 dirsql]$ mysql -u root -p
+       Enter password: 
+       Welcome to the MySQL monitor.  Commands end with ; or \g.
+       Your MySQL connection id is 10
+       Server version: 8.0.13 MySQL Community Server - GPL
+
+       Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+       Oracle is a registered trademark of Oracle Corporation and/or its
+       affiliates. Other names may be trademarks of their respective
+       owners.
+
+       Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+       mysql> use amea
+       Reading table information for completion of table and column names
+       You can turn off this feature to get a quicker startup with -A
+       Database changed
 
 - Load the data in MySQL DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
 
