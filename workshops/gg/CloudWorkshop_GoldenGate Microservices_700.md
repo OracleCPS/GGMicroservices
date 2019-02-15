@@ -9,8 +9,8 @@ In this lab, you will take a look at how to set up replication from MySQL DB to 
 
 This lab supports the following use cases:
 
--       Setting up GoldenGate for MySQL.
--       Setting up Replication in GoldenGate Microservices architecture for Oracle PDB ( OGGOOW182 ).
+- Setting up GoldenGate for MySQL.
+- Setting up Replication in GoldenGate Microservices architecture for Oracle PDB ( OGGOOW182 ).
 
 ## Objectives
 
@@ -21,10 +21,10 @@ Create a classic GoldenGate architecture capture process (Extract) for MySQL and
 ### **STEP 1**: Create Replication Environment
 This step sets up a clean GoldenGate Microservices target deployment.  This script will take a couple of minutes to complete.
 
--       Open up a terminal window and change directory to Lab7 and run the script **build_target.sh**.
+- Open up a terminal window and change directory to Lab7 and run the script **build_target.sh**.
                 [oracle@OGG181DB183 Lab7]$ ./build_target.sh 
 
--       This script performs the following:
+- This script performs the following:
 
                 1.	Deletes any existing deployments, which will remove any current lab setups.
 
@@ -38,9 +38,9 @@ This step sets up a clean GoldenGate Microservices target deployment.  This scri
 
 GoldenGate for MySQL is already installed on the Ravello image.  You will be using another terminal session to run the MySQL transactions and GoldenGate processes
 
--       Open a new Terminal window from the VNC Console.
+- Open a new Terminal window from the VNC Console.
 
--       Sudo into the root user and when Prompted use the password 'Welcome1'
+- Sudo into the root user and when Prompted use the password 'Welcome1'
 
                 $ sudo su - root
       
@@ -51,11 +51,11 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
       Last failed login: Thu Feb 14 18:12:02 UTC 2019 from 73.163.148.213 on ssh:notty
       There were 6 failed login attempts since the last successful login.
       
--       Change to the MySQL GG home.
+- Change to the MySQL GG home.
       
       [root@OGG181DB183 ~]# cd /opt/app/oracle/product/18.1.0_GGMySQL
     
--       Run the GoldenGate command interpreter (GGSCI).
+- Run the GoldenGate command interpreter (GGSCI).
 
       [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
 
@@ -66,7 +66,7 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
       Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
 
--       Start the manager and check with info all command
+- Start the manager and check with info all command
 
       GGSCI (OGG181DB183) 1> start mgr
       Manager started.
@@ -85,9 +85,8 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
       MANAGER     RUNNING                                           
 
-![](images/700/Lab700_image101.png)
 
--       Run the OGG obey script to create the replication processes and check with info all command
+- Run the OGG obey script to create the replication processes and check with info all command
 
                 
       GGSCI (OGG181DB183) 3> obey ./dirprm/setup_mysql.oby
@@ -137,42 +136,41 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
       EXTRACT     STOPPED     P_ORA18C    00:00:00      00:02:55    
 
 
-![](images/700/Lab700_image102.png)
 
 ### **STEP 3**: Setup Microservices Target 
 
 We will use the web UI for the Administration Service of the SanFran Deployment (http://<hostname>:17001).
 
--       Open a new browser tab and connect to http://<hostname>:17001 
+- Open a new browser tab and connect to http://<hostname>:17001 
 
--       Login with the following oggadmin/Welcome1
+- Login with the following oggadmin/Welcome1
 
--       On the Overview page click the plus sign (+) opposite the Replicat status.
+- On the Overview page click the plus sign (+) opposite the Replicat status.
 
 ![](images/700/Lab700_image103.png)
 
--       On the next page click “Next” to create an Integrated Replicat.
+- On the next page click “Next” to create an Integrated Replicat.
 
 ![](images/700/Lab700_image104.png)
 
--       Fill in the required parameters (See Screenshot).  Then click “Next”.
+- Fill in the required parameters (See Screenshot).  Then click “Next”.
 
 ![](images/700/Lab700_image105.png)
 
--       The next page will show the parameter file.  Add the following information:
+- The next page will show the parameter file.  Add the following information:
                 MAP amea.*, TARGET oggoow182.mysqltarget.*;
 
--       Click **“Create and Run”**.
+- Click **“Create and Run”**.
 
 ![](images/700/Lab700_image106.png)
 
--       The replicat will be running , It might fail if you have not started the Pump process on the MySQL side
+- The replicat will be running , It might fail if you have not started the Pump process on the MySQL side
 
 ![](images/700/Lab700_image107.png)
 
 ### **STEP 4**: Loading Data and validating the setup
 
--       Start MySQL Goldengate Process
+-  Start MySQL Goldengate Process
 
       [root@OGG181DB183 18.1.0_GGMySQL]# pwd
       /opt/app/oracle/product/18.1.0_GGMySQL
@@ -248,20 +246,147 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
       Query OK, 0 rows affected (3 min 22.93 sec)
       mysql> 
 
-It will take couple minutes to load the data. After that We can see the statstics in the extract report file
+-  It will take couple minutes to load the data. After that We can see the statstics in the extract report file
 
 ![](images/700/Lab700_image111.png)
 
-Below is the statstics in the Replicat side
+-  Below is the statstics in the Replicat side
 
 ![](images/700/Lab700_image112.png)
 
-Record count of the tables of MySQL DB
+- To do record count of the tables MySQL DB. Go to directory "/home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql" and login into mySQL using password "Welcome1".
+- enter "source counts.sql" in mysql client
 
-![](images/700/Lab700_image113.png) 
+      [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+      [oracle@OGG181DB183 dirsql]$ mysql -u root -p
+      Enter password: 
+      Welcome to the MySQL monitor.  Commands end with ; or \g.
+      Your MySQL connection id is 13
+      Server version: 8.0.13 MySQL Community Server - GPL
 
-Record count of the tables of Oracle DB
+      Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
 
-![](images/700/Lab700_image114.png)
+      Oracle is a registered trademark of Oracle Corporation and/or its
+      affiliates. Other names may be trademarks of their respective
+      owners.
+
+      Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+      mysql> source counts.sql
+      \Reading table information for completion of table and column names
+      You can turn off this feature to get a quicker startup with -A
+
+      Database changed
+      +---------+
+      | account |
+      +---------+
+      |   10000 |
+      +---------+
+      1 row in set (0.00 sec)
+
+      +---------------+
+      | account_trans |
+      +---------------+
+      |             0 |
+      +---------------+
+      1 row in set (0.00 sec)
+
+      +--------------+
+      | teller_trans |
+      +--------------+
+      |            0 |
+      +--------------+
+      1 row in set (0.00 sec)
+
+      +------------+
+      | branch_atm |
+      +------------+
+      |          0 |
+      +------------+
+      1 row in set (0.00 sec)
+
+      +--------+
+      | branch |
+      +--------+
+      |     40 |
+      +--------+
+      1 row in set (0.00 sec)
+
+      +--------+
+      | teller |
+      +--------+
+      |    800 |
+      +--------+
+      1 row in set (0.00 sec)
+
+      +------------+
+      | trans_type |
+      +------------+
+      |          5 |
+      +------------+
+      1 row in set (0.00 sec)
+
+      mysql> 
+
+- To do record count of the tables in Oracle DB. Go to directory "/home/oracle/OGG181_WHKSHP/Lab7/Oracle/dirsql" and login into Oracle using password "Welcome1".
+- enter "@counts" in Oracle client
+
+      [oracle@OGG181DB183 ~]$ cd /home/oracle/OGG181_WHKSHP/Lab7/Oracle/dirsql
+      [oracle@OGG181DB183 dirsql]$ sqlplus mysqltarget/Welcome1@oggoow182
+
+      SQL*Plus: Release 18.0.0.0.0 - Production on Fri Feb 15 00:24:55 2019
+      Version 18.3.0.0.0
+
+      Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+
+      Connected to:
+      Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+      Version 18.3.0.0.0
+
+      SQL> @counts
+      SQL> select count(*) from ACCOUNT;
+
+        COUNT(*)
+      ----------
+           10000
+
+      SQL> select count(*) from ACCOUNT_TRANS;
+
+        COUNT(*)
+      ----------
+         0
+
+      SQL> select count(*) from TELLER_TRANS;
+
+        COUNT(*)
+      ----------
+         0
+
+      SQL> select count(*) from BRANCH_ATM;
+
+        COUNT(*)
+      ----------
+         0
+
+      SQL> select count(*) from BRANCH;
+
+        COUNT(*)
+      ----------
+        40
+
+      SQL> select count(*) from TELLER;
+
+        COUNT(*)
+      ----------
+             800
+
+      SQL> select count(*) from TRANS_TYPE;
+
+        COUNT(*)
+      ----------
+         5
+
+      SQL> 
 
 You have completed lab 700!   **Great Job!**
