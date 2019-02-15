@@ -174,35 +174,33 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 -       Start MySQL Goldengate Process
 
-  This script performs the following:
+      [root@OGG181DB183 18.1.0_GGMySQL]# pwd
+      /opt/app/oracle/product/18.1.0_GGMySQL
+      [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
 
-          [root@OGG181DB183 18.1.0_GGMySQL]# pwd
-          /opt/app/oracle/product/18.1.0_GGMySQL
-          [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
+      Oracle GoldenGate Command Interpreter for MySQL
+      Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
+      Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
+      Operating system character set identified as UTF-8.
 
-          Oracle GoldenGate Command Interpreter for MySQL
-          Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
-          Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
-          Operating system character set identified as UTF-8.
-
-          Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
+      Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
 
 
 
-          GGSCI (OGG181DB183) 1> info all
+      GGSCI (OGG181DB183) 1> info all
 
-          Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+      Program     Status      Group       Lag at Chkpt  Time Since Chkpt
 
-          MANAGER     RUNNING                                           
-          EXTRACT     RUNNING     E_MYSQL     00:00:01      00:00:06    
-          EXTRACT     RUNNING     P_ORA18C    00:00:00      00:00:06    
+      MANAGER     RUNNING                                           
+      EXTRACT     RUNNING     E_MYSQL     00:00:01      00:00:06    
+      EXTRACT     RUNNING     P_ORA18C    00:00:00      00:00:06    
 
 
-          GGSCI (OGG181DB183) 2> 
+            GGSCI (OGG181DB183) 2> 
 
 ![](images/700/Lab700_image108.png)
 
--       Log in into mysql database 
+-  Log in into mysql database 
 
        [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
        [oracle@OGG181DB183 dirsql]$ ls
@@ -229,26 +227,26 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 - Load the data in MySQL DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
 
                 
-                mysql> source /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql/seed_database.sql
-                Database changed
-                Query OK, 0 rows affected (0.00 sec)
-                Query OK, 0 rows affected (0.25 sec)
-                Query OK, 0 rows affected (0.15 sec)
-                Query OK, 0 rows affected (0.14 sec)
-                Query OK, 0 rows affected (0.16 sec)
-                Query OK, 0 rows affected (0.16 sec)
-                Query OK, 0 rows affected (0.24 sec)
-                Query OK, 0 rows affected (0.20 sec)
-                Query OK, 1 row affected (0.02 sec)
-                Query OK, 1 row affected (0.02 sec)
-                Query OK, 1 row affected (0.02 sec)
-                Query OK, 1 row affected (0.03 sec)
-                Query OK, 1 row affected (0.02 sec)
-                Query OK, 0 rows affected (0.00 sec)
-                Query OK, 0 rows affected (0.06 sec)
-                Query OK, 0 rows affected (0.10 sec)
-                Query OK, 0 rows affected (3 min 22.93 sec)
-                mysql> 
+      mysql> source /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql/seed_database.sql
+      Database changed
+      Query OK, 0 rows affected (0.00 sec)
+      Query OK, 0 rows affected (0.25 sec)
+      Query OK, 0 rows affected (0.15 sec)
+      Query OK, 0 rows affected (0.14 sec)
+      Query OK, 0 rows affected (0.16 sec)
+      Query OK, 0 rows affected (0.16 sec)
+      Query OK, 0 rows affected (0.24 sec)
+      Query OK, 0 rows affected (0.20 sec)
+      Query OK, 1 row affected (0.02 sec)
+      Query OK, 1 row affected (0.02 sec)
+      Query OK, 1 row affected (0.02 sec)
+      Query OK, 1 row affected (0.03 sec)
+      Query OK, 1 row affected (0.02 sec)
+      Query OK, 0 rows affected (0.00 sec)
+      Query OK, 0 rows affected (0.06 sec)
+      Query OK, 0 rows affected (0.10 sec)
+      Query OK, 0 rows affected (3 min 22.93 sec)
+      mysql> 
 
 It will take couple minutes to load the data. After that We can see the statstics in the extract report file
 
