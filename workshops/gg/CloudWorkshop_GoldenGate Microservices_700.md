@@ -139,9 +139,9 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 ### **STEP 3**: Setup Microservices Target 
 
-We will use the web UI for the Administration Service of the SanFran Deployment (http://<hostname>:17001).
+We will use the web UI for the Administration Service of the SanFran Deployment (http://hostname:17001).
 
-- Open a new browser tab and connect to http://<hostname>:17001 
+- Open a new browser tab and connect to http://hostname:17001 
 
 - Login with the following oggadmin/Welcome1
 
