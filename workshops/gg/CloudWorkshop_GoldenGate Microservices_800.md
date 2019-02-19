@@ -24,16 +24,16 @@ This lab supports the following use cases:
 
 In this step you will use VNC client to connect with Oracle 18c database environment(Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
 
--	Log in to the Ravello image of your assigned host, using TigerVNC.
--	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
+-  Log in to the Ravello image of your assigned host, using TigerVNC.
+-  In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
 
 ![](images/100/vnc_login.PNG)
 
--	Sign on with the following password: Welcome1
+-  Sign on with the following password: Welcome1
 
 ![](images/100/vnc_password.PNG)
 
--	Once the VNC client has connected, you should see a console that looks similar to this:
+-  Once the VNC client has connected, you should see a console that looks similar to this:
 
 ![](images/100/vnc_screen.PNG)
 
@@ -43,13 +43,13 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 ![](images/100/open_terminal.PNG)
 
--	From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
+-  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
 
         [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
         [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
--       Execute the SQL Script to modify and create target tables required for the lab
+-  Execute the SQL Script to modify and create target tables required for the lab
 
 
         
@@ -74,20 +74,20 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 ### **STEP 3**: Open up a terminal window and reset the deployment/replication.
 
--       From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
+-  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
 
                 [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
                 [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
 
 ### **STEP 4**: Log into the web client and check current replication processes.
 
--       Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
--       If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
--       You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**. 
+-  Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
+-  If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+-  You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**. 
 
 ![](images/200/33.JPG)
 
--       After logging in, find and open the Administration Server of the Source deployment **Atlanta**.  When the page is completely open, you should be at a page where you can see Extracts ***EXT1***.
+-  After logging in, find and open the Administration Server of the Source deployment **Atlanta**.  When the page is completely open, you should be at a page where you can see Extracts ***EXT1***.
 
 ![](images/800/Lab800_image1001.PNG)
 
@@ -96,33 +96,36 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Lab800_image1002.PNG)
  
--       Look at the parameter details of the extract ***EXT1***. We are capturing changes from all the tables in SOE Schema
+-  Look at the parameter details of the extract ***EXT1***. We are capturing changes from all the tables in SOE Schema
 
 ![](images/800/Lab800_image1003.PNG) 
  
--       Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment is **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
+-  Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment is **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 ![](images/800/Lab800_image1004.PNG) 
 
--       Click on parameter details of the extract ***REP1***.
+-  Click on parameter details of the extract ***REP1***.
 
 ![](images/800/Lab800_image1005.PNG)
  
-### **STEP 2**: Concatenating the source '***m***'columns into target single '***n***' columns.
+### **STEP 5**: Concatenating the source '***m***'columns into target single '***n***' columns.
 
 ![](images/800/Slide2.JPG) 
  
--       Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
+-  Edit the parameter of the REPLICAT ***REP1*** with the attributes to concatenate the string from columns "CUST_FIRST_NAME" & "CUST_LAST_NAME" into "CUSTOMER_NAME".
 
 ![](images/800/Lab800_image1006.PNG)
 
-        REPLICAT REP1 param file :
-        - - - - - - - - - - - - -
-        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),&
-        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+-  add the following after removing ";" for CUSTOMER TABLE **&
+        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));**
 
--       Do the transaction on the table **CUSTOMER**
+                REPLICAT REP1 param file :
+                - - - - - - - - - - - - -
+                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),&
+                COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+
+-  Do the transaction on the table **CUSTOMER**
 
 ![](images/800/13.JPG) 
 
@@ -145,7 +148,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/rep_1.JPG) 
 
--       Create a required Stored procedure under C##GGATE users.  This will be used in the SQLEXEC call in the mapping statement.
+-  Create a required Stored procedure under C##GGATE users.  This will be used in the SQLEXEC call in the mapping statement.
 
         CREATE  OR REPLACE FUNCTION F_MAIL(CODE_PARAM IN VARCHAR2) 
         RETURN VARCHAR2 
@@ -174,11 +177,11 @@ Note: You will be required to login again.  Use the same Administrator account t
         SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
         COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param);
 
--       Do the transcation on the table **CUSTOMER**
+-  Do the transcation on the table **CUSTOMER**
 
 ![](images/800/18.JPG) 
 
--       After the transcation on the TARGET table  **CUST_TARGET**
+-  After the transcation on the TARGET table  **CUST_TARGET**
 
 ![](images/800/17.JPG) 
 
@@ -186,7 +189,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Slide4.JPG) 
  
--       Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
+-  Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
 ![](images/800/rep_2.JPG) 
 
