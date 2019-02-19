@@ -79,7 +79,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
                 [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
                 [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
 
-### **STEP 1**: Log into the web client and check current replication processes.
+### **STEP 4**: Log into the web client and check current replication processes.
 
 -       Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
@@ -88,6 +88,10 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 ![](images/200/33.JPG)
 
 -       After logging in, find and open the Administration Server of the Source deployment **Atlanta**.  When the page is completely open, you should be at a page where you can see Extracts ***EXT1***.
+
+![](images/800/Lab800_image1001.PNG)
+
+
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
 ![](images/800/2.JPG)
