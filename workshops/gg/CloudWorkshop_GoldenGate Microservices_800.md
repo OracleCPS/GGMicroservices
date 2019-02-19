@@ -117,8 +117,9 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Lab800_image1006.PNG)
 
--  add the following after removing ";" for CUSTOMER TABLE **&
-        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));**
+-  add the following after removing ";" for CUSTOMER TABLE 
+"       **&
+        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));**     "
 
                 REPLICAT REP1 param file :
                 - - - - - - - - - - - - -
