@@ -49,7 +49,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
         [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
--	Execute the SQL Script to modify and create target tables required for the lab
+-       Execute the SQL Script to modify and create target tables required for the lab
 
 
         
@@ -82,8 +82,8 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 ### **STEP 4**: Log into the web client and check current replication processes.
 
 -       Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
-- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
-- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**. 
+-       If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
+-       You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**. 
 
 ![](images/200/33.JPG)
 
@@ -94,20 +94,20 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-![](images/800/2.JPG)
+![](images/800/Lab800_image1002.PNG)
  
--	Parameter details of the extract ***EXT1***.
+-       Look at the parameter details of the extract ***EXT1***. We are capturing changes from all the tables in SOE Schema
 
-![](images/800/5.JPG) 
+![](images/800/Lab800_image1003.PNG) 
  
--       Again logging in the ***Service Manager***, find and open the Administration Server of the Target deployment is **SanFran**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
+-       Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment is **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-![](images/800/12.JPG) 
+![](images/800/Lab800_image1004.JPG) 
 
--	Parameter details of the extract ***REP1***.
+-       Click on parameter details of the extract ***REP1***.
 
-![](images/800/rep.JPG) 
+![](images/800/Lab800_image1005.JPG)
  
 ### **STEP 2**: Concatenating the source '***m***'columns into target single '***n***' columns.
 
@@ -115,11 +115,11 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 -       Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
-![](images/800/rep.JPG) 
+![](images/800/Lab800_image1006.JPG)
 
         REPLICAT REP1 param file :
         - - - - - - - - - - - - -
-        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, &
+        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),&
         COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
 
 -       Do the transaction on the table **CUSTOMER**
