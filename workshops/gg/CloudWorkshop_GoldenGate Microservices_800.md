@@ -20,6 +20,58 @@ This lab supports the following use cases:
 -       Configuring Table-level Column Mapping.
 -       Using Tokens.
 
+### **STEP 1**: Log into VNC client and prepare environment for the data transformation lab.
+
+In this step you will use VNC client to connect with Oracle 18c database environment(Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
+
+-	Log in to the Ravello image of your assigned host, using TigerVNC.
+-	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
+
+![](images/100/vnc_login.PNG)
+
+-	Sign on with the following password: Welcome1
+
+![](images/100/vnc_password.PNG)
+
+-	Once the VNC client has connected, you should see a console that looks similar to this:
+
+![](images/100/vnc_screen.PNG)
+
+### **STEP 2**: Open up a terminal window and start the database.
+
+-	On the desktop, right-click and select “Open Terminal”.
+
+![](images/100/open_terminal.PNG)
+
+-	From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
+
+      [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
+      [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+-	Execute the SQL Script to modify and create target tables required for the lab
+
+      [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+      SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 04:42:57 2019
+      Version 18.3.0.0.0
+
+      Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+      Last Successful login time: Tue Feb 19 2019 04:42:45 +00:00
+
+      Connected to:
+      Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+      Version 18.3.0.0.0
+
+      SQL> @alter_schema.sql
+
+      Table altered.
+
+
+      Table created.
+
+      SQL> 
+
 
 ### **STEP 1**: Log into the web client and check current replication processes.
 
