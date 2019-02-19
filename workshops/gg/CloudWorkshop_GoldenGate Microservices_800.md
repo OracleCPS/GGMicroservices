@@ -72,6 +72,12 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         Table created.
         SQL> 
 
+### **STEP 3**: Open up a terminal window and reset the deployment/replication.
+
+-       From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
+
+                [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
+                [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
 
 ### **STEP 1**: Log into the web client and check current replication processes.
 
