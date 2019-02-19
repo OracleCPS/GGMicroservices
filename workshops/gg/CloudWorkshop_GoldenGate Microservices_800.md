@@ -37,11 +37,17 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 ![](images/100/vnc_screen.PNG)
 
-### **STEP 2**: Open up a terminal window and start the database.
+### **STEP 2**: Open up a terminal window and reset the deployment/replication.
 
 -	On the desktop, right-click and select “Open Terminal”.
 
 ![](images/100/open_terminal.PNG)
+
+
+-  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
+
+                [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
+                [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
 
 -  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
@@ -72,12 +78,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         Table created.
         SQL> 
 
-### **STEP 3**: Open up a terminal window and reset the deployment/replication.
 
--  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
-
-                [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
-                [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
 
 ### **STEP 4**: Log into the web client and check current replication processes.
 
@@ -156,20 +157,32 @@ Query in side the script for insert :
 
         [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
-        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 18:44:07 2019
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 23:06:39 2019
         Version 18.3.0.0.0
 
         Copyright (c) 1982, 2018, Oracle.  All rights reserved.
 
-        Last Successful login time: Tue Feb 19 2019 17:59:49 +00:00
+        Last Successful login time: Tue Feb 19 2019 23:05:39 +00:00
 
         Connected to:
         Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
         Version 18.3.0.0.0
 
-        SQL> select CUST_FIRST_NAME,CUST_LAST_NAME,CUSTOMER_NAME from SOE.CUSTOMERS where customer_id=123456;
+        SQL> select CUST_FIRST_NAME,CUST_LAST_NAME,CUSTOMER_NAME from SOE.CUSTOMERS where customer_id=12345678;
 
-        no rows selected
+        CUST_FIRST_NAME
+        ----------------------------------------
+        CUST_LAST_NAME
+        ----------------------------------------
+        CUSTOMER_NAME
+        ----------------------------------------
+        LARRY
+        ELLISON
+
+
+
+        SQL> 
+
 
 
 ### **STEP 3**: Masking the Source Crucial email-id's into a dummy email in the target.
