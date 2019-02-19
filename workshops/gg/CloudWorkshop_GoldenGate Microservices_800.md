@@ -124,8 +124,8 @@ Note: You will be required to login again.  Use the same Administrator account t
 
                 REPLICAT REP1 param file :
                 - - - - - - - - - - - - -
-                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),&
-                COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),**&
+                COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));**
 
 -  Open a terminal window and execute "insert_customer.sql" script in SQLPLUS to insert data into customer table : 
 
