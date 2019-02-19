@@ -103,11 +103,11 @@ Note: You will be required to login again.  Use the same Administrator account t
 -       Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment is **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
-![](images/800/Lab800_image1004.JPG) 
+![](images/800/Lab800_image1004.PNG) 
 
 -       Click on parameter details of the extract ***REP1***.
 
-![](images/800/Lab800_image1005.JPG)
+![](images/800/Lab800_image1005.PNG)
  
 ### **STEP 2**: Concatenating the source '***m***'columns into target single '***n***' columns.
 
@@ -115,7 +115,7 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 -       Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
 
-![](images/800/Lab800_image1006.JPG)
+![](images/800/Lab800_image1006.PNG)
 
         REPLICAT REP1 param file :
         - - - - - - - - - - - - -
