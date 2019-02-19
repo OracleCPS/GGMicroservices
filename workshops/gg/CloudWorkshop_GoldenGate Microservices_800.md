@@ -25,7 +25,7 @@ This lab supports the following use cases:
 
 -       Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
 - 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
-- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**.
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**. 
 
 ![](images/200/33.JPG)
 
