@@ -49,7 +49,7 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
       [sudo] password for oracle: 
       Last login: Thu Feb 14 18:10:24 UTC 2019 on pts/1
       Last failed login: Thu Feb 14 18:12:02 UTC 2019 from 73.163.148.213 on ssh:notty
-      There were 6 failed login attempts since the last successful login.
+      There were 6 failed login attempts since the last successful login. 
       
 - Change to the MySQL GG home.
       
