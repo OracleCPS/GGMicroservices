@@ -45,32 +45,32 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 -	From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
-      [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
-      [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+        [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
 -	Execute the SQL Script to modify and create target tables required for the lab
 
-      [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
-      SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 04:42:57 2019
-      Version 18.3.0.0.0
-
-      Copyright (c) 1982, 2018, Oracle.  All rights reserved.
-
-      Last Successful login time: Tue Feb 19 2019 04:42:45 +00:00
-
-      Connected to:
-      Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-      Version 18.3.0.0.0
-
-      SQL> @alter_schema.sql
-
-      Table altered.
-
-
-      Table created.
-
-      SQL> 
+        
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 04:42:57 2019
+        Version 18.3.0.0.0
+        
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+        
+        Last Successful login time: Tue Feb 19 2019 04:42:45 +00:00
+        
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+        
+        SQL> @alter_schema.sql
+        
+        Table altered.
+        
+        Table created.
+        SQL> 
 
 
 ### **STEP 1**: Log into the web client and check current replication processes.
