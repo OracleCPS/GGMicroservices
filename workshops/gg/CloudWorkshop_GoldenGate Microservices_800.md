@@ -126,20 +126,51 @@ Note: You will be required to login again.  Use the same Administrator account t
                 MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id),&
                 COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
 
--  Do the transaction on the table **CUSTOMER**
+-  Open a terminal window and execute "insert_customer.sql" script in SQLPLUS to insert data into customer table : 
 
-![](images/800/13.JPG) 
+                [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow181
+                
+                SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 16:29:57 2019
+                Version 18.3.0.0.0
 
-        Query :
-        INSERT INTO SOE.CUSTOMERS VALUES (12345678,'LARRY','ELLISON','NY','NEW YORK','5000','LARRY@ORACLE.COM','365','15-OCT-11','BUSINESS','MUSIC','4-JAN-61','Y','N','2767122','126219999');
+                Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+                Last Successful login time: Tue Feb 19 2019 16:29:47 +00:00
+
+                Connected to:
+                Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+                Version 18.3.0.0.0
+
+                SQL> @insert_customer.sql
+
+                1 row created.
 
 
-3. After the transcation on the TARGET table  **CUSTOMER**
+                Commit complete.
 
-![](images/800/16.JPG) 
+Query in side the script for insert :
+        INSERT INTO SOE.CUSTOMERS VALUES (12345678,'LARRY','ELLISON','NY','NEW YORK','5000','LARRY@ORACLE.COM','365','15-OCT-                   11','BUSINESS','MUSIC','4-JAN-61','Y','N','2767122','126219999');
+        Commit;
 
-        Query :
-        select CUST_FIRST_NAME,CUST_LAST_NAME,CUSTOMER_NAME from SOE.CUSTOMERS;
+-  After the insert transcation on the source table, query target **CUSTOMER** table as below in the terminal :
+
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 18:44:07 2019
+        Version 18.3.0.0.0
+
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+        Last Successful login time: Tue Feb 19 2019 17:59:49 +00:00
+
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+
+        SQL> select CUST_FIRST_NAME,CUST_LAST_NAME,CUSTOMER_NAME from SOE.CUSTOMERS where customer_id=123456;
+
+        no rows selected
+
 
 ### **STEP 3**: Masking the Source Crucial email-id's into a dummy email in the target.
 
