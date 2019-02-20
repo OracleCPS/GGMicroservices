@@ -351,18 +351,19 @@ Query in side the script for insert :
 - - - - - - - - - - - - - - 
         REPLICAT REP1 param file :
 
-        MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, &
+        MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, KEYCOLS(LOGON_ID), &
         COLMAP (USEDEFAULTS,&
         host=@GETENV('GGENVIRONMENT','HOSTNAME'),&
         gg_group=@GETENV ('GGENVIRONMENT','GROUPNAME'),&
         osuser=@GETENV ('GGENVIRONMENT','OSUSERNAME'),&
-        domain=@GETENV ('GGENVIRONMENT','DOMAINNAME',&
+        domain=@GETENV ('GGENVIRONMENT','DOMAINNAME'),&
         ba_ind=@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'),&
-        commit_ts=@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
+        commit=@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
         pos=@GETENV ('GGHEADER','LOGPOSITION'),&
         rba=@GETENV ('GGHEADER','LOGRBA'),&
         tablename=@GETENV ('GGHEADER','TABLENAME'),&
         optype=@GETENV ('GGHEADER','OPTYPE'));
+
 
 -       Do the transcation on the table **LOGON**
 
