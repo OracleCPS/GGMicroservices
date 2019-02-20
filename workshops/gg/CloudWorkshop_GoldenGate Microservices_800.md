@@ -123,7 +123,10 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Lab800_image1006.PNG)
 
--  
+-  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
+
+![](images/800/Lab800_image1008.PNG)
+
 
 -  Open a terminal window and execute "insert_customer.sql" script in SQLPLUS to insert data into customer table : 
 
