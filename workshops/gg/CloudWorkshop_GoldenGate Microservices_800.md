@@ -7,8 +7,6 @@ Update January 08, 2019
 
 This lab walk you through some simple examples of doing ***Data Transformations*** in the **Oracle GoldenGate Microservices Web Interface**.
 
-![](images/800/Lab800_image105.JPG)
-
 This lab supports the following use cases:
 -	Concatenating the source '***m***'columns into target single '***n***' columns.
 -	Masking the Source Crucial email-id's into a dummy email-id in the target.
@@ -197,7 +195,7 @@ Query in side the script for insert :
                   COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,CUST_LAST_NAME));
                   
                   
-![](Lab800_image1009.PNG) 
+![](images/800/Lab800_image1009.PNG) 
 
 -  Open Terminal and SQLPLUS into Target Database (OGGOOW182).Create a required Stored procedure under GGATE users.  This will be used in the SQLEXEC call in the mapping statement.
 
