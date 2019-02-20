@@ -114,18 +114,16 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Slide2.JPG) 
  
--  Edit the parameter of the REPLICAT ***REP1*** with the attributes to concatenate the string from columns "CUST_FIRST_NAME" & "CUST_LAST_NAME" into "CUSTOMER_NAME".
+-  Edit the parameter of the REPLICAT ***REP1*** with the attributes to concatenate the string from columns "CUST_FIRST_NAME" & "CUST_LAST_NAME" into "CUSTOMER_NAME".Add the following, after commenting the already existing map statement with **"--"**. 
+
+
+                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id), &
+                COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+
 
 ![](images/800/Lab800_image1006.PNG)
 
--  add the following after removing ";" for CUSTOMER TABLE 
-"       **&
-        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));**     "
-
-                REPLICAT REP1 param file :
-                - - - - - - - - - - - - -
-                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id), &
-                COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+-  
 
 -  Open a terminal window and execute "insert_customer.sql" script in SQLPLUS to insert data into customer table : 
 
@@ -185,64 +183,152 @@ Query in side the script for insert :
 
 
 
-### **STEP 3**: Masking the Source Crucial email-id's into a dummy email in the target.
+### **STEP 6**: Masking the Source Crucial email-id's into a dummy email in the target.
 
 ![](images/800/Slide5.JPG) 
  
--       Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
+-  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to pass customer email to SQLEXEC() for execution of stored procedure and mapping it back to the target table.Add the following, after commenting the already existing map statement with **"--"**. 
 
-![](images/800/rep_1.JPG) 
+          MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, keycols(customer_id), &
+                  SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
+                  COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,CUST_LAST_NAME));
+                  
+                  
+![](Lab800_image1009.PNG) 
 
--  Create a required Stored procedure under C##GGATE users.  This will be used in the SQLEXEC call in the mapping statement.
+-  Open Terminal and SQLPLUS into Target Database (OGGOOW182).Create a required Stored procedure under GGATE users.  This will be used in the SQLEXEC call in the mapping statement.
 
-        CREATE  OR REPLACE FUNCTION F_MAIL(CODE_PARAM IN VARCHAR2) 
-        RETURN VARCHAR2 
-        IS DESC_PARAM VARCHAR2(100);
-        BEGIN 
-        RETURN 'XXXXXXXXX@dummy.com'; 
-        END;
-        /
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
-        select F_MAIL('MADHU') from dual;
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 23:06:39 2019
+        Version 18.3.0.0.0
 
-        CREATE OR REPLACE PROCEDURE  P_MAIL (CODE_PARAM IN VARCHAR2,DESC_PARAM  OUT VARCHAR2)
-        IS 
-        begin
-        select F_MAIL('CODE_PARAM')
-            into DESC_PARAM
-            from dual;
-        end;
-        /
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+        Last Successful login time: Tue Feb 19 2019 23:05:39 +00:00
+
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
         
-        REPLICAT REP1 param file :
+        SQL> CREATE  OR REPLACE FUNCTION F_MAIL(CODE_PARAM IN VARCHAR2) 
+         RETURN VARCHAR2 
+         IS DESC_PARAM VARCHAR2(100);
+         BEGIN 
+         RETURN 'XXXXXXXXX@dummy.com'; 
+         END;
+         /  2    3    4    5    6    7  
 
-        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS_1, &
-        COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,CUST_LAST_NAME));
-        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, &
-        SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
-        COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param);
+        Function created.
 
--  Do the transcation on the table **CUSTOMER**
+        SQL> select F_MAIL('MADHU') from dual;
 
-![](images/800/18.JPG) 
+        F_MAIL('MADHU')
+        --------------------------------------------------------------------------------
+        XXXXXXXXX@dummy.com
 
--  After the transcation on the TARGET table  **CUST_TARGET**
+        SQL>  CREATE OR REPLACE PROCEDURE  P_MAIL (CODE_PARAM IN VARCHAR2,DESC_PARAM  OUT VARCHAR2)
+         IS 
+         begin
+         select F_MAIL('CODE_PARAM')
+             into DESC_PARAM
+             from dual;
+         end;
+         /  2    3    4    5    6    7    8  
 
-![](images/800/17.JPG) 
+        Procedure created.
 
-### **STEP 3**: Using Tokens.
+        SQL> exit
+
+            
+-  Open Terminal and SQLPLUS into Source Database (OGGOOW181) and do the transcation on the table **CUSTOMER** by executing @update_email.sql script.
+
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow181
+
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 23:39:28 2019
+        Version 18.3.0.0.0
+
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+        Last Successful login time: Tue Feb 19 2019 23:03:25 +00:00
+
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+
+        SQL> @update_email.sql
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        1 row updated.
+
+
+        Commit complete.
+        
+        SQL> exit
+
+
+-  Check the Target tables is stored procedure was executed for static masking of the emails. Open Terminal and SQLPLUS into Target Database (OGGOOW182). Excute "select CUST_EMAIL from soe.customers where customer_ID between 562 and 570;" in SQLPLUS.
+
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 23:06:39 2019
+        Version 18.3.0.0.0
+
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+        Last Successful login time: Tue Feb 19 2019 23:05:39 +00:00
+
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+  
+        SQL> select CUST_EMAIL from soe.customers where customer_ID between 562 and 570;
+        
+        CUST_EMAIL
+        --------------------------------------------------------------------------------
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+        XXXXXXXXX@dummy.com
+
+        9 rows selected.
+
+        SQL> 
+
+
+### **STEP 7**: Using Tokens.
 
 ![](images/800/Slide4.JPG) 
  
--  Edit the parameter of the REPLICAT ***REP1*** to concatenate the string.
-
-![](images/800/rep_2.JPG) 
-
-        Extract EXT1 param file :
-
-        extract EXT1
-        useridalias CDBGGATE domain OracleGoldenGate
-        exttrail aa
+-  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Tokens to the audit table. Add the following, after commenting the already existing map statement with **"--"**. 
         TABLE OGGOOW181.SOE.LOGON,TOKENS ( TK_HOST = @GETENV('GGENVIRONMENT','HOSTNAME'),&
         TK_OSUSER = @GETENV ('GGENVIRONMENT','OSUSERNAME'),&
         TK_DBNAME = @GETENV('DBENVIRONMENT','DBNAME' ),&
@@ -253,21 +339,30 @@ Query in side the script for insert :
         TK_TABLE =@GETENV ('GGHEADER','TABLENAME'),&
         TK_OPTYPE =@GETENV ('GGHEADER','OPTYPE'),&
         TK_BA_IND =@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'));
+
+![](images/800/rep_2.JPG) 
+
+        Extract EXT1 param file :
+
+        extract EXT1
+        useridalias CDBGGATE domain OracleGoldenGate
+        exttrail aa
+        
 - - - - - - - - - - - - - - 
         REPLICAT REP1 param file :
 
         MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, &
         COLMAP (USEDEFAULTS,&
-        host=@TOKEN ('TK_HOST'),&
-        gg_group=@TOKEN ('TK_GROUP'),&
-        osuser=@TOKEN ('TK_OSUSER'),&
-        domain=@TOKEN ('TK_DOMAIN'),&
-        ba_ind=@TOKEN ('TK_BA_IND'),&
-        commit_ts=@TOKEN ('TK_COMMIT_TS'),&
-        pos=@TOKEN ('TK_POS'),&
-        rba=@TOKEN ('TK_RBA'),&
-        tablename=@TOKEN ('TK_TABLE'),&
-        optype=@TOKEN ('TK_OPTYPE'));
+        host=@GETENV('GGENVIRONMENT','HOSTNAME'),&
+        gg_group=@GETENV ('GGENVIRONMENT','GROUPNAME'),&
+        osuser=@GETENV ('GGENVIRONMENT','OSUSERNAME'),&
+        domain=@GETENV ('GGENVIRONMENT','DOMAINNAME',&
+        ba_ind=@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'),&
+        commit_ts=@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
+        pos=@GETENV ('GGHEADER','LOGPOSITION'),&
+        rba=@GETENV ('GGHEADER','LOGRBA'),&
+        tablename=@GETENV ('GGHEADER','TABLENAME'),&
+        optype=@GETENV ('GGHEADER','OPTYPE'));
 
 -       Do the transcation on the table **LOGON**
 
