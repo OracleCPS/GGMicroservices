@@ -8,7 +8,7 @@ Update January 08, 2019
 This lab walk you through some simple examples of doing ***Data Transformations*** in the **Oracle GoldenGate Microservices Web Interface**.
 
 This lab supports the following use cases:
--	Concatenating the source '***m***'columns into target single '***n***' columns.
+-	Concatenating the source '***m***' columns into target single '***n***' columns.
 -	Masking the Source Crucial email-id's into a dummy email-id in the target.
 -	Use of Tokens.
 
@@ -42,10 +42,10 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 ![](images/100/open_terminal.PNG)
 
 
--  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute ./build_all_bi_di.sh. This will reset the database and create uni-directional replication as in Lab 400.
+-  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute the script **build_all.sh**. This will reset the database and create uni-directional replication as in Lab 400.
 
                 [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
-                [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
+                [oracle@OGG181DB183 Lab8]$ ./build_all.sh 
 
 -  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
