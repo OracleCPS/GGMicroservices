@@ -428,39 +428,39 @@ Query in side the script for insert :
         SQL> exit
 
 
--       Open the terminal and log into SQLPLUS to do look at the transactions replicated on target DB (OGGOOW182) in table **LOGON_AUDIT*
+-  Open the terminal and log into SQLPLUS to do look at the transactions replicated on target DB (OGGOOW182) in table **LOGON_AUDIT*
 
-    [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+          [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
-    SQL*Plus: Release 18.0.0.0.0 - Production on Thu Feb 21 00:41:03 2019
-    Version 18.3.0.0.0
+          SQL*Plus: Release 18.0.0.0.0 - Production on Thu Feb 21 00:41:03 2019
+          Version 18.3.0.0.0
 
-    Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+          Copyright (c) 1982, 2018, Oracle.  All rights reserved.
 
-    Last Successful login time: Thu Feb 21 2019 00:31:09 +00:00
+          Last Successful login time: Thu Feb 21 2019 00:31:09 +00:00
 
-    Connected to:
-    Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-    Version 18.3.0.0.0
+          Connected to:
+          Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+          Version 18.3.0.0.0
 
-    SQL> select * from SOE.LOGON_AUDIT;
-      LOGON_ID CUSTOMER_ID LOGON_DAT HOST                                     GG_GROUP                                 OSUSER                                   DOMAIN                                   BA_IND
-    ---------- ----------- --------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
-    COMMIT                                   POS                                      RBA                                      TABLENAME                                OPTYPE
-    ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
-      48092713      130159 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
-    2019-02-21 00:27:52.980714               107680860                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+          SQL> select * from SOE.LOGON_AUDIT;
+            LOGON_ID CUSTOMER_ID LOGON_DAT HOST                                     GG_GROUP                                 OSUSER                                   DOMAIN                                   BA_IND
+          ---------- ----------- --------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
+          COMMIT                                   POS                                      RBA                                      TABLENAME                                OPTYPE
+          ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
+            48092713      130159 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+          2019-02-21 00:27:52.980714               107680860                                124                                      OGGOOW181.SOE.LOGON                      INSERT
 
-      48092714      130160 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
-    2019-02-21 00:27:52.980714               107681384                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+            48092714      130160 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+          2019-02-21 00:27:52.980714               107681384                                124                                      OGGOOW181.SOE.LOGON                      INSERT
 
-      48092715      130161 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
-    2019-02-21 00:27:52.980714               107681684                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+            48092715      130161 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+          2019-02-21 00:27:52.980714               107681684                                124                                      OGGOOW181.SOE.LOGON                      INSERT
 
 
-    SQL> exit
-    Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-    Version 18.3.0.0.0
+          SQL> exit
+          Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+          Version 18.3.0.0.0
 
 
 You have completed lab 800! Great Job!
