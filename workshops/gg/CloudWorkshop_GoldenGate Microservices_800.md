@@ -74,7 +74,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         Table altered.
         
         Table created.
-        SQL> 
+        SQL> exit
 
 
 
@@ -99,9 +99,9 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/800/Lab800_image1003.PNG) 
  
--  Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment is **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***.
+-  Again log in the ***Service Manager*** at **http://localhost:16000**, find and open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should see Extracts ***REP1***.
 Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
-
+![](images/800/Lab800_image1002_1.PNG) 
 ![](images/800/Lab800_image1004.PNG) 
 
 -  Click on parameter details of the extract ***REP1***.
@@ -115,19 +115,20 @@ Note: You will be required to login again.  Use the same Administrator account t
 -  Edit the parameter of the REPLICAT ***REP1*** with the attributes to concatenate the string from columns "CUST_FIRST_NAME" & "CUST_LAST_NAME" into "CUSTOMER_NAME".Add the following, after commenting the already existing map statement with **"--"**. 
 
 
-                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUST_TARGET, KEYCOLS(address_id), &
+                MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, KEYCOLS(customer_id), &
                 COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
 
 
 ![](images/800/Lab800_image1006.PNG)
 
--  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Extracts ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
+-  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Replicat ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
 
 ![](images/800/Lab800_image1008.PNG)
 
 
 -  Open a terminal window and execute "insert_customer.sql" script in SQLPLUS to insert data into customer table : 
 
+                [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
                 [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow181
                 
                 SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 16:29:57 2019
@@ -147,13 +148,15 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 
                 Commit complete.
+                SQL>exit
 
 Query in side the script for insert :
         INSERT INTO SOE.CUSTOMERS VALUES (12345678,'LARRY','ELLISON','NY','NEW YORK','5000','LARRY@ORACLE.COM','365','15-OCT-                   11','BUSINESS','MUSIC','4-JAN-61','Y','N','2767122','126219999');
         Commit;
 
 -  After the insert transcation on the source table, query target **CUSTOMER** table as below in the terminal :
-
+        
+        [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
         [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
 
         SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 23:06:39 2019
@@ -180,7 +183,7 @@ Query in side the script for insert :
 
 
 
-        SQL> 
+        SQL> exit
 
 
 
@@ -188,7 +191,7 @@ Query in side the script for insert :
 
 ![](images/800/Slide5.JPG) 
  
--  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to pass customer email to SQLEXEC() for execution of stored procedure and mapping it back to the target table.Add the following, after commenting the already existing map statement with **"--"**. 
+-  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to pass customer email to SQLEXEC() for execution of stored procedure and mapping it back to the target table.Add the following, after commenting the already existing map statement for CUSTOMERS table with **"--"**. 
 
           MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, keycols(customer_id), &
                   SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
@@ -240,6 +243,10 @@ Query in side the script for insert :
         Procedure created.
 
         SQL> exit
+
+-  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Replicat ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
+
+![](images/800/Lab800_image1008.PNG)
 
             
 -  Open Terminal and SQLPLUS into Source Database (OGGOOW181) and do the transcation on the table **CUSTOMER** by executing @update_email.sql script.
