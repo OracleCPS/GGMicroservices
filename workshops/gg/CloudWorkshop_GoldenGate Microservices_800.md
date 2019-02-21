@@ -45,14 +45,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 -  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and execute the script **build_all.sh**. This will reset the database and create uni-directional replication as in Lab 400.
 
                 [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
-<<<<<<< HEAD
                 [oracle@OGG181DB183 Lab8]$ ./build_all.sh 
-=======
-                [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
-                
-**NOTE** : Please wait as this will take 5 mins. You should see the following message in the terminal :
-![](images/800/Lab800_image10012.PNG)
->>>>>>> c021002f74b87e1d078cbe207f7c24fec47e4bc8
 
 -  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
