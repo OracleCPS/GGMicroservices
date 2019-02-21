@@ -354,7 +354,7 @@ Query in side the script for insert :
         tablename=@GETENV ('GGHEADER','TABLENAME'),&
         optype=@GETENV ('GGHEADER','OPTYPE'));
 
-![](Lab800_image10011.PNG) 
+![](images/800/Lab800_image10011.PNG) 
 
       
  REPLICAT REP1 param file will look like :
