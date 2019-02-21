@@ -48,7 +48,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
                 [oracle@OGG181DB183 Lab8]$ ./build_all_bi_di.sh 
                 
 **NOTE** : Please wait as this will take 5 mins. You should see the following message in the terminal :
-![](images/100/Lab800_image10012.PNG)
+![](images/800/Lab800_image10012.PNG)
 
 -  From the terminal screen change to the OGG181_WHKSHP/Lab8 directory and log into SQLPLUS using the following credentials :
 
