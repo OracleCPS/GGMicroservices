@@ -336,7 +336,9 @@ Query in side the script for insert :
 
 ![](images/800/Slide4.JPG) 
  
--  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Tokens to the audit table. Add the following, after commenting the already existing map statement with **"--"**. 
+-  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Tokens to the audit table. Add the following after ***useridalias** command :
+
+
         TABLE OGGOOW181.SOE.LOGON,TOKENS ( TK_HOST = @GETENV('GGENVIRONMENT','HOSTNAME'),&
         TK_OSUSER = @GETENV ('GGENVIRONMENT','OSUSERNAME'),&
         TK_DBNAME = @GETENV('DBENVIRONMENT','DBNAME' ),&
@@ -348,16 +350,10 @@ Query in side the script for insert :
         TK_OPTYPE =@GETENV ('GGHEADER','OPTYPE'),&
         TK_BA_IND =@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'));
 
-![](images/800/rep_2.JPG) 
+![](Lab800_image10011.PNG) 
 
-        Extract EXT1 param file :
-
-        extract EXT1
-        useridalias CDBGGATE domain OracleGoldenGate
-        exttrail aa
-        
-- - - - - - - - - - - - - - 
-        REPLICAT REP1 param file :
+      
+ REPLICAT REP1 param file will look like :
 
         MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, KEYCOLS(LOGON_ID), &
         COLMAP (USEDEFAULTS,&
@@ -372,22 +368,75 @@ Query in side the script for insert :
         tablename=@GETENV ('GGHEADER','TABLENAME'),&
         optype=@GETENV ('GGHEADER','OPTYPE'));
 
+-  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Replicat ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
 
--       Do the transcation on the table **LOGON**
+![](images/800/Lab800_image1008.PNG)
 
-![](images/800/19.JPG) 
+-  Open the terminal and log into SQLPLUS to do transaction on source DB (OGGOOW181) in table **LOGON**
 
-         Query :
 
-         insert into soe.logon values ('48092713',130159,sysdate);
-         commit;
+        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow181
 
--       After the transcation on the TARGET table **LOGON**
+        SQL*Plus: Release 18.0.0.0.0 - Production on Thu Feb 21 00:27:45 2019
+        Version 18.3.0.0.0
 
-![](images/800/20.JPG) 
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
 
-        Query :
+        Last Successful login time: Thu Feb 21 2019 00:25:54 +00:00
 
-         select * from SOE.LOGON;
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+
+        SQL> @insert_logon.sql
+
+        1 row created.
+
+
+        1 row created.
+
+
+        1 row created.
+
+
+        Commit complete.
+
+        SQL> exit
+
+
+-       Open the terminal and log into SQLPLUS to do look at the transactions replicated on target DB (OGGOOW182) in table **LOGON_AUDIT*
+
+    [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
+
+    SQL*Plus: Release 18.0.0.0.0 - Production on Thu Feb 21 00:41:03 2019
+    Version 18.3.0.0.0
+
+    Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+    Last Successful login time: Thu Feb 21 2019 00:31:09 +00:00
+
+    Connected to:
+    Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+    Version 18.3.0.0.0
+
+    SQL> select * from SOE.LOGON_AUDIT;
+      LOGON_ID CUSTOMER_ID LOGON_DAT HOST                                     GG_GROUP                                 OSUSER                                   DOMAIN                                   BA_IND
+    ---------- ----------- --------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
+    COMMIT                                   POS                                      RBA                                      TABLENAME                                OPTYPE
+    ---------------------------------------- ---------------------------------------- ---------------------------------------- ---------------------------------------- ----------------------------------------
+      48092713      130159 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+    2019-02-21 00:27:52.980714               107680860                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+
+      48092714      130160 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+    2019-02-21 00:27:52.980714               107681384                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+
+      48092715      130161 21-FEB-19 OGG181DB183                              REP1                                     oracle                                                                            AFTER
+    2019-02-21 00:27:52.980714               107681684                                124                                      OGGOOW181.SOE.LOGON                      INSERT
+
+
+    SQL> exit
+    Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+    Version 18.3.0.0.0
+
 
 You have completed lab 800! Great Job!
