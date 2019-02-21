@@ -339,22 +339,6 @@ Query in side the script for insert :
 -  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Tokens to the audit table. Add the following after ***useridalias** command :
 
 
-        TABLE OGGOOW181.SOE.LOGON,TOKENS ( TK_HOST = @GETENV('GGENVIRONMENT','HOSTNAME'),&
-        TK_OSUSER = @GETENV ('GGENVIRONMENT','OSUSERNAME'),&
-        TK_DBNAME = @GETENV('DBENVIRONMENT','DBNAME' ),&
-        TK_GROUP =@GETENV ('GGENVIRONMENT','GROUPNAME'),&
-        TK_COMMIT_TS =@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
-        TK_POS =@GETENV ('GGHEADER','LOGPOSITION'),&
-        TK_RBA =@GETENV ('GGHEADER','LOGRBA'),&
-        TK_TABLE =@GETENV ('GGHEADER','TABLENAME'),&
-        TK_OPTYPE =@GETENV ('GGHEADER','OPTYPE'),&
-        TK_BA_IND =@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'));
-
-![](Lab800_image10011.PNG) 
-
-      
- REPLICAT REP1 param file will look like :
-
         MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, KEYCOLS(LOGON_ID), &
         COLMAP (USEDEFAULTS,&
         host=@GETENV('GGENVIRONMENT','HOSTNAME'),&
@@ -367,6 +351,46 @@ Query in side the script for insert :
         rba=@GETENV ('GGHEADER','LOGRBA'),&
         tablename=@GETENV ('GGHEADER','TABLENAME'),&
         optype=@GETENV ('GGHEADER','OPTYPE'));
+
+![](Lab800_image10011.PNG) 
+
+      
+ REPLICAT REP1 param file will look like :
+
+        Replicat     REP1
+        UseridAlias TGGATE2
+
+        MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, KEYCOLS(LOGON_ID), &
+                COLMAP (USEDEFAULTS,&
+                host=@GETENV('GGENVIRONMENT','HOSTNAME'),&
+                gg_group=@GETENV ('GGENVIRONMENT','GROUPNAME'),&
+                osuser=@GETENV ('GGENVIRONMENT','OSUSERNAME'),&
+                domain=@GETENV ('GGENVIRONMENT','DOMAINNAME'),&
+                ba_ind=@GETENV ('GGHEADER','BEFOREAFTERINDICATOR'),&
+                commit=@GETENV ('GGHEADER','COMMITTIMESTAMP'),&
+                pos=@GETENV ('GGHEADER','LOGPOSITION'),&
+                rba=@GETENV ('GGHEADER','LOGRBA'),&
+                tablename=@GETENV ('GGHEADER','TABLENAME'),&
+                optype=@GETENV ('GGHEADER','OPTYPE'));
+
+        --map oggoow181.soe.customers, target soe.customers, keycols(customer_id);
+        --MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, KEYCOLS(customer_id), &
+           --      COLMAP (USEDEFAULTS,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,' ',CUST_LAST_NAME));
+
+        MAP OGGOOW181.SOE.CUSTOMERS, TARGET OGGOOW182.SOE.CUSTOMERS, keycols(customer_id), &
+                   SQLEXEC (SPNAME P_MAIL, PARAMS (code_param = CUST_EMAIL)), &
+                   COLMAP (USEDEFAULTS, CUST_EMAIL = P_MAIL.desc_param,CUSTOMER_NAME =@STRCAT(CUST_FIRST_NAME,CUST_LAST_NAME));
+
+        map oggoow181.soe.addresses,target soe.addresses, keycols(address_id);
+        map oggoow181.soe.orders, target soe.orders, keycols(order_id);
+        map oggoow181.soe.order_items, target soe.order_items, keycols(order_id, line_item_id);
+        map oggoow181.soe.card_details, target soe.card_details, keycols(card_id);
+        map oggoow181.soe.logon, target soe.logon;
+        map oggoow181.soe.product_information, target soe.product_information;
+        map oggoow181.soe.inventories, target soe.inventories, keycols(product_id, warehouse_id);
+        map oggoow181.soe.product_descriptions, target soe.product_descriptions;
+        map oggoow181.soe.warehouses, target soe.warehouses;
+        map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;
 
 -  Open the Administration Server of the Target deployment i.e. **SanFran** at **http://localhost:17001**.  When the page is completely open, you should be at a page where you can see Replicat ***REP1***. Please ***stop*** and ***start*** the ***REP1*** process.
 
