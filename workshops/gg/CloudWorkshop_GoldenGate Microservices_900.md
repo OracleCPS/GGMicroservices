@@ -70,11 +70,11 @@ From the Lab9 directory, run the following script:
 
 For the final task we will view both Deployment’s Performance Metric Service to view transactions metrics within the Oracle GoldenGate configuration.
 
--       Click on the link to the Performance Metric Service for the Atlanta deployment from the ServiceManager page, or connect directly via the browser to http://<hostname>:16004, then click on the EXT1 Extract process, and view the details about it.  
+-  Click on the link to the Performance Metric Service for the Atlanta deployment from the ServiceManager page, or connect directly via the browser to http://<hostname>:16004, then click on the EXT1 Extract process, and view the details about it.  
 
 ![](images/900/Lab900_image1004.PNG)
 
--       explore the different tables for information on replicatoon and database Statistics.
+-  Explore the different tables for information on replication and database Statistics.
 
 ![](images/900/Lab900_image1005.PNG)
 
@@ -82,7 +82,7 @@ For the final task we will view both Deployment’s Performance Metric Service t
 ![](images/900/Lab900_image1007.PNG)
 
 
--       Now click on the link to the Performance Metric Service for the **SANFRAN** deployment from the ServiceManager page, or connect directly via the browser to http://<hostname>:17004, then click on the IREP Replicat process, and view the details about it.  
+-  Now click on the link to the Performance Metric Service for the **SANFRAN** deployment from the ServiceManager page, or connect directly via the browser to http://<hostname>:17004, then click on the IREP Replicat process, and view the details about it.  
 
 ![](images/900/Lab900_image1006.PNG)
 
