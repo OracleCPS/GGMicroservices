@@ -175,6 +175,7 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 
 -   Fill in the Replicat options form with the required information.  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
+** Ignore the CHECKPOINTTABLE warning message **
  
 ![](images/400/Lab400_Add_Replicat.PNG) 
 
@@ -194,6 +195,8 @@ In this lab you will configure the Parallel Replicat for the second deployment.
     	
 -   Once the parameter file has been updated, click the Create and Run button at the bottom.
 
+![](images/400/Lab400_Add_Replicat_Param.PNG) 
+
 -   At this point, you should have a fully functional uni-directional replication environment.
 
 ### **STEP 7**: Run Swingbench script to apply data to the source database.
@@ -201,27 +204,28 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 -   Change directory to Lab4 run script **start_swingbench_181.sh**.  This will run for 1 min and you'll see the message ** Completed Run. ** when finished.
 
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab4
-		[oracle@OGG181DB183 Lab4$ ./start_swingbench_181.sh
-        [oracle@OGG181DB183 Lab4]$ Author  :	 Dominic Giles
+		[oracle@OGG181DB183 Lab4]$ ./start_swingbench_181.sh 
         Author  :	 Dominic Giles
         Version :	 2.6.0.1046
 
-        Version :	 2.6.0.1046
         Results will be written to results.xml.
-
-        Results will be written to results.xml.
-        Hit Return to Terminate Run...
         Hit Return to Terminate Run...
 
         Time		Users
+        23:41:06	[0/2]
+        23:41:08	[0/2]
+        23:41:09	[0/2]
+        23:41:10	[0/2]
+            .
+            .
+            .
+        23:42:04	[2/2]
+        23:42:05	[2/2]
+        23:42:06	[2/2]
+        23:42:07	[2/2]
 
-        Time		Users
-        00:10:47	[0/2]
-        00:10:47	[0/2]
-            .
-            .
-            .
         Completed Run.
+        [oracle@OGG181DB183 Lab4]$ 
 
 ### **STEP 8**: Check Replication Results
 
