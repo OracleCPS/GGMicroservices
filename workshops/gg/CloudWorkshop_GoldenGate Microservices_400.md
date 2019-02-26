@@ -35,9 +35,9 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 -   Before you can create an Extract, you need to setup a credential alias for the GoldenGate user (C##GGATE).  This was done in lab 300.
 
-![](images/300/Lab300_image5.PNG) 
+![](images/300/Lab300_SGGATE_WSTARGET.PNG) 
 
--   Verify that the credentials you just created work.  There is a little database icon under Action in the table.  Click on this for the database Credential Alias and you should be able to login to the database.
+-   Verify that the credentials you created work.  There is a little database icon under Action in the table.  Click on this for the database Credential Alias and you should be able to login to the database.
 
 ![](images/400/Lab300_image160.PNG) 
  
@@ -49,7 +49,7 @@ Note: You will be required to login again.  Use the same Administrator account t
  
 -   You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema.  To do this, click on the magnifying glass and provide the Schema name.
 
-![](images/400/Lab300_image180.PNG) 
+![](images/400/Lab400_Trandata.PNG) 
  
 ### **STEP 3**: Add the Integrated Extract.
 
@@ -65,11 +65,11 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 -   The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next.  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
 
--   When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181. 
+![](images/400/Lab400_Add_Extract.PNG) 
 
-![](images/400/Lab300_image220.PNG) 
+-   When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181, then click ** Next **.
 
-![](images/400/Lab300_image225.PNG) 
+![](images/400/Lab400_Select_CDB.PNG) 
  
 
 On the last page of the Add Extract process, you are presented with a parameter file.  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
@@ -96,7 +96,7 @@ On the last page of the Add Extract process, you are presented with a parameter 
 
 Once the TABLE statements are added, click Create and Run at the bottom of the page.
  
-![](images/400/Lab300_image230.PNG) 
+![](images/400/Lab400_Extract_Param.PNG) 
 
 The Administration Server page will refresh when the process is done registering the Extract with the database, and will show that the Extract is up and running
 
@@ -121,18 +121,19 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 -   On the Add Path page, fill in the required information.  Make note that the default protocol for distribution service is secure websockets **wss**.  You will need to change this to websockets **ws**.
 
-![](images/400/Lab300_image280.PNG) 
+![](images/400/Lab400_DistPath.PNG) 
 
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
-Hostname: localhost
-Port: 17003
-Trail File: bb
-Domain: WSTARGET
-Alias: WSTARGET
+
+    Hostname: localhost
+    Port: 17003
+    Trail File: bb
+    Domain: OGG
+    Alias: WSTARGET
 
 -   After filling out the form, click Create and Run at the bottom of the page.
 
-![](images/400/Lab300_image285.PNG) 
+![](images/400/Lab400_DistPath_Run.PNG) 
 
 -   Review the Distribution Service to see that the distribution path is created and running.
  
@@ -166,10 +167,9 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   This step requires a credential store for replicat to connect to target database. Use the TGGATE created in Lab300. 
 
-
 -   Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Parallel Replicat -   Click the plus sign ( + ) to open the Add Replicat process.
  
-![](images/400/Lab300_image350.PNG) 
+![](images/400/Lab400_Overview_Add_Rep.PNG) 
 
 -   With the Add Replicat page open, you want to create a Parallel Replicat.  Make sure the radio button is selected and click Next.
 
@@ -178,24 +178,15 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   Fill in the Replicat options form with the required information.  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
  
-![](images/400/Lab300_image370.PNG) 
+![](images/400/Lab400_Add_Replicat.PNG) 
 
 -   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
-    **MAP OGGOOW181.SOE.\*, TARGET SOE.\*;**
- 
-![](images/400/Lab300_image380.PNG) 
-
-[Optional - For your information] You can also specify individual table name as given below. <br />
-
-    replicat REP1
-    useridalias TGGATE domain OracleGoldenGate
-    --MAP OGGOOW181.SOE.*, TARGET SOE.*;
-    MAP OGGOOW181.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS;
-    MAP OGGOOW181.SOE.ADDRESSES, TARGET SOE.ADDRESSES;
+    MAP OGGOOW181.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS, KEYCOLS(CUSTOMER_ID);
+    MAP OGGOOW181.SOE.ADDRESSES, TARGET SOE.ADDRESSES, KEYCOLS(ADDRESS_ID);
     MAP OGGOOW181.SOE.ORDERS, TARGET SOE.ORDERS, KEYCOLS(ORDER_ID);
     MAP OGGOOW181.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS, KEYCOLS(ORDER_ID,LINE_ITEM_ID);
-    MAP OGGOOW181.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS;
+    MAP OGGOOW181.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS, KEYCOLS(CARD_ID);
     MAP OGGOOW181.SOE.LOGON, TARGET SOE.LOGON;
     MAP OGGOOW181.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION;
     MAP OGGOOW181.SOE.INVENTORIES, TARGET SOE.INVENTORIES, KEYCOLS(PRODUCT_ID,WAREHOUSE_ID);
@@ -203,18 +194,17 @@ In this lab you will configure the Parallel Replicat for the second deployment.
     MAP OGGOOW181.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES;
     MAP OGGOOW181.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA;
     	
-
 -   Once the parameter file has been updated, click the Create and Run button at the bottom.
 
 -   At this point, you should have a fully functional uni-directional replication environment.
 
 ### **STEP 7**: Run Swingbench script to apply data to the source database.
 
--   Change directory to Lab5 run script **start_swingbench_181.sh**.
+-   Change directory to Lab4 run script **start_swingbench_181.sh**.  This will run for 1 min and you'll see the message ** Completed Run. ** when finished.
 
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab4
-		[oracle@OGG181DB183 Lab5$ ./start_swingbench_181.sh
-        [oracle@OGG181DB183 Lab5]$ Author  :	 Dominic Giles
+		[oracle@OGG181DB183 Lab4$ ./start_swingbench_181.sh
+        [oracle@OGG181DB183 Lab4]$ Author  :	 Dominic Giles
         Author  :	 Dominic Giles
         Version :	 2.6.0.1046
 
@@ -230,11 +220,34 @@ In this lab you will configure the Parallel Replicat for the second deployment.
         Time		Users
         00:10:47	[0/2]
         00:10:47	[0/2]
+            .
+            .
+            .
+        Completed Run.
 
+### **STEP 8**: Check Replication Results
 
-###########  ADD Check replication status steps #################
+-    From the Atlanta Admin Server Overview page, click the ** Action ** button by the Extract (EXT1) and click ** Details **.
 
-### **STEP 8**: DDL Replication.
+![](images/400/Lab400_Extract_Details.PNG) 
+
+-   Click on the Statistics Tab
+
+![](images/400/Lab400_Extract_Stats.PNG) 
+
+-   From here you can see the counts and types of transactions against each table.  You can scroll through the list.
+
+-   Next, from the San_Fran Admin Server Overview page, click the ** Action ** button by the Replicat (REP1) and click ** Details **.
+
+![](images/400/Lab400_Replicat_Details.PNG) 
+
+-   Click on the Statistics Tab
+
+![](images/400/Lab400_Replicat_Stats.PNG) 
+
+-   Check to see if the counts match.
+
+### **STEP 9**: DDL Replication.
 
 ## Objectives
 In this lab we will perform a few DML and DDL operations on source pdb and check if those operations are properly replicated to target database.
@@ -295,7 +308,7 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 The above error is because employee table is not present in the target database. Drop command is executed successfully in target database.
 
-### **STEP 8**: Stop delivery process.
+### **STEP 10**: Stop delivery process.
 
 - Please log on to Admin process screen of Sanfran (http://localhost:17001) and stop the parallel nonintegrared replicat process.
 ![](images/400/Lab400_image999.PNG)
