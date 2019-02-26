@@ -31,7 +31,7 @@ In this Lab, you will configure the database and protocol user credentials entri
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
-|Credential Domain|	SGGATE|
+|Credential Domain|	OGG|
 |Credential Alias|	SGGATE|
 |User ID|	C##GGATE@orcl|
 |Password|	ggate|
@@ -47,7 +47,7 @@ Since you are configuring an non-SSL replication environment, you will need to c
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
-|Credential Domain|	WSTARGET|
+|Credential Domain|	OGG|
 |Credential Alias|	WSTARGET|
 |User ID|	oggadmin|
 |Password|	Welcome1|
@@ -64,7 +64,7 @@ Below are the parameters that will be used in exectuting the scripts.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
-|Credential Domain|	TGGATE|
+|Credential Domain|	OGG|
 |Credential Alias|	TGGATE|
 |User ID|	GGATE@OGGOOW182|
 |Password|	ggate|
@@ -92,7 +92,7 @@ To create the TGGATE connection follow the below steps:
 
         function _createAlias {
             curl -X POST \
-            http://$vASHost:$vASPort/services/v2/credentials/OracleGoldenGate/$vGGAlias \
+            http://$vASHost:$vASPort/services/v2/credentials/OGG/$vGGAlias \
             --user "oggadmin:"$vPass   \
             -H 'Cache-Control: no-cache' \
             -d '{
@@ -112,17 +112,17 @@ To create the TGGATE connection follow the below steps:
         [oracle@OGG181DB183 Lab3]$ ./create_credential_GGAlias_target.sh Welcome1 17001 ggate@oggoow182 ggate TGGATE
         % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                         Dload  Upload   Total   Spent    Left  Speed
-        100   834  100   761  100    73  34234   3283 --:--:-- --:--:-- --:--:-- 36238
+        100  1023  100   950  100    73  15013   1153 --:--:-- --:--:-- --:--:-- 15322
         {
             "$schema": "api:standardResponse",
             "links": [
                 {
-                    "href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+                    "href": "http://localhost:17001/services/v2/credentials/OGG/TGGATE",
                     "mediaType": "application/json",
                     "rel": "canonical"
                 },
                 {
-                    "href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+                    "href": "http://localhost:17001/services/v2/credentials/OGG/TGGATE",
                     "mediaType": "application/json",
                     "rel": "self"
                 }
@@ -131,7 +131,7 @@ To create the TGGATE connection follow the below steps:
                 {
                     "$schema": "ogg:message",
                     "code": "OGG-15114",
-                    "issued": "2019-02-12T23:16:17Z",
+                    "issued": "2019-02-26T21:19:48Z",
                     "severity": "INFO",
                     "title": "Credential store altered.",
                     "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15114"
@@ -139,13 +139,22 @@ To create the TGGATE connection follow the below steps:
                 {
                     "$schema": "ogg:message",
                     "code": "OGG-15116",
-                    "issued": "2019-02-12T23:16:17Z",
+                    "issued": "2019-02-26T21:19:48Z",
                     "severity": "INFO",
                     "title": "No information found in credential store.",
                     "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15116"
+                },
+                {
+                    "$schema": "ogg:message",
+                    "code": "OGG-15102",
+                    "issued": "2019-02-26T21:19:48Z",
+                    "severity": "INFO",
+                    "title": "Credential store created.",
+                    "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15102"
                 }
             ]
         }
+
 
 ### **STEP 3**: Create the target GoldenGate checkpoint table using the REST API.
 
@@ -159,7 +168,7 @@ To create the TGGATE connection follow the below steps:
         vPass=$1
         vASHost=localhost
         vASPort=$2
-        vGGAlias=OracleGoldenGate.TGGATE
+        vGGAlias=OGG.TGGATE
 
         function _createCkptTbl {
             curl -X POST \
@@ -183,17 +192,17 @@ To create the TGGATE connection follow the below steps:
         [oracle@OGG181DB183 Lab3]$ ./add_CheckpointTable.sh Welcome1 17001
         % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                         Dload  Upload   Total   Spent    Left  Speed
-        100   719  100   635  100    84   1789    236 --:--:-- --:--:-- --:--:--  1793
+        100   693  100   609  100    84    387     53  0:00:01  0:00:01 --:--:--   387
         {
             "$schema": "api:standardResponse",
             "links": [
                 {
-                    "href": "http://localhost:17001/services/v2/connections/OracleGoldenGate.TGGATE/tables/checkpoint",
+                    "href": "http://localhost:17001/services/v2/connections/OGG.TGGATE/tables/checkpoint",
                     "mediaType": "application/json",
                     "rel": "canonical"
                 },
                 {
-                    "href": "http://localhost:17001/services/v2/connections/OracleGoldenGate.TGGATE/tables/checkpoint",
+                    "href": "http://localhost:17001/services/v2/connections/OGG.TGGATE/tables/checkpoint",
                     "mediaType": "application/json",
                     "rel": "self"
                 }
@@ -202,7 +211,7 @@ To create the TGGATE connection follow the below steps:
                 {
                     "$schema": "ogg:message",
                     "code": "OGG-08100",
-                    "issued": "2019-02-12T23:16:45Z",
+                    "issued": "2019-02-26T21:24:10Z",
                     "severity": "INFO",
                     "title": "Logon catalog name OGGOOW182 will be used for table specification OGGOOW182.ggate.checkpoints.",
                     "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
