@@ -1,6 +1,6 @@
 ![](images/300/Lab300_image1.PNG)
 
-Update December 28, 2018
+Update February 26, 2019
 
 ## Creating Credentials in GoldenGate Micro Services Architecture
 ## Introduction
