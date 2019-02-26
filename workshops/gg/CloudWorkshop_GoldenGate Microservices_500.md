@@ -218,6 +218,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 		[oracle@OGG181DB183 Lab5]$ curl -u oggadmin:Welcome1 -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:17001/services/v2/replicats/REP2 -d @rep2.json | python -mjson.tool
 
 -	After the command is executed successfully, the command output looks like this:
+
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 										Dload  Upload   Total   Spent    Left  Speed
 		100   768  100   478  100   290    885    536 --:--:-- --:--:-- --:--:--   885
