@@ -37,6 +37,7 @@ In this Lab, you will configure the database and protocol user credentials entri
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
+![](images/400/Lab300_Add_SGGATE.PNG)
 ![](images/300/Lab300_SGGATE.PNG)
 
 Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
@@ -53,7 +54,7 @@ Since you are configuring an non-SSL replication environment, you will need to c
 |Password|	Welcome1|
 |Verify Password| 	 Welcome1|
 
-![](images/300/Lab300_image11.PNG) 
+![](images/300/Lab300_Add_WSTARGET.PNG) 
  
  -  Refresh the Administration Service Configuration page to see if Credential was created.
 
