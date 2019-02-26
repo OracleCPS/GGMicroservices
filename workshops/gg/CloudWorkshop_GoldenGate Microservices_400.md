@@ -1,6 +1,6 @@
 ![](images/400/Lab300_image100.PNG)
 
-Update Feburary 12, 2019
+Update Feburary 26, 2019
 
 ## UniDirectional and DDL Replication
 ## Introduction
@@ -121,8 +121,6 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 -   On the Add Path page, fill in the required information.  Make note that the default protocol for distribution service is secure websockets **wss**.  You will need to change this to websockets **ws**.
 
-![](images/400/Lab400_DistPath.PNG) 
-
 Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protocols you can select to use for transport.  Since you are setting up an unsecure uni-directional replication, make sure you select **WS**, then provide the following target information:
 
     Hostname: localhost
@@ -133,7 +131,7 @@ Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protoc
 
 -   After filling out the form, click Create and Run at the bottom of the page.
 
-![](images/400/Lab400_DistPath_Run.PNG) 
+![](images/400/Lab400_DistPath.PNG) 
 
 -   Review the Distribution Service to see that the distribution path is created and running.
  
