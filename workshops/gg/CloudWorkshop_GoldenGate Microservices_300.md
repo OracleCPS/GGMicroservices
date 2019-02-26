@@ -37,7 +37,7 @@ In this Lab, you will configure the database and protocol user credentials entri
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
-![](images/300/Lab300_image3.PNG)
+![](images/300/Lab300_SGGATE.PNG)
 
 Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
 
@@ -223,9 +223,7 @@ The Checkpoint Table can also be viewed under the TTGATE alias from the SanFran 
 
 ![](images/300/Lab300_image991.PNG) 
 
-![](images/300/Lab300_image992.PNG) 
-
-![](images/300/Lab300_image10.PNG) 
+![](images/300/Lab300_TGGATE.PNG) 
 
 You have completed lab 300!   **Great Job!**
 
