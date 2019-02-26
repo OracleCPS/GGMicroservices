@@ -13,19 +13,29 @@ For this lab, even though we are going Oracle to Oracle, we will show you a meth
 
 This lab, will contains three parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
 
-# Pre-requisite : Create required credentails for replication.
+# Pre-requisite : Check required credentials for replication.
+
 - 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
-- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
-- 	You should get a sign on page.   Sign in using the username: **"ggadmin"** and password **"Welcome1"**.
-![](images/200/33.JPG)
 
--   After logging in, find and open the Administration Server for your first deployment. In this example, the first deployment is Atlanta. Go to Atlanta administration server page by clicking on 16001.
+- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop (**same one you used for the VNC Session**).
 
-![](images/400/Lab300_image120.PNG)
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**.
 
--   Click on hamburger symbol on top left corner of the page, select Configuration and select "+" sign beside credentials.
+![](images/400/Lab300_image110.PNG) 
+ 
+-   After logging in, find and open the Administration Server for your first deployment.  In this example, the first deployment is Atlanta.  Click on the link with the port number for the Admin Service for Atlanta.
 
--   Here will create the root container database credentials.  Enter the credential details as given below and click on submit. Password is "ggate".  You will need to add the alias for a user that will connect to CDB (ORCL). The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
+Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
+
+![](images/400/Lab300_image120.PNG) 
+ 
+-   Check for the credential alias for the GoldenGate user (C##GGATE) and also the Protocol credentials (WSTARGET).  This was done in lab 300.
+
+![](images/300/Lab300_image5.PNG) 
+
+-	
+
+
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
@@ -95,50 +105,50 @@ For ZDT we always install the normal CDC processes first and start the capture p
 		
 -	After the command is executed successfully, the command output looks like this:
 
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  1374  100   949  100   425     42     18  0:00:23  0:00:22  0:00:01   120
-{
-    "$schema": "api:standardResponse",
-    "links": [
-        {
-            "href": "http://localhost:16001/services/v2/extracts/EXT2",
-            "mediaType": "application/json",
-            "rel": "canonical"
-        },
-        {
-            "href": "http://localhost:16001/services/v2/extracts/EXT2",
-            "mediaType": "application/json",
-            "rel": "self"
-        }
-    ],
-    "messages": [
-        {
-            "$schema": "ogg:message",
-            "code": "OGG-08100",
-            "issued": "2019-02-09T20:51:15Z",
-            "severity": "INFO",
-            "title": "EXTRACT (Integrated) added.",
-            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
-        },
-        {
-            "$schema": "ogg:message",
-            "code": "OGG-02003",
-            "issued": "2019-02-09T20:51:38Z",
-            "severity": "INFO",
-            "title": "Extract EXT2 successfully registered with database at SCN 9096500.",
-            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-02003"
-        },
-        {
-            "$schema": "ogg:message",
-            "code": "OGG-08100",
-            "issued": "2019-02-09T20:51:38Z",
-            "severity": "INFO",
-            "title": "EXTTRAIL added.",
-            "type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
-        }
-    ]
-}
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100  1374  100   949  100   425     42     18  0:00:23  0:00:22  0:00:01   120
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16001/services/v2/extracts/EXT2",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16001/services/v2/extracts/EXT2",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-09T20:51:15Z",
+					"severity": "INFO",
+					"title": "EXTRACT (Integrated) added.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-02003",
+					"issued": "2019-02-09T20:51:38Z",
+					"severity": "INFO",
+					"title": "Extract EXT2 successfully registered with database at SCN 9096500.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-02003"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-09T20:51:38Z",
+					"severity": "INFO",
+					"title": "EXTTRAIL added.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				}
+			]
+		}
 
 ### **STEP 2**: Create and start the CDC Distribution Path using curl commands.
 
