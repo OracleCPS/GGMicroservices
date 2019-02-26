@@ -305,7 +305,7 @@ Before we begin we want to make sure the target database is empty.
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
 		[oracle@OGG181DB183 Lab5]$ ./start_swingbench_181.sh
 		
-![](images/500/Lab500_image5005.PNG.png)
+![](images/500/Lab500_image5005.PNG)
 
 ### **STEP 4**: Check Initial Load Extract to see if it's completed.
 
