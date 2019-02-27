@@ -1,6 +1,6 @@
 ![](images/500/Lab500_1.PNG)
 
-Update January 14, 2019
+Update February 27, 2019
 
 ## Zero Downtime Lab using REST API
 ## Introduction
@@ -71,7 +71,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 
 -	Next, run the following command to remove the Replicat REP1.
 
-	** curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool **
+	- curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 
 		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -113,7 +113,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 
 -	Lastly we'll remove the Distribution Path with the following command.
 
-	** curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool **
+	- curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool
 
 		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -402,27 +402,26 @@ For ZDT we always install the normal CDC processes first and start the capture p
 ### **STEP 2**: Create and start the CDC Distribution Path using curl commands.
 
 -   From the same terminal window review the JSON file to add the CDC Distribution Path.
+
 		[oracle@OGG181DB183 Lab5]$ cat tpath.json 
-				{
-				"name": "TSTPATH",
-				"status": "stopped",
-				"source": {
-				"uri": "trail://localhost:16002/services/v2/sources?trail=x2"
-				},
-				"target": {
-				"uri": "ws://OracleGoldenGate+WSTARGET@localhost:17003/services/v2/targets?trail=bc"
-				}
-				}
+		{
+		"name": "TSTPATH",
+		"status": "running",
+		"source": {
+		"uri": "trail://localhost:16002/services/v2/sources?trail=X1"
+		},
+		"target": {
+		"uri": "ws://OracleGoldenGate+WSTARGET@localhost:17003/services/v2/targets?trail=X2"
+		}
+		}
+
 
 -	Execute the following curl command to add the PATH to send data from Extract to replicat.
 
 		[oracle@OGG181DB183 Lab5]$ curl -u oggadmin:Welcome1 -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:16002/services/v2/sources/TSTPATH -d @tpath.json | python -mjson.tool
-
--	After the command is executed successfully, the command output looks like this:
-
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 										Dload  Upload   Total   Spent    Left  Speed
-		100   709  100   499  100   210    430    181  0:00:01  0:00:01 --:--:--   430
+		100   709  100   499  100   210    448    188  0:00:01  0:00:01 --:--:--   448
 		{
 			"$schema": "api:standardResponse",
 			"links": [
@@ -441,7 +440,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 				{
 					"$schema": "ogg:message",
 					"code": "OGG-08511",
-					"issued": "2019-02-09T21:06:57Z",
+					"issued": "2019-02-27T20:36:44Z",
 					"severity": "INFO",
 					"title": "The path 'TSTPATH' has been added.",
 					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08511"
@@ -449,7 +448,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			]
 		}
 
-### **STEP 3**: Create the CDC Replicat using curl commands.  This will add it in a Stopped state.
+### **STEP 4**: Create the CDC Replicat using curl commands.  This will add it in a Stopped state.
 
 -   From the same terminal window review the JSON file to add the CDC Replicat.
 
@@ -458,7 +457,20 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			"config":[
 				"Replicat    REP2",
 				"UseridAlias TGGATE",
-				"Map oggoow181.*, Target oggoow182.*;"
+			"HANDLECOLLISIONS",
+			"END RUNTIME",
+				"map oggoow181.soe.addresses,target soe.addresses, keycols(address_id);",
+			"map oggoow181.soe.customers, target soe.customers, keycols(customer_id);",
+			"map oggoow181.soe.orders, target soe.orders, keycols(order_id);",
+			"map oggoow181.soe.order_items, target soe.order_items, keycols(order_id, line_item_id);",
+			"map oggoow181.soe.card_details, target soe.card_details, keycols(card_id);",
+			"map oggoow181.soe.logon, target soe.logon;",
+			"map oggoow181.soe.product_information, target soe.product_information;",
+			"map oggoow181.soe.inventories, target soe.inventories, keycols(product_id, warehouse_id);",
+			"map oggoow181.soe.product_descriptions, target soe.product_descriptions;",
+			"map oggoow181.soe.warehouses, target soe.warehouses;",
+			"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;",
+
 			],
 			"source":{
 				"name":"X2"
@@ -467,10 +479,11 @@ For ZDT we always install the normal CDC processes first and start the capture p
 				"alias":"TGGATE"
 			},
 			"checkpoint":{
-				"table":"ggate.checkpoints"
+				"table":"OGGOOW182.GGATE.CHECKPOINTS"
 			},
 			"status":"stopped"
 		}
+
 
 -	Execute the following curl command to add the Replicat.
 
@@ -517,10 +530,11 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 -	On the Goldengate Microservices Console, under the Admin Server for SanFran you can see the Replicat has been added and the status is **Stopped**.
 
-**ADD IMAGE FOR STOPPED REPLICAT**
+![](images/500/Lab500_Rep2_Stopped.PNG)
 
-# Part 2: Initial Load by Automated Script
-![](images/500/Lab800_Part1.png)
+# Part 4: Initial Load by Automated Script
+
+![](images/500/Lab500_Arch.png)
 
 ### **STEP 1**: Run a script to delete the current data in the target database.
 
@@ -539,6 +553,12 @@ Before we begin we want to make sure the target database is empty.
 
 
 ### **STEP 2**: Run a script to perform an initial load to the target database.
+
+This script does the following:
+
+	-	Creates the Initial Load Replicat
+	-	Creates the Initial Load Distribution Path
+	-	Creates the Initial Load Extract Task
 
 -   Change directory to Lab5 and review script **Initial_load_Automated.sh**.
 
@@ -571,24 +591,23 @@ Before we begin we want to make sure the target database is empty.
 
 -	On the Goldengate Microservices Console, under the Admin Server for Atlanta if the Initial Load Extract (LOAD) is finished status should be **Stopped**.
 
-![](images/500/Lab500_image5003.PNG)
+![](images/500/Lab500_InitLoad_Done.PNG)
 
 -	On the Goldengate Microservices Console, under the Admin Server for SanFran and check the detail page for the Initial Load Replicat (RLOAD) to see if it's completed the load.
 
 -    Above script will create the initial load processes which are Extract (LOAD), Distribution Server (INITLOAD) and Replicat (RLOAD).You will need to logon on the Goldengate Microservices Console, under the Admin Server for SanFran. Right click on drop down of Replicat (RLOAD) and click on "Details"
 
-![](images/500/Lab500_image5001.PNG)
+![](images/500/Lab500_RLOAD_Details.PNG)
 
 -    Click on tab "Checkpoint" and simultaneously click on "Refresh". Once you offset is has stopped moving, it means the initial load had been completed.
 
 ![](images/500/Lab500_image5002.PNG)
 
--   Now you can go back to your Goldengate Microservices Console, under the Admin Server for SanFran. Right click on drop down of Replicat (RLOAD) and click on "Stop". Right click on Replicat (REP2) and click "Start".
+-   Now you can go back to your Goldengate Microservices Console, under the Admin Server for SanFran. Click on drop down of Replicat (RLOAD) and click on "Stop". Then, click on Replicat (REP2) and click "Start".
 
-![](images/500/Lab500_image5004.PNG)
+![](images/500/Lab500_Stop_RLOAD.PNG)
 
-
-
+![](images/500/Lab500_Start_Rep2.PNG)
 
 ### **STEP 5**: Start the CDC Replicat to sync the data.
 
