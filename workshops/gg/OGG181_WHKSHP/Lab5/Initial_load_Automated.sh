@@ -40,7 +40,7 @@ function _initReplicat() {
     "source": {
         "name": "CB"
     },
-    "status": "stopped"
+    "status": "running"
 }' | python -mjson.tool
 }
 

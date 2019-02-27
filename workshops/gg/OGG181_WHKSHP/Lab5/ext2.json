@@ -9,8 +9,8 @@
         "tranlogs":"integrated"
     },
     "credentials":{
-        "domain":"SGGATE",
-		"alias":"SGGATE"
+	"domain":"OracleGoldenGate",
+	"alias":"SGGATE"
 		
     },
     "registration":{
