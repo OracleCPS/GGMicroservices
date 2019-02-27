@@ -11,9 +11,255 @@ There are multiple ways to perform the bulk data movement, if you are going to t
 
 For this lab, even though we are going Oracle to Oracle, we will show you a method to do what we call file based data migration using the MicroServices architecture and the REST API for automation.
 
-This lab, will contains three parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
+This lab, will contains four parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
 
-# Pre-requisite : Check required credentials for replication.
+# Part 1: Remove the previous lab replication processes with via the REST API.
+
+-	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
+
+![](images/common/open_terminal.png)
+
+-   In the terminal window and change directory to Lab5 and run the following command to remove the Extract EXT1.
+
+	** curl -X DELETE http://localhost:16001/services/v2/extracts/EXT1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool **
+
+		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:16001/services/v2/extracts/EXT1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   951  100   951    0     0     32      0  0:00:29  0:00:29 --:--:--   239
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16001/services/v2/extracts/EXT1",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16001/services/v2/extracts/EXT1",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-27T18:28:50Z",
+					"severity": "INFO",
+					"title": "Sending STOP request to EXTRACT EXT1",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-01750",
+					"issued": "2019-02-27T18:29:11Z",
+					"severity": "INFO",
+					"title": "Successfully unregistered EXTRACT EXT1 from database.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-01750"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-27T18:29:11Z",
+					"severity": "INFO",
+					"title": "Deleted EXTRACT EXT1.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				}
+			]
+		}
+
+-	Next, run the following command to remove the Replicat REP1.
+
+	** curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool **
+
+		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   752  100   752    0     0    163      0  0:00:04  0:00:04 --:--:--   209
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:17001/services/v2/replicats/REP1",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:17001/services/v2/replicats/REP1",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-02529",
+					"issued": "2019-02-27T19:55:18Z",
+					"severity": "INFO",
+					"title": "Successfully unregistered REPLICAT REP1 inbound server OGG$REP1 from database",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-02529"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-02-27T19:55:18Z",
+					"severity": "INFO",
+					"title": "Deleted REPLICAT REP1.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				}
+			]
+		}
+
+-	Lastly we'll remove the Distribution Path with the following command.
+
+	** curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool **
+
+		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   523  100   501  100    22    261     11  0:00:02  0:00:01  0:00:01   261
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16002/services/v2/sources/SOE2SOE",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16002/services/v2/sources/SOE2SOE",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08516",
+					"issued": "2019-02-27T20:02:13Z",
+					"severity": "INFO",
+					"title": "The path 'SOE2SOE' has been deleted.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08516"
+				}
+			]
+		}
+
+
+# Part 2: Create new credentials with the REST API.
+
+-	In the same terminal window run the script ** create_credential_GGAlias.sh **, to create the source DB credentials.
+
+		[oracle@OGG181DB183 Lab5]$ ./create_credential_GGAlias.sh Welcome1 16001 c##ggate@orcl ggate SGGATE
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   832  100   761  100    71  23496   2192 --:--:-- --:--:-- --:--:-- 23781
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16001/services/v2/credentials/OracleGoldenGate/SGGATE",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16001/services/v2/credentials/OracleGoldenGate/SGGATE",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-15114",
+					"issued": "2019-02-27T20:08:56Z",
+					"severity": "INFO",
+					"title": "Credential store altered.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15114"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-15116",
+					"issued": "2019-02-27T20:08:56Z",
+					"severity": "INFO",
+					"title": "No information found in credential store.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15116"
+				}
+			]
+		}
+
+-	Next, run the script ** create_credential_Protcol.sh ** to create a new protocol alias.
+
+		[oracle@OGG181DB183 Lab5]$ ./create_credential_Protcol.sh Welcome1 16001 oggadmin Welcome1 WSTARGET
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   603  100   534  100    69  23852   3082 --:--:-- --:--:-- --:--:-- 24272
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:16001/services/v2/credentials/OracleGoldenGate/WSTARGET",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:16001/services/v2/credentials/OracleGoldenGate/WSTARGET",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-15114",
+					"issued": "2019-02-27T20:09:33Z",
+					"severity": "INFO",
+					"title": "Credential store altered.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15114"
+				}
+			]
+		}
+
+
+-	Lastly, run the script ** create_credential_GGAlias.sh **, to create the target DB credentials.
+
+		[oracle@OGG181DB183 Lab5]$ ./create_credential_GGAlias.sh Welcome1 17001 ggate@oggoow182 ggate TGGATE
+		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+										Dload  Upload   Total   Spent    Left  Speed
+		100   834  100   761  100    73  30784   2953 --:--:-- --:--:-- --:--:-- 31708
+		{
+			"$schema": "api:standardResponse",
+			"links": [
+				{
+					"href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+					"mediaType": "application/json",
+					"rel": "canonical"
+				},
+				{
+					"href": "http://localhost:17001/services/v2/credentials/OracleGoldenGate/TGGATE",
+					"mediaType": "application/json",
+					"rel": "self"
+				}
+			],
+			"messages": [
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-15114",
+					"issued": "2019-02-27T20:20:15Z",
+					"severity": "INFO",
+					"title": "Credential store altered.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15114"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-15116",
+					"issued": "2019-02-27T20:20:15Z",
+					"severity": "INFO",
+					"title": "No information found in credential store.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-15116"
+				}
+			]
+		}
 
 - 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
 
@@ -29,35 +275,38 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/400/Lab300_image120.PNG) 
  
--   Check for the credential alias for the GoldenGate user (C##GGATE) and also the Protocol credentials (WSTARGET).  This was done in lab 300.
-
-![](images/300/Lab300_image5.PNG) 
-
--	
-
-
+-   Check for the new credentials for the GoldenGate user (C##GGATE) and also the Protocol credentials (WSTARGET) by selecting the Hamburger menu and then selecting ** Configuration **.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
 |Credential Domain|	OracleGoldenGate|
 |Credential Alias|	SGGATE|
 |User ID|	C##GGATE@orcl|
-|Password|	ggate|
-|Verify Password| 	 ggate|
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
 |Credential Domain|	OracleGoldenGate|
 |Credential Alias|	WSTARGET|
 |User ID|	oggadmin|
-|Password|	Welcome1|
-|Verify Password| 	 Welcome1|
+
+![](images/500/Lab500_New_Creds_Source.PNG) 
+
+-	Next we'll check the credentials on the target deployment (SanFran). Click on the link with the port number for the Admin Service for SanFran.
+
+- 	Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
+
+-   Check for the new credentials for the GoldenGate user (ggate@oggoow182) by selecting the Hamburger menu and then selecting ** Configuration **.
+
+| Field/Checkbox				|	Setting	|
+|-------------------------------|-----------|
+|Credential Domain|	OracleGoldenGate|
+|Credential Alias|	TGGATE|
+|User ID|	ggate@oggoow182|
 
 
-![](images/500/Lab500_image5008.PNG)
+![](images/500/Lab500_New_Creds_Target.PNG)
 
-
-# Part 1: Create the normal CDC processes.
+# Part 3: Create the normal CDC processes.
 
 ### **STEP 1**: Create and start the Change Data Capture (CDC) Extract process using curl commands.
 
@@ -67,7 +316,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 ![](images/common/open_terminal.png)
 
--   In the terminal window and change directory to Lab5 and Review JSON file to add the CDC Extract.
+-   In the terminal window and change directory to Lab5 and review the ** ext2.json ** JSON file to add the CDC Extract.
 
         [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab5
 		[oracle@OGG181DB183 ~]$ cat ext2.json
@@ -84,7 +333,6 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			"credentials":{
 				"domain":"OracleGoldenGate",
 				"alias":"SGGATE"
-				
 			},
 			"registration":{
 					"containers": ["oggoow181"],
@@ -98,6 +346,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			],
 			"status":"running"
 		}
+
 
 -	Execute the following curl command to add the CDC Extract.
 
