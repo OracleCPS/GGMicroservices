@@ -116,7 +116,7 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 -   Click the plus sign ( + ) to add a new Distribution Path.
 
-![](images/400/Lab300_image270.PNG) 
+![](images/400/Lab400_Add_DistPath.PNG) 
 
 -   On the Add Path page, fill in the required information.  Make note that the default protocol for distribution service is secure websockets **wss**.  You will need to change this to websockets **ws**.
 
