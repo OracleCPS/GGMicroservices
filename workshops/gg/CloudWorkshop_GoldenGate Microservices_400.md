@@ -153,7 +153,7 @@ Check the Receiver Server for the target database, which will receive the trail 
 ### **STEP 6**: Configure Uni-Directional Replication (Integrated Replicat).
 
 ## Objectives
-In this lab you will configure the Parallel Replicat for the second deployment.
+In this lab you will configure the Integrated Replicat for the second deployment.
 
 -   Starting from the Service Manager page.
  
@@ -299,11 +299,11 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 -   Go to target admin server page (SanFran), click ** Action ** on REP1 and select details option.
 
-![](images/400/Lab300_image420.PNG) 
+![](images/400/Lab400_Replicat_Details.PNG) 
 
 -   Click on statistics tab and check the DDL Mapped count.
 
-![](images/400/Lab300_image425.PNG) 
+![](images/400/Lab400_Replicat_Stats_DDL1.PNG) 
 
 -   Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
 
