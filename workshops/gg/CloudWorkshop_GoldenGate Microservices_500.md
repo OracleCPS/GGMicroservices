@@ -620,12 +620,18 @@ The **HANDLECOLLISIONS** parameter controls whether or not Replicat tries to res
 
 -   Now you can go back to your Admin Service overview page and click on Replicat (REP2) and click "Start".
 
-![](images/500/Lab500_image5006.PNG)
-
-![](images/500/Lab500_image5007.PNG)
+![](images/500/Lab500_Start_Rep2.PNG)
 
 -	Check to see if the Swingbench script is completed.
 
 -	Run the script **count_src_trg.sh** to see if the counts on both are the same.  You may have to run this a couple of times if the source transactions haven't replicated yet.
+
+		[oracle@OGG181DB183 Lab5]$ ./count_src_trg.sh 
+		Source Table - Min/Max
+		source CUSTOMERS table -> 18203 source ADDRESSES table -> 23206 source CARD_DETAILS table -> 23203 source WAREHOUSES table -> 1000 source ORDERS table -> 30456 source PRODUCT_INFORMATION table -> 1000 source LOGON table -> 42770 source PRODUCT_DESCRIPTIONS table -> 1000 source ORDERENTRY_METADATA table -> 4 source ORDER_ITEMS table -> 91611 source INVENTORIES table -> 900058
+		Target Table - Min/Max
+		target CUSTOMERS table -> 18203 target ADDRESSES table -> 23206 target CARD_DETAILS table -> 23203 target WAREHOUSES table -> 1000 target ORDERS table -> 30456 target PRODUCT_INFORMATION table -> 1000 target LOGON table -> 42770 target PRODUCT_DESCRIPTIONS table -> 1000 target ORDERENTRY_METADATA table -> 4 target ORDER_ITEMS table -> 91611 target INVENTORIES table -> 900058
+		[oracle@OGG181DB183 Lab5]$ 
+
 
 Once the data is in sync you have completed lab 500!   **Great Job!**
