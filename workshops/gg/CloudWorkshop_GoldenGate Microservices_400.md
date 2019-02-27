@@ -394,8 +394,6 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
         SQL> 
 
-![](images/400/Lab300_image445.PNG) 
-
 -   Execute truncate operation on employee table, verify the statistics and count in the target pdb.
 
         SQL> select * from employee;
@@ -422,8 +420,6 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 ![](images/400/Lab300_image460.PNG) 
 
-![](images/400/Lab300_image465.PNG)
-
 -   Execute drop command on the employee table.
 
 SQL> drop table employee;
@@ -448,10 +444,10 @@ The above error is because employee table is not present in the target database.
 
 ### **STEP 10**: Stop delivery process.
 
-- Please log on to Admin process screen of SanFran (http://localhost:17001) and stop the parallel nonintegrared replicat process.
+-   Log on to Admin process screen of SanFran (http://localhost:17001) and stop the Integrared Replicat (REP1) process.
 ![](images/400/Lab400_image999.PNG)
 
-- Similart please log on to Admin process screen of Atlanta (http://localhost:16001) and stop the integrared Extract (EXT1) and Distribution path(SOE2SOE) replicat process.
+-   Log on to Admin process screen of Atlanta (http://localhost:16001) and stop the Integrared Extract (EXT1) and Distribution path (SOE2SOE) process.
 
 ![](images/400/Lab400_image998.PNG)
 ![](images/400/Lab400_image997.PNG)
