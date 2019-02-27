@@ -142,7 +142,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 
 # Part 2: Create new credentials with the REST API.
 
--	In the same terminal window run the script ** create_credential_GGAlias.sh **, to create the source DB credentials.
+-	In the same terminal window run the script **create_credential_GGAlias.sh**, to create the source DB credentials.
 
 		[oracle@OGG181DB183 Lab5]$ ./create_credential_GGAlias.sh Welcome1 16001 c##ggate@orcl ggate SGGATE
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -182,7 +182,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 			]
 		}
 
--	Next, run the script ** create_credential_Protcol.sh ** to create a new protocol alias.
+-	Next, run the script **create_credential_Protcol.sh** to create a new protocol alias.
 
 		[oracle@OGG181DB183 Lab5]$ ./create_credential_Protcol.sh Welcome1 16001 oggadmin Welcome1 WSTARGET
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -215,7 +215,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 		}
 
 
--	Lastly, run the script ** create_credential_GGAlias.sh **, to create the target DB credentials.
+-	Lastly, run the script **create_credential_GGAlias.sh**, to create the target DB credentials.
 
 		[oracle@OGG181DB183 Lab5]$ ./create_credential_GGAlias.sh Welcome1 17001 ggate@oggoow182 ggate TGGATE
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -605,7 +605,7 @@ This script does the following:
 
 ### **STEP 5**: Restart the CDC Replicat to sync the data.
 
--	On the Goldengate Microservices Console, under the Admin Server for SanFran wait for the REP2 Replicat to stop.  The ** END RUNTIME ** parameter will do this for us.  Before starting Replicat (REP2) again, Select ** Details ** and then go to the ** Parameters ** tab.  Click on the ** Pencil ** icon to edit the file.  Comment out **END RUNTIME** and **HANDLECOLLISIONS** by putting two dashes in from of those parameters (see screenshot) and then click ** Apply **.  
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran wait for the REP2 Replicat to stop.  The **END RUNTIME** parameter will do this for us.  Before starting Replicat (REP2) again, Select ** Details ** and then go to the ** Parameters ** tab.  Click on the ** Pencil ** icon to edit the file.  Comment out **END RUNTIME** and **HANDLECOLLISIONS** by putting two dashes in from of those parameters (see screenshot) and then click ** Apply **.  
 
 ![](images/500/Lab500_Edit_REP2.PNG)
 
