@@ -609,10 +609,16 @@ This script does the following:
 
 ![](images/500/Lab500_Start_Rep2.PNG)
 
-### **STEP 5**: Start the CDC Replicat to sync the data.
+### **STEP 5**: Restart the CDC Replicat to sync the data.
 
--	On the Goldengate Microservices Console, under the Admin Server for SanFran start the CDC Replicat (REP2) again. But before starting Repliat (REP2), make sure that you have commented out **END RUNTIME** and **HANDLECOLLISIONS** in the parameters. **END RUNTIME** process stops the process once it has reached end of file. So that we can remove **HANDLECOLLISIONS** from the Replicat (REP2) and restart the process.
+-	On the Goldengate Microservices Console, under the Admin Server for SanFran wait for the REP2 Replicat to stop.  The ** END RUNTIME ** parameter will do this for us.  Before starting Replicat (REP2) again, Select ** Details ** and then go to the ** Parameters ** tab.  Click on the ** Pencil ** icon to edit the file.  Comment out **END RUNTIME** and **HANDLECOLLISIONS** by putting two dashes in from of those parameters (see screenshot) and then click ** Apply **.  
 
+![](images/500/Lab500_Edit_REP2.PNG)
+
+The **END RUNTIME** parameter causes Replicat to terminate when it reaches a record in the data source whosetimestamp exceeds the current date and clock time. All unprocessed records withtimestamps up to this point in time are processed.  
+The **HANDLECOLLISIONS** parameter controls whether or not Replicat tries to resolve duplicate-record and missing-record errors when applying SQL on the target. These errors, called collisions, occur during an initial load, when data from source tables is being loaded to target tables while Oracle GoldenGate is replicating transactional changes that are being made to those tables.  After the Replicat stops from the End Runtime parameter, we can comment out these commands for ongoing replication.
+
+-   Now you can go back to your Admin Service overview page and click on Replicat (REP2) and click "Start".
 
 ![](images/500/Lab500_image5006.PNG)
 
