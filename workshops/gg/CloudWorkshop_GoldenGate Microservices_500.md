@@ -269,7 +269,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/400/Lab300_image120.PNG) 
  
--   Check for the new credentials for the GoldenGate user (C##GGATE) and also the Protocol credentials (WSTARGET) by selecting the Hamburger menu and then selecting ** Configuration **.
+-   Check for the new credentials for the GoldenGate user (C##GGATE) and also the Protocol credentials (WSTARGET) by selecting the Hamburger menu and then selecting **Configuration**.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
@@ -289,7 +289,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 - 	Note: You will be required to login again.  Use the same Administrator account that was used with the Service Manager.
 
--   Check for the new credentials for the GoldenGate user (ggate@oggoow182) by selecting the Hamburger menu and then selecting ** Configuration **.
+-   Check for the new credentials for the GoldenGate user (ggate@oggoow182) by selecting the Hamburger menu and then selecting **Configuration**.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
@@ -565,6 +565,7 @@ This script does the following:
 
 		[oracle@OGG181DB183 Lab5]$ ./Initial_load_Automated.sh 
 
+-	When the script is completed you'll have two Extracts, two Replicats and two Distribution Paths.  You can check in the Services to see the results.
 
 ### **STEP 3**: Run Swingbench script to apply data to the source database.
 -   While the script is running, we'll run Swingbench transactions to create activity on the the database during the initial load.
