@@ -110,10 +110,9 @@ This step will walk you through how to setup a Path within the Distribution Serv
 
 ![](images/400/Lab300_image250.PNG) 
 
-
 -   Open the Distribution Server page for your first deployment (Atlanta).
 
-![](images/400/Lab400_Dist_Service.PNG) 
+![](images/400/Lab400_Dist_Service.PNG)
 
 -   Click the plus sign ( + ) to add a new Distribution Path.
 
