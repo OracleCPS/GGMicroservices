@@ -19,9 +19,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 
 ![](images/common/open_terminal.png)
 
--   In the terminal window and change directory to Lab5 and run the following command to remove the Extract EXT1.
-
-	** curl -X DELETE http://localhost:16001/services/v2/extracts/EXT1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool **
+-   In the terminal window and change directory to Lab5 and run the following command to remove the Extract EXT1: curl -X DELETE http://localhost:16001/services/v2/extracts/EXT1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 
 		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:16001/services/v2/extracts/EXT1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -69,9 +67,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 			]
 		}
 
--	Next, run the following command to remove the Replicat REP1.
-
-	- curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
+-	Next, run the following command to remove the Replicat REP1: curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 
 		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:17001/services/v2/replicats/REP1 --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' | python -mjson.tool
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -111,9 +107,7 @@ This lab, will contains four parts and covers how access the services from Oracl
 			]
 		}
 
--	Lastly we'll remove the Distribution Path with the following command.
-
-	- curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool
+-	Lastly we'll remove the Distribution Path with the following command: curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool 
 
 		[oracle@OGG181DB183 Lab5]$ curl -X DELETE http://localhost:16002/services/v2/sources/SOE2SOE --user "oggadmin:"Welcome1 -H 'Cache-Control: no-cache' -d '{"distpath":"SOE2SOE"}' | python -mjson.tool
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
