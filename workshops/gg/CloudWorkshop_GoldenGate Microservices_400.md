@@ -45,7 +45,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 -   After logging into the database as described for OGGOOW181, find the Trandata section.  Click on the plus ( + ) sign and make sure that the radio button for Schema is selected .  At this point, you provide the Schema Name(OGGOOW181.SOE), enable All Columns and Scheduling Columns, and click Submit.
 
-![](images/400/Lab300_image170.PNG) 
+![](images/400/Lab400_Add_SchemaTrandata.PNG) 
  
 -   You will notice that after you click Submit, there is no return message that states the operation was successful.  You can verify that SCHEMATRANDATA has been added by looking searching by Schema.  To do this, click on the magnifying glass and provide the Schema name.
 
@@ -55,13 +55,11 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 -   Navigate back to the Overview page of the Administration Server.  Then click on the plus sign ( + ) in the box for Extracts.
 
-![](images/400/Lab300_image300.PNG) 
-
+![](images/400/Lab400_Overview_Add_Ext.PNG) 
 
 -   After clicking the plus sign ( + ), you are taken to the Add Extract page.  Here you can choose from three different types of Extracts.  You will be installing an Integrated Extract.  Click Next.
 
 ![](images/400/Lab300_image210.PNG) 
-
 
 -   The next page of the Add Extract process, is to provide the basic information for the Extract. Items required have a star ( * ) next to them.  Provide the required information and then click Next.  Keep in mind that the credentials needed to register the Extract need to be against the CDB (ORCL). Use the CDB domain and alias that you setup previously.
 
@@ -70,7 +68,6 @@ Note: You will be required to login again.  Use the same Administrator account t
 -   When using the CDB credential, at the bottom of the page, you will be presented with a box where you can select the PDB that will be used. This will only appear when you have a valid credential for the CDB.  Once you see this box, make sure you select OGGOOW181, then click ** Next **.
 
 ![](images/400/Lab400_Select_CDB.PNG) 
- 
 
 On the last page of the Add Extract process, you are presented with a parameter file.  The parameter file is partially filled out, but missing the TABLE parameters. Insert the following list of TABLE parameter values into the parameter file.
    
