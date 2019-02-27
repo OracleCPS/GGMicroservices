@@ -87,7 +87,8 @@ In this step you will run several scripts.
 
         [oracle@OGG181DB183 db]$ ./clone_pdb_181.sh
 
--   Run the **clone_pdb_182.sh** script.  This script recreates the target by cloning the source PDB.
+-   Run the **clone_pdb_182.sh** script.  This script recreates the target by cloning the source PDB.  
+        ** NOTE: ** This is a clone of the 181 PDB, so you must run the ** clone_pdb_181.sh ** script first.
 
         [oracle@OGG181DB183 db]$ ./clone_pdb_182.sh
 

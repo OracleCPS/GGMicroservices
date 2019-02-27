@@ -150,7 +150,7 @@ Check the Receiver Server for the target database, which will receive the trail 
 
 ![](images/400/Lab300_image310.PNG) 
 
-### **STEP 6**: Configure Uni-Directional Replication (Parallel Replicat).
+### **STEP 6**: Configure Uni-Directional Replication (Integrated Replicat).
 
 ## Objectives
 In this lab you will configure the Parallel Replicat for the second deployment.
@@ -165,14 +165,13 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   This step requires a credential store for replicat to connect to target database. Use the TGGATE created in Lab300. 
 
--   Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Parallel Replicat -   Click the plus sign ( + ) to open the Add Replicat process.
+-   Navigate back to the Overview page on the Administration Server.  Here you will begin to create your Integrated Replicat -   Click the plus sign ( + ) to open the Add Replicat process.
  
 ![](images/400/Lab400_Overview_Add_Rep.PNG) 
 
--   With the Add Replicat page open, you want to create a Parallel Replicat.  Make sure the radio button is selected and click Next.
+-   With the Add Replicat page open, you want to create a Integrated Replicat.  Make sure the radio button is selected and click Next.
 
-![](images/400/Lab300_image360.PNG) 
-
+![](images/400/Lab400_Add_Replicat_Integ.PNG) 
 
 -   Fill in the Replicat options form with the required information.  Your trail name should match the trail name you saw in the Receiver Server.  Once you are done filling everything out, click the Next button at the bottom of the screen.
 ** Ignore the CHECKPOINTTABLE warning message **
@@ -182,15 +181,25 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 -   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement and replace it with the information below:
 
     MAP OGGOOW181.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS, KEYCOLS(CUSTOMER_ID);
+
     MAP OGGOOW181.SOE.ADDRESSES, TARGET SOE.ADDRESSES, KEYCOLS(ADDRESS_ID);
+
     MAP OGGOOW181.SOE.ORDERS, TARGET SOE.ORDERS, KEYCOLS(ORDER_ID);
+
     MAP OGGOOW181.SOE.ORDER_ITEMS, TARGET SOE.ORDER_ITEMS, KEYCOLS(ORDER_ID,LINE_ITEM_ID);
+
     MAP OGGOOW181.SOE.CARD_DETAILS, TARGET SOE.CARD_DETAILS, KEYCOLS(CARD_ID);
+
     MAP OGGOOW181.SOE.LOGON, TARGET SOE.LOGON;
+
     MAP OGGOOW181.SOE.PRODUCT_INFORMATION, TARGET SOE.PRODUCT_INFORMATION;
+
     MAP OGGOOW181.SOE.INVENTORIES, TARGET SOE.INVENTORIES, KEYCOLS(PRODUCT_ID,WAREHOUSE_ID);
+
     MAP OGGOOW181.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS;
+
     MAP OGGOOW181.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES;
+
     MAP OGGOOW181.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA;
     	
 -   Once the parameter file has been updated, click the Create and Run button at the bottom.
