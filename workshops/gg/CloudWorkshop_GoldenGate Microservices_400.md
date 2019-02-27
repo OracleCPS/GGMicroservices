@@ -239,7 +239,7 @@ In this lab you will configure the Parallel Replicat for the second deployment.
 
 -   From here you can see the counts and types of transactions against each table.  You can scroll through the list.
 
--   Next, from the San_Fran Admin Server Overview page, click the ** Action ** button by the Replicat (REP1) and click ** Details **.
+-   Next, from the SanFran Admin Server Overview page, click the ** Action ** button by the Replicat (REP1) and click ** Details **.
 
 ![](images/400/Lab400_Replicat_Details.PNG) 
 
@@ -256,21 +256,39 @@ In this lab we will perform a few DML and DDL operations on source pdb and check
 
 Prerequisite: Source and target database should be in sync. Extract, Pump and Replicat should be up and running.
 
--   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.
+-   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.  The password is ** soe **.
 
-![](images/400/Lab300_image400.PNG) 
+        [oracle@OGG181DB183 Lab4]$ sqlplus
 
--   Verify whether tables are in sync between source and target databases.
+        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 26 23:46:59 2019
+        Version 18.3.0.0.0
 
-![](images/400/Lab300_image405.PNG) 
+        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
 
-![](images/400/Lab300_image410.PNG) 
+        Enter user-name: SOE@OGGOOW181
+        Enter password: 
+        Last Successful login time: Tue Feb 26 2019 23:41:13 +00:00
+
+        Connected to:
+        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+        Version 18.3.0.0.0
+
+        SQL> 
 
 -   Create a employee table in OGGOOW181.
 
-![](images/400/Lab300_image415.PNG) 
+        SQL> CREATE TABLE EMPLOYEE (
+        2  EMP_ID NUMBER(10),
+        3  EMP_NAME VARCHAR2(30),
+        4  DEPT VARCHAR2(20)
+        5  );
 
--   Go to target admin server page, click on actions on replicate and select details option.
+        Table created.
+
+        SQL> 
+
+
+-   Go to target admin server page (SanFran), click ** Action ** on REP1 and select details option.
 
 ![](images/400/Lab300_image420.PNG) 
 
@@ -280,39 +298,148 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 -   Perform few insert operations on source tables in OGGOOW181 pdb database and check if the inserts are replicated to target tables.
 
-![](images/400/Lab300_image430.PNG) 
+        SQL> desc employee 
+        Name					   Null?    Type
+        ----------------------------------------- -------- ----------------------------
+        EMP_ID 					    NUMBER(10)
+        EMP_NAME					    VARCHAR2(30)
+        DEPT						    VARCHAR2(20)
+
+        SQL> insert into employee values(1,'John','Finance');
+
+        1 row created.
+
+        SQL> insert into employee values(2,'Jeff','Operations');
+
+        1 row created.
+
+        SQL> insert into employee values(3,'Ena','Marketing');
+
+        1 row created.
+
+        SQL> insert into employee values(4,'Nadia','IT');
+
+        1 row created.
+
+        SQL> insert into employee values(5,'Tom','Finance');
+
+        1 row created.
+
+        SQL> commit;
+
+        Commit complete.
+
+        SQL> 
 
 ![](images/400/Lab300_image435.PNG) 
 
 -   Perform few updates and deletes operations on source table and check if the operations are replicated to target database.
 
-![](images/400/Lab300_image440.PNG) 
+        SQL> select * from employee;
+
+            EMP_ID EMP_NAME			  DEPT
+        ---------- ------------------------------ --------------------
+            1 John 			  Finance
+            2 Jeff 			  Operations
+            3 Ena				  Marketing
+            4 Nadia			  IT
+            5 Tom				  Finance
+
+        SQL> update employee set emp_name='Mark' where emp_id=5;
+
+        1 row updated.
+
+        SQL> delete from employee where emp_id=4;
+
+        1 row deleted.
+
+        SQL> commit;
+
+        Commit complete.
+
+        SQL> 
 
 -   Execute the below alter commands and verify the statistics on extract and replicat.
+
+        SQL> alter table employee rename column dept to dept_name;
+
+        Table altered.
+
+        SQL> desc employee
+        Name					   Null?    Type
+        ----------------------------------------- -------- ----------------------------
+        EMP_ID 					    NUMBER(10)
+        EMP_NAME					    VARCHAR2(30)
+        DEPT_NAME					    VARCHAR2(20)
+
+        SQL> alter table employee modify emp_name varchar2(40);
+
+        Table altered.
+
+        SQL> desc employee
+        Name					   Null?    Type
+        ----------------------------------------- -------- ----------------------------
+        EMP_ID 					    NUMBER(10)
+        EMP_NAME					    VARCHAR2(40)
+        DEPT_NAME					    VARCHAR2(20)
+
+        SQL> 
 
 ![](images/400/Lab300_image445.PNG) 
 
 -   Execute truncate operation on employee table, verify the statistics and count in the target pdb.
 
-![](images/400/Lab300_image455.PNG) 
+        SQL> select * from employee;
+
+            EMP_ID EMP_NAME				    DEPT_NAME
+        ---------- ---------------------------------------- --------------------
+            1 John 				    Finance
+            2 Jeff 				    Operations
+            3 Ena					    Marketing
+            5 Mark 				    Finance
+
+        SQL> truncate table employee;
+
+        Table truncated.
+
+        SQL> select count(*) from employee;
+
+        COUNT(*)
+        ----------
+            0
+
+        SQL> 
+
 
 ![](images/400/Lab300_image460.PNG) 
 
 ![](images/400/Lab300_image465.PNG)
 
--   Similarly, execute drop command on the employee table and check the results in the target database.
+-   Execute drop command on the employee table.
 
-![](images/400/Lab300_image470.PNG)
+SQL> drop table employee;
 
-![](images/400/Lab300_image475.PNG)
+Table dropped.
 
-![](images/400/Lab300_image480.PNG)
+-   Connect to target database.  Password is ** soe **.
+
+        SQL> connect soe@oggoow182
+        Enter password: 
+        Connected.
+
+-   Execute select against the Employee table.
+
+        SQL> select * from employee;
+        select * from employee
+                    *
+        ERROR at line 1:
+        ORA-00942: table or view does not exist
 
 The above error is because employee table is not present in the target database. Drop command is executed successfully in target database.
 
 ### **STEP 10**: Stop delivery process.
 
-- Please log on to Admin process screen of Sanfran (http://localhost:17001) and stop the parallel nonintegrared replicat process.
+- Please log on to Admin process screen of SanFran (http://localhost:17001) and stop the parallel nonintegrared replicat process.
 ![](images/400/Lab400_image999.PNG)
 
 - Similart please log on to Admin process screen of Atlanta (http://localhost:16001) and stop the integrared Extract (EXT1) and Distribution path(SOE2SOE) replicat process.
