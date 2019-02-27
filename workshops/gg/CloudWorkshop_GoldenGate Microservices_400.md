@@ -143,9 +143,9 @@ Notice the drop down with the values WS, WSS, UDT and OGG.  These are the protoc
 Check the Receiver Server for the target database, which will receive the trail from the Distribution Path that you created on the source deployment.
 
 -   Start from the Service Manager page for your second deployment.
- 
-![](images/400/Lab300_image305.PNG) 
 
+![](images/400/Lab400_Receiver_Service.PNG) 
+ 
 -   Click on the Receiver Server link to open the Receiver Server page.  Verify that everything is configured.
 
 ![](images/400/Lab300_image310.PNG) 
