@@ -24,11 +24,11 @@ In this first lab you will walk through the process of installing this new versi
 
 ### **STEP 1**: Access Ravello Image via VNC
 
-For this lab, Oracle GoldenGate and the Oracle Database sources and targets are contained within one Ravello Cloud image that you will be assigned to. All user interactions will be through a browser (Firefox or Chrome) and VNC Client (TigerVNC is recommended) that is installed on your laptop, which was a prerequisite for this workshop. This will be used to connect to your Ravello Cloud image.
+For this lab, Oracle GoldenGate and the Oracle Database sources and targets are contained within one Ravello Cloud image that you will be assigned to. All user interactions will be through a browser (Firefox or Chrome) and VNC Client (TigerVNC is recommended) that should be installed on your laptop since it was a prerequisite for this workshop. This will be used to connect to your Ravello Cloud image.
 
-**Your instructor will provide the Ravello DNS and IP address for your image**
+**Note: Your instructor will provide the Ravello DNS and IP address for your image**
 
-In this step you will use VNC client to connect with Oracle 18c database environment(Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
+In this step you will use VNC client to connect with Oracle 18c database environment (Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
 
 -	Log in to the Ravello image of your assigned host, using TigerVNC.
 -	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
@@ -49,7 +49,10 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 ![](images/100/open_terminal.PNG)
 
--	From the terminal screen change to the OGG181_WHKSHP/Lab1 directory and start the database startup script (startup.sh).
+-	From the terminal screen change to the OGG181_WHKSHP/Lab1 directory and execute the database startup script "startup.sh". Type: </br>
+<p align="center">
+./startup.sh
+</p>
 -	This will take about 5 minutes.
 
 		[oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab1
@@ -116,8 +119,7 @@ In this step you will install **the GoldenGate Microservices edition package** i
 
    ![](images/100/5.JPG)
 
-- Once the installation is complete, you will end up on the Finish page. At this point, you
-can click the Close button to exit the installation wizard.
+- Once the installation is complete, you will end up on the Finish page. At this point, you can click the **"Close"** button to exit the installation wizard.
 
 	![](images/100/6.JPG)
 	
