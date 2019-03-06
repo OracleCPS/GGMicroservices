@@ -4,7 +4,7 @@
 vPass=$1
 vASHost=localhost
 vASPort=$2
-vGGAlias=OracleGoldenGate.TGGATE
+vGGAlias=OGG.TGGATE
 
 function _createCkptTbl {
      curl -X POST \

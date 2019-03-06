@@ -5,7 +5,7 @@ vPass=$1
 vASHost=localhost
 vASPort=$2
 vRepName=$3
-vGGAlias=TGGATE
+vGGAlias=TGGATE2
 
 function _addReplicat {
     curl -X POST \
@@ -17,8 +17,8 @@ function _addReplicat {
         "config":[
             "Replicat     '$vRepName'",
             "UseridAlias '$vGGAlias'",
-            "map oggoow181.soe.addresses,target soe.addresses, keycols(address_id);",
             "map oggoow181.soe.customers, target soe.customers, keycols(customer_id);",
+            "map oggoow181.soe.addresses,target soe.addresses, keycols(address_id);",
             "map oggoow181.soe.orders, target soe.orders, keycols(order_id);",
             "map oggoow181.soe.order_items, target soe.order_items, keycols(order_id, line_item_id);",
             "map oggoow181.soe.card_details, target soe.card_details, keycols(card_id);",

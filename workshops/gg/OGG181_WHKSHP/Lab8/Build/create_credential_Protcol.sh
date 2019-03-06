@@ -4,19 +4,20 @@
 vPass=$1
 vASHost=localhost
 vASPort=$2
-vGGUser=$3
-vGGPass=$4
-vGGAlias=SGGATE
+vProtoUser=$3
+vProtoPass=$4
+vProtoAlias=$5
 
 function _createAlias {
      curl -X POST \
-       http://$vASHost:$vASPort/services/v2/credentials/OGG/$vGGAlias \
+       http://$vASHost:$vASPort/services/v2/credentials/OracleGoldenGate/$vProtoAlias \
        --user "oggadmin:"$vPass   \
        -H 'Cache-Control: no-cache' \
        -d '{
-         "userid":"'$vGGUser'",
-         "password":"'$vGGPass'"
-     }' | python -mjson.tool
+         "userid":"'$vProtoUser'",
+         "password":"'$vProtoPass'"
+     }'| python -mjson.tool
+
 }
 
 function _main {

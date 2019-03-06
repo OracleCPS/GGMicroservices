@@ -10,7 +10,7 @@ vGGAlias=TGGATE
 
 function _createAlias {
      curl -X POST \
-       http://$vASHost:$vASPort/services/v2/credentials/OracleGoldenGate/$vGGAlias \
+       http://$vASHost:$vASPort/services/v2/credentials/OGG/$vGGAlias \
        --user "oggadmin:"$vPass   \
        -H 'Cache-Control: no-cache' \
        -d '{

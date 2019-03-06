@@ -16,7 +16,7 @@ function _startReplicat {
        --user "oggadmin:"$vPass   \
        -H 'Cache-Control: no-cache' \
        -d '{
-               "name":"start",
+               "name":"stop",
                "processName":"'$vReplicat'",
                "processType":"replicat"
           }' | python -mjson.tool
@@ -38,7 +38,7 @@ function _startExtract {
        --user "oggadmin:"$vPass   \
        -H 'Cache-Control: no-cache' \
        -d '{
-               "name":"start",
+               "name":"stop",
                "processName":"'$vExtract'",
                "processType":"extract"
           }' | python -mjson.tool

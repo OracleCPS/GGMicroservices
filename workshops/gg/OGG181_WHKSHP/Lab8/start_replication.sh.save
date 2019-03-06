@@ -9,6 +9,7 @@ vDSPort=$4
 vPathName=$5
 vASPort1=$6
 vReplicat=$7
+vSCN=$8
 
 function _startReplicat {
      curl -X POST \
@@ -16,6 +17,7 @@ function _startReplicat {
        --user "oggadmin:"$vPass   \
        -H 'Cache-Control: no-cache' \
        -d '{
+               "at":'$vSCN',
                "name":"start",
                "processName":"'$vReplicat'",
                "processType":"replicat"
