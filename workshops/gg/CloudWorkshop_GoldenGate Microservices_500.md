@@ -448,8 +448,8 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 		[oracle@OGG181DB183 Lab5]$ cat rep2.json 
 		{
-			"config":[
-				"Replicat    REP2",
+		"config":[
+			"Replicat    REP2",
 				"UseridAlias TGGATE",
 			"HANDLECOLLISIONS",
 			"END RUNTIME",
@@ -463,20 +463,25 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			"map oggoow181.soe.inventories, target soe.inventories, keycols(product_id, warehouse_id);",
 			"map oggoow181.soe.product_descriptions, target soe.product_descriptions;",
 			"map oggoow181.soe.warehouses, target soe.warehouses;",
-			"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;",
-
-			],
-			"source":{
-				"name":"X2"
-			},
-			"credentials":{
-				"alias":"TGGATE"
-			},
-			"checkpoint":{
-				"table":"OGGOOW182.GGATE.CHECKPOINTS"
-			},
-			"status":"stopped"
+			"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;"
+		],
+		"source":{
+		"name":"X1"
+		},
+		"credentials":{
+		"alias":"TGGATE"
+		},
+		"checkpoint":{
+		"table":"ggate.checkpoints"
+		},
+		"mode":{
+		"type":"integrated"
+		},
+		"registration": "standard",
+		"begin":"now",
+		"status":"stopped"
 		}
+
 
 
 -	Execute the following curl command to add the Replicat.
@@ -487,7 +492,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 		% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 										Dload  Upload   Total   Spent    Left  Speed
-		100   768  100   478  100   290    885    536 --:--:-- --:--:-- --:--:--   885
+		100  2478  100  1382  100  1096    382    303  0:00:03  0:00:03 --:--:--   382
 		{
 			"$schema": "api:standardResponse",
 			"links": [
@@ -506,13 +511,38 @@ For ZDT we always install the normal CDC processes first and start the capture p
 				{
 					"$schema": "ogg:message",
 					"code": "OGG-08100",
-					"issued": "2019-02-09T21:22:18Z",
+					"issued": "2019-03-06T19:48:13Z",
 					"severity": "INFO",
-					"title": "REPLICAT added.",
+					"title": "REPLICAT (Integrated) added.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-02528",
+					"issued": "2019-03-06T19:48:15Z",
+					"severity": "INFO",
+					"title": "REPLICAT REP2 successfully registered with database as inbound server OGG$REP2",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-02528"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-06594",
+					"issued": "2019-03-06T19:48:15Z",
+					"severity": "INFO",
+					"title": "Replicat REP2 has been altered. Even the start up position might be updated, duplicate suppression remains active in next startup. To override duplicate suppression, start REP2 with NOFILTERDUPTRANSACTIONS option.",
+					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-06594"
+				},
+				{
+					"$schema": "ogg:message",
+					"code": "OGG-08100",
+					"issued": "2019-03-06T19:48:15Z",
+					"severity": "INFO",
+					"title": "REPLICAT (Integrated) altered.",
 					"type": "http://docs.oracle.com/goldengate/c1810/gg-winux/GMESG/oggus.htm#OGG-08100"
 				}
 			]
 		}
+
 
 -	On the Goldengate Microservices Console, under the Admin Server for Atlanta you can see the Extract has been added and and the status is **Running**.
 
