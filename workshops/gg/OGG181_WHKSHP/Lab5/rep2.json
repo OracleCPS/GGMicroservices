@@ -1,6 +1,6 @@
 {
-    "config":[
-        "Replicat    REP2",
+"config":[
+	"Replicat    REP2",
         "UseridAlias TGGATE",
 	"HANDLECOLLISIONS",
 	"END RUNTIME",
@@ -14,20 +14,21 @@
 	"map oggoow181.soe.inventories, target soe.inventories, keycols(product_id, warehouse_id);",
 	"map oggoow181.soe.product_descriptions, target soe.product_descriptions;",
 	"map oggoow181.soe.warehouses, target soe.warehouses;",
-	"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;",
-
-    ],
-    "source":{
-        "name":"X2"
-    },
-    "mode":{
-	"type":"integrated"
-    },
-    "credentials":{
-        "alias":"TGGATE"
-    },
-    "checkpoint":{
-        "table":"GGATE.CHECKPOINTS"
-    },
-	"status":"stopped"
+	"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;"
+],
+"source":{
+"name":"X1"
+},
+"credentials":{
+"alias":"TGGATE"
+},
+"checkpoint":{
+"table":"ggate.checkpoints"
+},
+"mode":{
+"type":"integrated"
+},
+"registration": "standard",
+"begin":"now",
+"status":"stopped"
 }
