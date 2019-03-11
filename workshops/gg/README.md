@@ -10,12 +10,12 @@ Update December 28, 2018
 
 # Introduction	1 hour 
 
-- Presentation (3 presentations combined)
+- Oracle GoldenGate Microservices Archiecture Overview/updates Presentation 
 
 
-# Lab 1	Install GG Micro services Architecture	
+# Lab 1	Install GG Microservices Architecture	
 
-- GG Micro services Architecture will be available in Ravello to share, and just  install
+- Install the GoldenGate Microservces for Oracle edition for the target environment using the Oracle Universal Installer (OUI) tool.
 
 
 # Lab 2	Creating Deployments
@@ -34,31 +34,21 @@ Update December 28, 2018
 		
 # Lab 5	Zero Downtime Configuration
 
-- thru RESTful APIs
+- Doing file based data migration using the MicroServices architecture and the REST API for automation
 
 
 # Lab 6	Bi-Directional and Auto CDR
 
-- Use Auto CDR functions
+- Use Auto CDR functions to setup AutoCDR in the database with OGG-MSA
 		
 # Lab 7	Heterogenous Replication
 
-- MySQL - Classic Architecture
-- Oracle - Microservices Architecture
-- Kafka - Possible option for replication
+- Setting up OGG for MySQL using classic Architecture and OGG for Oracle using Microservices Architecture for Uni-directional replication
 		
 # Lab 8	Data Transformations	
 
-- Using the web interface (change the parameter files)
-- using Admin Client (old way)
-- using RESTful API & JSON file
+- Demonstrating using OGG transformation capabilities like column concatenating, data masking and use of Tokens
 		
 # Lab 9	Performance Metrics	
 		
-- DEMO	Mobile/Chatbot / APIPCS (Demo)	API Exposure (GET)
-- for first couple of iterations
-- Deployment Status - Turn into lab later based on the feedback
-- Stats (Performance Metric Server)
-- Extract / Replicat Status
-- CMD Start/Stop/Extract Replicat
-- GET Report
+- View the replication in real time with the Metric Service with detailed replication statistics
