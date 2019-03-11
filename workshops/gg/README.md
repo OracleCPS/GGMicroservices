@@ -47,8 +47,8 @@ Update Feburary 11, 2019
 		
 # Lab 8	Data Transformations	
 
-- Demonstrating using OGG transformation capabilities like column concatenating, data masking and use of Tokens
+- Demonstrating use of OGG transformation capabilities like column concatenating, data masking and use of Tokens
 		
 # Lab 9	Performance Metrics	
 		
-- View the replication in real time with the Metric Service with detailed replication statistics
+- View the detailed replication statistics in real-time with the Metric Service
