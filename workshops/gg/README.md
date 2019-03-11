@@ -15,7 +15,7 @@ Update Feburary 11, 2019
 
 # Lab 1	Install GG Microservices Architecture	
 
-- Install the GoldenGate Microservces for Oracle edition for the target environment using the Oracle Universal Installer (OUI) tool.
+- Install the GoldenGate Microservces for Oracle in the target environment using the Oracle Universal Installer (OUI) tool.
 
 
 # Lab 2	Creating Deployments
