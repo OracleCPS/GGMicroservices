@@ -626,7 +626,7 @@ This script does the following:
 
 ![](images/500/Lab500_RLOAD_Details.PNG)
 
--    Click on tab "Checkpoint" and simultaneously click on "Refresh". Once you offset is has stopped moving, it means the initial load had been completed.
+-    Click on tab "Checkpoint" and simultaneously click on "Refresh". Once you offset is has stopped moving, it means the initial load had been completed.(It will take 5-10 mins to complete)
 
 ![](images/500/Lab500_image5002.PNG)
 
