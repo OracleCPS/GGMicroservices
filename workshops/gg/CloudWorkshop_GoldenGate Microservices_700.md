@@ -22,7 +22,9 @@ Create a classic GoldenGate architecture capture process (Extract) for MySQL and
 This step sets up a clean GoldenGate Microservices target deployment.  This script will take a couple of minutes to complete.
 
 - Open up a terminal window and change directory to Lab7 and run the script **build_target.sh**.
-                [oracle@OGG181DB183 Lab7]$ ./build_target.sh 
+              
+              [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab7/
+              [oracle@OGG181DB183 Lab7]$ ./build_target.sh 
 
 - This script performs the following:
 
