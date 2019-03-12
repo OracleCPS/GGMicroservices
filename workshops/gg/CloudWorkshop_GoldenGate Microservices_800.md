@@ -52,12 +52,6 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
         [oracle@OGG181DB183 ~]$ cd OGG181_WHKSHP/Lab8
         [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
-
--  Execute the SQL Script to modify and create target tables required for the lab
-
-
-        
-        [oracle@OGG181DB183 Lab8]$ sqlplus ggate/ggate@oggoow182
         SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 19 04:42:57 2019
         Version 18.3.0.0.0
         
@@ -68,13 +62,15 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         Connected to:
         Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
         Version 18.3.0.0.0
+       
+   - Execute the SQL Script to modify and create target tables required for the lab
+     
+         SQL> @alter_schema.sql
         
-        SQL> @alter_schema.sql
+          Table altered.
         
-        Table altered.
-        
-        Table created.
-        SQL> exit
+          Table created.
+          SQL> exit
 
 
 
