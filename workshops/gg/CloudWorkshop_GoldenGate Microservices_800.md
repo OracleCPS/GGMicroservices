@@ -176,7 +176,7 @@ Query in side the script for insert :
         ----------------------------------------
         LARRY
         ELLISON
-
+        LARRY ELLISON
 
 
         SQL> exit
