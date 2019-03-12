@@ -187,6 +187,7 @@ In this lab you will configure the Integrated Replicat for the second deployment
 	    MAP OGGOOW181.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS;
 	    MAP OGGOOW181.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES;
 	    MAP OGGOOW181.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA;
+	    MAP OGGOOW181.SOE.*, TARGET SOE.*;
     	
 -   Once the parameter file has been updated, click the Create and Run button at the bottom.
 
@@ -273,10 +274,10 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 -   Create a employee table in OGGOOW181.
 
         SQL> CREATE TABLE EMPLOYEE (
-        2  EMP_ID NUMBER(10),
-        3  EMP_NAME VARCHAR2(30),
-        4  DEPT VARCHAR2(20)
-        5  );
+           EMP_ID NUMBER(10),
+           EMP_NAME VARCHAR2(30),
+           DEPT VARCHAR2(20)
+           );
 
         Table created.
 
