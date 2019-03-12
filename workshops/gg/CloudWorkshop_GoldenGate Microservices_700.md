@@ -160,6 +160,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 ![](images/700/Lab700_image105.png)
 
 - The next page will show the parameter file.  Add the following information:
+                
+                -- MAP *.*, TARGET *.*;
                 MAP amea.*, TARGET oggoow182.mysqltarget.*;
 
 - Click **“Create and Run”**.
