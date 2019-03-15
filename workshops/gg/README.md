@@ -41,7 +41,7 @@ Update Feburary 11, 2019
 
 - Use CDR functions to setup Auto-CDR in the database with Oracle GoldenGate Microservices
 		
-# Lab 7	Heterogenous Replication
+# Lab 7	Heterogeneous Replication
 
 - Setup Oracle GoldenGate for "MySQL" using classic Architecture and Oracle GoldenGate for "Oracle" using Microservices Architecture for Uni-directional replication
 		
