@@ -74,7 +74,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 		Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=OGG181DB183)(PORT=1521)))
 		Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
 
--	Once you get the message that the script completed, you can go on to the next step.
+-	Once you get the message that the script completed, you can go on to the next step(takes 5 minutes, please dont press any button unless menu is return).
 
 		The command completed successfully
 		[oracle@OGG181DB183 Lab1]$ \
