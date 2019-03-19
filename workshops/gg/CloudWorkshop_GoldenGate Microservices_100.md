@@ -49,9 +49,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 
 ![](images/100/open_terminal.PNG)
 
--	From the terminal screen change to the OGG181_WHKSHP/Lab1 directory and execute the database startup script "startup.sh". Type:
-		
-		./startup.sh
+-	From the terminal screen change to the OGG181_WHKSHP/Lab1 directory and execute the database startup script "./startup.sh". as shown below:
 
 -	This will take about 5 minutes.
 
