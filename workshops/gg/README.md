@@ -47,7 +47,7 @@ Update Feburary 11, 2019
 		
 # Lab 8	Data Transformations	
 
-- Demonstrate use of Oracle GoldenGate Microservices for transformation capabilities like column concatenating, data masking and use of tokens
+- Demonstrate use of Oracle GoldenGate Microservices for transformation capabilities like column concatenating, data masking and use of environment variables/tokens
 		
 # Lab 9	Performance Metrics	
 		
