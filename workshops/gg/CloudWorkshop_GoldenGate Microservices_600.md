@@ -9,16 +9,16 @@ Since we’ve already done multiple labs, this one will take what we used so far
 
 ## Objectives
 
--       Rapid Deployment using:
-        - OGGCA silent deployment scripts (remove and recreate deployments).
-        - REST API to setup bi-directional GoldenGate replication between two databases.
-        - SQL Scripts to setup up auto conflict detection and resolution in the database.
+- Rapid Deployment using:
+  - OGGCA silent deployment scripts (remove and recreate deployments).
+  - REST API to setup bi-directional GoldenGate replication between two databases.
+  - SQL Scripts to setup up auto conflict detection and resolution in the database.
 
 ## Required Artifacts
 
--       VNC Client for the deployment.
--       Browser to check the deployment.
--       Swingbench to apply transactions.
+- VNC Client for the deployment.
+- Browser to check the deployment.
+- Swingbench to apply transactions.
 
 ### **STEP 1**: Run a script to perform a rapid deployment.
 
