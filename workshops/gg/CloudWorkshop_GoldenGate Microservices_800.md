@@ -1,6 +1,6 @@
 ![](images/800/01.JPG)
 
-Update January 08, 2019
+Update March 20, 2019
 
 ## Data Transformation
 ## Introduction
@@ -63,7 +63,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
         Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
         Version 18.3.0.0.0
        
-   - Execute the SQL Script to modify and create target tables required for the lab
+  - Execute the SQL Script to modify and create target tables required for the lab
      
          SQL> @alter_schema.sql
         
@@ -72,6 +72,27 @@ In this step you will use VNC client to connect with Oracle 18c database environ
           Table created.
           SQL> exit
 
+- Above SQL Script alters "CUSTOMERS" table and add an additional table "LOGON_AUDIT"
+ 
+          ALTER TABLE SOE.CUSTOMERS 
+          ADD (CUSTOMER_NAME VARCHAR2(40) );
+
+          CREATE TABLE "SOE"."LOGON_AUDIT"
+             (    "LOGON_ID" NUMBER ,
+                  "CUSTOMER_ID" NUMBER,
+                  "LOGON_DATE" DATE,
+               "HOST" VARCHAR2(40),
+               "GG_GROUP" VARCHAR2(40),
+               "OSUSER" VARCHAR2(40),
+                   "DOMAIN" VARCHAR2(40),
+                   "BA_IND" VARCHAR2(40),
+                   "COMMIT" VARCHAR2(40),
+                "POS" VARCHAR2(40),
+                "RBA" VARCHAR2(40),
+                "TABLENAME" VARCHAR2(40),
+                "OPTYPE" VARCHAR2(40)
+             ) ;
+          
 
 
 ### **STEP 4**: Log into the web client and check current replication processes.
