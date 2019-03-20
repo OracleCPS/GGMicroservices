@@ -10,13 +10,13 @@ This lab walk you through some simple examples of doing ***Data Transformations*
 This lab supports the following use cases:
 -	Concatenating the source '***m***' columns into target single '***n***' columns.
 -	Masking the Source Crucial email-id's into a dummy email-id in the target.
--	Use of Tokens.
+-	Use of Environment Variables/Tokens.
 
 ## Objectives
 
 -       Manipulating Numbers and Character Strings.
 -       Configuring Table-level Column Mapping.
--       Using Tokens.
+-       Using Environment Variables/Tokens.
 
 ### **STEP 1**: Log into VNC client and prepare environment for the data transformation lab.
 
@@ -328,11 +328,11 @@ Query in side the script for insert :
         SQL> 
 
 
-### **STEP 7**: Using Tokens.
+### **STEP 7**: Using Environment Variables/Tokens.
 
 ![](images/800/Slide4.JPG) 
  
--  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Tokens to the audit table. Add the following after ***useridalias** command :
+-  Go to Admin Server console for deployment *SanFran* (http://localhost:17001) and edit the parameter of the REPLICAT ***REP1*** with the attributes to map the Environment Variables to the audit table. Add the following after ***useridalias** command :
 
 
         MAP OGGOOW181.SOE.LOGON, TARGET OGGOOW182.SOE.LOGON_AUDIT, KEYCOLS(LOGON_ID), &
