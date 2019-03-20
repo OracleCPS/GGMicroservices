@@ -409,7 +409,7 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 -   Execute drop command on the employee table.
 
-SQL> drop table employee;
+	SQL> drop table employee;
 
 Table dropped.
 
