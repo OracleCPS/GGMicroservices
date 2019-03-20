@@ -2,7 +2,7 @@
 
 Update February 26, 2019
 
-## Creating Credentials in GoldenGate Micro Services Architecture
+## Creating Credentials in GoldenGate Microservices Architecture
 ## Introduction
 
 In this Lab, you will configure the database and protocol user credentials entries needed for replication. 
