@@ -22,13 +22,13 @@ Since we’ve already done multiple labs, this one will take what we used so far
 
 ### **STEP 1**: Run a script to perform a rapid deployment.
 
--       Open up a terminal window and change directory to Lab6 and Review script build_all_bi_di.sh.
+- Open up a terminal window and change directory to Lab6 and Review script build_all_bi_di.sh.
 
                 [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab6
                 [oracle@OGG181DB183 Lab6]$ cat build_all_bi_di.sh 
 
 
--       This script performs the following:
+- This script performs the following:
 
                 1.	Drops the existing container databases.
 
@@ -47,7 +47,7 @@ Since we’ve already done multiple labs, this one will take what we used so far
                 8.	Adds the Extract, Distribution Path and Replicat for both deployments.  This includes the correct 
                 parameters for the Extract and Replicats.
 
--       Run the **build_all_bi_di.sh** script
+- Run the **build_all_bi_di.sh** script
 
                 [oracle@OGG181DB183 Lab6]$ ./build_all_bi_di.sh 
 
@@ -60,13 +60,13 @@ While it's running note the messages displayed that informs what has been added 
 This step will be a short introduction to the AdminClient.  If you’re familiar with Classic GoldenGate, this would be like using GGSCI.  However, the advantage with the AdminClient is that you can connect to separate GG deployments from this one interface.  With GGSCI you would need to execute it in each server environment where GG is installed.  
 In this step we will use the AdminClient to check the deployment instead of the web interface.
 
--       Change directory to OGG_HOME/bin.
+- Change directory to OGG_HOME/bin.
 
                 [oracle@OGG181DB183 Lab6]$ cd $OGG_HOME/bin
                 [oracle@OGG181DB183 bin]$ pwd
                 /opt/app/oracle/product/18.1.0_RC2/bin
 
--       Run adminclient
+- Run adminclient
 
                 [oracle@OGG181DB183 bin]$ ./adminclient 
 
@@ -80,7 +80,7 @@ In this step we will use the AdminClient to check the deployment instead of the 
 
                 OGG (not connected) 1>
 
--       Use connect command
+- Use connect command
 
                 OGG (not connected) 1> connect http://localhost:16000 as oggadmin password Welcome1
 
@@ -91,13 +91,13 @@ In this step we will use the AdminClient to check the deployment instead of the 
 
 You’ll see an error that you have to specify the deployment name and it will give you a list of deployments.
 
--       Connect again using the deployment name of Atlanta.
+- Connect again using the deployment name of Atlanta.
 
                 OGG (not connected) 2> connect http://localhost:16000 deployment Atlanta as oggadmin password Welcome1
 
                 OGG (http://localhost:16000 Atlanta) 3> 
 
--       Type in **“help”**.  You can scroll up and down the list.  For classic GG users you’ll see some familiar commands.
+- Type in **“help”**.  You can scroll up and down the list.  For classic GG users you’ll see some familiar commands.
 
                 OGG (http://localhost:16000 Atlanta) 3> help
 
@@ -116,7 +116,7 @@ You’ll see an error that you have to specify the deployment name and it will g
                 OGG (http://localhost:16000 Atlanta) 4> 
 
 
--       Type in **“info all”**. You’ll see the services for the Atlanta deployment we added and their status and the replication processes and their status.
+- Type in **“info all”**. You’ll see the services for the Atlanta deployment we added and their status and the replication processes and their status.
 
                 OGG (http://localhost:16000 Atlanta) 4> info all
                 Program     Status      Group       Lag at Chkpt  Time Since Chkpt
@@ -128,12 +128,12 @@ You’ll see an error that you have to specify the deployment name and it will g
                 EXTRACT     STOPPED     EXTSOE1     00:00:00      00:13:01    
                 REPLICAT    STOPPED     IREP1       00:00:00      00:12:28    
 
--       Type in **"set debug on"**
+- Type in **"set debug on"**
 
                 OGG (http://localhost:16000 Atlanta) 5> set debug on
                 Command 5 succeeded: 'set debug on'
 
--       Type in "info all" again.  This time you'll see the JSON generated that you can use for the REST API.
+- Type in "info all" again.  This time you'll see the JSON generated that you can use for the REST API.
 
                 OGG (http://localhost:16000 Atlanta) 6> info all
                 --------------------------------------------------------------------------------
@@ -170,11 +170,11 @@ You’ll see an error that you have to specify the deployment name and it will g
 
                 OGG (http://localhost:16000 Atlanta) 7> 
 
--       Type in **"set debug off"**
+- Type in **"set debug off"**
 
                 OGG (http://localhost:16000 Atlanta) 7> set debug off
 
--       Let’s type in a command that isn’t in classic GG.  Type in **“health deployment Atlanta”**.  You’ll get more info on the services than just the info all command gives.
+- Let’s type in a command that isn’t in classic GG.  Type in **“health deployment Atlanta”**.  You’ll get more info on the services than just the info all command gives.
 
                 OGG (http://localhost:16000 Atlanta) 27> health deployment Atlanta
 
@@ -202,9 +202,9 @@ You’ll see an error that you have to specify the deployment name and it will g
                 Resources: Name                              Type        Status      Health
                         --------------------------------  ----------  ----------  ------
 
--       Connect to the SanFran deployment to do a quick check on the status.  You can type in **"history"** to get a list of the previous commands.
+- Connect to the SanFran deployment to do a quick check on the status.  You can type in **"history"** to get a list of the previous commands.
 
--       The connect to the Atlanta deployment is there so you can check the syntax.  Enter the same command and change **"Atlanta"** to **"SanFran"**
+- The connect to the Atlanta deployment is there so you can check the syntax.  Enter the same command and change **"Atlanta"** to **"SanFran"**
 
                 OGG (http://localhost:16000 Atlanta) 28> history
                 1: connect http://localhost:16000 as oggadmin password Welcome1
@@ -214,7 +214,7 @@ You’ll see an error that you have to specify the deployment name and it will g
 
                 OGG (http://localhost:16000 SanFran) 30> 
 
--       Type in **“info all”**.  You’ll see the services for the SanFran deployment we added and their status and the replication processes and their status.
+- Type in **“info all”**.  You’ll see the services for the SanFran deployment we added and their status and the replication processes and their status.
 
                 OGG (http://localhost:16000 SanFran) 30> info all
                 Program     Status      Group       Lag at Chkpt  Time Since Chkpt
@@ -226,7 +226,7 @@ You’ll see an error that you have to specify the deployment name and it will g
                 EXTRACT     STOPPED     EXTSOE2     00:00:00      00:23:02    
                 REPLICAT    STOPPED     IREP2       00:00:00      00:22:29    
 
--       Exit the AdminClient by typing in **"exit"**.
+- Exit the AdminClient by typing in **"exit"**.
 
                 OGG (http://localhost:16000 SanFran) 31> exit
                 [oracle@OGG181DB183 bin]$ 
@@ -251,7 +251,7 @@ Automatic conflict detection and resolution does not require application changes
 
 This step runs the ADD_AUTO_CDR procedure in the DBMS_GOLDENGATE_ADM package in the database.
 
--       In the terminal window change directory to Lab6 and Review script **setup_autocdr.sh**.
+- In the terminal window change directory to Lab6 and Review script **setup_autocdr.sh**.
 
                 [oracle@OGG181DB183 bin]$ cd ~/OGG181_WHKSHP/Lab6
                 [oracle@OGG181DB183 Lab6]$ cat setup_autocdr.sh 
@@ -264,7 +264,7 @@ This script performs the following:
 
     3.	Executes the ADD_AUTO_CDR procedure in the DBMS_GOLDENGATE_ADM package.  This sets up the timestamp conflict detection and resolution.  You have to do this for any table you want to enable for CDR.  That’s why it’s best to have this scripted for multiple tables.
 
--       Run the script setup_autocdr.sh.
+- Run the script setup_autocdr.sh.
 
                 [oracle@OGG181DB183 Lab6]$ ./setup_autocdr.sh 
 
@@ -303,7 +303,7 @@ This script performs the following:
 
 ### **STEP 4**: Start Replication
 
--       Run the start_replication.sh script to start the replication processes for the Atlanta capture and the SanFran delivery.
+- Run the start_replication.sh script to start the replication processes for the Atlanta capture and the SanFran delivery.
 
                 [oracle@OGG181DB183 Lab6]$ ./start_replication.sh Welcome1 16001 EXTSOE1 16002 SOE2SOE1 17001 IREP2
                 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -325,7 +325,7 @@ This script performs the following:
                 }
                 [oracle@OGG181DB183 Lab6]$ 
 
--       Next, run the start_replication.sh script again to start the replication processes for the SanFran capture and the Atlanta delivery.  Use the CREATE SCN value from OGGOOW182 as the last value of the script (See example above).  This is for the startup of the Replicat on the Atlanta deployment.
+- Next, run the start_replication.sh script again to start the replication processes for the SanFran capture and the Atlanta delivery.  Use the CREATE SCN value from OGGOOW182 as the last value of the script (See example above).  This is for the startup of the Replicat on the Atlanta deployment.
 
                 [oracle@OGG181DB183 Lab6]$ ./start_replication.sh Welcome1 17001 EXTSOE2 17002 SOE2SOE2 16001 IREP1
                 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -351,7 +351,7 @@ This script performs the following:
 
 In this step we’ll use a script to invoke Swingbench to apply data to both databases at the same time and then check them using the Performance Metric Service.
 
--       In the terminal window review script start_swingbench.sh.
+- In the terminal window review script start_swingbench.sh.
 
                 [oracle@OGG181DB183 Lab6]$ cat start_swingbench.sh 
                 #!/bin/bash
@@ -362,7 +362,7 @@ In this step we’ll use a script to invoke Swingbench to apply data to both dat
 
 This script runs the swingbench jobs you ran in the other labs, but this time it will run two jobs in the background and each job applies data to one or the other databases.
 
--       Run start_swingbench.sh.  It will take a few seconds to start up and run for 10 mins.
+- Run start_swingbench.sh.  It will take a few seconds to start up and run for 10 mins.
 
                 [oracle@OGG181DB183 Lab6]$ ./start_swingbench.sh 
                 [oracle@OGG181DB183 Lab6]$ Author  :	 Dominic Giles
@@ -382,19 +382,19 @@ This script runs the swingbench jobs you ran in the other labs, but this time it
                 00:10:47	[0/2]
                 00:10:47	[0/2]
 
--       From the browser, log in to the Service Manager using the Administrator account **"oggadmin"** the password should be **"Welcome1"**.
+- From the browser, log in to the Service Manager using the Administrator account **"oggadmin"** the password should be **"Welcome1"**.
 
 ![](images/600/Lab600_image110.PNG) 
 
--       Next click on the link to the Performance Metrics Server for Atlanta.
+- Next click on the link to the Performance Metrics Server for Atlanta.
 
 ![](images/600/select_pms.PNG) 
 
--       Click on the Replicat icon.
+- Click on the Replicat icon.
 
 ![](images/600/repl_atl.PNG) 
 
--       We’ll take a longer look at the Metric Service in another lab, so for now just click on the “Database Statistics” tab.
+- We’ll take a longer look at the Metric Service in another lab, so for now just click on the “Database Statistics” tab.
 
 ![](images/600/sel_db_stats_atl.PNG) 
 
