@@ -66,7 +66,8 @@ To test the replication environment, you will use Swingbench.  Swingbench has al
 
 From the Lab9 directory, run the following script:
 
-        $ ./start_swingbench.sh
+        [oracle@OGG181DB183 Lab9]$ cd ~/OGG181_WHKSHP/Lab9
+        [oracle@OGG181DB183 Lab9]$ ./start_swingbench.sh
 
 For the final task we will view both Deployment’s Performance Metric Service to view transactions metrics within the Oracle GoldenGate configuration.
 
