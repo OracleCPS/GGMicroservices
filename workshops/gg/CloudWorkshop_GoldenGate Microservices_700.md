@@ -213,11 +213,14 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 ![](images/700/Lab700_image108.png)
 
--  Log in into mysql database 
+-  To go terminal and change directory to "/home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql"
 
        [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
        [oracle@OGG181DB183 dirsql]$ ls
        counts.sql  drop_database.sql  seed_database.sql  source_database.sql
+   
+- Log in into mysql database  using username "root" and password "Welcome1" 
+  
        [oracle@OGG181DB183 dirsql]$ mysql -u root -p
        Enter password: 
        Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -231,6 +234,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
        owners.
 
        Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+- Use "AMEA" schema 
 
        mysql> use amea
        Reading table information for completion of table and column names
