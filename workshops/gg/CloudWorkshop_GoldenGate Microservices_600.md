@@ -116,7 +116,7 @@ You’ll see an error that you have to specify the deployment name and it will g
                 OGG (http://localhost:16000 Atlanta) 4> 
 
 
--       Type in **“info all”**.  You’ll see the services for the Atlanta deployment we added and their status and the replication processes and their status.
+-       Type in **“info all”**. You’ll see the services for the Atlanta deployment we added and their status and the replication processes and their status.
 
                 OGG (http://localhost:16000 Atlanta) 4> info all
                 Program     Status      Group       Lag at Chkpt  Time Since Chkpt
