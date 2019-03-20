@@ -7,11 +7,11 @@ Update February 27, 2019
 
 GoldenGate allows you to perform what we call **Zero Downtime Migrations (ZDT)**.  By using GoldenGate you can keep your source database up and operational while you perform a bulk instantiation of data to the new platform.
 
-There are multiple ways to perform the bulk data movement, if you are going to the same database (i.e. Oracle to Oracle), then it's advised to use native tools to move the data.  In the case of Oracle, we have integration with the data pump export/import utility, which makes it easy to sync the data with the delta information when the bulk data movement is complete.
+- There are multiple ways to perform the bulk data movement, if you are going to the same database (i.e. Oracle to Oracle), then it's advised to use native tools to move the data.  In the case of Oracle, we have integration with the data pump export/import utility, which makes it easy to sync the data with the delta information when the bulk data movement is complete.
 
-For this lab, even though we are going Oracle to Oracle, we will show you a method to do what we call file based data migration using the MicroServices architecture and the REST API for automation.
+- For this lab, even though we are going Oracle to Oracle, we will show you a method to do what we call file based data migration using the MicroServices architecture and the REST API for automation.
 
-This lab, will contains four parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
+- This lab, will contains four parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
 
 # Part 1: Remove the previous lab replication processes with via the REST API.
 
