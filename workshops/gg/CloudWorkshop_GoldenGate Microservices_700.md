@@ -89,8 +89,10 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 
 - Run the OGG obey script to create the replication processes and check with info all command
+       
+       GGSCI (OGG181DB183) 3> obey ./dirprm/setup_mysql.oby
+Output will as below :         
 
-                
       GGSCI (OGG181DB183) 3> obey ./dirprm/setup_mysql.oby
 
       GGSCI (OGG181DB183) 4> -- This is a script(oby) file that executes GGSCI commands to initialize the GoldenGate environment. These commands can be run individually directly via the GGSCI interface.
@@ -128,6 +130,9 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
       GGSCI (OGG181DB183) 10> ADD RMTTRAIL rt, EXTRACT P_ORA18C, MEGABYTES 50
 
       RMTTRAIL added.
+
+
+- Check if the Extract and Pump processes have been added with "info all" as below :         
 
       GGSCI (OGG181DB183) 11> info all
 
