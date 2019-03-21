@@ -61,7 +61,7 @@ Since you are configuring an non-SSL replication environment, you will need to c
 ### **STEP 2**: Create the target database user credentials using the REST API.
 Next, you will create a target database User Alias which is very similar to the one that you created earlier, the difference being that this alias will be called TGGATE and will reside in the second Deployment (SanFran).  This will be the GoldenGate admin user for the target database.
 
-Below are the parameters that will be used in exectuting the scripts.
+Below are the parameters that will be used in executing the scripts.
 
 | Field/Checkbox				|	Setting	|
 |-------------------------------|-----------|
