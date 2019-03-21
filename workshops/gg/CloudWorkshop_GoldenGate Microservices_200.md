@@ -116,7 +116,7 @@ It is also responsible for starting and stopping the other GoldenGate services a
 
 ![](images/200/15.JPG)
 
-- 	At a terminal prompt login as root using the ***sudo su*** - command and execute the shell script as directed:
+- 	At a terminal prompt login as root using the ***sudo su -*** command and password ***Welcome1***.Execute the shell script as directed:
 
 		[oracle@OGG181DB183 ~]$ sudo su -
 		[root@OGG181DB183 ~]# /opt/app/oracle/gg_deployments/ServiceManager/bin/registerServiceManager.sh
