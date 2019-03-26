@@ -75,7 +75,7 @@ In this step you will use VNC client to connect with Oracle 18c database environ
 -	Once you get the message that the script completed, you can go on to the next step(takes 5 minutes, please dont press any button unless menu is return).
 
 		The command completed successfully
-		[oracle@OGG181DB183 Lab1]$ \
+		[oracle@OGG181DB183 Lab1]$ 
 
 ### **STEP 3**: From the same terminal window, install the GoldenGate Microservices Edition
 
