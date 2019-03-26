@@ -253,7 +253,7 @@ In this lab we will perform a few DML and DDL operations on source pdb and check
 
 Prerequisite: Source and target database should be in sync. Extract, Pump and Replicat should be up and running.
 
--   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.  The password is ** soe **.
+-   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.  The password is **soe**.
 
         [oracle@OGG181DB183 Lab4]$ sqlplus
 
