@@ -17,7 +17,7 @@
 	"map oggoow181.soe.orderentry_metadata, target soe.orderentry_metadata;"
 ],
 "source":{
-"name":"X1"
+"name":"X2"
 },
 "credentials":{
 "alias":"TGGATE"
