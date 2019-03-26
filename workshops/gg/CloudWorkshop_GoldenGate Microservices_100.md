@@ -124,7 +124,5 @@ In this step you will install **the GoldenGate Microservices edition package** i
 
 - You should now be complete with **the GoldenGate Microservices for Oracle software installation**.
 
-Testing done.
-
 You have completed lab 100! Great Job!
 
