@@ -188,7 +188,7 @@ In this lab you will configure the Integrated Replicat for the second deployment
 	    MAP OGGOOW181.SOE.PRODUCT_DESCRIPTIONS, TARGET SOE.PRODUCT_DESCRIPTIONS;
 	    MAP OGGOOW181.SOE.WAREHOUSES, TARGET SOE.WAREHOUSES;
 	    MAP OGGOOW181.SOE.ORDERENTRY_METADATA, TARGET SOE.ORDERENTRY_METADATA;
-	    
+	    MAP OGGOOW181.SOE.*, TARGET SOE.*;
     	
 -   Once the parameter file has been updated, click the Create and Run button at the bottom.
 
