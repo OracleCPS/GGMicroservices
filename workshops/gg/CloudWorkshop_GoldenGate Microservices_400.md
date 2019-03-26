@@ -255,22 +255,21 @@ Prerequisite: Source and target database should be in sync. Extract, Pump and Re
 
 -   Logon to OGGOOW181 and OGGOOW182 pdbs using SOE user.  The password is **soe**.
 
-        [oracle@OGG181DB183 Lab4]$ sqlplus
+		[oracle@OGG181DB183 Lab4]$ sqlplus soe/soe@OGGOOW181
 
-        SQL*Plus: Release 18.0.0.0.0 - Production on Tue Feb 26 23:46:59 2019
-        Version 18.3.0.0.0
+		SQL*Plus: Release 18.0.0.0.0 - Production on Tue Mar 26 23:02:54 2019
+		Version 18.3.0.0.0
 
-        Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+		Copyright (c) 1982, 2018, Oracle.  All rights reserved.
 
-        Enter user-name: SOE@OGGOOW181
-        Enter password: 
-        Last Successful login time: Tue Feb 26 2019 23:41:13 +00:00
+		Last Successful login time: Tue Mar 26 2019 22:45:14 +00:00
 
-        Connected to:
-        Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-        Version 18.3.0.0.0
+		Connected to:
+		Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+		Version 18.3.0.0.0
 
-        SQL> 
+		SQL> 
+
 
 -   Create a employee table in OGGOOW181.
 
