@@ -174,7 +174,7 @@ In this lab you will configure the Integrated Replicat for the second deployment
  
 ![](images/400/Lab400_Add_Replicat.PNG) 
 
--   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement **"MAP *.*, TARGET *.*;"** and replace it with the information below:
+-   You are next taken to the Parameter File page.  On this page, you will notice that a sample parameter file is provided -   You will have to remove the MAP statement (MAP /*./*, TARGET /*./*;) and replace it with the information below:
 
 	    
 	    MAP OGGOOW181.SOE.CUSTOMERS, TARGET SOE.CUSTOMERS, KEYCOLS(CUSTOMER_ID);
