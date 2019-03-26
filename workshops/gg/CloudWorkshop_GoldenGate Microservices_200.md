@@ -86,6 +86,10 @@ It is also responsible for starting and stopping the other GoldenGate services a
 |Metrics Server UDP Port (data) |   16005	|
 |Metrics Server Datastore Type  |   BDB		|
 
+-       For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.
+
+![](images/200/9.PNG)
+
 -	For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/Atlanta"** directory and select ***Metrics*** directory
 
 ![](images/200/10.PNG)
