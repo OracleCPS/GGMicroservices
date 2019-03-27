@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SwingBenchConfiguration xmlns="http://www.dominicgiles.com/swingbench/config">
+    <Name>Stress Test</Name>
+    <Comment>Simple relational CRUD workload test</Comment>
+    <Connection>
+        <UserName>soe</UserName>
+        <Password>enc(cw4Xx9RgsQA=)</Password>
+        <ConnectString>//oraclelinux/DOM102</ConnectString>
+        <DriverType>Oracle10g Type IV jdbc driver (thin)</DriverType>
+    </Connection>
+    <Load>
+        <NumberOfUsers>4</NumberOfUsers>
+        <MinDelay>0</MinDelay>
+        <MaxDelay>0</MaxDelay>
+        <QueryTimeout>0</QueryTimeout>
+        <MaxTransactions>0</MaxTransactions>
+        <RunTime>0:0</RunTime>
+        <LogonDelay>0</LogonDelay>
+        <LogOutPostTransaction>false</LogOutPostTransaction>
+        <WaitTillAllLogon>false</WaitTillAllLogon>
+        <TransactionList>
+            <Transaction>
+                <Id>Insert Transaction</Id>
+                <ShortName>I</ShortName>
+                <ClassName>com.dom.benchmarking.swingbench.stresstest.StressTestInsert</ClassName>
+                <Weight>15</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+            <Transaction>
+                <Id>Simple Select</Id>
+                <ShortName>S</ShortName>
+                <ClassName>com.dom.benchmarking.swingbench.stresstest.StressTestSelect</ClassName>
+                <Weight>40</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+            <Transaction>
+                <Id>Update Transaction</Id>
+                <ShortName>U</ShortName>
+                <ClassName>com.dom.benchmarking.swingbench.stresstest.StressTestUpdate</ClassName>
+                <Weight>30</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+            <Transaction>
+                <Id>Delete Transaction</Id>
+                <ShortName>D</ShortName>
+                <ClassName>com.dom.benchmarking.swingbench.stresstest.StressTestDelete</ClassName>
+                <Weight>10</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+        </TransactionList>
+    </Load>
+    <Preferences>
+        <StartMode>manual</StartMode>
+        <Output>swingbench</Output>
+        <JumpToEvents>true</JumpToEvents>
+        <TimingsIncludeSleep>false</TimingsIncludeSleep>
+        <TimingsIn>microseconds</TimingsIn>
+        <StatisticsLevel>simple</StatisticsLevel>
+        <OutputFile>results.xml</OutputFile>
+        <AllowedErrorCodes/>
+        <RefreshRate>1</RefreshRate>
+        <OverviewCharts>
+            <OverviewChart>
+                <Name>Transactions Per Minute</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Transactions Per Second</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Response Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>CPU</Name>
+                <MinimumValue>0.0</MinimumValue>
+                <MaximumValue>100.0</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Disk</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Users</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Database Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>DML</Name>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+        </OverviewCharts>
+    </Preferences>
+</SwingBenchConfiguration>

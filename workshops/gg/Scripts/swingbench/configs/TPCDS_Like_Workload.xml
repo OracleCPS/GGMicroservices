@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SwingBenchConfiguration xmlns="http://www.dominicgiles.com/swingbench/config">
+    <Name>"TPC-DS Like workload (Query Workload)"</Name>
+    <Comment>A TPC-DS like query workload.</Comment>
+    <Connection>
+        <UserName>tpcdslike</UserName>
+        <Password>enc(eSb5JLfSDeN6zxlQgDFxuw==)</Password>
+        <ConnectString>//tpc12server/tpc</ConnectString>
+        <DriverType>Oracle jdbc Driver</DriverType>
+        <Properties>
+            <Property Key="StatementCaching">50</Property>
+            <Property Key="MaxONSConnections">2</Property>
+            <Property Key="FetchSize">20</Property>
+            <Property Key="MaximumTxRetries">2</Property>
+        </Properties>
+        <InitilizationCommands>
+            <Command>alter session force parallel query parallel 4</Command>
+        </InitilizationCommands>
+    </Connection>
+    <Load>
+        <NumberOfUsers>1</NumberOfUsers>
+        <MinDelay>0</MinDelay>
+        <MaxDelay>0</MaxDelay>
+        <InterMinDelay>1000</InterMinDelay>
+        <InterMaxDelay>1000</InterMaxDelay>
+        <QueryTimeout>120</QueryTimeout>
+        <MaxTransactions>-1</MaxTransactions>
+        <RunTime>0:0</RunTime>
+        <LogonGroupCount>1</LogonGroupCount>
+        <LogonDelay>0</LogonDelay>
+        <LogOutPostTransaction>false</LogOutPostTransaction>
+        <WaitTillAllLogon>false</WaitTillAllLogon>
+        <StatsCollectionStart>0:0</StatsCollectionStart>
+        <StatsCollectionEnd>0:0</StatsCollectionEnd>
+        <ConnectionRefresh>0</ConnectionRefresh>
+        <TransactionList>
+            <Transaction>
+                <Id>Statement Runner</Id>
+                <ShortName>SSR</ShortName>
+                <ClassName>com.dom.benchmarking.swingbench.benchmarks.statementrunner.SQLStatementRunner</ClassName>
+                <Weight>100</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+        </TransactionList>
+        <EnvironmentVariables>
+            <Variable Key="STATEMENTS_CONFIG_FILE">../configs/tpcds_statements.xml</Variable>
+            <Variable Key="STATEMENTS_RUN_MODE">serial_stepped</Variable>
+        </EnvironmentVariables>
+    </Load>
+    <Database>
+        <SystemUserName>system</SystemUserName>
+        <SystemPassword>enc(JTTtUng7fseg1iSTljVs3A==)</SystemPassword>
+        <PerformAWRSnapShots>false</PerformAWRSnapShots>
+    </Database>
+    <Preferences>
+        <StartMode>manual</StartMode>
+        <Output>swingbench</Output>
+        <JumpToEvents>true</JumpToEvents>
+        <TimingsIncludeSleep>false</TimingsIncludeSleep>
+        <TimingsIn>milliseconds</TimingsIn>
+        <StatisticsLevel>full</StatisticsLevel>
+        <OutputFile>results.xml</OutputFile>
+        <Charts DefaultChart="Overview">
+            <Chart>
+                <Name>DML Operations Per Minute</Name>
+                <Autoscale>true</Autoscale>
+                <MaximumValue>-1.0</MaximumValue>
+                <Logarithmic>false</Logarithmic>
+            </Chart>
+            <Chart>
+                <Name>Transaction Response Time</Name>
+                <Autoscale>true</Autoscale>
+                <MaximumValue>-1.0</MaximumValue>
+                <Logarithmic>true</Logarithmic>
+            </Chart>
+            <Chart>
+                <Name>Transactions Per Minute</Name>
+                <Autoscale>true</Autoscale>
+                <MaximumValue>-1.0</MaximumValue>
+                <Logarithmic>false</Logarithmic>
+            </Chart>
+        </Charts>
+        <AllowedErrorCodes>
+            <ErrorCode Type="ORA">4063</ErrorCode>
+        </AllowedErrorCodes>
+        <RefreshRate>1</RefreshRate>
+        <OverviewCharts>
+            <OverviewChart>
+                <Name>Transactions Per Minute</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Transactions Per Second</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Response Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>CPU</Name>
+                <MinimumValue>0.0</MinimumValue>
+                <MaximumValue>100.0</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Disk</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Users</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Database Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>DML</Name>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+        </OverviewCharts>
+    </Preferences>
+</SwingBenchConfiguration>

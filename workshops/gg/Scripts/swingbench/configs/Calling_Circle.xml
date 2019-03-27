@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SwingBenchConfiguration xmlns="http://www.dominicgiles.com/swingbench/config">
+    <Name>"Calling Circle Benchmark"</Name>
+    <Comment>Deprecated Call Center Benchmark</Comment>
+    <Connection>
+        <UserName>cc</UserName>
+        <Password>enc(uECD1j8CyYk=)</Password>
+        <ConnectString>etcg-scan:1521:ATI1</ConnectString>
+        <DriverType>Oracle10g Type IV jdbc driver (thin)</DriverType>
+        <Properties>
+            <Property Key="TcpNoDelay">true</Property>
+            <Property Key="StatementCaching">50</Property>
+        </Properties>
+        <InitilizationCommands>
+            <Command>alter session set sql_trace=false</Command>
+        </InitilizationCommands>
+    </Connection>
+    <Load>
+        <NumberOfUsers>20</NumberOfUsers>
+        <MinDelay>1</MinDelay>
+        <MaxDelay>10</MaxDelay>
+        <QueryTimeout>120</QueryTimeout>
+        <MaxTransactions>-1</MaxTransactions>
+        <RunTime>0:0</RunTime>
+        <LogonGroupCount>1</LogonGroupCount>
+        <LogonDelay>5</LogonDelay>
+        <LogOutPostTransaction>false</LogOutPostTransaction>
+        <WaitTillAllLogon>true</WaitTillAllLogon>
+        <StatsCollectionStart>0:0</StatsCollectionStart>
+        <StatsCollectionEnd>0:0</StatsCollectionEnd>
+        <TransactionList>
+            <Transaction>
+                <Id>New Customer</Id>
+                <ShortName>NC</ShortName>
+                <ClassName>com.mike.CallingCircle.NewCallingCircleProcess</ClassName>
+                <Weight>25</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+            <Transaction>
+                <Id>Update Customer Details</Id>
+                <ShortName>UCD</ShortName>
+                <ClassName>com.mike.CallingCircle.UpdateCallingCircleProcess</ClassName>
+                <Weight>100</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+            <Transaction>
+                <Id>Retrieve Customer Details</Id>
+                <ShortName>RCD</ShortName>
+                <ClassName>com.mike.CallingCircle.RetrieveHistoryProcess</ClassName>
+                <Weight>50</Weight>
+                <Enabled>true</Enabled>
+            </Transaction>
+        </TransactionList>
+        <EnvironmentVariables>
+            <Variable Key="CC_NEWPROCESS_FILE_LOC">data/newccprocess.txt</Variable>
+            <Variable Key="CC_QUERYPROCESS_FILE_LOC">data/qryccprocess.txt</Variable>
+            <Variable Key="CC_UPDATEPROCESS_FILE_LOC">data/updccprocess.txt</Variable>
+        </EnvironmentVariables>
+    </Load>
+    <Preferences>
+        <StartMode>manual</StartMode>
+        <Output>swingbench</Output>
+        <JumpToEvents>true</JumpToEvents>
+        <TimingsIncludeSleep>false</TimingsIncludeSleep>
+        <TimingsIn>milliseconds</TimingsIn>
+        <StatisticsLevel>simple</StatisticsLevel>
+        <OutputFile>results.xml</OutputFile>
+        <AllowedErrorCodes>
+            <ErrorCode Type="ORA">2291</ErrorCode>
+            <ErrorCode Type="ORA">1</ErrorCode>
+            <ErrorCode Type="ORA">1401</ErrorCode>
+        </AllowedErrorCodes>
+        <RefreshRate>2</RefreshRate>
+        <OverviewCharts>
+            <OverviewChart>
+                <Name>Transactions Per Minute</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Transactions Per Second</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Response Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>CPU</Name>
+                <MinimumValue>0.0</MinimumValue>
+                <MaximumValue>100.0</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Disk</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Users</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>false</Displayed>
+            </OverviewChart>
+            <OverviewChart>
+                <Name>Database Time</Name>
+                <MinimumValue>2.147483647E9</MinimumValue>
+                <MaximumValue>2.147483647E9</MaximumValue>
+                <Displayed>true</Displayed>
+            </OverviewChart>
+        </OverviewCharts>
+    </Preferences>
+</SwingBenchConfiguration>

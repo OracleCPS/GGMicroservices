@@ -1,0 +1,7 @@
+run
+{
+allocate channel c1 type disk;
+crosscheck archivelog all;
+delete noprompt archivelog all;
+release channel c1;
+}

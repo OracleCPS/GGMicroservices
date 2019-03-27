@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TableDataGenerator xmlns="http://www.domincgiles.com/datagen">
+    <DatabaseConnectionInformation>
+        <Username>json</Username>
+        <Password>json</Password>
+        <ConnectString>//oracle12c2/soe</ConnectString>
+        <DriverType>thin</DriverType>
+    </DatabaseConnectionInformation>
+    <Table RowCount="2000000">
+        <TableName>PassengerCollection</TableName>
+        <Columns>
+            <Column>
+                <ColumnName>passenger_info</ColumnName>
+                <DataType>VARCHAR2</DataType>
+                <PrimaryKey>false</PrimaryKey>
+                <NullsAllowed>false</NullsAllowed>
+                <Size>2000</Size>
+                <PopulateWith>
+                    <DataGenerator>
+                        <NumberGenerator>
+                            <id>DG1</id>
+                            <Start>1</Start>
+                            <End>10</End>
+                            <OrderedSequence>true</OrderedSequence>
+                            <SequenceName>MySequence</SequenceName>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>{"ID" : </prefix>
+                            <postfix>, </postfix>
+                            <LocalSequence>false</LocalSequence>
+                            <NormalDistribution>false</NormalDistribution>
+                        </NumberGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <FileSamplerGenerator>
+                            <id>ID2</id>
+                            <SampleFile>data/lowerfirstnames.txt</SampleFile>
+                            <SampleCount>1</SampleCount>
+                            <PercentageNull>0</PercentageNull>
+                            <UseSpaceSeperator>false</UseSpaceSeperator>
+                            <prefix> "FirstName" : "</prefix>
+                            <postfix>", </postfix>
+                            <NormalDistribution>false</NormalDistribution>
+                        </FileSamplerGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <FileSamplerGenerator>
+                            <id>DG3</id>
+                            <SampleFile>data/lowerlastnames.txt</SampleFile>
+                            <SampleCount>1</SampleCount>
+                            <PercentageNull>0</PercentageNull>
+                            <UseSpaceSeperator>false</UseSpaceSeperator>
+                            <prefix>"LastName" : "</prefix>
+                            <postfix>", </postfix>
+                            <NormalDistribution>false</NormalDistribution>
+                        </FileSamplerGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <FileSamplerGenerator>
+                            <id>DG3</id>
+                            <SampleFile>data/countries.txt</SampleFile>
+                            <SampleCount>1</SampleCount>
+                            <PercentageNull>0</PercentageNull>
+                            <UseSpaceSeperator>false</UseSpaceSeperator>
+                            <prefix>"Nationality" : "</prefix>
+                            <postfix>", </postfix>
+                            <NormalDistribution>false</NormalDistribution>
+                        </FileSamplerGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <DateGenerator>
+                            <id>DG4</id>
+                            <Start>1945-01-01T00:00:00.000Z</Start>
+                            <End>1970-01-01T00:00:00.000Z</End>
+                            <RoundUpDay>true</RoundUpDay>
+                            <RoundUpHour>false</RoundUpHour>
+                            <AddToResult>0</AddToResult>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>"DOB" : "</prefix>
+                            <postfix>", </postfix>
+                        </DateGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <CharacterGenerator>
+                            <id>DG2</id>
+                            <CharacterClass>Numeric</CharacterClass>
+                            <MinimumSize>10</MinimumSize>
+                            <MaximumSize>10</MaximumSize>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>"PassportNo" : "</prefix>
+                            <postfix>"</postfix>
+                        </CharacterGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <EnumerationGenerator>
+                            <id>DG1</id>
+                            <EnumerationValues>N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Y,N,N,N</EnumerationValues>
+                            <MinimumRepetitions>1</MinimumRepetitions>
+                            <MaximumRepetitions>1</MaximumRepetitions>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>,"Flagged" : "</prefix>
+                            <postfix>", </postfix>
+                            <NormalDistribution>true</NormalDistribution>
+                        </EnumerationGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <NumberGenerator>
+                            <id>DG2</id>
+                            <Start>1</Start>
+                            <End>1000</End>
+                            <OrderedSequence>false</OrderedSequence>
+                            <PercentageNull>99</PercentageNull>
+                            <prefix>"KnownAliasFor" : </prefix>
+                            <postfix>, </postfix>
+                            <LocalSequence>false</LocalSequence>
+                            <ReferenceTableName>JSONDATA</ReferenceTableName>
+                            <Multiplier>1</Multiplier>
+                            <NormalDistribution>false</NormalDistribution>
+                        </NumberGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <CharacterGenerator>
+                            <id>DG2</id>
+                            <CharacterClass>Lowercase Alpha Numeric</CharacterClass>
+                            <MinimumSize>120</MinimumSize>
+                            <MaximumSize>128</MaximumSize>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>"BioData" : "</prefix>
+                            <postfix>", </postfix>
+                        </CharacterGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <DateGenerator>
+                            <id>DG1</id>
+                            <Start>2000-01-01T00:00:00.000Z</Start>
+                            <End>2014-09-18T16:32:34.171Z</End>
+                            <RoundUpDay>false</RoundUpDay>
+                            <RoundUpHour>true</RoundUpHour>
+                            <AddToResult>0</AddToResult>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>"FlightHistory" : [{"FlightDate" : "</prefix>
+                            <postfix>", </postfix>
+                        </DateGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <FileSamplerGenerator>
+                            <id>DG1</id>
+                            <SampleFile>data/USAirportCodes.txt</SampleFile>
+                            <SampleCount>1</SampleCount>
+                            <PercentageNull>0</PercentageNull>
+                            <UseSpaceSeperator>false</UseSpaceSeperator>
+                            <prefix>"Airport" : "</prefix>
+                            <postfix>"}</postfix>
+                            <NormalDistribution>false</NormalDistribution>
+                        </FileSamplerGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <DateGenerator>
+                            <id>DG2</id>
+                            <Start>2014-09-18T16:33:57.613Z</Start>
+                            <End>2014-09-18T16:33:57.613Z</End>
+                            <RoundUpDay>false</RoundUpDay>
+                            <RoundUpHour>true</RoundUpHour>
+                            <AddToResult>0</AddToResult>
+                            <PercentageNull>0</PercentageNull>
+                            <prefix>, {"FlightDate" : "</prefix>
+                            <postfix>", </postfix>
+                        </DateGenerator>
+                    </DataGenerator>
+                    <DataGenerator>
+                        <FileSamplerGenerator>
+                            <id>DG2</id>
+                            <SampleFile>data/NonUSAirportCodes.txt</SampleFile>
+                            <SampleCount>1</SampleCount>
+                            <PercentageNull>0</PercentageNull>
+                            <UseSpaceSeperator>false</UseSpaceSeperator>
+                            <prefix>"Airport" : "</prefix>
+                            <postfix>"}]}</postfix>
+                            <NormalDistribution>false</NormalDistribution>
+                        </FileSamplerGenerator>
+                    </DataGenerator>
+                </PopulateWith>
+            </Column>
+            <Column>
+                <ColumnName>ID</ColumnName>
+                <DataType>NUMBER</DataType>
+                <PrimaryKey>false</PrimaryKey>
+                <NullsAllowed>false</NullsAllowed>
+                <Size>6</Size>
+                <PopulateWith>
+                    <DataGenerator>
+                        <NumberGenerator>
+                            <id>DG1</id>
+                            <Start>1</Start>
+                            <End>2000000</End>
+                            <OrderedSequence>true</OrderedSequence>
+                            <SequenceName>MySequence2</SequenceName>
+                            <PercentageNull>0</PercentageNull>
+                            <LocalSequence>false</LocalSequence>
+                            <ReferenceTableName>PassengerCollection</ReferenceTableName>
+                            <Multiplier>1</Multiplier>
+                            <NormalDistribution>false</NormalDistribution>
+                        </NumberGenerator>
+                    </DataGenerator>
+                </PopulateWith>
+            </Column>
+            <Column>
+                <ColumnName>VERSION</ColumnName>
+                <DataType>NUMBER</DataType>
+                <PrimaryKey>false</PrimaryKey>
+                <NullsAllowed>false</NullsAllowed>
+                <Size>6</Size>
+                <PopulateWith>
+                    <DataGenerator>
+                        <EnumerationGenerator>
+                            <id>DG3</id>
+                            <EnumerationValues>1</EnumerationValues>
+                            <MinimumRepetitions>1</MinimumRepetitions>
+                            <MaximumRepetitions>1</MaximumRepetitions>
+                            <PercentageNull>0</PercentageNull>
+                            <NormalDistribution>false</NormalDistribution>
+                        </EnumerationGenerator>
+                    </DataGenerator>
+                </PopulateWith>
+            </Column>
+        </Columns>
+        <Partition>
+            <PartitionKey>ID</PartitionKey>
+            <NumberOfPartitions>16</NumberOfPartitions>
+        </Partition>
+        <Scaleable>true</Scaleable>
+    </Table>
+    <Sequence>
+        <SequenceName>MySequence</SequenceName>
+        <StartWith>1</StartWith>
+        <IncrementBy>1</IncrementBy>
+        <CacheSize>1000</CacheSize>
+        <Ordered>false</Ordered>
+    </Sequence>
+    <Sequence>
+        <SequenceName>MySequence2</SequenceName>
+        <StartWith>1</StartWith>
+        <IncrementBy>1</IncrementBy>
+        <CacheSize>1000</CacheSize>
+        <Ordered>false</Ordered>
+    </Sequence>
+    <PreGenerationScript/>
+    <PostGenerationScript/>
+</TableDataGenerator>

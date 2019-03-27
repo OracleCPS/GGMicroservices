@@ -1,0 +1,5 @@
+drop user &username cascade;
+
+
+
+
