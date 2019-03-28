@@ -1,7 +1,7 @@
 
 ![](images/700/Lab700_image100.PNG)
 
-Update January 04, 2019
+Update March 28, 2019
 
 ## GoldenGate Micro services Heterogeneous Replication
 ## Introduction
