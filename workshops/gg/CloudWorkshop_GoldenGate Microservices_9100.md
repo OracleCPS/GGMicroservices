@@ -6,16 +6,19 @@ Update March 28, 2019
 ## GoldenGate Micro services Heterogeneous Replication
 ## Introduction
 
-In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Database using Classic Goldengate for MySQL and Goldengate Microservices architecture.
+In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Autonomous Datawarehouse using Classic Goldengate for MySQL and Goldengate Microservices architecture.
 
 This lab supports the following use cases:
 
 - Setting up GoldenGate for MySQL.
-- Setting up Replication in GoldenGate Microservices architecture for Oracle ADW (OGGMSALAB.TABLENAMEXX.* , where XX is your participant ID ).
+- Setting up Replication in GoldenGate Microservices architecture for Oracle ADW (OGGMSALAB.TABLENAMEXX.* , where XX is your participant ID assigned at the beging of the workshop).
 
 ## Objectives
 
-Create a classic GoldenGate architecture capture process (Extract) for MySQL and a Microservices delivery process (Replicat) to receive the data.  While MySQL isn’t supported as a deployment option for Microservices yet, you can still connect to existing Classic GoldenGate instances to replicate data.
+Create a classic GoldenGate architecture capture process (Extract) for MySQL and a Microservices delivery process (non-Integrated Replicat) to receive the data.  While MySQL isn’t supported as a deployment option for Microservices yet, you can still connect to existing Classic GoldenGate instances to replicate data.
+
+**Please Note: Lab 1 and Lab2 are compulsary to complete for this Lab**
+
 
 ## Required Artifacts
 
