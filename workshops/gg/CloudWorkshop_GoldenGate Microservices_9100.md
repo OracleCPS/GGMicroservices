@@ -172,8 +172,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
           
                 -- MAP *.*, TARGET *.*;
                 MAP amea.*, TARGET OGGMSALAB**X**.*;
-
 - Click **“Create”**.
+![](images/9100/Lab700_image106.png)
 
 ![](images/9100/Lab700_image107.png)
 
@@ -374,7 +374,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 -  Below is the statstics in the Replicat side
 
 ![](images/700/Lab700_image112.png)
-![](images/700/Lab700_image112-1.png)
+![](images/700/Lab700_image1121.png)
 
 - It will take a few mins to Sync as we are doing remote delivery in ADW over internet where the bandwidht might be the bottleneck.
+
 You have completed lab 9100!   **Great Job!**
