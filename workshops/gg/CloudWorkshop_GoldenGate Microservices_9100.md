@@ -278,7 +278,7 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
         GGSCI (OGG181DB183) 2> 
 
-![](images/700/Lab700_image108.png)
+![](images/9100/Lab700_image108.png)
 
 -  To go terminal and change directory to "/home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql"
 
@@ -417,8 +417,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 -  Below is the statstics in the Replicat side
 
-![](images/700/Lab700_image112.png)
-![](images/700/Lab700_image1121.png)
+![](images/9100/Lab700_image112.png)
+![](images/9100/Lab700_image1121.png)
 
 - It will take a few mins to Sync as we are doing remote delivery in ADW over internet where the bandwidht might be the bottleneck.
 
