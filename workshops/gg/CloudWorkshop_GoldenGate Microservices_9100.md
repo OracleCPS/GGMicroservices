@@ -28,7 +28,51 @@ This step sets up a clean GoldenGate Microservices source and target configurati
 - Open up a terminal window and change directory to Lab91 and run the script **build_all.sh**.
               
               [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab91/
-              [oracle@OGG181DB183 Lab7]$ ./build_all.sh.sh 
+              [oracle@OGG181DB183 Lab91]$ ./build_all.sh 
+             
+- Make sure the target Schema is clear , run the command "reset_ADWC.sh **X**". Where X is your participant ID that was assigned during Lab. If the participant number was 1 then enter the following 
+
+              [oracle@OGG181DB183 Lab91]$ cd /home/oracle/OGG181_WHKSHP/Lab91/Reset/db/
+              [oracle@OGG181DB183 db]$ ./reset_ADWC.sh 1
+              1
+
+              SQL*Plus: Release 18.0.0.0.0 - Production on Fri Mar 29 06:50:59 2019
+              Version 18.3.0.0.0
+
+              Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+              Last Successful login time: Fri Mar 29 2019 06:30:49 +00:00
+
+              Connected to:
+              Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+              Version 18.4.0.0.0
+
+              SQL> SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> 
+              Table truncated.
+
+              SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+              Version 18.4.0.0.0
+              Truncated Target tables
+              [oracle@OGG181DB183 db]$ 
+
 
 - This script performs the following:
 
@@ -172,8 +216,8 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
           
                 -- MAP *.*, TARGET *.*;
                 MAP amea.*, TARGET OGGMSALAB**X**.*;
-
 - Click **“Create”**.
+![](images/9100/Lab700_image106.png)
 
 ![](images/9100/Lab700_image107.png)
 
@@ -234,7 +278,7 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
         GGSCI (OGG181DB183) 2> 
 
-![](images/700/Lab700_image108.png)
+![](images/9100/Lab700_image108.png)
 
 -  To go terminal and change directory to "/home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql"
 
@@ -265,10 +309,10 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
        You can turn off this feature to get a quicker startup with -A
        Database changed
 
-- Load the data in MySQL DB with the script present at /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+- Load the data in MySQL DB with the script present at /home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql
 
                 
-      mysql> source /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql/seed_database.sql
+      mysql> source /home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql/seed_database.sql
       Database changed
       Query OK, 0 rows affected (0.00 sec)
       Query OK, 0 rows affected (0.25 sec)
@@ -373,8 +417,9 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 -  Below is the statstics in the Replicat side
 
-![](images/700/Lab700_image112.png)
-![](images/700/Lab700_image112-1.png)
+![](images/9100/Lab700_image112.png)
+![](images/9100/Lab700_image1121.png)
 
 - It will take a few mins to Sync as we are doing remote delivery in ADW over internet where the bandwidht might be the bottleneck.
+
 You have completed lab 9100!   **Great Job!**
