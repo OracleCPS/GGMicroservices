@@ -28,7 +28,7 @@ This step sets up a clean GoldenGate Microservices source and target configurati
 - Open up a terminal window and change directory to Lab91 and run the script **build_all.sh**.
               
               [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab91/
-              [oracle@OGG181DB183 Lab7]$ ./build_all.sh 
+              [oracle@OGG181DB183 Lab91]$ ./build_all.sh 
              
 - Make sure the target Schema is clear , run the command "reset_ADWC.sh **X**". Where X is your participant ID that was assigned during Lab. If the participant number was 1 then enter the following 
 
