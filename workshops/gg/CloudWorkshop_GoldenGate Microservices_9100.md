@@ -186,20 +186,36 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 ### **STEP 4**: Loading Data and validating the setup
 
--  Start MySQL Goldengate Process
+- If not already done, Open a new Terminal window from the VNC Console.
 
-        [root@OGG181DB183 18.1.0_GGMySQL]# pwd
-        /opt/app/oracle/product/18.1.0_GGMySQL
-        [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
+- Sudo into the root user and when Prompted use the password 'Welcome1'
 
-        Oracle GoldenGate Command Interpreter for MySQL
-        Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
-        Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
-        Operating system character set identified as UTF-8.
+      [oracle@OGG181DB183 ~]$ sudo su - root
+      [sudo] password for oracle: 
+      Last login: Thu Feb 14 18:10:24 UTC 2019 on pts/1
+      Last failed login: Thu Feb 14 18:12:02 UTC 2019 from 73.163.148.213 on ssh:notty
+      There were 6 failed login attempts since the last successful login. 
+      
+- Change to the MySQL GG home.
+      
+      [root@OGG181DB183 ~]# cd /opt/app/oracle/product/18.1.0_GGMySQL
+    
+- Run the GoldenGate command interpreter (GGSCI).
 
-        Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
+      [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
 
-        GGSCI (OGG181DB183) 12> start *
+      Oracle GoldenGate Command Interpreter for MySQL
+      Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
+      Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
+      Operating system character set identified as UTF-8.
+
+      Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
+
+
+-  Start MySQL Goldengate Extract and Pump processes in the terminal
+
+  
+       GGSCI (OGG181DB183) 12> start *
 
         Sending START request to MANAGER ...
         EXTRACT E_MYSQL starting
@@ -220,9 +236,9 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 ![](images/700/Lab700_image108.png)
 
--  To go terminal and change directory to "/home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql"
+-  To go terminal and change directory to "/home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql"
 
-       [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
+       [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab91/MySQL/dirsql
        [oracle@OGG181DB183 dirsql]$ ls
        counts.sql  drop_database.sql  seed_database.sql  source_database.sql
    
@@ -273,147 +289,92 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
       Query OK, 0 rows affected (3 min 22.93 sec)
       mysql> 
 
--  It will take couple minutes to load the data. After that We can see the statstics in the extract report file
+-  It will take couple minutes to load the data. After that We can see the statstics from GGSCI CLI
+      
+        [root@OGG181DB183 18.1.0_GGMySQL]# cd /opt/app/oracle/product/18.1.0_GGMySQL
+        [root@OGG181DB183 18.1.0_GGMySQL]# ./ggsci
+        Oracle GoldenGate Command Interpreter for MySQL
+        Version 18.1.0.0.0 OGGCORE_18.1.0.0.0_PLATFORMS_180928.0432
+        Linux, x64, 64bit (optimized), MySQL Enterprise on Sep 28 2018 19:34:16
+        Operating system character set identified as UTF-8.
 
-![](images/700/Lab700_image111.png)
+        Copyright (C) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
+
+
+
+        GGSCI (OGG181DB183) 2> stats E_MYSQL,TOTAL
+
+        Sending STATS request to EXTRACT E_MYSQL ...
+
+        Start of Statistics at 2019-03-29 06:16:08.
+
+        Output to ./dirdat/eo:
+
+        Extracting from amea.account to amea.account:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+          Total inserts                   	       10000.00
+          Total updates                   	           0.00
+          Total deletes                   	           0.00
+          Total discards                  	           0.00
+          Total operations                	       10000.00
+
+        Extracting from amea.account_trans to amea.account_trans:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+
+          No database operations have been performed.
+
+        Extracting from amea.branch to amea.branch:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+          Total inserts                   	          40.00
+          Total updates                   	           0.00
+          Total deletes                   	           0.00
+          Total discards                  	           0.00
+          Total operations                	          40.00
+
+        Extracting from amea.teller to amea.teller:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+          Total inserts                   	         800.00
+          Total updates                   	           0.00
+          Total deletes                   	           0.00
+          Total discards                  	           0.00
+          Total operations                	         800.00
+
+        Extracting from amea.teller_trans to amea.teller_trans:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+
+          No database operations have been performed.
+
+        Extracting from amea.branch_atm to amea.branch_atm:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+
+          No database operations have been performed.
+
+        Extracting from amea.trans_type to amea.trans_type:
+
+        *** Total statistics since 2019-03-29 06:10:43 ***
+          Total inserts                   	           5.00
+          Total updates                   	           0.00
+          Total deletes                   	           0.00
+          Total discards                  	           0.00
+          Total operations                	           5.00
+
+        End of Statistics.
+
+
+        GGSCI (OGG181DB183) 3> 
+
+
 
 -  Below is the statstics in the Replicat side
 
 ![](images/700/Lab700_image112.png)
+![](images/700/Lab700_image112-1.png)
 
-- To do record count of the tables MySQL DB. Go to directory "/home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql" and login into mySQL using password "Welcome1".
-- enter "source counts.sql" in mysql client
-
-      [oracle@OGG181DB183 ~]$ cd  /home/oracle/OGG181_WHKSHP/Lab7/MySQL/dirsql
-      [oracle@OGG181DB183 dirsql]$ mysql -u root -p
-      Enter password: 
-      Welcome to the MySQL monitor.  Commands end with ; or \g.
-      Your MySQL connection id is 13
-      Server version: 8.0.13 MySQL Community Server - GPL
-
-      Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-
-      Oracle is a registered trademark of Oracle Corporation and/or its
-      affiliates. Other names may be trademarks of their respective
-      owners.
-
-      Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-      mysql> source counts.sql
-      \Reading table information for completion of table and column names
-      You can turn off this feature to get a quicker startup with -A
-
-      Database changed
-      +---------+
-      | account |
-      +---------+
-      |   10000 |
-      +---------+
-      1 row in set (0.00 sec)
-
-      +---------------+
-      | account_trans |
-      +---------------+
-      |             0 |
-      +---------------+
-      1 row in set (0.00 sec)
-
-      +--------------+
-      | teller_trans |
-      +--------------+
-      |            0 |
-      +--------------+
-      1 row in set (0.00 sec)
-
-      +------------+
-      | branch_atm |
-      +------------+
-      |          0 |
-      +------------+
-      1 row in set (0.00 sec)
-
-      +--------+
-      | branch |
-      +--------+
-      |     40 |
-      +--------+
-      1 row in set (0.00 sec)
-
-      +--------+
-      | teller |
-      +--------+
-      |    800 |
-      +--------+
-      1 row in set (0.00 sec)
-
-      +------------+
-      | trans_type |
-      +------------+
-      |          5 |
-      +------------+
-      1 row in set (0.00 sec)
-
-      mysql> 
-
-- To do record count of the tables in Oracle DB. Go to directory "/home/oracle/OGG181_WHKSHP/Lab7/Oracle/dirsql" and login into Oracle using password "Welcome1".
-- enter "@counts" in Oracle client
-
-      [oracle@OGG181DB183 ~]$ cd /home/oracle/OGG181_WHKSHP/Lab7/Oracle/dirsql
-      [oracle@OGG181DB183 dirsql]$ sqlplus mysqltarget/Welcome1@oggoow182
-
-      SQL*Plus: Release 18.0.0.0.0 - Production on Fri Feb 15 00:24:55 2019
-      Version 18.3.0.0.0
-
-      Copyright (c) 1982, 2018, Oracle.  All rights reserved.
-
-
-      Connected to:
-      Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-      Version 18.3.0.0.0
-
-      SQL> @counts
-      SQL> select count(*) from ACCOUNT;
-
-        COUNT(*)
-      ----------
-           10000
-
-      SQL> select count(*) from ACCOUNT_TRANS;
-
-        COUNT(*)
-      ----------
-         0
-
-      SQL> select count(*) from TELLER_TRANS;
-
-        COUNT(*)
-      ----------
-         0
-
-      SQL> select count(*) from BRANCH_ATM;
-
-        COUNT(*)
-      ----------
-         0
-
-      SQL> select count(*) from BRANCH;
-
-        COUNT(*)
-      ----------
-        40
-
-      SQL> select count(*) from TELLER;
-
-        COUNT(*)
-      ----------
-             800
-
-      SQL> select count(*) from TRANS_TYPE;
-
-        COUNT(*)
-      ----------
-         5
-
-      SQL> 
-
-You have completed lab 700!   **Great Job!**
+- It will take a few mins to Sync as we are doing remote delivery in ADW over internet where the bandwidht might be the bottleneck.
+You have completed lab 9100!   **Great Job!**
