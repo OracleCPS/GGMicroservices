@@ -11,24 +11,24 @@ In this lab, you will take a look at how to set up replication from MySQL DB to 
 This lab supports the following use cases:
 
 - Setting up GoldenGate for MySQL.
-- Setting up Replication in GoldenGate Microservices architecture for Oracle ADW (OGGMSALAB.TABLENAMEXX.* , where XX is your participant ID assigned at the beging of the workshop).
+- Setting up Replication in GoldenGate Microservices architecture for Oracle ADW (OGGMSALABX.* , where X is your participant ID assigned at the beging of the workshop).
 
 ## Objectives
 
-Create a classic GoldenGate architecture capture process (Extract) for MySQL and a Microservices delivery process (non-Integrated Replicat) to receive the data.  While MySQL isn’t supported as a deployment option for Microservices yet, you can still connect to existing Classic GoldenGate instances to replicate data.
+Create a classic GoldenGate architecture capture process (Extract) for MySQL and a Microservices delivery process (non-Integrated Replicat) to receive the data to Oracle Autonomous Datawarehouse.  While MySQL isn’t supported as a deployment option for Microservices yet, you can still connect classic GoldenGate instances for MySQL to Microservices GoldenGate instances to replicate data.
 
-**Please Note: Lab 1 and Lab2 are compulsary to complete for this Lab**
+**Please Note: Lab 1 and Lab2 are pre-requsite to complete for this Lab**
 
 
 ## Required Artifacts
 
 ### **STEP 1**: Create Replication Environment
-This step sets up a clean GoldenGate Microservices target deployment.  This script will take a couple of minutes to complete.
+This step sets up a clean GoldenGate Microservices source and target configuration.  This script will take a couple of minutes to complete.
 
-- Open up a terminal window and change directory to Lab7 and run the script **build_target.sh**.
+- Open up a terminal window and change directory to Lab91 and run the script **build_all.sh**.
               
-              [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab7/
-              [oracle@OGG181DB183 Lab7]$ ./build_target.sh 
+              [oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab91/
+              [oracle@OGG181DB183 Lab7]$ ./build_all.sh.sh 
 
 - This script performs the following:
 
@@ -158,28 +158,31 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
 
 - On the Overview page click the plus sign (+) opposite the Replicat status.
 
-![](images/700/Lab700_image103.png)
+![](images/9100/Lab700_image103.png)
 
-- On the next page click “Next” to create an Integrated Replicat.
+- On the next page click “Next” to create an Nonintegrated Replicat.
 
-![](images/700/Lab700_image104.png)
+![](images/9100/Lab700_image104.png)
 
 - Fill in the required parameters (See Screenshot).  Then click “Next”.
 
-![](images/700/Lab700_image105.png)
+![](images/9100/Lab700_image105.png)
 
-- The next page will show the parameter file.  Add the following information:
-                
+- The next page will show the parameter file.  Delete the "Map*.*, TARGET *.*;" statement and add the following "MAP amea.*, TARGET OGGMSALAB**X**.*;". Where **X** is equal to you partcipant id which as assigned to you.
+          
                 -- MAP *.*, TARGET *.*;
-                MAP amea.*, TARGET oggoow182.mysqltarget.*;
+                MAP amea.*, TARGET OGGMSALAB**X**.*;
 
-- Click **“Create and Run”**.
+- Click **“Create”**.
 
-![](images/700/Lab700_image106.png)
+![](images/9100/Lab700_image107.png)
+
+- The delivery process is created. Now click on the Action drop down and select "Start".
+![](images/9100/Lab700_image1071.png)
 
 - The replicat will be running , It might fail if you have not started the Pump process on the MySQL side
 
-![](images/700/Lab700_image107.png)
+![](images/9100/Lab700_image1072.png)
 
 ### **STEP 4**: Loading Data and validating the setup
 
