@@ -92,10 +92,7 @@ GoldenGate for MySQL is already installed on the Ravello image.  You will be usi
 
 - Sudo into the root user and when Prompted use the password 'Welcome1'
 
-                $ sudo su - root
-      
-      
-      [oracle@OGG181DB183 ~]$ sudo su - root
+       oracle@OGG181DB183 ~]$ sudo su - root
       [sudo] password for oracle: 
       Last login: Thu Feb 14 18:10:24 UTC 2019 on pts/1
       Last failed login: Thu Feb 14 18:12:02 UTC 2019 from 73.163.148.213 on ssh:notty
