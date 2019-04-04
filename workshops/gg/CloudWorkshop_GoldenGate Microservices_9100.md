@@ -3,10 +3,10 @@
 
 Update March 28, 2019
 
-## GoldenGate Micro services Heterogeneous Replication
+## Replicating into Oracle Autonomous Data Warehouse(ADWC) with Heterogeneous database
 ## Introduction
 
-In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Autonomous Datawarehouse using Classic Goldengate for MySQL and Goldengate Microservices architecture.
+In this lab, you will take a look at how to set up replication from MySQL DB to Oracle Autonomous Data warehouse(ADWC) using Classic Goldengate for MySQL and Goldengate Microservices architecture.
 
 This lab supports the following use cases:
 
