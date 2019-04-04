@@ -53,6 +53,6 @@ Update April 03, 2019
 		
 - View the detailed replication statistics in real-time with the Oracle GoldenGate Metric Service in Microservices Architecture
 
-# Lab 9100 	Replicating into Oracle Autonomous Data Warehouse with Heterogeneous database
+# Lab 9100 	Replicating into Oracle Autonomous Data Warehouse from Heterogeneous database
 
 - Setup Oracle GoldenGate for "MySQL" using classic Architecture and Oracle GoldenGate for "Oracle Autonomous Data Warehouse" using Microservices Architecture for Uni-directional replication
