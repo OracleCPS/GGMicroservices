@@ -3,7 +3,7 @@
 Update April 03, 2019
 
 
-	![](images/100/GGMicroServicesArchitecture.png)
+![](images/100/GGMicroServicesArchitecture.png)
 
 
 # Introduction	1 hour 
