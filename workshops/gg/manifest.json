@@ -27,70 +27,70 @@
                 "number": "100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_100.md",
                 "title": "Lab 100: Install GG Microservices Architecture",
-                "description": "Install the Oracle GoldenGate Microservces for Oracle in the target environment using the Oracle Universal Installer (OUI) tool.",
+                "description": "Install the Oracle GoldenGate Microservces with Oracle Universal Installer (OUI) tool.",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "200",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_200.md",
                 "title": "Lab 200: Creating Deployments",
-                "description": "After Installation create the Oracle GoldenGate Microservices Deployments",
+                "description": "Create the Oracle GoldenGate Microservices Deployments",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "300",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_300.md",
                 "title": "Lab 300: Creating Credentials",
-                "description": "Creating Database Credentials for Oracle GoldenGate Microservices setup",
+                "description": "Creating Database Credentials",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "400",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_400.md",
                 "title": "Lab 400: Uni Directional and DDL Replication",
-                "description": "Using Web interface of Oracle GoldenGate Microservices (HTML5 Pages)",
+                "description": "Using Web interface (HTML5 Pages)",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "500",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_500.md",
                 "title": "Lab 500: Zero Downtime Configuration",
-                "description": "Doing file based data migration using the MicroServices architecture and the REST API for automation",
+                "description": "Doing file based data migration and the REST API ",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "600",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_600.md",
                 "title": "Lab 600: Bi-Directional and Auto Conflict Detection and Resolution(CDR)",
-                "description": "Use CDR functions to setup Auto-CDR in the database with Oracle GoldenGate Microservices",
+                "description": "Use Auto-CDR functions",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "700",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_700.md",
                 "title": "Lab 700: Heterogeneous Replication",
-                "description": "Setup Oracle GoldenGate for MySQL using classic Architecture and Oracle GoldenGate for Oracle using Microservices Architecture for Uni-directional replication",
+                "description": "MySQL(Classic) to Oracle replication",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "800",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_800.md",
                 "title": "Lab 800: Data Transformations",
-                "description": "Demonstrate use of Oracle GoldenGate Microservices for transformation capabilities like column concatenating, data masking and use of environment variables/tokens",
+                "description": "Transformation capabilities like column concatenating, data masking and use of environment variables/tokens",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "900",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_900.md",
                 "title": "Lab 900: Performance Metrics",
-                "description": "View the detailed replication statistics in real-time with the Oracle GoldenGate Metric Service in Microservices Architecture",
+                "description": "View the replication statistics",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "9100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_9100.md",
                 "title": "Lab 9100: Replicating into Oracle Autonomous Data Warehouse from Heterogeneous database",
-                "description": "Setup Oracle GoldenGate for MySQL using classic Architecture and Oracle GoldenGate for Oracle Autonomous Data Warehouse using Microservices Architecture for Uni-directional replication",
+                "description": "MySQL to ADW replication",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
