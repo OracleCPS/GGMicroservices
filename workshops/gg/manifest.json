@@ -20,14 +20,14 @@
             },
             {
                 "number": "100",
-                "filename": "CloudWorkshop_GoldenGate%20Microservices_100.md",
+                "filename": "CloudWorkshop_GoldenGate%20Microservices_100.html",
                 "title": "Lab 100: Install GG Microservices Architecture",
                 "description": "Install the Oracle GoldenGate Microservces with Oracle Universal Installer (OUI) tool.",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "200",
-                "filename": "CloudWorkshop_GoldenGate%20Microservices_200.md",
+                "filename": "CloudWorkshop_GoldenGate%20Microservices_200.html",
                 "title": "Lab 200: Creating Deployments",
                 "description": "Create the Oracle GoldenGate Microservices Deployments",
                 "labels": {"version": "Hands-On Labs"}
