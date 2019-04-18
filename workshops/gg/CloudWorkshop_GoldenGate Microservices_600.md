@@ -58,6 +58,7 @@ While it's running note the messages displayed that informs what has been added 
 
 
 ### **STEP 2**: Check the deployment using the AdminClient
+
 This step will be a short introduction to the AdminClient.  If you’re familiar with Classic GoldenGate, this would be like using GGSCI.  However, the advantage with the AdminClient is that you can connect to separate GG deployments from this one interface.  With GGSCI you would need to execute it in each server environment where GG is installed.  
 In this step we will use the AdminClient to check the deployment instead of the web interface.
 
