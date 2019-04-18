@@ -11,7 +11,7 @@ Update April 03, 2019
 - Oracle GoldenGate Microservices Archiecture Overview/updates Presentation (Download presentation)
 
 
-# Lab 100	Install GoldenGate Microservices Architecture	[a link](https://github.com/OracleCPS/GGMicroservices/blob/master/workshops/gg/CloudWorkshop_GoldenGate%20Microservices_100.md)
+[# Lab 100	Install GoldenGate Microservices Architecture](https://github.com/OracleCPS/GGMicroservices/blob/master/workshops/gg/CloudWorkshop_GoldenGate%20Microservices_100.md)
 
 - Install the Oracle GoldenGate Microservces for Oracle in the target environment using the Oracle Universal Installer (OUI) tool.
 
