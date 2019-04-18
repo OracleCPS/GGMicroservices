@@ -9,11 +9,6 @@
             "description": "An in-person workshop with an Oracle instructor",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
           },
-          {
-            "name": "Download Presentation",
-            "description": "Introduction and Overview of Oracle GoldenGate Microservices Architecture",
-            "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Self-Service.png"
-          }
         ],
         "labs": [
             {
@@ -99,12 +94,7 @@
                 "title": "Oracle GoldenGate Microservices Architecture Labs",
                 "description": "Details on the available Labs",
                 "labels": {"version": "Hands-On Labs"}
-            },
-            {   "number": "0",
-                "filename": "README.md",
-                "title": "Oracle GoldenGate Microservices Architecture Labs",
-                "description": "Details on the available Labs",
-                "labels": {"version": "Download Presentation"}
+            }
 
         ]
     }
