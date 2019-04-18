@@ -2,16 +2,16 @@
     "workshop": {
         "title": "Oracle GoldenGate Microservices Architecture Hands-On Workshop",
         "description": "These labs will give you a basic understanding of the Oracle GoldenGate Microservices Architecture and many of the capabilities around administration and replication configuration.  The labs will walk you through creating multiple topologies with different use-case(s).  You will explore some common use cases for moving your data from Oracle to Oracle, bi-directional and heterogeneous databases.",
-        "interactive":"https://launch.oracle.com/?dbcs_dba",
+        "interactive":"https://www.oracle.com/ca-en/middleware/technologies/goldengate.html",
         "versions": [
           {
-            "name": "Instructor Led",
+            "name": "Hands-On Labs",
             "description": "An in-person workshop with an Oracle instructor",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
           },
           {
-            "name": "Self-Guided",
-            "description": "Individual self-guided learning",
+            "name": "Download Presentation",
+            "description": "Introduction and Overview of Oracle GoldenGate Microservices Architecture",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Self-Service.png"
           }
         ],
