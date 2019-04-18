@@ -8,7 +8,7 @@
             "name": "Hands-On Labs",
             "description": "An in-person workshop with an Oracle instructor",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
-          },
+          }
         ],
         "labs": [
             {
