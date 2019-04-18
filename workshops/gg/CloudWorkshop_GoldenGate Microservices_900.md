@@ -91,3 +91,5 @@ For the final task we will view both Deployment’s Performance Metric Service t
 
 
 You have completed lab 900!   **Great Job!**
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
