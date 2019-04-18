@@ -8,7 +8,7 @@ Update April 03, 2019
 
 # Introduction	1 hour 
 
-- Oracle GoldenGate Microservices Archiecture Overview/updates Presentation [Download presentation][https://github.com/OracleCPS/GGMicroservices/raw/master/workshops/gg/GG18.1_Workshop.pptx)
+- Oracle GoldenGate Microservices Archiecture Overview/updates Presentation [Download presentation](https://github.com/OracleCPS/GGMicroservices/raw/master/workshops/gg/GG18.1_Workshop.pptx)
 
 
 # Lab 100	[Install GoldenGate Microservices Architecture](https://oraclecps.github.io/GGMicroservices/workshops/gg/CloudWorkshop_GoldenGate%20Microservices_100.html)
