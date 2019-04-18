@@ -228,7 +228,7 @@ The Checkpoint Table can also be viewed under the TTGATE alias from the SanFran 
 
 You have completed lab 300!   **Great Job!**
 
-<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html" target="_blank">Click here to return</a>
 
 
 
