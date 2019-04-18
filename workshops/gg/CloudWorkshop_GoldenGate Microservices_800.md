@@ -481,3 +481,5 @@ Query in side the script for insert :
 
 
 You have completed lab 800! Great Job!
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
