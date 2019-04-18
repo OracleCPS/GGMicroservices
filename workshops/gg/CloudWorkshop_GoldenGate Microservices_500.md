@@ -662,3 +662,5 @@ The **HANDLECOLLISIONS** parameter controls whether or not Replicat tries to res
 
 
 Once the data is in sync you have completed lab 500!   **Great Job!**
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
