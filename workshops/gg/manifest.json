@@ -1,7 +1,7 @@
 {
     "workshop": {
-        "title": "Database Cloud Services Workshop",
-        "description": "These labs will give you a basic understanding of the Oracle Database Cloud Service and many of the capabilities around administration and database development.  The labs will walk you through creating and accessing a new Database Cloud Service instance.  You will explore some common use cases for moving your data from on-premises to the cloud.  Next, you will use the Oracle Database Cloud Backup Module and RMAN to backup your on-premise data to the Oracle Public Cloud and then recover lost data.  Lastly, you will deploy an APEX application and adjust the firewall rules to support access to the application from the Internet using your browser, smart phone or tablet.",
+        "title": "Oracle GoldenGate Microservices Architecture Hands-On Workshop",
+        "description": "These labs will give you a basic understanding of the Oracle GoldenGate Microservices Architecture and many of the capabilities around administration and replication configuration.  The labs will walk you through creating multiple topologies with different use-case(s).  You will explore some common use cases for moving your data from Oracle to Oracle, bi-directional and heterogeneous databases.",
         "interactive":"https://launch.oracle.com/?dbcs_dba",
         "versions": [
           {
