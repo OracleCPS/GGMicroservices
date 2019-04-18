@@ -410,3 +410,5 @@ We will use the web UI for the Administration Service of the SanFran Deployment 
       SQL> 
 
 You have completed lab 700!   **Great Job!**
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
