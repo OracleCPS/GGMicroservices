@@ -8,6 +8,7 @@
             "name": "Hands-On Labs",
             "description": "An in-person workshop with an Oracle instructor",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
+          <a href="https://github.com/OracleCPS/GGMicroservices/blob/master/workshops/gg/GG18.1_Workshop.pptx" download>
           }
         ],
         "labs": [
