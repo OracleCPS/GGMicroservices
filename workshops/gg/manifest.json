@@ -12,7 +12,7 @@
           {
             "name": "Download Presentation",
             "description": "Introduction and Overview of Oracle GoldenGate Microservices Architecture",
-            "imageUrl": "https://github.com/OracleCPS/GGMicroservices/raw/master/workshops/gg/GG18.1_Workshop.pptx"
+            "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Self-Service.png"
           }
         ],
         "labs": [
