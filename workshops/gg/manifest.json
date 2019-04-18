@@ -99,7 +99,12 @@
                 "title": "Oracle GoldenGate Microservices Architecture Labs",
                 "description": "Details on the available Labs",
                 "labels": {"version": "Hands-On Labs"}
-            }
+            },
+            {   "number": "0",
+                "filename": "README.md",
+                "title": "Oracle GoldenGate Microservices Architecture Labs",
+                "description": "Details on the available Labs",
+                "labels": {"version": "Download Presentation"}
 
         ]
     }
