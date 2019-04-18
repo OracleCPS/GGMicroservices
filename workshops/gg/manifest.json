@@ -8,7 +8,9 @@
             "name": "Hands-On Labs",
             "description": "An in-person workshop with an Oracle instructor",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
-          <a href="https://github.com/OracleCPS/GGMicroservices/blob/master/workshops/gg/GG18.1_Workshop.pptx" download>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png/200px-Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png" download>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png/200px-Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png" alt="W3Schools" width="104" height="142">
+</a>
           }
         ],
         "labs": [
