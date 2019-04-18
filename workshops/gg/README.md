@@ -3,8 +3,6 @@
 Update April 03, 2019
 
 
--   Oracle Golden Gate  Microservices Architecture Labs
-
 	![](images/100/GGMicroServicesArchitecture.png)
 
 
