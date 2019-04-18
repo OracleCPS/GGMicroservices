@@ -440,3 +440,5 @@ The above error is because employee table is not present in the target database.
 ![](images/400/Lab400_image997.PNG)
 
 You have completed lab 400!   **Great Job!**
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
