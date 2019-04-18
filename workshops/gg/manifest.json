@@ -6,7 +6,7 @@
         "versions": [
           {
             "name": "Hands-On Labs",
-            "description": "An in-person workshop with an Oracle instructor",
+            "description": "A hands-on experience with most common replication use-case(s) using new Oracle GoldenGate Microservices Architecture",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
           }
         ],
