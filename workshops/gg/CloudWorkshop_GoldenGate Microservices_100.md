@@ -126,3 +126,4 @@ In this step you will install **the GoldenGate Microservices edition package** i
 
 You have completed lab 100! Great Job!
 
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" download> Click here to return</a>
