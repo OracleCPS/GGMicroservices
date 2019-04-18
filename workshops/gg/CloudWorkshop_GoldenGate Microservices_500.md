@@ -304,7 +304,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ### **Part 3:** Create the normal CDC processes.
 
-#### STEP 1: Create and start the Change Data Capture (CDC) Extract process using curl commands.
+#### **STEP 1: Create and start the Change Data Capture (CDC) Extract process using curl commands.**
 
 For ZDT we always install the normal CDC processes first and start the capture process and leave the delivery process stopped.  This way we will have stored any transactions that have been added during the time we do the bulk data movement.
 
@@ -395,7 +395,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			]
 		}
 
-#### STEP 2: Create and start the CDC Distribution Path using curl commands.
+#### **STEP 2: Create and start the CDC Distribution Path using curl commands.**
 
 -   From the same terminal window review the JSON file to add the CDC Distribution Path.
 
@@ -444,7 +444,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 			]
 		}
 
-#### STEP 3: Create the CDC Replicat using curl commands.  This will add it in a Stopped state.
+#### **STEP 3: Create the CDC Replicat using curl commands.  This will add it in a Stopped state.**
 
 -   From the same terminal window review the JSON file to add the CDC Replicat.
 
@@ -562,7 +562,7 @@ For ZDT we always install the normal CDC processes first and start the capture p
 
 ![](images/500/Lab500_Arch.png)
 
-#### STEP 1: Run a script to delete the current data in the target database.
+#### **STEP 1: Run a script to delete the current data in the target database.**
 
 Before we begin we want to make sure the target database is empty.
 
@@ -578,7 +578,7 @@ Before we begin we want to make sure the target database is empty.
 		[oracle@OGG181DB183 Lab5]$ 
 
 
-#### STEP 2: Run a script to perform an initial load to the target database.
+#### **STEP 2: Run a script to perform an initial load to the target database.**
 
 This script does the following:
 
@@ -599,7 +599,7 @@ This script does the following:
 
 -	When the script is completed you'll have two Extracts, two Replicats and two Distribution Paths.  You can check in the Services to see the results.
 
-#### STEP 3: Run Swingbench script to apply data to the source database.
+#### **STEP 3: Run Swingbench script to apply data to the source database.**
 -   While the script is running, we'll run Swingbench transactions to create activity on the the database during the initial load.
 
 -	Open another terminal by right clicking on the Desktop of the VNC session and select **Open Terminal**
@@ -614,7 +614,7 @@ This script does the following:
 		
 ![](images/500/Lab500_image5005.PNG)
 
-#### STEP 4: Check Initial Load Extract to see if it's completed.
+#### **STEP 4: Check Initial Load Extract to see if it's completed.**
 
 -	On the Goldengate Microservices Console, under the Admin Server for Atlanta if the Initial Load Extract (LOAD) is finished status should be **Stopped**.
 
@@ -636,7 +636,7 @@ This script does the following:
 
 ![](images/500/Lab500_Start_Rep2.PNG)
 
-#### STEP 5: Restart the CDC Replicat to sync the data.
+#### **STEP 5: Restart the CDC Replicat to sync the data.**
 
 -	On the Goldengate Microservices Console, under the Admin Server for SanFran wait for the REP2 Replicat to stop.  The **END RUNTIME** parameter will do this for us.  Before starting Replicat (REP2) again, Select ** Details ** and then go to the ** Parameters ** tab.  Click on the ** Pencil ** icon to edit the file.  Comment out **END RUNTIME** and **HANDLECOLLISIONS** by putting two dashes in from of those parameters (see screenshot) and then click ** Apply **.  
 
