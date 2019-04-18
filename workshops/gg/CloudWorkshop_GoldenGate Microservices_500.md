@@ -13,7 +13,7 @@ GoldenGate allows you to perform what we call **Zero Downtime Migrations (ZDT)**
 
 - This lab, will contains four parts and covers how access the services from Oracle GoldenGate MicroServices using the REST APIs. 
 
-# Part 1: Remove the previous lab replication processes with via the REST API.
+### Part 1: Remove the previous lab replication processes with via the REST API.
 
 -	If you don't have a terminal window opened yet, right click on the Desktop of the VNC session and select **Open Terminal**
 
@@ -142,7 +142,7 @@ GoldenGate allows you to perform what we call **Zero Downtime Migrations (ZDT)**
 		}
 
 
-# Part 2: Create new credentials with the REST API.
+### Part 2: Create new credentials with the REST API.
 
 -	In the same terminal window run the script **create_credential_GGAlias.sh**, to create the source DB credentials.
 
@@ -302,7 +302,7 @@ Note: You will be required to login again.  Use the same Administrator account t
 
 ![](images/500/Lab500_New_Creds_Target.PNG)
 
-# Part 3: Create the normal CDC processes.
+### Part 3: Create the normal CDC processes.
 
 ### **STEP 1**: Create and start the Change Data Capture (CDC) Extract process using curl commands.
 
