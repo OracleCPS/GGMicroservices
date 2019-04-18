@@ -128,4 +128,4 @@ You have completed lab 100! Great Job!
 
 <a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html" target="_blank">Click here to return</a>
 
-[Click here to return](https://oraclecps.github.io/GGMicroservices/workshops/gg/readme.md)
+[Click here to return](https://oraclecps.github.io/GGMicroservices/workshops/gg/README.md)
