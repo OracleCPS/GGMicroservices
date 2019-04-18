@@ -19,37 +19,37 @@
             {
                 "number": "0",
                 "filename": "README.md",
-                "title": "README First",
-                "description": "Step-by-step workshop instructions",
-                "labels": {"version": "Instructor Led"}
+                "title": "Oracle GoldenGate Microservices Architecture Labs",
+                "description": "Details on the available Labs",
+                "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_100.md",
-                "title": "Lab 100: Introduction",
-                "description": "Create and access a Database Cloud Instance",
-                "labels": {"version": "Instructor Led"}
+                "title": "Install GG Microservices Architecture",
+                "description": "Install the Oracle GoldenGate Microservces for Oracle in the target environment using the Oracle Universal Installer (OUI) tool.",
+                "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "200",
                 "filename": "CloudWorkshop_DBCS_200.md",
                 "title": "Lab 200: Cloud Migration",
                 "description": "Explore some common use cases for moving your data from on-premise to the cloud",
-                "labels": {"version": "Instructor Led"}
+                "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "300",
                 "filename": "CloudWorkshop_DBCS_300.md",
                 "title": "Lab 300: DBCS Maintenance",
                 "description": "Perform some common DBA tasks such as setting up security access and scaling out your instance.",
-                "labels": {"version": "Instructor Led"}
+                "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "400",
                 "filename": "CloudWorkshop_DBCS_400.md",
                 "title": "Lab 400: CLI/Curl Commands (Programatic Control of Services)",
                 "description": "Review 'get' and 'put' curl commands to monitor and control DBCS cloud services",
-                "labels": {"version": "Instructor Led"}
+                "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "0",
