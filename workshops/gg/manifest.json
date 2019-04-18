@@ -26,29 +26,29 @@
             {
                 "number": "100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_100.md",
-                "title": "Install GG Microservices Architecture",
+                "title": "Lab 100: Install GG Microservices Architecture",
                 "description": "Install the Oracle GoldenGate Microservces for Oracle in the target environment using the Oracle Universal Installer (OUI) tool.",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "200",
-                "filename": "CloudWorkshop_DBCS_200.md",
-                "title": "Lab 200: Cloud Migration",
-                "description": "Explore some common use cases for moving your data from on-premise to the cloud",
+                "filename": "CloudWorkshop_GoldenGate%20Microservices_200.md",
+                "title": "Lab 200: Creating Deployments",
+                "description": "After Installation create the Oracle GoldenGate Microservices Deployments",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "300",
-                "filename": "CloudWorkshop_DBCS_300.md",
-                "title": "Lab 300: DBCS Maintenance",
-                "description": "Perform some common DBA tasks such as setting up security access and scaling out your instance.",
+                "filename": "CloudWorkshop_GoldenGate%20Microservices_300.md",
+                "title": "Lab 300: Creating Credentials",
+                "description": "Creating Database Credentials for Oracle GoldenGate Microservices setup",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
                 "number": "400",
-                "filename": "CloudWorkshop_DBCS_400.md",
-                "title": "Lab 400: CLI/Curl Commands (Programatic Control of Services)",
-                "description": "Review 'get' and 'put' curl commands to monitor and control DBCS cloud services",
+                "filename": "CloudWorkshop_GoldenGate%20Microservices_400.md",
+                "title": "Lab 400: Uni Directional and DDL Replication",
+                "description": "Using Web interface of Oracle GoldenGate Microservices (HTML5 Pages)",
                 "labels": {"version": "Hands-On Labs"}
             },
             {
