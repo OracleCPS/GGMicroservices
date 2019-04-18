@@ -188,3 +188,5 @@ In this step you will configure the Target (SanFran) deployment.
 ![](images/200/14.PNG)
 
 You have completed lab 200!   **Great Job!**
+
+<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
