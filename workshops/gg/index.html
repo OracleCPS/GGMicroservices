@@ -105,11 +105,10 @@
             </md-button>
           </div>
         </md-content>
-        <a href="https://github.com/OracleCPS/GGMicroservices/raw/master/workshops/gg/GG18.1_Workshop.pptx" layout-align="center" download> >>Click here for Workshop presentation<<
-        </a>
       </div>
     </div>
-     <div id="toastHolder"></div>
+
+    <div id="toastHolder"></div>
 
     <!--  INTERACTIVE LAB GUIDE CONTENT  -->
     <iframe id='interactive' class="infra" ng-src='{{trustSrc(interactive.src)}}' ng-if="selection == 'interactive'"></iframe>
@@ -120,7 +119,7 @@
     </div>
 
     <div id='returnToTop' layout layout-align="center center" ng-show="selection == 'lab'">
-        <a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" layout-margin layout-padding>^ Return to Labs</a>
+        <a href="#" layout-margin layout-padding>^ Return to Top</a>
     </div>
 
     <script src='https://oracle.github.io/learning-library/workshops/common-content/js/workshop.js'></script>
