@@ -408,4 +408,4 @@ If you want, you can check the Replicat of the other deployment and you’ll see
 
 You have completed lab 600! Great Job!
 
-<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
+<a href="https://oraclecps.github.io/GGMicroservices/index.html?version=Hands-On+Labs&page=README.md" target="_blank">Click here to return</a>
