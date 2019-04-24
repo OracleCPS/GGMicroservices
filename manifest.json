@@ -1,18 +1,13 @@
 {
     "workshop": {
-        "title": "GoldenGate Microservices Workshop",
-        "description": "These labs will give you a hands on workshops",
-        "interactive":"https://launch.oracle.com/?dbcs",
+        "title": "Oracle GoldenGate Microservices Architecture Hands-On Workshop",
+        "description": "These labs will give you a basic understanding of the Oracle GoldenGate Microservices Architecture and many of the capabilities around administration and replication configuration.  The labs will walk you through creating multiple topologies with different use-case(s).  You will explore some common use cases for moving your data from Oracle to Oracle, bi-directional and heterogeneous databases.",
+        "interactive":"https://www.oracle.com/ca-en/middleware/technologies/goldengate.html",
         "versions": [
           {
-            "name": "Instructor Led",
-            "description": "An in-person workshop with an Oracle instructor",
+            "name": "Hands-On Labs",
+            "description": "A hands-on experience with most common replication use-case(s) using new Oracle GoldenGate Microservices Architecture",
             "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Instructor Led.png"
-          },
-          {
-            "name": "Self-Guided",
-            "description": "Individual self-guided learning",
-            "imageUrl": "https://oracle.github.io/learning-library/workshops/common-content/images/common/Self-Service.png"
           }
         ],
         "labs": [
@@ -21,102 +16,86 @@
                 "filename": "README.md",
                 "title": "Oracle GoldenGate Microservices Architecture Labs",
                 "description": "Details on the available Labs",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_100.md",
                 "title": "Lab 100: Install GG Microservices Architecture",
                 "description": "Install the Oracle GoldenGate Microservces with Oracle Universal Installer (OUI) tool.",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "200",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_200.md",
                 "title": "Lab 200: Creating Deployments",
                 "description": "Create the Oracle GoldenGate Microservices Deployments",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "300",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_300.md",
                 "title": "Lab 300: Creating Credentials",
                 "description": "Creating Database Credentials",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "400",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_400.md",
                 "title": "Lab 400: Uni Directional and DDL Replication",
                 "description": "Using Web interface (HTML5 Pages)",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "500",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_500.md",
                 "title": "Lab 500: Zero Downtime Configuration",
                 "description": "Doing file based data migration and the REST API ",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "600",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_600.md",
                 "title": "Lab 600: Bi-Directional and Auto Conflict Detection and Resolution(CDR)",
                 "description": "Use Auto-CDR functions",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "700",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_700.md",
                 "title": "Lab 700: Heterogeneous Replication",
                 "description": "MySQL(Classic) to Oracle replication",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "800",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_800.md",
                 "title": "Lab 800: Data Transformations",
                 "description": "Transformation capabilities like column concatenating, data masking and use of environment variables/tokens",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "900",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_900.md",
                 "title": "Lab 900: Performance Metrics",
                 "description": "View the replication statistics",
-                "labels": {"version": "Instructor Led"}
-                },
-                {
+                "labels": {"version": "Hands-On Labs"}
+            },
+            {
                 "number": "9100",
                 "filename": "CloudWorkshop_GoldenGate%20Microservices_9100.md",
                 "title": "Lab 9100: Replicating into Oracle Autonomous Data Warehouse from Heterogeneous database",
                 "description": "MySQL to ADW replication",
-                "labels": {"version": "Instructor Led"}
-                },
-                
-           
+                "labels": {"version": "Hands-On Labs"}
+            },
             {
                 "number": "0",
                 "filename": "README.md",
-                "title": "README First",
-                "description": "Step-by-step workshop instructions",
-                "labels": {"version": "Self-Guided"}
-            },
-            {
-                "number": "10",
-                "filename": "Setup.md",
-                "title": "Setup Steps for Self Guided Labs",
-                "description": "Step-by-step setup instructions",
-                "labels": {"version": "Self-Guided"}
-            },
-            {
-                "number": "100",
-                "filename": "CloudWorkshop_GG4BD_100.md",
-                "title": "Lab 100: ",
-                "description": "Steps ",
-                "labels": {"version": "Self-Guided"}
+                "title": "Oracle GoldenGate Microservices Architecture Labs",
+                "description": "Details on the available Labs",
+                "labels": {"version": "Hands-On Labs"}
             }
-        
+
         ]
     }
 }
