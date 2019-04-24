@@ -441,4 +441,4 @@ The above error is because employee table is not present in the target database.
 
 You have completed lab 400!   **Great Job!**
 
-<a href="https://oraclecps.github.io/GGMicroservices/workshops/gg/index.html">Click here to return</a>
+<a href="https://oraclecps.github.io/GGMicroservices/index.html">Click here to return</a>
