@@ -36,11 +36,11 @@ In this step you will use VNC client to connect with Source Server, to get start
 
 -	Once the VNC client has connected, you should see a console that looks similar to this:
 
-![](images/100/vnc1.jpg)
+![](images/100/vnc3.jpg)
 
 -	On the desktop, right-click and select “Open Terminal”.
 
-![](images/100/vnc3.jpg)
+![](images/100/vnc1.jpg)
 
 ### **STEP 2**: From the same terminal window, install the GoldenGate Microservices Edition
 
