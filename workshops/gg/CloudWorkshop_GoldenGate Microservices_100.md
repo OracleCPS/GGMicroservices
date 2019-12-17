@@ -21,36 +21,41 @@ In this first lab you will walk through the process of installing this new versi
 
 ### **STEP 1**: Access Cloud Server via Putty
 
-For this lab, Oracle GoldenGate and the Oracle Database sources and targets are contained within one Ravello Cloud image that you will be assigned to. All user interactions will be through a browser (Firefox or Chrome) and Putty) that is installed on your laptop, which was a prerequisite for this workshop. 
+For this lab, Oracle GoldenGate and the Oracle Database sources and targets are contained within one Ravello Cloud image that you will be assigned to. All user interactions will be through a browser (Firefox or Chrome) and Putty that is installed on your laptop, which was a prerequisite for this workshop. 
 
-**Your instructor will provide the Ravello DNS and IP address for your image**
+**Your instructor will provide the SSH and IP address for Oracle Cloud Server**
 
-In this step you will use VNC client to connect with Oracle 18c database environment(Ravello image), to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
+In this step you will use VNC client to connect with Source Server, to get started with the installation of Oracle GoldenGate Mircoservices Architecture.
 
--	Log in to the Ravello image of your assigned host, using TigerVNC.
+-	Log in to the oracle Source Server, using TigerVNC.
 -	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
 
-![](images/100/vnc_login.jpg)
+![](images/100/vnc_1.jpg)
 
--	Sign on with the following password: Welcome1
+-	Sign on with the following password: oracle
 
-![](images/100/vnc_password.jpg)
+![](images/100/vnc_2.jpg)
 
 -	Once the VNC client has connected, you should see a console that looks similar to this:
 
-![](images/100/vnc_screen.jpg)
+![](images/100/vnc_3.jpg)
+
+-	On the desktop, right-click and select “Open Terminal”.
+
+![](images/100/vnc_4.jpg)
 
 ### **STEP 2**: From the same terminal window, install the GoldenGate Microservices Edition
 
 In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
 
--	From the terminal screen change to the **Downloads** directory and unzip the **GoldenGate Microservices software package**:
+-	From the terminal screen change to the **Down/u01/software/gg/ggma** directory and unzip the **GoldenGate Microservices software package**:
  
 		[oracle@ggma Lab1]$ cd /u01/software/gg/ggma
 		[oracle@ggma ggma]$ ll
-		total 627756
-		-rw-r--r--. 1 oracle oinstall 575594529 Dec 19 17:40 181000_fbo_ggs_Linux_x64_services_shiphome.zip
-		[oracle@ggma ggma]$ unzip 181000_fbo_ggs_Linux_x64_services_shiphome.zip -d .
+		total 340
+		drwxr-xr-x. 3 oracle oinstall   4096 Oct 18 13:29 fbo_ggs_Linux_x64_services_shiphome
+		-rw-r--r--. 1 oracle oinstall   1413 May 29  2019 OGG-19.1.0.0-README.txt
+		-rw-r--r--. 1 oracle oinstall 332523 Oct 21 11:01 OGG_WinUnix_Rel_Notes_19.1.0.0.4.pdf
 
 -	Go to the unzipped folder (fbo_ggs_Linux_x64_services_shiphome/Disk1) and execute the **runInstaller** executable:
 
