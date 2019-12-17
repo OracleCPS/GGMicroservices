@@ -19,7 +19,7 @@ In this first lab you will walk through the process of installing this new versi
 
 ### **STEP 1**: Access Cloud Server via Putty
 
-For this lab, Oracle GoldenGate and the Oracle Database sources and targets are contained within one Ravello Cloud image that you will be assigned to. All user interactions will be through a browser (Firefox or Chrome) and Putty that is installed on your laptop, which was a prerequisite for this workshop. 
+For this lab, Source and Target will have Oracle GoldenGate 19c and the Oracle Database 19c . All user interactions will be through a browser (Firefox or Chrome) and Putty that is installed on your laptop, which was a prerequisite for this workshop. 
 
 **Your instructor will provide the SSH and IP address for Oracle Cloud Server**
 
@@ -28,7 +28,7 @@ In this step you will use VNC client to connect with Source Server, to get start
 -	Log in to the oracle Source Server, using TigerVNC.
 -	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
 
-![](images/100/vnc_4.jpg)
+![](images/100/vnc_1.jpg)
 
 -	Sign on with the following password: oracle
 
