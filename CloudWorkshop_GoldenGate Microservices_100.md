@@ -46,9 +46,9 @@ In this step you will use VNC client to connect with Source Server, to get start
 
 In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
 
--	From the terminal screen change to the **Down/u01/software/gg/ggma** directory and unzip the **GoldenGate Microservices software package**:
+-	From the terminal screen change to the **/u01/software/gg/ggma** directory and unzip the **GoldenGate Microservices software package**:
  
-		[oracle@ggma Lab1]$ cd /u01/software/gg/ggma
+		[oracle@ggma ~] cd /u01/software/gg/ggma
 		[oracle@ggma ggma]$ ll
 		total 340
 		drwxr-xr-x. 3 oracle oinstall   4096 Oct 18 13:29 fbo_ggs_Linux_x64_services_shiphome
