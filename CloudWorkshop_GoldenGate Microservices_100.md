@@ -28,7 +28,7 @@ In this step you will use VNC client to connect with Source Server, to get start
 -	Log in to the oracle Source Server, using TigerVNC.
 -	In the VNC server field, enter the hostname assigned to you by the hands-on lab staff and port 5901 e.g. {hostname or IP}:5901 , then press Connect.
 
-![](images/100/vnc_1.jpg)
+![](images/100/vnc_4.jpg)
 
 -	Sign on with the following password: oracle
 
@@ -36,11 +36,11 @@ In this step you will use VNC client to connect with Source Server, to get start
 
 -	Once the VNC client has connected, you should see a console that looks similar to this:
 
-![](images/100/vnc_3.jpg)
+![](images/100/vnc1.jpg)
 
 -	On the desktop, right-click and select “Open Terminal”.
 
-![](images/100/vnc_4.jpg)
+![](images/100/vnc3.jpg)
 
 ### **STEP 2**: From the same terminal window, install the GoldenGate Microservices Edition
 
