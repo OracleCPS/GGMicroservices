@@ -12,8 +12,6 @@ In this first lab you will walk through the process of installing this new versi
 
 -	Install the GoldenGate Microservces for Oracle edition for the target environment using the Oracle Universal Installer (OUI) tool
 
-
-
 ## Required Artifacts
 
 -   SSH keys for source and target servers
