@@ -174,7 +174,7 @@ In this step you will configure the Target (SanFran) deployment.
 
 - 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
 
-- You will then be taken to the following page.   Review that the Services for the ***"Atlanta"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
+- You will then be taken to the following page.   Review that the Services for the ***"SanFran"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
 ![](images/200/Lab002_17.jpg)
 
