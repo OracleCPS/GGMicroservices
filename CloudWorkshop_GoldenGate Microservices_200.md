@@ -2,10 +2,10 @@
 
 Update January 02, 2019
 
-## Configuring ServiceManager, Atlanta and SanFran Deployments
+## Configuring ServiceManager , Atlanta and SanFran Deployments
 ## Introduction
 
-This lab walks you through configuring ServiceManager, Atlanta and SanFran deployments using **Goldengate 18.1 MicroServices** web interface and the **Oracle GoldenGate Configuration Assistant (OGGCA)** silent install scripts in a Ravello environment.
+This lab walks you through configuring ServiceManager, Atlanta and SanFran deployments using **Goldengate 19.1 MicroServices** web interface and the **Oracle GoldenGate Configuration Assistant (OGGCA)** silent install scripts in a Cloud environment.
 
 ## Objectives
 
@@ -24,55 +24,50 @@ It is also responsible for starting and stopping the other GoldenGate services a
 
 -	On the desktop, right-click and select “Open Terminal”.
 
-![](images/200/open_terminal.PNG)
+![](images/200/vnc1.jpg)
 
--   Then, change to the **/opt/app/oracle/product/18.1.0_RC2/bin** directory.
+-   Then, change to the **/u01/gghome/bin** directory.
 
-		cd /opt/app/oracle/product/18.1.0_RC2/bin
+		cd /u01/gghome/bin
 
 -   Then, run the **oggca.sh** script:
 
-		[oracle@@OGG181DB183 bin] ./oggca.sh
+		[oracle@@ggma bin] ./oggca.sh
 
 -	The following screen will appear.   
 
-![](images/200/1.PNG)
+![](images/200/Lab002_1.jpg)
 
--	Select the option to **"Create New Service Manager"** and click on the **"Browse"** to select the location for the Service Manager.
+-	Select the option to **"Create New Service Manager"** and click on the **"Browse"** to select the location for the Service Manager as **"/u01/gg_deployments/ServiceManager"**.
 
-![](images/200/2.PNG)
+-	For the ServiceManager details screen enter the hostname of **"ggma"** for the listening hostname/address and enter **"16000"** for the listening port value.  Click on the **"Register Service as a system service/daemon"** checkbox. Click on **"Next"** to continue the configuration. 
 
--	For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/ServiceManager/"** directory and click on the **"Select"** button.
+![](images/200/Lab002_2.jpg)
 
-![](images/200/3.PNG)
-
--	For the ServiceManager details screen enter the hostname of **"OGG181DB183"** for the listening hostname/address and enter **"16000"** for the listening port value.  Click on the **"Register Service as a system service/daemon"** checkbox. Click on **"Next"** to continue the configuration.   
-
-![](images/200/4.PNG)
 
 - 	Since this is the **First deployment** on the system, you will only have ***one*** option. Take the default and click **Next**.
 
-![](images/200/5.PNG)
+![](images/200/Lab002_3.jpg)
 
 -	You will need to provide a **Deployment Name** which in this case is **Atlanta** and the **OGG_HOME** is selected by default. If the wrong OGG_HOME is listed; use the Browse button to correct it.
 
-![](images/200/6.PNG)
+![](images/200/Lab002_4.jpg)
 
--	For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/Atlanta"** directory and click on the **"Select"** button.
-![](images/200/Lab200_image127.PNG)
-![](images/200/7.PNG)
+-	For the directory selection dialog box navigate to the **"/u01/gg_deployments/Atlanta"** directory and click on the **"Select"** button.
+
+![](images/200/Lab002_5.jpg)
 
 -	For  the **"Specify Enviroment Variables"** screen, review the settings and click on **"Next"** to continue.  
 
-![](images/200/8.PNG)
+![](images/200/Lab002_6.jpg)
 
-- 	For the **"Specify Administrator Account"** screen, enter **"oggadmin"** for the username field, and enter **"Welcome1"** for the password field.  Enter the same value of **"Welcome1"** for the confirm password field.   Click on **"Next"** to continue.
+- 	For the **"Specify Administrator Account"** screen, enter **"oggadmin"** for the username field, and enter **"Welcome123#"** for the password field.  Enter the same value of **"Welcome123#"** for the confirm password field.   Click on **"Next"** to continue.
 
-![](images/200/9.JPG)
+![](images/200/Lab002_7.jpg)
 
 - 	For the **"Specify Security Options"** screen, make sure all the **"SSL/TLS security"** and **"This nonsecure deployment will be used to send trail data to a secure deployement"** checkboxes are ***unchecked***.  Click on **"Next"** to continue.
 
-![](images/200/10.JPG)
+![](images/200/Lab002_8.jpg)
 
 - 	For the **"Specify Port Settings"** screen, set the following field and checkbox values (you will note that they will autofill based on the first setting which is fine).   
 
@@ -86,61 +81,53 @@ It is also responsible for starting and stopping the other GoldenGate services a
 |Metrics Server UDP Port (data) |   16005	|
 |Metrics Server Datastore Type  |   BDB		|
 
-![](images/200/8_5.PNG)
 
--    For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.For the directory selection dialog box navigate to the **"/opt/app/oracle/gg_deployments/Atlanta"** directory and select ***Metrics*** directory
+-    For the **"Metrics Server Datastore home"** click on the button next to the option and the **Select Path** dialog box will appear.For the directory selection dialog box navigate to the **"/u01/gg_deployments/Atlanta"** directory and select ***metrics*** directory .Click **"Next"** to continue.
 
-![](images/200/10.PNG)
+![](images/200/Lab002_9.jpg)
 
--    For the **Metrics Server Datastore home** you should now have the following:
 
-![](images/200/10_5.PNG)
-
--	Click **"Next"** to continue.
-
-- 	For the "Specify OGG Replication Settings" screen, enter **GGATE** for the "Default Schema" field.  Click on **"Next"** to continue.
+- 	For the "Specify OGG Replication Settings" screen, enter **ggate** for the "Default Schema" field.  Click on **"Next"** to continue.
  
-![](images/200/12.JPG)
+![](images/200/Lab002_10.jpg)
 
 - 	For the **"Summary"** screen review the options carefully and then select the **"Finish"** button.
 
-![](images/200/11.PNG)
+![](images/200/Lab002_11.jpg)
 
 - 	Follow the progress carefully on the **next** screen.
 
-![](images/200/14.JPG)
+![](images/200/Lab002_12.jpg)
 
 - 	For the **"Execute Configuration Scripts"** screen, you will be prompted to manually execute the ***registerServiceManager.sh*** script which will daemonize the SerivceManager executable to enable it to be started and stop on system shutdown and startup.
 
-![](images/200/15.JPG)
+![](images/200/Lab002_13.jpg)
 
 - 	At a terminal prompt login as root using the ***sudo su -*** command and password ***Welcome1***.Execute the shell script as directed:
 
-		[oracle@OGG181DB183 ~]$ sudo su -
-		[root@OGG181DB183 ~]# /opt/app/oracle/gg_deployments/ServiceManager/bin/registerServiceManager.sh
+		[oracle@ggma ~]$ sudo su -
+		[root@ggma ~]# /u01/gg_deployments/ServiceManager/bin/registerServiceManager.sh
 
 - 	The output should look like the following:
 
-![](images/200/12.PNG)
+![](images/200/Lab002_14.jpg)
 
 - 	When complete go back to the **"Execute Configuration Scripts"** screen and click on the **"Ok"** button
 
-![](images/200/15a.JPG)
 
 - 	For the **"Finish"** screen confirm the ***successful deployment status*** and click on the **"Close"** button.   
 
-![](images/200/17.JPG)
+![](images/200/Lab002_15.jpg)
 
 **The GoldenGate ServiceManager** deployment and the **"Atlanta"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
 
-- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://localhost:16000** .  
-- 	If you're using the browser on your laptop, change **localhost** to the **Ravello URL or IP Address** your instructor gave out at the beginning of the workshop **same one you used for the VNC Session**.
-- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**.
-![](images/200/33.JPG)
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://ggma:16000** .  
+
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
 
 - You will then be taken to the following page.   Review that the Services for the ***"Atlanta"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
 
-![](images/200/13.PNG)
+![](images/200/Lab002_16.jpg)
 
 ### **STEP 2**: Configuring Target (SanFran) deployment using OGGCA silent install script
 
@@ -153,13 +140,13 @@ In this step you will configure the Target (SanFran) deployment.
 -   Then, change to the **OGG181_WHKSHP/Lab2** directory.
 
 		
-		[oracle@OGG181DB183 ~]$ cd ~/OGG181_WHKSHP/Lab2
+		[oracle@ggma ~]$ cd ~/OGG181_WHKSHP/Lab2
 
 -   You will run the **create_deployment.sh** script to create the SanFran deployment using a response file for OGGCA.
 
 -	Review the **create_deployment.sh** script
 		
-		[oracle@OGG181DB183 Lab2]$ less create_deployment.sh 
+		[oracle@ggma Lab2]$ less create_deployment.sh 
 
 -	The arguments for the script are:
 
@@ -178,7 +165,7 @@ In this step you will configure the Target (SanFran) deployment.
 
 -	Run the script
 
-		[oracle@OGG181DB183 Lab2]$ ./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
+		[oracle@ggma Lab2]$ ./create_deployment.sh SanFran Welcome1 16000 17001 17002 17003 17004 17005
 		Successfully Setup Software.
 
 -	Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been created.
