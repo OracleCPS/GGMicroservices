@@ -121,7 +121,7 @@ It is also responsible for starting and stopping the other GoldenGate services a
 
 **The GoldenGate ServiceManager** deployment and the **"Atlanta"** deployment are now complete and ready to start using.   Lets now verify the deployment by connecting through the brower interface.  
 
-- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://ggma:16000** .  
+- 	Open up a browser window in your Oracle Cloud environmentor on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://132.145.207.65:16000/** .  
 
 - 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
 
@@ -170,7 +170,7 @@ In this step you will configure the Target (SanFran) deployment.
 
 -	Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been created.
 
-- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://ggma2:16000** .  
+- 	Open up a browser window in your Oracle Cloud environmentor on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://129.213.30.234/17000** .  
 
 - 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
 
