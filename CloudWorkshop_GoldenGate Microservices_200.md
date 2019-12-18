@@ -137,10 +137,10 @@ In this step you will configure the Target (SanFran) deployment.
 
 ![](images/200/open_terminal.PNG)
 
--   Then, change to the **OGG181_WHKSHP/Lab2** directory.
+-   Then, change to the **~/script/Lab2** directory.
 
 		
-		[oracle@ggma ~]$ cd ~/OGG181_WHKSHP/Lab2
+		[oracle@ggma ~]$ cd ~/script/Lab2
 
 -   You will run the **create_deployment.sh** script to create the SanFran deployment using a response file for OGGCA.
 
@@ -170,9 +170,13 @@ In this step you will configure the Target (SanFran) deployment.
 
 -	Once the script is executed, you will see a statement saying that the ***“Successfully Setup Software.”*** indicates that deployment ***SanFran*** has been created.
 
--	Return to the browser and refresh (if it hasn't refreshed automatically already) and check to see that the ***SanFran*** deployment is displayed.
-	
-![](images/200/14.PNG)
+- 	Open up a browser window in your client VM environment in Ravello or on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://ggma2:16000** .  
+
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
+
+- You will then be taken to the following page.   Review that the Services for the ***"Atlanta"*** deployment and the ServiceManager are all in a ***"Running"*** state. 
+
+![](images/200/Lab002_17.jpg)
 
 You have completed lab 200!   **Great Job!**
 
