@@ -15,16 +15,16 @@ In this Lab, you will configure the database and protocol user credentials entri
 ### **STEP 1**: Create the root CDB user credential and the GoldenGate Protocol credential.
 
 - 	Open up a browser window on your laptop using a browser (like Chrome or Firefox) and enter the following URL and port: **http://ggma:16000** . 	
-- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome1"**.
+- 	You should get a sign on page.   Sign in using the username: **"oggadmin"** and password **"Welcome123#"**.
 ![](images/300/Lab300_1.JPG)
 
 -   After logging in, find and open the Administration Server for your first deployment. In this example, the first deployment is Atlanta. Go to Atlanta administration server page by clicking on 16001.
 
-![](images/300/Lab300_2.JPG)
+![](images/300/Lab300_12.png)
 
 -   Click on hamburger symbol on top left corner of the page, select Configuration and select "+" sign beside credentials.
 
-![](images/300/Lab300_3.JPG)
+![](images/300/Lab300_4.JPG)
 
 -   Here will create the root container database credentials.  Enter the credential details as given below and click on submit. Password is "ggate".  You will need to add the alias for a user that will connect to CDB. The CDB alias will be used to connect to the database to read the required files for extraction operations, and the PDB1 user SGGATE will be used to add TRANDATA to the schemas used in replication.
 
@@ -36,7 +36,7 @@ In this Lab, you will configure the database and protocol user credentials entri
 |Password|	ggate|
 |Verify Password| 	 ggate|
 
-![](images/400/Lab300_Add_SGGATE.PNG)
+![](images/400/Lab300_5.JPG)
 ![](images/300/Lab300_6.JPG)
 
 Since you are configuring an non-SSL replication environment, you will need to create a “Protocol User”. A protocol user is simply a credential that uses the target ServiceManager login to allow the Distribution Service to access the Receiver Service.
