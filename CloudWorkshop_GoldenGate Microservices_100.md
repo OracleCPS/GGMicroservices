@@ -1,6 +1,6 @@
 ![](images/100/Lab100_image100.PNG)
 
-Update June 23, 2020
+Updated June 23, 2020
 
 #### Introduction
 
