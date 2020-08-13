@@ -42,7 +42,7 @@ In this step you will use VNC client to connect with Source Server, to get start
 
 ![](images/100/vnc1.jpg)
 
-### **STEP 2**: From the same terminal window, install the GoldenGate Microservices Edition
+### **STEP 2 **: From the same terminal window, install the GoldenGate Microservices Edition
 
 In this step you will install **the GoldenGate Microservices edition package** in new **"GoldenGate Home"** directory.
 
